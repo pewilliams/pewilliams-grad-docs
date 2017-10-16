@@ -1,0 +1,69 @@
+---
+title: 'Midterm 1: Math 6266'
+author: "Peter Williams"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+#### Section 1.1
+Exercise 1. Consider the linear regression model with mean zero, uncorrelated, heteroscedastic noise:
+\begin{equation}
+  Y_i = X_i^{\intercal}\theta + \varepsilon_i,\ for\ i=1,..,n,\ E\varepsilon_i = 0,\  
+  cov(\varepsilon_j, \varepsilon_j)=\left\{
+  \begin{array}{@{}ll@{}}
+    \sigma_i^2, & \text{if}\ i=j \\
+    0, & i \neq j
+  \end{array}\right.
+\end{equation}
+ 
+Find expressions for the LSE  and response estimator in this model:
+
+Exercise 2.  Assume that $\varepsilon_i \sim N(0, \sigma_i^2)$ in the previous problem. What is known about the distribution of $\hat{\theta}$ and $\hat{Y}$? Now suppose additionally that $\sigma_i^2 \equiv \sigma^2 > 0$. What can be said about distribution of the estimator $\hat{\sigma^2}$?
+
+Exercise 3. Consider the linear regression model from exercise 1. Suppose, that the target of
+estimation is $h^{\intercal}\theta$ for some determinate non-zero vector $h\in R^p$. Find expression for the LSE of $h^{\intercal}\theta$. Is this estimate optimal in sense of Gauss-Markov theorem, i.e. does it have the smallest
+variance among all linear unbiased estimators? Study the same issue for the target $\eta = H^{\intercal}\theta$, where 
+$H \in R^{q \times p}$ is some non-zero matrix with $q \leq p$.
+
+
+#### Section 1.3
+Exercise 4. Let $A \in R^{n\times n}$ be a matrix (corresponding to a linear map in $R^n$). Show that $A$ preserves length for all $x \in R^n$ iff it preserves the inner product. I.e. one needs to show the following:
+$||Ax|| = ||x||\  \forall\ x \in R^n \iff (Ax)^{\intercal}(Ay)\  \forall\  x,y \in R^n$.
+
+$$||x|| = \sqrt{x \cdot x} = \sqrt{x^\intercal x} \implies ||Ax|| = \sqrt{Ax \cdot Ax} = \sqrt{x^{\intercal}A^{\intercal}Ax} \implies$$ 
+$$A^\intercal = A^{-1}, A^\intercal A = I_n = A^{-1} A\  and\  ||Ax|| = ||x||$$
+
+this implies, 
+
+$$(Ax)^\intercal (Ay)  = ||AxAy||^2 = x^\intercal A^\intercal A y = x^\intercal y = ||xy||^2$$
+
+Exercise 5. (a) Let $x_0 \in R^n$ be some fixed vector, find a projection map on the subspace $span(x_0)$. Compare your result with matrix $\Pi$ (from section 1.3) for the case of $p=1$.
+(b) Prove part 3) of Lemma 1.1 for an arbitrary orthogonal projection in $R^n$.
+Exercise 6. Let $L1, L2$ be some subspaces in $R^n$, and $L2 \subseteq L1 \subseteq R^n$. Let $PL1, PL2$ denote orthogonal projections on these subspaces. Prove the following properties:
+(a) $PL2 - PL1$ is an orthogonal projection,
+(b) 
+(c) $PL2 \cdot PL1 = PL2$
+
+
+#### Section 2.1
+Exercise 7. (a) Using the notation from section 2.1, consider $X \sim N(\mu,I_n)$ for some $\mu \in R^n$. Find $E{Q(X)}$ and $Var{Q(X)}$.
+(b) Generalize the results from part (a) to the case $X \sim N(\mu,\Sigma)$ for some positive-definite covariance matrix $\Sigma \in R^{n \times n}$.
+
+Exercise 8. Let $X \sim N(0,In)$, $Q = X X$. Suppose that $Q$ is decomposed into the sum of
+two quadratic forms: $Q = Q1 + Q2$, where $Qi = X^{\intercal}A_iX$, $i = 1, 2$ for some symmetric matrices $A1,A2$ with $rank(A1) = n1$ and $rank(A2) = n2$. Show that if $n1 + n2 = n$, then $Q1$ and $Q2$ are independent and $Q_i \sim \chi^2(n_i) for\  i = 1,2$.
+
+#### Section 2.2
+
+Exercise 9. In the Gaussian linear regression model 3, consider the target of estimation $\eta = H^{\intercal} \theta^*$ , where $H \in R^{q \times p}$ is some non-zero matrix with $q \leq p$. Find an analogue of the quadratic form $S2$ (from (4)) for the new target $\eta^{\ast}$, and prove for the new quadratic form statements similar to (e) from Theorem 2.1, and Corollary 2.1.2.
+
+Exercise 10. (a) Consider model (3) for $p = 2, X_i = (1, x_i)^{\intercal}, \theta^{\ast} = (\theta_1^{\ast}, \theta_2^{\ast})^{\intercal}$ (similarly to section 1.5). Write explicit expressions for the confidence sets for $\theta^{\ast}, \theta_1^{\ast}, \theta_2^{\ast}$.
+
+(b) Find a confidence interval for the expected response $E[Y_i]$ in the model in part (a).
+
+Exercise 11. Find an elliptical confidence set for the expected response $E[Y]$ in model (3). 
+
+Exercise 12. Construct simultaneous confidence intervals (e.g., as in Corollary 2.2.1) for the
+expected responses $E[Y_1], . . . , E[Y_n]$ in model (3).
