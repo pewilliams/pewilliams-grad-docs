@@ -19,7 +19,11 @@ Exercise 1. Consider the linear regression model with mean zero, uncorrelated, h
   \end{array}\right.
 \end{equation}
  
-Find expressions for the LSE  and response estimator in this model:
+Find expressions for the $LSE$ and response estimator in this model:
+
+Under heteroscedastic noise asssumptions, the $LSE$ estimator, denoted $\hat{\theta}_{OLS}$, is: 
+$$\hat{\theta}_{OLS} = \underset{\theta}{argmin} ||Y - X^{\intercal}\theta||^2 = \underset{\theta}{argmin}\ G(\theta)$$,
+$$||Y - X^{\intercal}\theta||^2 = G(\theta) = (Y - X^{\intercal}\theta)^{\intercal}(Y - X^{\intercal}\theta) = YY^{\intercal} - 2\theta^{\intercal}XY + \theta^{\intercal}XX^{\intercal}Y$$ with gradient, $$\nabla G(\theta)  = -2XY + 2\theta^{\intercal}XX^{\intercal}Y$$ Setting this expression equal to zero leads to estimator $\hat{\theta}=\hat{\theta}_{OLS} = (XX^{\intercal})^{-1}XY$, which leads to response estimator $\hat{Y} = X^{\intercal}\hat{\theta} = X^{\intercal}(XX^{\intercal})^{-1}XY$.
 
 Exercise 2.  Assume that $\varepsilon_i \sim N(0, \sigma_i^2)$ in the previous problem. What is known about the distribution of $\hat{\theta}$ and $\hat{Y}$? Now suppose additionally that $\sigma_i^2 \equiv \sigma^2 > 0$. What can be said about distribution of the estimator $\hat{\sigma^2}$?
 
@@ -34,9 +38,9 @@ Exercise 4. Let $A \in R^{n\times n}$ be a matrix (corresponding to a linear map
 $||Ax|| = ||x||\  \forall\ x \in R^n \iff (Ax)^{\intercal}(Ay)\  \forall\  x,y \in R^n$.
 
 $$||x|| = \sqrt{x \cdot x} = \sqrt{x^\intercal x} \implies ||Ax|| = \sqrt{Ax \cdot Ax} = \sqrt{x^{\intercal}A^{\intercal}Ax} \implies$$ 
-$$A^\intercal = A^{-1}, A^\intercal A = I_n = A^{-1} A\  and\  ||Ax|| = ||x||$$
+$$ A^\intercal A = I_n = A^{-1},\ A^\intercal = A^{-1}, ||Ax|| = ||x||$$
 
-this implies, 
+this implies $A$ is an orthogonal matrix, and further, 
 
 $$(Ax)^\intercal (Ay)  = ||AxAy||^2 = x^\intercal A^\intercal A y = x^\intercal y = ||xy||^2$$
 
@@ -44,7 +48,7 @@ Exercise 5. (a) Let $x_0 \in R^n$ be some fixed vector, find a projection map on
 (b) Prove part 3) of Lemma 1.1 for an arbitrary orthogonal projection in $R^n$.
 Exercise 6. Let $L1, L2$ be some subspaces in $R^n$, and $L2 \subseteq L1 \subseteq R^n$. Let $PL1, PL2$ denote orthogonal projections on these subspaces. Prove the following properties:
 (a) $PL2 - PL1$ is an orthogonal projection,
-(b) 
+(b) $|PL2| \leq |PL1|\  \forall x \in R^n$,
 (c) $PL2 \cdot PL1 = PL2$
 
 
