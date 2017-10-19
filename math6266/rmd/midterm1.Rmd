@@ -9,7 +9,7 @@ knitr::opts_chunk$set(echo = TRUE)
 ```
 
 #### Section 1.1
-Exercise 1. Consider the linear regression model with mean zero, uncorrelated, heteroscedastic noise:
+*Exercise 1. Consider the linear regression model with mean zero, uncorrelated, heteroscedastic noise:*
 \begin{equation}
   Y_i = X_i^{\intercal}\theta + \varepsilon_i,\ for\ i=1,..,n,\ E\varepsilon_i = 0,\  
   cov(\varepsilon_i, \varepsilon_j)=\left\{
@@ -19,40 +19,47 @@ Exercise 1. Consider the linear regression model with mean zero, uncorrelated, h
   \end{array}\right.
 \end{equation}
  
-Find expressions for the $LSE$ and response estimator in this model:
+*Find expressions for the $LSE$ and response estimator in this model*
 
 Under heteroscedastic noise asssumptions, the $LSE$ estimator, denoted $\hat{\theta}_{OLS}$, is: 
 $$\hat{\theta}_{OLS} = \underset{\theta}{argmin} ||Y - X^{\intercal}\theta||^2 = \underset{\theta}{argmin}\ G(\theta)$$,
 $$||Y - X^{\intercal}\theta||^2 = G(\theta) = (Y - X^{\intercal}\theta)^{\intercal}(Y - X^{\intercal}\theta) = YY^{\intercal} - 2\theta^{\intercal}XY + \theta^{\intercal}XX^{\intercal}\theta$$ with gradient, $$\nabla G(\theta)  = -2XY + 2\theta^{\intercal}XX^{\intercal}$$ Setting this expression equal to zero leads to estimator $\hat{\theta}=\hat{\theta}_{OLS} = (XX^{\intercal})^{-1}XY$, which leads to response estimator $\hat{Y} = X^{\intercal}\hat{\theta} = X^{\intercal}(XX^{\intercal})^{-1}XY$.
 
-Exercise 2.  Assume that $\varepsilon_i \sim N(0, \sigma_i^2)$ in the previous problem. What is known about the distribution of $\hat{\theta}$ and $\hat{Y}$? 
+*Exercise 2.  Assume that $\varepsilon_i \sim N(0, \sigma_i^2)$ in the previous problem. What is known about the distribution of $\hat{\theta}$ and $\hat{Y}$?* 
 
 Denote $n \times n$ matrix $D = diag\{ \sigma_1^2, \sigma_2^2, ...,\sigma_n^2 \} = Var(\varepsilon)$. 
 
 For $\hat{\theta}$, we have, 
-$$E[{\hat{\theta}}] = E[(XX^{\intercal})^{-1}XY] =  E[(XX^{\intercal})^{-1}X(X^{\intercal}\theta^{*} + \varepsilon)] = E[\theta^{*}] + E[\varepsilon] = \theta^{*}$$ indicating that $\hat{\theta}$ is unbiased despite the presence of heteroscedastic noise. Further $\hat{\theta}$ is normally distributed, since is a linear transformation of $\varepsilon \sim N(0,D)$.
+$$E[{\hat{\theta}}] = E[(XX^{\intercal})^{-1}XY] =  E[(XX^{\intercal})^{-1}X(X^{\intercal}\theta^{*} + \varepsilon)] = E[\theta^{*}] + E[\varepsilon] = \theta^{*}$$ indicating that $\hat{\theta}$ is unbiased despite the presence of heteroscedastic noise. Further $\hat{\theta}$ is normally distributed, since is a linear transformation of $\varepsilon \sim N(0,D)$. Further we have, 
 
 $$Var({\hat{\theta}}) = Var((XX^{\intercal})^{-1}XY) = Var((XX^{\intercal})^{-1}X(X^{\intercal}\theta^{*} + \varepsilon)) = Var((XX^{\intercal})^{-1}X\varepsilon)) =$$ 
 $$ (XX^{\intercal})^{-1}X Var(\varepsilon) X^{\intercal}(XX^{\intercal})^{-1} = (XX^{\intercal})^{-1}X D X^{\intercal}(XX^{\intercal})^{-1} = Var(\hat{\theta})$$
-So we can describe $\hat{\theta} \sim N(\theta^*,(XX^{\intercal})^{-1}X D X^{\intercal}(XX^{\intercal})^{-1}$ for this model. 
 
 For $\hat{Y}$ we have,
 
 $$E[\hat{Y}] = E[X^{\intercal}(XX^{\intercal})^{-1}XY] = E[X^{\intercal}(XX^{\intercal})^{-1}X(X^{\intercal}\theta^* + \varepsilon)] = E[X^{\intercal}\theta^* + X^{\intercal}(XX^{\intercal})^{-1}X\varepsilon] = E[X^{\intercal}\theta^*]= Y$$
 and, 
-$$Var[\hat{Y}] = Var[X^{\intercal}(XX^{\intercal})^{-1}XY] = Var[X^{\intercal}(XX^{\intercal})^{-1}X(X^{\intercal}\theta^* + \varepsilon)] = Var[X^{\intercal}\theta^* + X^{\intercal}(XX^{\intercal})^{-1}X\varepsilon] = ...$$
-Now suppose additionally that $\sigma_i^2 \equiv \sigma^2 > 0$. 
-What can be said about distribution of the estimator $\hat{\sigma^2}$?
+$$Var[\hat{Y}] = Var[X^{\intercal}(XX^{\intercal})^{-1}XY] = Var[X^{\intercal}(XX^{\intercal})^{-1}X(X^{\intercal}\theta^* + \varepsilon)] = Var[X^{\intercal}\theta^* + X^{\intercal}(XX^{\intercal})^{-1}X\varepsilon] =\ ...$$
+$$... = Var[X^{\intercal}(XX^{\intercal})^{-1}X\varepsilon] = X^{\intercal}(XX^{\intercal})^{-1}X Var(\varepsilon) X^{\intercal}(XX^{\intercal})^{-1}X = \Pi D\Pi^{\intercal}$$
+where $\Pi = X^{\intercal}(XX^{\intercal})^{-1}X = \Pi^{\intercal}$, and $D = diag\{ \sigma_1^2, \sigma_2^2, ...,\sigma_n^2 \}$. 
 
-Exercise 3. Consider the linear regression model from exercise 1. Suppose, that the target of
+*Now suppose additionally that $\sigma_i^2 \equiv \sigma^2 > 0$.* 
+*What can be said about distribution of the estimator $\hat{\sigma^2}$?*
+
+Insert solution here
+
+*Exercise 3. Consider the linear regression model from exercise 1. Suppose, that the target of
 estimation is $h^{\intercal}\theta$ for some determinate non-zero vector $h\in R^p$. Find expression for the LSE of $h^{\intercal}\theta$. Is this estimate optimal in sense of Gauss-Markov theorem, i.e. does it have the smallest
-variance among all linear unbiased estimators? ---Start with this ---By Gauss Markov, we know that a BLUE estimator has $Var(\theta_{OLS}) = \sigma^2(XX^{\intercal})^{-1})$. However in the case of heterscedastic noise, we have $Var(\theta) = (XX^{\intercal})^{-1}X D X^{\intercal}(XX^{\intercal})^{-1}$, which must be greater than $\sigma^2 (XX^{\intercal})^-1)$. An so, in this case, our estimator is not BLUE. Study the same issue for the target $\eta = H^{\intercal}\theta$, where 
+variance among all linear unbiased estimators?*
+
+
+---Start with this ---By Gauss Markov, we know that a BLUE estimator has $Var(\theta_{OLS}) = \sigma^2(XX^{\intercal})^{-1})$. However in the case of heterscedastic noise, we have $Var(\theta) = (XX^{\intercal})^{-1}X D X^{\intercal}(XX^{\intercal})^{-1}$, which must be greater than $\sigma^2 (XX^{\intercal})^-1)$. An so, in this case, our estimator is not BLUE. Study the same issue for the target $\eta = H^{\intercal}\theta$, where 
 $H \in R^{q \times p}$ is some non-zero matrix with $q \leq p$.
 
 
 #### Section 1.3
-Exercise 4. Let $A \in R^{n\times n}$ be a matrix (corresponding to a linear map in $R^n$). Show that $A$ preserves length for all $x \in R^n$ iff it preserves the inner product. I.e. one needs to show the following:
-$||Ax|| = ||x||\  \forall\ x \in R^n \iff (Ax)^{\intercal}(Ay)\  \forall\  x,y \in R^n$.
+*Exercise 4. Let $A \in R^{n\times n}$ be a matrix (corresponding to a linear map in $R^n$). Show that $A$ preserves length for all $x \in R^n$ iff it preserves the inner product. I.e. one needs to show the following:
+$||Ax|| = ||x||\  \forall\ x \in R^n \iff (Ax)^{\intercal}(Ay)\  \forall\  x,y \in R^n$.*
 
 $$||x|| = \sqrt{x \cdot x} = \sqrt{x^\intercal x} \implies ||Ax|| = \sqrt{Ax \cdot Ax} = \sqrt{x^{\intercal}A^{\intercal}Ax} \implies$$ 
 $$ A^\intercal A = I_n = A^{-1},\ A^\intercal = A^{-1}, ||Ax|| = ||x||$$
