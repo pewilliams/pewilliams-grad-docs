@@ -53,12 +53,6 @@ $\hat{\varepsilon}^{\intercal}\hat{\varepsilon} = ((I_n-\Pi)Y)^{\intercal}((I_n-
 
 Since we know that $\varepsilon \sim N(0, \sigma^2 I_n)$, and further $\frac{\varepsilon^{\intercal}\varepsilon}{\sigma^2} \sim \chi^2(n)$, $(\frac{\varepsilon}{\sigma})^{\intercal}(I_n-\Pi)(\frac{\varepsilon}{\sigma}) \sim \chi^2(n-p)$, since we know from earlier that $(I_n - \Pi)$, is idempotent, with rank equal to $tr(I_n-\Pi) = tr(I_n) - tr(\Pi) = n - p$. 
 
-*Exercise 3. Consider the linear regression model from exercise 1. Suppose, that the target of
-estimation is $h^{\intercal}\theta$ for some determinate non-zero vector $h\in R^p$. Find expression for the LSE of $h^{\intercal}\theta$. Is this estimate optimal in sense of Gauss-Markov theorem, i.e. does it have the smallest
-variance among all linear unbiased estimators?*
-
----Start with this ---By Gauss Markov, we know that a BLUE estimator has $Var(\theta_{OLS}) = \sigma^2(XX^{\intercal})^{-1})$. However in the case of heterscedastic noise, we have $Var(\theta) = (XX^{\intercal})^{-1}X D X^{\intercal}(XX^{\intercal})^{-1}$, which must be greater than $\sigma^2 (XX^{\intercal})^-1)$. An so, in this case, our estimator is not BLUE. Study the same issue for the target $\eta = H^{\intercal}\theta$, where 
-$H \in R^{q \times p}$ is some non-zero matrix with $q \leq p$.
 
 #### Section 1.3
 *Exercise 4. Let $A \in R^{n\times n}$ be a matrix (corresponding to a linear map in $R^n$). Show that $A$ preserves length for all $x \in R^n$ iff it preserves the inner product. I.e. one needs to show the following:*
@@ -72,31 +66,15 @@ this implies $A$ is an orthogonal matrix, and further,
 $$(Ax)^\intercal (Ay)  = ||AxAy||^2 = x^\intercal A^\intercal A y = x^\intercal y = ||xy||^2$$
 
 *Exercise 5. (a) Let $x_0 \in R^n$ be some fixed vector, find a projection map on the subspace $span(x_0)$. Compare your result with matrix $\Pi$ (from section 1.3) for the case of $p=1$.*
+ 
+Let $x = span(x_0) = span(x_1,x_2,..,x_n)$, denote the subspace of interest, and $x_1,x_2,...$ are basis vectors and $y = (y_1,y_2, ..., y_n)^{\intercal}$. The projection map is,
+$$Proj_{x}(y) = \frac{<y \cdot x>}{<y \cdot y>} x = \sum_{i=1}^{n}\frac{<y_i \cdot\ x_i>}{<y_i \cdot y_i>}x_i$$
+For the case $p=1$, and $\Pi = X^{\intercal}(XX^{\intercal})^{-1}X, X^{\intercal} \in R^n$, we have,
+$$\Pi y  = \hat{y} = X^{\intercal}(XX^{\intercal})^{-1}Xy = X^{\intercal} \frac{Xy}{XX^{\intercal}} = \frac{\sum_i^nx_iy_i}{\sum_i^nx_i^2} (x_1,x_2,...,x_n)^{\intercal} = \frac{<X \cdot y>}{<y \cdot y>} X^{\intercal} =Proj_{X}(y)$$ 
 
-*(b) Prove part 3) of Lemma 1.1 for an arbitrary orthogonal projection in $R^n$.*
+*(b) Prove part 3) of Lemma 1.1 for an arbitrary orthogonal projection in $R^n$. Show $\forall h \in R^n$, $||h||^2 = ||\Pi h||^2 + ||h - \Pi h ||^2$.* 
 
-*Exercise 6. Let $L1, L2$ be some subspaces in $R^n$, and $L2 \subseteq L1 \subseteq R^n$. Let $PL1, PL2$ denote orthogonal projections on these subspaces. Prove the following properties:*  
-*(a) $PL2 - PL1$ is an orthogonal projection,*  
-*(b) $|PL2| \leq |PL1|\  \forall x \in R^n$,*  
-*(c) $PL2 \cdot PL1 = PL2$*  
+Using the fact that $(I_n-\Pi)^{\intercal}(I_n-\Pi) = I_n - 2\Pi + \Pi  = I_n - \Pi$, we have,
+$$||h||^2 = ||\Pi h||^2 + ||h - \Pi h ||^2 = h^{\intercal}\Pi^{\intercal}\Pi h  + h^{\intercal}(I_n - \Pi)^{\intercal}(I_n - \Pi)h = h^{\intercal} \Pi h + h^{\intercal}(I_n - \Pi)h = h^{\intercal}I_n h  + h^{\intercal} \Pi h - h^{\intercal} \Pi h = ||h||^2$$
 
 
-#### Section 2.1
-*Exercise 7. (a) Using the notation from section 2.1, consider $X \sim N(\mu,I_n)$ for some $\mu \in R^n$. Find $E[Q(X)]$ and $Var[Q(X)]$.
-(b) Generalize the results from part (a) to the case $X \sim N(\mu,\Sigma)$ for some positive-definite covariance matrix $\Sigma \in R^{n \times n}$.*
-
-*Exercise 8. Let $X \sim N(0,In)$, $Q = X X$. Suppose that $Q$ is decomposed into the sum of
-two quadratic forms: $Q = Q1 + Q2$, where $Qi = X^{\intercal}A_iX$, $i = 1, 2$ for some symmetric matrices $A1,A2$ with $rank(A1) = n1$ and $rank(A2) = n2$. Show that if $n1 + n2 = n$, then $Q1$ and $Q2$ are independent and $Q_i \sim \chi^2(n_i) for\  i = 1,2$.*
-
-#### Section 2.2
-
-*Exercise 9. In the Gaussian linear regression model 3, consider the target of estimation $\eta = H^{\intercal} \theta^*$ , where $H \in R^{q \times p}$ is some non-zero matrix with $q \leq p$. Find an analogue of the quadratic form $S2$ (from (4)) for the new target $\eta^{\ast}$, and prove for the new quadratic form statements similar to (e) from Theorem 2.1, and Corollary 2.1.2.*
-
-*Exercise 10. (a) Consider model (3) for $p = 2, X_i = (1, x_i)^{\intercal}, \theta^{\ast} = (\theta_1^{\ast}, \theta_2^{\ast})^{\intercal}$ (similarly to section 1.5). Write explicit expressions for the confidence sets for $\theta^{\ast}, \theta_1^{\ast}, \theta_2^{\ast}$.*
-
-*(b) Find a confidence interval for the expected response $E[Y_i]$ in the model in part (a).*
-
-*Exercise 11. Find an elliptical confidence set for the expected response $E[Y]$ in model (3).* 
-
-*Exercise 12. Construct simultaneous confidence intervals (e.g., as in Corollary 2.2.1) for the
-expected responses $E[Y_1], . . . , E[Y_n]$ in model (3).*
