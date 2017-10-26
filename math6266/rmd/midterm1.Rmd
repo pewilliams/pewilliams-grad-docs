@@ -20,25 +20,26 @@ knitr::opts_chunk$set(echo = TRUE)
  
 *Find expressions for the $LSE$ and response estimator in this model*
 
-Under heteroscedastic noise asssumptions, the $LSE$ estimator, denoted $\hat{\theta}_{OLS}$, is: 
-$$\hat{\theta}_{OLS} = \underset{\theta}{argmin} ||Y - X^{\intercal}\theta||^2 = \underset{\theta}{argmin}\ G(\theta)$$,
-$$||Y - X^{\intercal}\theta||^2 = G(\theta) = (Y - X^{\intercal}\theta)^{\intercal}(Y - X^{\intercal}\theta) = YY^{\intercal} - 2\theta^{\intercal}XY + \theta^{\intercal}XX^{\intercal}\theta$$ with gradient, $$\nabla G(\theta)  = -2XY + 2XX^{\intercal}\theta$$ Setting this expression equal to zero leads to estimator $\hat{\theta}=\hat{\theta}_{OLS} = (XX^{\intercal})^{-1}XY$, which leads to response estimator $\hat{Y} = X^{\intercal}\hat{\theta} = X^{\intercal}(XX^{\intercal})^{-1}XY$.
+To set up the problem, take $W^{-1} = diag\{\sigma_1^2,...,\sigma_n^2\}$,  $W = diag\{\frac{1}{\sigma_1^2},...,\frac{1}{\sigma_n^2}\}, W^{1/2} = diag\{\sqrt{\frac{1}{\sigma_1^2}},...,\sqrt{\frac{1}{\sigma_n^2}}\}$, with $W^{\intercal} = W$, and $W^{1/2}W^{1/2} = W$, since they are diagonal matrices. Also we will use $w_i = \frac{1}{\sigma_i^2} = W_{ii}$.
 
-*Exercise 2.  Assume that $\varepsilon_i \sim N(0, \sigma_i^2)$ in the previous problem. What is known about the distribution of $\hat{\theta}$ and $\hat{Y}$?* 
-Denote $n \times n$ matrix $D = diag\{ \sigma_1^2, \sigma_2^2, ...,\sigma_n^2 \} = Var(\varepsilon)$. 
+Under heteroscedastic noise assumptions, we define the least squares estimator, denoted $\hat{\theta}$, as: 
+$$\hat{\theta} = \underset{\theta}{argmin}\sum_{i=1}^n w_i (Y_i - X_i^{\intercal}\theta)^2  = \underset{\theta}{argmin}\sum_{i=1}^n (\sqrt{w_i}Y_i - \sqrt{w_i}X_i^{\intercal}\theta)^2 = \underset{\theta}{argmin} ||W^{1/2}Y - W^{1/2}X^{\intercal}\theta||^2$$
+$$G(\theta) = ||W^{1/2}Y - W^{1/2}X^{\intercal}\theta||^2 =  (W^{1/2}Y - W^{1/2}X^{\intercal}\theta)^{\intercal}(W^{1/2}Y - W^{1/2}X^{\intercal}\theta) = Y^{\intercal}WY - 2\theta^{\intercal}XWY + \theta^{\intercal}XWX^{\intercal}\theta$$ with gradient, $$\nabla G(\theta)  = -2XWY + 2XWX^{\intercal}\theta$$ 
+Setting this expression equal to zero leads to estimator $\hat{\theta} = (XWX^{\intercal})^{-1}XWY$, which leads to response estimator $\hat{Y} = X^{\intercal}\hat{\theta} = X^{\intercal}(XWX^{\intercal})^{-1}XWY$.
+
+*Exercise 2.  Assume that $\varepsilon_i \sim N(0, \sigma_i^2)$ in the previous problem. What is known about the distribution of $\hat{\theta}$ and $\hat{Y}$?*
 
 For $\hat{\theta}$, we have, 
-$$E[{\hat{\theta}}] = E[(XX^{\intercal})^{-1}XY] =  E[(XX^{\intercal})^{-1}X(X^{\intercal}\theta^{*} + \varepsilon)] = E[\theta^{*}] + E[\varepsilon] = \theta^{*}$$ indicating that $\hat{\theta}$ is unbiased despite the presence of heteroscedastic noise. Further $\hat{\theta}$ is normally distributed, since is a linear transformation of $\varepsilon \sim N(0,D)$. Further we have,
-$$Var({\hat{\theta}}) = Var((XX^{\intercal})^{-1}XY) = Var((XX^{\intercal})^{-1}X(X^{\intercal}\theta^{*} + \varepsilon)) = Var((XX^{\intercal})^{-1}X\varepsilon)) =$$ 
-$$ (XX^{\intercal})^{-1}X Var(\varepsilon) X^{\intercal}(XX^{\intercal})^{-1} = (XX^{\intercal})^{-1}X D X^{\intercal}(XX^{\intercal})^{-1} = Var(\hat{\theta})$$
+$$E[{\hat{\theta}}] = E[(XWX^{\intercal})^{-1}XWY] =  E[(XWX^{\intercal})^{-1}XW(X^{\intercal}\theta^{*} + \varepsilon)] = E[\theta^{*}] + E[(XWX^{\intercal})^{-1}XW\varepsilon] = \theta^{*}$$ indicating that $\hat{\theta}$ is unbiased. Further $\hat{\theta}$ is normally distributed, since is a linear transformation of $\varepsilon \sim N(0,W^{-1})$. Further we have,
+$$Var({\hat{\theta}}) = Var((XWX^{\intercal})^{-1}XWY) = Var((XWX^{\intercal})^{-1}XW(X^{\intercal}\theta^{*} + \varepsilon)) = Var((XWX^{\intercal})^{-1}XW\varepsilon)) =...$$ 
+$$ = (XWX^{\intercal})^{-1}XW Var(\varepsilon) W^{\intercal}X^{\intercal}(XWX^{\intercal})^{-1} = (XWX^{\intercal})^{-1}XWX^{\intercal}(XWX^{\intercal})^{-1} = (XWX^{\intercal})^{-1} = Var(\hat{\theta})$$ 
 
 For $\hat{Y}$ we have,
-$$E[\hat{Y}] = E[X^{\intercal}(XX^{\intercal})^{-1}XY] = E[X^{\intercal}(XX^{\intercal})^{-1}X(X^{\intercal}\theta^* + \varepsilon)] = E[X^{\intercal}\theta^* + X^{\intercal}(XX^{\intercal})^{-1}X\varepsilon] = E[X^{\intercal}\theta^*]= Y$$
+$$E[\hat{Y}] = E[X^{\intercal}(XWX^{\intercal})^{-1}XWY] = E[X^{\intercal}(XWX^{\intercal})^{-1}XW(X^{\intercal}\theta^* + \varepsilon)] = E[X^{\intercal}\theta^* + X^{\intercal}(XWX^{\intercal})^{-1}XW\varepsilon] = E[X^{\intercal}\theta^*]= Y$$
 and, 
-$$Var[\hat{Y}] = Var[X^{\intercal}(XX^{\intercal})^{-1}XY] = Var[X^{\intercal}(XX^{\intercal})^{-1}X(X^{\intercal}\theta^* + \varepsilon)] = Var[X^{\intercal}\theta^* + X^{\intercal}(XX^{\intercal})^{-1}X\varepsilon] =\ ...$$
-$$... = Var[X^{\intercal}(XX^{\intercal})^{-1}X\varepsilon] = X^{\intercal}(XX^{\intercal})^{-1}X Var(\varepsilon) X^{\intercal}(XX^{\intercal})^{-1}X = \Pi D\Pi^{\intercal}$$
-where $\Pi = X^{\intercal}(XX^{\intercal})^{-1}X = \Pi^{\intercal}$, and $D = diag\{ \sigma_1^2, \sigma_2^2, ...,\sigma_n^2 \}$. 
-
+$$Var[\hat{Y}] = Var[X^{\intercal}(XWX^{\intercal})^{-1}XWY] = Var[X^{\intercal}(XWX^{\intercal})^{-1}XW(X^{\intercal}\theta^* + \varepsilon)] = Var[X^{\intercal}\theta^* + X^{\intercal}(XWX^{\intercal})^{-1}XW\varepsilon] =\ ...$$
+$$... = Var[X^{\intercal}(XWX^{\intercal})^{-1}XW\varepsilon] = X^{\intercal}(XWX^{\intercal})^{-1}XW\ Var(\varepsilon)\ W^{\intercal}X^{\intercal}(XWX^{\intercal})^{-1}X =...$$
+$$=X^{\intercal}(XWX^{\intercal})^{-1}XWX^{\intercal}(XWX^{\intercal})^{-1}X = X^{\intercal}(XWX^{\intercal})^{-1}X$$
 *Now suppose additionally that $\sigma_i^2 \equiv \sigma^2 > 0$.* 
 *What can be said about distribution of the estimator $\hat{\sigma^2}$?*
 
@@ -52,7 +53,6 @@ Looking further at the distribution of $||Y-X^{\intercal}\hat{\theta}||^2 = \hat
 $\hat{\varepsilon}^{\intercal}\hat{\varepsilon} = ((I_n-\Pi)Y)^{\intercal}((I_n-\Pi)Y) = Y^\intercal(I_n-\Pi)Y = (X^{\intercal}\theta^* + \varepsilon)^{\intercal}(I_n - \Pi)(X^{\intercal}\theta^* + \varepsilon) = \varepsilon^{\intercal}(I_n - \Pi)\varepsilon$. 
 
 Since we know that $\varepsilon \sim N(0, \sigma^2 I_n)$, and further $\frac{\varepsilon^{\intercal}\varepsilon}{\sigma^2} \sim \chi^2(n)$, $(\frac{\varepsilon}{\sigma})^{\intercal}(I_n-\Pi)(\frac{\varepsilon}{\sigma}) \sim \chi^2(n-p)$, since we know from earlier that $(I_n - \Pi)$, is idempotent, with rank equal to $tr(I_n-\Pi) = tr(I_n) - tr(\Pi) = n - p$. 
-
 
 #### Section 1.3
 *Exercise 4. Let $A \in R^{n\times n}$ be a matrix (corresponding to a linear map in $R^n$). Show that $A$ preserves length for all $x \in R^n$ iff it preserves the inner product. I.e. one needs to show the following:*
