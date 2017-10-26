@@ -39,18 +39,19 @@ $$E[\hat{Y}] = E[X^{\intercal}(XWX^{\intercal})^{-1}XWY] = E[X^{\intercal}(XWX^{
 and, 
 $$Var[\hat{Y}] = Var[X^{\intercal}(XWX^{\intercal})^{-1}XWY] = Var[X^{\intercal}(XWX^{\intercal})^{-1}XW(X^{\intercal}\theta^* + \varepsilon)] = Var[X^{\intercal}\theta^* + X^{\intercal}(XWX^{\intercal})^{-1}XW\varepsilon] =\ ...$$
 $$... = Var[X^{\intercal}(XWX^{\intercal})^{-1}XW\varepsilon] = X^{\intercal}(XWX^{\intercal})^{-1}XW\ Var(\varepsilon)\ W^{\intercal}X^{\intercal}(XWX^{\intercal})^{-1}X =...$$
-$$=X^{\intercal}(XWX^{\intercal})^{-1}XWX^{\intercal}(XWX^{\intercal})^{-1}X = X^{\intercal}(XWX^{\intercal})^{-1}X$$
+$$=X^{\intercal}(XWX^{\intercal})^{-1}XWX^{\intercal}(XWX^{\intercal})^{-1}X = X^{\intercal}(XWX^{\intercal})^{-1}X = Var[\hat{Y}]$$
+\newline
+
 *Now suppose additionally that $\sigma_i^2 \equiv \sigma^2 > 0$.* 
 *What can be said about distribution of the estimator $\hat{\sigma^2}$?*
 
 With $\sigma_i^2 \equiv \sigma^2 > 0$, we have $\hat{\sigma^2} = \frac{||Y-X^{\intercal}\hat{\theta}||^2}{n-p} = \frac{||\hat{\varepsilon}||^2}{n-p}$. Further denote, $||\hat{\varepsilon}|| = ||Y-\hat{Y}|| = ||Y - \Pi Y|| = ||(I_n - \Pi)Y||$, also noting that $(I_n - \Pi)X^{\intercal} = X^{\intercal} - \Pi X^{\intercal} = X^{\intercal} - X^{\intercal}(XX^{\intercal})^{-1}XX^{\intercal} = X^{\intercal} - X^{\intercal} = 0$.  
 
-Then we have, $$(n-p)E[\hat{\sigma^2}] = E||Y-X^{\intercal}\hat{\theta}||^2 = E||\hat{\varepsilon}||^2 = E[tr(\hat{\varepsilon}\hat{\varepsilon}^{\intercal})] = E [tr((I_n - \Pi)YY^{\intercal}(I_n - \Pi))] = ...$$,   
-$$ ... = E [tr((I_n - \Pi)(X^{\intercal}\theta^* + \varepsilon)(X^{\intercal}\theta^* + \varepsilon)^{\intercal}(I_n - \Pi))] = E [tr((I_n - \Pi)\varepsilon\varepsilon^{\intercal}(I_n - \Pi))] = tr((I_n - \Pi)E[\varepsilon\varepsilon^{\intercal}]) = ...$$  
-Using the cylic property of the trace operator, the property that $(I_n - \Pi)(I_n - \Pi) = (I_n - \Pi)$, and the expectation $E[\varepsilon\varepsilon^{\intercal}] = \sigma^2I_n$, leading to
-$$...=\sigma^2tr(I_n - \Pi) = \sigma^2(n-p) = (n-p) E[\hat{\sigma}^2]$$
+Then we have, $$(n-p)E[\hat{\sigma^2}] = E||Y-X^{\intercal}\hat{\theta}||^2 = E||\hat{\varepsilon}||^2 = E[tr(\hat{\varepsilon}\hat{\varepsilon}^{\intercal})] = E [tr((I_n - \Pi)YY^{\intercal}(I_n - \Pi))] = ...$$
+$$= E [tr((I_n - \Pi)(X^{\intercal}\theta^* + \varepsilon)(X^{\intercal}\theta^* + \varepsilon)^{\intercal}(I_n - \Pi))] = E [tr((I_n - \Pi)\varepsilon\varepsilon^{\intercal}(I_n - \Pi))] = tr((I_n - \Pi)E[\varepsilon\varepsilon^{\intercal}]) = ...$$  
+Using the cylic property of the trace operator, the property that $(I_n - \Pi)(I_n - \Pi) = (I_n - \Pi)$, and the expectation $E[\varepsilon\varepsilon^{\intercal}] = \sigma^2I_n$, leading to $$...=\sigma^2tr(I_n - \Pi) = \sigma^2(n-p) = (n-p) E[\hat{\sigma}^2]$$
 Looking further at the distribution of $||Y-X^{\intercal}\hat{\theta}||^2 = \hat{\varepsilon}^{\intercal}\hat{\varepsilon}$, we have
-$\hat{\varepsilon}^{\intercal}\hat{\varepsilon} = ((I_n-\Pi)Y)^{\intercal}((I_n-\Pi)Y) = Y^\intercal(I_n-\Pi)Y = (X^{\intercal}\theta^* + \varepsilon)^{\intercal}(I_n - \Pi)(X^{\intercal}\theta^* + \varepsilon) = \varepsilon^{\intercal}(I_n - \Pi)\varepsilon$. 
+$$\hat{\varepsilon}^{\intercal}\hat{\varepsilon} = ((I_n-\Pi)Y)^{\intercal}((I_n-\Pi)Y) = Y^\intercal(I_n-\Pi)Y = (X^{\intercal}\theta^* + \varepsilon)^{\intercal}(I_n - \Pi)(X^{\intercal}\theta^* + \varepsilon) = \varepsilon^{\intercal}(I_n - \Pi)\varepsilon$$ 
 
 Since we know that $\varepsilon \sim N(0, \sigma^2 I_n)$, and further $\frac{\varepsilon^{\intercal}\varepsilon}{\sigma^2} \sim \chi^2(n)$, $(\frac{\varepsilon}{\sigma})^{\intercal}(I_n-\Pi)(\frac{\varepsilon}{\sigma}) \sim \chi^2(n-p)$, since we know from earlier that $(I_n - \Pi)$, is idempotent, with rank equal to $tr(I_n-\Pi) = tr(I_n) - tr(\Pi) = n - p$. 
 
@@ -77,4 +78,27 @@ $$\Pi y  = \hat{y} = X^{\intercal}(XX^{\intercal})^{-1}Xy = X^{\intercal} \frac{
 Using the fact that $(I_n-\Pi)^{\intercal}(I_n-\Pi) = I_n - 2\Pi + \Pi  = I_n - \Pi$, we have,
 $$||h||^2 = ||\Pi h||^2 + ||h - \Pi h ||^2 = h^{\intercal}\Pi^{\intercal}\Pi h  + h^{\intercal}(I_n - \Pi)^{\intercal}(I_n - \Pi)h = h^{\intercal} \Pi h + h^{\intercal}(I_n - \Pi)h = h^{\intercal}I_n h  + h^{\intercal} \Pi h - h^{\intercal} \Pi h = ||h||^2$$
 
+#### Section 2.1
 
+*Exercise 8.* 
+*Let $X \sim N(0,I_n)$, $Q = X^{\intercal} X$.* 
+*Suppose that $Q$ is decomposed into the sum of two quadratic forms: $Q = Q1 + Q2$, where $Qi = X^{\intercal}A_iX$, $i = 1, 2$ for some symmetric matrices $A1,A2$ with $rank(A1) = n1$ and $rank(A2) = n2$. Show that if $n1 + n2 = n$, then $Q1$ and $Q2$ are independent and $Q_i \sim \chi^2(n_i) for\  i = 1,2$.*
+ 
+First note that $X^{\intercal}X \sim \chi^2(n)$, since $X^{\intercal}X = \sum_{i=1}^n x_i^2$, which is the sum of iid squared normal random variables with variance $1$.
+
+Since $A1$ is a symmetric matrix, we can diagonalize it, $A_1 = U^{\intercal}\Lambda U$. We know the rank of $A_1$ is $n_1$. This implies that $U^{\intercal}A_1U = \Lambda = diag\{\Lambda_1,...,\Lambda_{n_1},...,\Lambda_{n}\}$, has $n_1$ non-zero, positive eigenvalues, and $n_2$ eigenvalues that equal zero. 
+
+Using the orthogonal matrix $U$ from the decomposition of $A_1$, we set $X = UY$, so that $X^{\intercal}X = Y^{\intercal}U^{\intercal}UY = Y^{\intercal} I_n Y = Y^{\intercal}Y$. So $Q = X^{\intercal}X = Y^{\intercal}Y = \sum_{i=1}^{n}Y_i^2$. 
+
+We can write 
+$$Q = Q_1 + Q_2 = \sum_{i=1}^{n}Y_i^2 = Y^\intercal U^\intercal A_1UY + Y^\intercal U^\intercal A_2UY = Y^\intercal \Lambda Y + Y^\intercal U^\intercal A_2UY = \sum_{i=1}^{n}\Lambda_i Y_i^2 + Y^\intercal U^\intercal A_2UY$$ 
+Since only $n_1$ eigenvalues in $\Lambda$ are non-zero, we have 
+$$Q =\sum_{i=1}^{n_1}\Lambda_iY_i^2 + \sum_{i=n_1+1}^{n}\Lambda_iY_i^2 +  Y^\intercal U^\intercal A_2UY = Q =\sum_{i=1}^{n_1}\Lambda_i Y_i^2 + Y^\intercal U^\intercal A_2UY$$, 
+
+if we organize $\Lambda$ in way such that the positive eigenvalues on the diagonal are present in the first $n_1$ diagonal elements. So we have $Q_1 = \sum_{i=1}^{n_1}\Lambda_iY_i^2$ 
+
+To solve for $Q_2 = X^{\intercal}X = Y^{\intercal}U^{\intercal}A_2 UY$, from above we have 
+$$Y^{\intercal}U^{\intercal}A_2 UY = Q - Q_1 = Q - \sum_{i=1}^{n_1}\Lambda_iY_i^2 = \sum_{i=1}^{n_1}Y_i^2 + \sum_{i=n_1+1}^{n}Y_i^2  -  \sum_{i=1}^{n_1}\Lambda_iY_i^2 = \sum_{i=1}^{n_1}(1 - \Lambda_i)Y_i^2 +  \sum_{i=n_1 + 1}^{n}Y_i^2$$
+We know the rank of $A_2$ is $n_2 = n - n_1$. So the term $\sum_{i=1}^{n_1}(1 - \Lambda_i)Y_i^2$ must equal zero, implying that $\Lambda_1 = \Lambda_2 = ... = \Lambda_{n_1} = 1$. This also implies $Q = Q1 + Q2 = \sum_{i=1 + 1}^{n_1}Y_i^2  + \sum_{i=n_1 + 1}^{n}Y_i^2$. 
+
+Since each squared element $Y_i^2 = X_i^2 \sim \chi^2(1)$ in $Q$ only occurs once in the summand, we can say that and $Q1 = \sum_{i=1}^{n_1} Y_i^2 \sim \chi^2(n_1)$, and  $Q2 = \sum_{i=n_1 + 1}^{n} Y_i^2 \sim \chi^2(n_2)$. 

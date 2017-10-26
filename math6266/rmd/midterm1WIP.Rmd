@@ -6,6 +6,32 @@ output: pdf_document
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
+
+
+*Exercise 8.* 
+*Let $X \sim N(0,I_n)$, $Q = X^{\intercal} X$.* 
+*Suppose that $Q$ is decomposed into the sum of two quadratic forms: $Q = Q1 + Q2$, where $Qi = X^{\intercal}A_iX$, $i = 1, 2$ for some symmetric matrices $A1,A2$ with $rank(A1) = n1$ and $rank(A2) = n2$. Show that if $n1 + n2 = n$, then $Q1$ and $Q2$ are independent and $Q_i \sim \chi^2(n_i) for\  i = 1,2$.*
+ 
+First note that $X^{\intercal}X \sim \chi^2(n)$, since $X^{\intercal}X = \sum_{i=1}^n x_i^2$, which is the sum of iid squared normal random variables with variance $1$.
+
+Since $A1$ is a symmetric matrix, we can diagonalize it, $A_1 = U^{\intercal}\Lambda U$. We know the rank of $A_1$ is $n_1$. This implies that $U^{\intercal}A_1U = \Lambda = diag\{\Lambda_1,...,\Lambda_{n_1},...,\Lambda_{n}\}$, has $n_1$ non-zero, positive eigenvalues, and $n_2$ eigenvalues that equal zero. 
+
+Using the orthogonal matrix $U$ from the decomposition of $A_1$, we set $X = UY$, so that $X^{\intercal}X = Y^{\intercal}U^{\intercal}UY = Y^{\intercal} I_n Y = Y^{\intercal}Y$. So $Q = X^{\intercal}X = Y^{\intercal}Y = \sum_{i=1}^{n}Y_i^2$. 
+
+We can write 
+$$Q = Q_1 + Q_2 = \sum_{i=1}^{n}Y_i^2 = Y^\intercal U^\intercal A_1UY + Y^\intercal U^\intercal A_2UY = Y^\intercal \Lambda Y + Y^\intercal U^\intercal A_2UY = \sum_{i=1}^{n}\Lambda_iY_i^2 + Y^\intercal U^\intercal A_2UY$$ 
+Since only $n_1$ eigenvalues in $\Lambda$ are non-zero, we have 
+$$Q =\sum_{i=1}^{n_1}\Lambda_iY_i^2 + \sum_{i=n_1+1}^{n}\Lambda_iY_i^2 +  Y^\intercal U^\intercal A_2UY = Q =\sum_{i=1}^{n_1}\Lambda_iY_i^2 + Y^\intercal U^\intercal A_2UY$$, 
+
+if we organize $\Lambda$ in way such that the positive eigenvalues on the diagonal are present in the first $n_1$ diagonal elements. So we have $Q_1 = \sum_{i=1}^{n_1}\Lambda_iY_i^2$ 
+
+To solve for $Q_2 = X^{\intercal}X = Y^{\intercal}U^{\intercal}A_2 UY$, from above we have 
+$$Q_2 = Y^{\intercal}U^{\intercal}A_2 UY = Q - Q_1 = Q - \sum_{i=1}^{n_1}\Lambda_iY_i^2 = \sum_{i=1}^{n_1}Y_i^2 + \sum_{i=n_1+1}^{n}Y_i^2  -  \sum_{i=1}^{n_1}\Lambda_iY_i^2 = \sum_{i=1}^{n_1}(1 - \Lambda_i)Y_i^2 +  \sum_{i=n_1 + 1}^{n}Y_i^2$$
+We know the rank of $A_2$ is $n_2 = n - n_1$. So the term $\sum_{i=1}^{n_1}(1 - \Lambda_i)Y_i^2$ must equal zero, implying that $\Lambda_1 = \Lamba_2 = ... = \Lamba_{n_1} = 1$. This also implies $Q = Q1 + Q2 = \sum_{i=1 + 1}^{n_1}Y_i^2  + \sum_{i=n_1 + 1}^{n}Y_i^2$. 
+
+Since each squared element $Y_i^2 = X_i^2 \sim \chi^2(1)$ in $Q$ only occurs once in the summand, we can say that $Q1 = \sum_{i=1}^{n_1} Y_i^2 \sim \chi^2(n_1)$, and  $Q2 = \sum_{i=n_1 + 1}^{n} Y_i^2 \sim \chi^2(n_2)$. 
+
+<!-->
 #### Section 1.1
 
 *Exercise 3. Consider the linear regression model from exercise 1. Suppose, that the target of
@@ -65,3 +91,5 @@ The covariance of these terms
 
 *Exercise 12. Construct simultaneous confidence intervals (e.g., as in Corollary 2.2.1) for the
 expected responses $E[Y_1], . . . , E[Y_n]$ in model (3).*
+
+<!-->
