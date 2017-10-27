@@ -7,31 +7,76 @@ output: pdf_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
+*Exercise 10. (a) Consider model (3) for $p = 2, X_i = (1, x_i)^{\intercal}, \theta^{\ast} = (\theta_1^{\ast}, \theta_2^{\ast})^{\intercal}$ (similarly to section 1.5). Write explicit expressions for the confidence sets for $\theta^{\ast}, \theta_1^{\ast}, \theta_2^{\ast}$.*
 
-*Exercise 8.* 
-*Let $X \sim N(0,I_n)$, $Q = X^{\intercal} X$.* 
-*Suppose that $Q$ is decomposed into the sum of two quadratic forms: $Q = Q1 + Q2$, where $Qi = X^{\intercal}A_iX$, $i = 1, 2$ for some symmetric matrices $A1,A2$ with $rank(A1) = n1$ and $rank(A2) = n2$. Show that if $n1 + n2 = n$, then $Q1$ and $Q2$ are independent and $Q_i \sim \chi^2(n_i) for\  i = 1,2$.*
- 
-First note that $X^{\intercal}X \sim \chi^2(n)$, since $X^{\intercal}X = \sum_{i=1}^n x_i^2$, which is the sum of iid squared normal random variables with variance $1$.
+To set up explicit expression for the case above, for parameter estimates we have: 
+$$XX^{\intercal} = \left[\begin{array}
+{rrr}
+1 & ... & 1  \\
+x_1 & ... & x_n 
+\end{array}\right]
+\left[\begin{array}
+{rr}
+1 & x_1  \\
+... & ... \\
+1 & x_n
+\end{array}\right]
+= 
+\left[\begin{array}
+{rr}
+n & \sum_{i=1}^nx_i  \\
+\sum_{i=1}^nx_i & \sum_{i=1}^n x_i^2
+\end{array}\right]
+$$
+and $det(XX^{\intercal}) = n \sum_{i=1}^{n}x_i^2 - (\sum_{i=1}^{n}x_i)^2 = n\sum_{i=1}^{n}(x_i - \bar{x})^2$, and 
 
-Since $A1$ is a symmetric matrix, we can diagonalize it, $A_1 = U^{\intercal}\Lambda U$. We know the rank of $A_1$ is $n_1$. This implies that $U^{\intercal}A_1U = \Lambda = diag\{\Lambda_1,...,\Lambda_{n_1},...,\Lambda_{n}\}$, has $n_1$ non-zero, positive eigenvalues, and $n_2$ eigenvalues that equal zero. 
+$$(XX^{\intercal})^{-1} = \frac{n}{det(XX^{\intercal})} \left[\begin{array}
+{rr}
+\sum_{i=1}^nx_i^2 & - \bar{x}  \\
+ - \bar{x} & 1
+\end{array}\right]$$  
+So we have 
+$$\hat{\theta} = (XX^{\intercal})^{-1}XY = \frac{n}{det(XX^{\intercal})} \left[\begin{array}
+{rr}
+\sum_{i=1}^nx_i^2 & - \bar{x}  \\
+ - \bar{x} & 1
+\end{array}\right]
+\left[\begin{array}
+{r}
+\sum_{i=1}^ny_i \\
+\sum_{i=1}^nx_iy_i
+\end{array}\right] =
+(\hat{\theta}_1,\hat{\theta}_2)^{\intercal} =\ ...
+$$
+$$...\ = 
+\frac{1}{\sum_{i=1}^{n}(x_i - \bar{x})^2}
+\left[\begin{array}
+{r}
+\bar{y}\sum_ix_i^2 - \bar{x}\sum_ix_iy_i \\
+\sum_ix_iy_i - n\bar{y}\bar{x}
+\end{array}\right] = (\hat{\theta}_1,\hat{\theta}_2)^{\intercal} = \hat{\theta}$$
 
-Using the orthogonal matrix $U$ from the decomposition of $A_1$, we set $X = UY$, so that $X^{\intercal}X = Y^{\intercal}U^{\intercal}UY = Y^{\intercal} I_n Y = Y^{\intercal}Y$. So $Q = X^{\intercal}X = Y^{\intercal}Y = \sum_{i=1}^{n}Y_i^2$. 
+To find a confidence region for $\theta^*$, using a mixture of matrix and summation notation, we use the property: 
 
-We can write 
-$$Q = Q_1 + Q_2 = \sum_{i=1}^{n}Y_i^2 = Y^\intercal U^\intercal A_1UY + Y^\intercal U^\intercal A_2UY = Y^\intercal \Lambda Y + Y^\intercal U^\intercal A_2UY = \sum_{i=1}^{n}\Lambda_iY_i^2 + Y^\intercal U^\intercal A_2UY$$ 
-Since only $n_1$ eigenvalues in $\Lambda$ are non-zero, we have 
-$$Q =\sum_{i=1}^{n_1}\Lambda_iY_i^2 + \sum_{i=n_1+1}^{n}\Lambda_iY_i^2 +  Y^\intercal U^\intercal A_2UY = Q =\sum_{i=1}^{n_1}\Lambda_iY_i^2 + Y^\intercal U^\intercal A_2UY$$, 
+$$\frac{||(XX^{\intercal})^{1/2}(\hat{\theta} - \theta^*)||^2}{\sum_{i=1}^n (y_i - \hat{\theta_1} - \hat{\theta_2}x_i)^2}\frac{n-2}{2} \sim F(2,n-2)$$
+and denote $\hat{\sigma}^2 = \frac{\sum_{i=1}^n (y_i - \hat{\theta_1} - \hat{\theta_2}x_i)^2}{n-2}$. Where $F$ denotes the $F$ distribution with $df_1 = 2$, and $df_2 = n-2$. 
 
-if we organize $\Lambda$ in way such that the positive eigenvalues on the diagonal are present in the first $n_1$ diagonal elements. So we have $Q_1 = \sum_{i=1}^{n_1}\Lambda_iY_i^2$ 
+We can create a confidence interval for $\theta^*$, such that, $qF_{\alpha}$ denotes the ${\alpha}^{th}$ quantile for $F(2,n-2)$. 
 
-To solve for $Q_2 = X^{\intercal}X = Y^{\intercal}U^{\intercal}A_2 UY$, from above we have 
-$$Q_2 = Y^{\intercal}U^{\intercal}A_2 UY = Q - Q_1 = Q - \sum_{i=1}^{n_1}\Lambda_iY_i^2 = \sum_{i=1}^{n_1}Y_i^2 + \sum_{i=n_1+1}^{n}Y_i^2  -  \sum_{i=1}^{n_1}\Lambda_iY_i^2 = \sum_{i=1}^{n_1}(1 - \Lambda_i)Y_i^2 +  \sum_{i=n_1 + 1}^{n}Y_i^2$$
-We know the rank of $A_2$ is $n_2 = n - n_1$. So the term $\sum_{i=1}^{n_1}(1 - \Lambda_i)Y_i^2$ must equal zero, implying that $\Lambda_1 = \Lamba_2 = ... = \Lamba_{n_1} = 1$. This also implies $Q = Q1 + Q2 = \sum_{i=1 + 1}^{n_1}Y_i^2  + \sum_{i=n_1 + 1}^{n}Y_i^2$. 
+$$P(\frac{||(XX^{\intercal})^{1/2}(\hat{\theta} - \theta^*)||^2}{p \hat{\sigma}^2} < qF_{1-\alpha}) =1-\alpha= P((\hat{\theta} - \theta^*)^{\intercal}\left[\begin{array}
+{rr}
+n & \sum_{i=1}^nx_i  \\
+\sum_{i=1}^nx_i & \sum_{i=1}^n x_i^2
+\end{array}\right](\hat{\theta} - \theta^*) < p \hat{\sigma}^2 qF_{1-\alpha})$$
 
-Since each squared element $Y_i^2 = X_i^2 \sim \chi^2(1)$ in $Q$ only occurs once in the summand, we can say that $Q1 = \sum_{i=1}^{n_1} Y_i^2 \sim \chi^2(n_1)$, and  $Q2 = \sum_{i=n_1 + 1}^{n} Y_i^2 \sim \chi^2(n_2)$. 
+For $\theta_1^*$ and $\theta_2^*$ we have, $T$
+
+*(b) Find a confidence interval for the expected response $E[Y_i]$ in the model in part (a).*
+
+
 
 <!-->
+
 #### Section 1.1
 
 *Exercise 3. Consider the linear regression model from exercise 1. Suppose, that the target of
@@ -63,29 +108,10 @@ For $X\sim N(\mu,\Sigma)$ we have,
 $$E(Q(X)) = tr(AE(XX^{\intercal})) = tr(A(\Sigma + \mu\mu^{\intercal})) = tr(A\Sigma) + tr(A\mu\mu^{\intercal}) = tr(A\Sigma) + \mu^{\intercal}A\mu$$
 $Var(Q(X)) =$
  
-*Exercise 8. Let $X \sim N(0,I_n)$, $Q = X^{\intercal} X$. Suppose that $Q$ is decomposed into the sum of
-two quadratic forms: $Q = Q1 + Q2$, where $Qi = X^{\intercal}A_iX$, $i = 1, 2$ for some symmetric matrices $A1,A2$ with $rank(A1) = n1$ and $rank(A2) = n2$. Show that if $n1 + n2 = n$, then $Q1$ and $Q2$ are independent and $Q_i \sim \chi^2(n_i) for\  i = 1,2$.*
- 
-First $X^{\intercal}X \sim \chi^2(n)$, since $X^{\intercal}X = \sum_{i=1}^n x_i^2$, which is the sum of squared normal random variables with variance $1$.
- 
-Since $A1$ and $A2$ are symmetric matrices, we can diagonalize them, $A_1 = U^{\intercal}\Lambda U$ and $A_2 = V^{\intercal}\mu V$, where $\Lambda = diag\{\Lambda_1,...,\Lambda_{n_1}\}, \mu = diag\{\mu_1,...,\mu_{n_2}\}$, $rank(A_1) = n_1$, and $rank(A_2) = n_2$, and $n_1 + n_2 = n$.
- 
-With decomposition above we have, $A_1 = \sum_{i=1}^{n_1} \Lambda_i u_iu_i^{\intercal}$ and $A_2=\sum_{j=1}^{n_2} \mu_j v_jv_j^{\intercal}$ and $A_1A_2 = \sum_{j=1}^{n_2}\sum_{i=1}^{n_1} \Lambda_i \mu_j u_i(u_i^{\intercal} v_j)v_j^{\intercal} = 0$, since $(u_i^{\intercal} v_j) = 0\ \forall i,j$.
- 
-Further $Q_1 = X^{\intercal}A_1X = X^{\intercal}U^{\intercal}\Lambda UX = \sum_{i=1}^{n_1}\Lambda_i(x_i^{\intercal}u_i)^{2}$ and
-$Q_2 = X^{\intercal}A_2X = X^{\intercal}V^{\intercal}\mu VX = \sum_{j=1}^{n_2}\mu_j(X^{\intercal}v_j)^{2}$.
- 
-Each term in $Q1$ and $Q2$, $X^{\intercal}u_i$ and $X^{\intercal}v_j$ has an expectation of zero. I.e. $E[X^{\intercal}u_i] = 0$ and $E[X^{\intercal}v_j] = 0$, since $X \sim N(0,I_n)$.
- 
-The covariance of these terms
- 
 #### Section 2.2
 
 *Exercise 9. In the Gaussian linear regression model 3, consider the target of estimation $\eta = H^{\intercal} \theta^*$ , where $H \in R^{q \times p}$ is some non-zero matrix with $q \leq p$. Find an analogue of the quadratic form $S2$ (from (4)) for the new target $\eta^{\ast}$, and prove for the new quadratic form statements similar to (e) from Theorem 2.1, and Corollary 2.1.2.*
 
-*Exercise 10. (a) Consider model (3) for $p = 2, X_i = (1, x_i)^{\intercal}, \theta^{\ast} = (\theta_1^{\ast}, \theta_2^{\ast})^{\intercal}$ (similarly to section 1.5). Write explicit expressions for the confidence sets for $\theta^{\ast}, \theta_1^{\ast}, \theta_2^{\ast}$.*
-
-*(b) Find a confidence interval for the expected response $E[Y_i]$ in the model in part (a).*
 
 *Exercise 11. Find an elliptical confidence set for the expected response $E[Y]$ in model (3).* 
 

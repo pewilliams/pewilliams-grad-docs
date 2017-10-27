@@ -101,4 +101,7 @@ To solve for $Q_2 = X^{\intercal}X = Y^{\intercal}U^{\intercal}A_2 UY$, from abo
 $$Y^{\intercal}U^{\intercal}A_2 UY = Q - Q_1 = Q - \sum_{i=1}^{n_1}\Lambda_iY_i^2 = \sum_{i=1}^{n_1}Y_i^2 + \sum_{i=n_1+1}^{n}Y_i^2  -  \sum_{i=1}^{n_1}\Lambda_iY_i^2 = \sum_{i=1}^{n_1}(1 - \Lambda_i)Y_i^2 +  \sum_{i=n_1 + 1}^{n}Y_i^2$$
 We know the rank of $A_2$ is $n_2 = n - n_1$. So the term $\sum_{i=1}^{n_1}(1 - \Lambda_i)Y_i^2$ must equal zero, implying that $\Lambda_1 = \Lambda_2 = ... = \Lambda_{n_1} = 1$. This also implies $Q = Q1 + Q2 = \sum_{i=1 + 1}^{n_1}Y_i^2  + \sum_{i=n_1 + 1}^{n}Y_i^2$. 
 
-Since each squared element $Y_i^2 = X_i^2 \sim \chi^2(1)$ in $Q$ only occurs once in the summand, we can say that and $Q1 = \sum_{i=1}^{n_1} Y_i^2 \sim \chi^2(n_1)$, and  $Q2 = \sum_{i=n_1 + 1}^{n} Y_i^2 \sim \chi^2(n_2)$. 
+Since each squared element $Y_i^2 = X_i^2 \sim \chi^2(1)$ in $Q$ only occurs once in the summand, we can say that and $Q_1 = \sum_{i=1}^{n_1} Y_i^2 \sim \chi^2(n_1)$, and $Q_2 = \sum_{i=n_1 + 1}^{n} Y_i^2 \sim \chi^2(n_2)$, since $Q = Q_1 + Q_2 \sim \chi^2(n)$. 
+
+#### Section 2.2
+
