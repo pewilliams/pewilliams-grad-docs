@@ -6,6 +6,11 @@ output: pdf_document
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
+#completed
+## 1.1: 1, 2
+## 1.3: 4, 5 
+## 2.1: 8
+## 2.2: 10
 ```
 #### Section 1.1
 *Exercise 1. Consider the linear regression model with mean zero, uncorrelated, heteroscedastic noise:*
@@ -104,4 +109,95 @@ We know the rank of $A_2$ is $n_2 = n - n_1$. So the term $\sum_{i=1}^{n_1}(1 - 
 Since each squared element $Y_i^2 = X_i^2 \sim \chi^2(1)$ in $Q$ only occurs once in the summand, we can say that and $Q_1 = \sum_{i=1}^{n_1} Y_i^2 \sim \chi^2(n_1)$, and $Q_2 = \sum_{i=n_1 + 1}^{n} Y_i^2 \sim \chi^2(n_2)$, since $Q = Q_1 + Q_2 \sim \chi^2(n)$. 
 
 #### Section 2.2
+
+*Exercise 10. (a) Consider model (3) for $p = 2, X_i = (1, x_i)^{\intercal}, \theta^{\ast} = (\theta_1^{\ast}, \theta_2^{\ast})^{\intercal}$ (similarly to section 1.5). Write explicit expressions for the confidence sets for $\theta^{\ast}, \theta_1^{\ast}, \theta_2^{\ast}$.*
+
+To set up explicit expression for the case above, we have: 
+$$XX^{\intercal} = \left[\begin{array}
+{rrr}
+1 & ... & 1  \\
+x_1 & ... & x_n 
+\end{array}\right]
+\left[\begin{array}
+{rr}
+1 & x_1  \\
+... & ... \\
+1 & x_n
+\end{array}\right]
+= 
+\left[\begin{array}
+{rr}
+n & \sum_{i=1}^nx_i  \\
+\sum_{i=1}^nx_i & \sum_{i=1}^n x_i^2
+\end{array}\right]
+$$
+and $det(XX^{\intercal}) = n \sum_{i=1}^{n}x_i^2 - (\sum_{i=1}^{n}x_i)^2 = n\sum_{i=1}^{n}(x_i - \bar{x})^2$, and 
+
+$$(XX^{\intercal})^{-1} = \frac{n}{det(XX^{\intercal})} \left[\begin{array}
+{rr}
+\sum_{i=1}^nx_i^2 & - \bar{x}  \\
+ - \bar{x} & 1
+\end{array}\right]$$  
+So we have 
+$$\hat{\theta} = (XX^{\intercal})^{-1}XY = \frac{n}{det(XX^{\intercal})} \left[\begin{array}
+{rr}
+\sum_{i=1}^nx_i^2 & - \bar{x}  \\
+ - \bar{x} & 1
+\end{array}\right]
+\left[\begin{array}
+{r}
+\sum_{i=1}^ny_i \\
+\sum_{i=1}^nx_iy_i
+\end{array}\right] =
+(\hat{\theta}_1,\hat{\theta}_2)^{\intercal} =\ ...
+$$
+$$...\ = 
+\frac{1}{\sum_{i=1}^{n}(x_i - \bar{x})^2}
+\left[\begin{array}
+{r}
+\bar{y}\sum_ix_i^2 - \bar{x}\sum_ix_iy_i \\
+\sum_ix_iy_i - n\bar{y}\bar{x}
+\end{array}\right] = (\hat{\theta}_1,\hat{\theta}_2)^{\intercal} = \hat{\theta}$$
+
+
+To find a confidence region for $\theta^*$, using a mixture of matrix and summation notation, we use the property: 
+
+$$\frac{||(XX^{\intercal})^{1/2}(\hat{\theta} - \theta^*)||^2}{\sum_{i=1}^n (y_i - \hat{\theta_1} - \hat{\theta_2}x_i)^2}\frac{n-2}{2} \sim F(2,n-2)$$
+and denote $\hat{\sigma}^2 = \frac{\sum_{i=1}^n (y_i - \hat{\theta_1} - \hat{\theta_2}x_i)^2}{n-2}$. Where $F$ denotes the $F$ distribution with $df_1 = 2$, and $df_2 = n-2$. 
+
+We can create a confidence interval for $\theta^*$, such that, $qF_{\alpha}$ denotes the ${\alpha}^{th}$ quantile for $F(2,n-2)$. 
+
+$$P(\frac{||(XX^{\intercal})^{1/2}(\hat{\theta} - \theta^*)||^2}{p \hat{\sigma}^2} < qF_{1-\alpha}) =1-\alpha= P((\hat{\theta} - \theta^*)^{\intercal}\left[\begin{array}
+{rr}
+n & \sum_{i=1}^nx_i  \\
+\sum_{i=1}^nx_i & \sum_{i=1}^n x_i^2
+\end{array}\right](\hat{\theta} - \theta^*) < p \hat{\sigma}^2 qF_{1-\alpha})$$
+
+We know that $\frac{(XX^{\intercal})^{1/2}(\hat{\theta} - \theta^*)}{\sigma} \sim N(0,I_p)$. We can then set up confidence intervals for $\theta_1^*$ and $\theta_2^*$.
+
+For $\theta_1^*$, we can set up a $T$-statistic by taking the difference of the first parameter estimate and the true estimate and dividing it the corresponding standard error: 
+
+$$T_{1(n-2-1)} = \frac{ \hat{\theta_1} - \theta_1^*}{\sqrt{\hat{\sigma^2}[(XX^{\intercal})^{-1}]_{11}} } = \frac{ \hat{\theta_1} - \theta_1^* }{ \sqrt{ \frac{\sum_{i=1}^n (y_i - \hat{\theta_1} - \hat{\theta_2}x_i )^2 }{n-p} \frac{\sum_{i=1}^n x_i^2}{\sum_{i=1}^{n}(x_i - \bar{x})^2 } }}$$
+Using $T_1$ we can set up a $\%\ 100(1-\alpha)$ confidence interval for $\hat{\theta_1^*}$ via: 
+$$\hat{\theta_1^*} \pm  T_{1(n-3), \alpha/2} \sqrt{ \frac{\sum_{i=1}^n (y_i - \hat{\theta_1} - \hat{\theta_2}x_i )^2 }{n-p} \frac{\sum_{i=1}^n x_i^2}{\sum_{i=1}^{n}(x_i - \bar{x})^2} }$$
+
+For $\theta_2^*$ we have:
+
+$$T_{2(n-3)} = \frac{\hat{\theta_2} - \theta_2^*}{\sqrt{\hat{\sigma^2}[(XX^{\intercal})^{-1}]_{22}}} = \frac{\hat{\theta_2} - \theta_2^*} {\sqrt{ \frac{\sum_{i=1}^n (y_i - \hat{\theta_1} - \hat{\theta_2}x_i )^2 }{n-p} \frac{1}{\sum_{i=1}^{n}(x_i - \bar{x})^2}}}$$
+
+With $T_2$ we can set up a $\%\ 100(1-\alpha)$ confidence interval for $\hat{\theta_2^*}$ via: 
+$$\theta_2^* \pm  T_{2(n-3), \alpha/2} \sqrt{ \frac{\sum_{i=1}^n (y_i - \hat{\theta_1} - \hat{\theta_2}x_i )^2 }{(n-p) \sum_{i=1}^{n}(x_i - \bar{x})^2 } }$$
+
+
+*(b) Find a confidence interval for the expected response $E[Y_i]$ in the model in part (a).*
+The variance of the expected response $var(\hat{Y}) = var(X^{\intercal}(XX^{\intercal})^{-1}XY) = var(X^{\intercal}(XX^{\intercal})^{-1}X(X^{\intercal}\theta^* + \varepsilon)) = var(X^{\intercal}(XX^{\intercal})^{-1}X\varepsilon) = \sigma^2X^{\intercal}(XX^{\intercal})^{-1}X$. Using the standard error for $\hat{Y}$, we can set up up the following confidence interval for the expected response for the $i^{th}$ record using a T-statistic: 
+
+$$T_{(n-3)} = \frac{\hat{y_i} - y_i}{\sqrt{\hat{\sigma^2}x_i^{\intercal}(XX^{\intercal})^{-1}}x_i} = \frac{\hat{y_i} - y_i}{\sqrt{\frac{\sum_{i=1}^n (y_i - \hat{\theta_1} - \hat{\theta_2}x_i)^2}{n-2}x_i^{\intercal}(XX^{\intercal})^{-1}x_i}}$$
+With this statistic a $\%\ 100(1-\alpha)$ confidence interval for $y_i$ can be created: 
+
+$$y_i \pm  T_{n-3, \alpha/2} \sqrt{\frac{\sum_{i=1}^n (y_i - \hat{\theta_1} - \hat{\theta_2}x_i)^2}{n-2}x_i^{\intercal}\frac{1}{\sum_{i=1}^{n}(x_i - \bar{x})^2} \left[\begin{array}
+{rr}
+\sum_{i=1}^nx_i^2 & - \bar{x}  \\
+ - \bar{x} & 1
+\end{array}\right] x_i}$$
 
