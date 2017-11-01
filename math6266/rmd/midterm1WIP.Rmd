@@ -17,13 +17,6 @@ variance among all linear unbiased estimators?*
 ---Start with this ---By Gauss Markov, we know that a BLUE estimator has $Var(\theta_{OLS}) = \sigma^2(XX^{\intercal})^{-1})$. However in the case of heterscedastic noise, we have $Var(\theta) = (XX^{\intercal})^{-1}X D X^{\intercal}(XX^{\intercal})^{-1}$, which must be greater than $\sigma^2 (XX^{\intercal})^-1)$. An so, in this case, our estimator is not BLUE. Study the same issue for the target $\eta = H^{\intercal}\theta$, where 
 $H \in R^{q \times p}$ is some non-zero matrix with $q \leq p$.
 
-#### Section 1.3
-
-*Exercise 6. Let $L1, L2$ be some subspaces in $R^n$, and $L2 \subseteq L1 \subseteq R^n$. Let $PL1, PL2$ denote orthogonal projections on these subspaces. Prove the following properties:*  
-*(a) $PL2 - PL1$ is an orthogonal projection,*  
-*(b) $|PL2| \leq |PL1|\  \forall x \in R^n$,*  
-*(c) $PL2 \cdot PL1 = PL2$*  
-
 #### Section 2.1
 *Exercise 7.*
 *(a) Using the notation from section 2.1, consider $X \sim N(\mu,I_n)$ for some $\mu \in R^n$. Find $E(Q(X))$ and $Var(Q(X))$*

@@ -74,7 +74,7 @@ $$(Ax)^\intercal (Ay)  = ||AxAy||^2 = x^\intercal A^\intercal A y = x^\intercal 
 *Exercise 5. (a) Let $x_0 \in R^n$ be some fixed vector, find a projection map on the subspace $span(x_0)$. Compare your result with matrix $\Pi$ (from section 1.3) for the case of $p=1$.*
  
 Let $x = span(x_0) = span(x_1,x_2,..,x_n)$, denote the subspace of interest, and $x_1,x_2,...$ are basis vectors and $y = (y_1,y_2, ..., y_n)^{\intercal}$. The projection map is,
-$$Proj_{x}(y) = \frac{<y \cdot x>}{<y \cdot y>} x = \sum_{i=1}^{n}\frac{<y_i \cdot\ x_i>}{<y_i \cdot y_i>}x_i$$
+$$Proj_{x}(y) = \frac{y \cdot x}{y \cdot y} x = \sum_{i=1}^{n}\frac{y_i \cdot\ x_i}{y_i \cdot y_i}x_i$$
 For the case $p=1$, and $\Pi = X^{\intercal}(XX^{\intercal})^{-1}X, X^{\intercal} \in R^n$, we have,
 $$\Pi y  = \hat{y} = X^{\intercal}(XX^{\intercal})^{-1}Xy = X^{\intercal} \frac{Xy}{XX^{\intercal}} = \frac{\sum_i^nx_iy_i}{\sum_i^nx_i^2} (x_1,x_2,...,x_n)^{\intercal} = \frac{<X \cdot y>}{<y \cdot y>} X^{\intercal} =Proj_{X}(y)$$ 
 
@@ -82,6 +82,37 @@ $$\Pi y  = \hat{y} = X^{\intercal}(XX^{\intercal})^{-1}Xy = X^{\intercal} \frac{
 
 Using the fact that $(I_n-\Pi)^{\intercal}(I_n-\Pi) = I_n - 2\Pi + \Pi  = I_n - \Pi$, we have,
 $$||h||^2 = ||\Pi h||^2 + ||h - \Pi h ||^2 = h^{\intercal}\Pi^{\intercal}\Pi h  + h^{\intercal}(I_n - \Pi)^{\intercal}(I_n - \Pi)h = h^{\intercal} \Pi h + h^{\intercal}(I_n - \Pi)h = h^{\intercal}I_n h  + h^{\intercal} \Pi h - h^{\intercal} \Pi h = ||h||^2$$
+
+*Exercise 6. Let $L_1, L_2$ be some subspaces in $R^n$, and $L_2 \subseteq L_1 \subseteq R^n$. Let $P_{L_1}, P_{L_2}$ denote orthogonal projections on these subspaces. Prove the following properties:*  
+*(a) $P_{L_2} - P_{L_1}$ is an orthogonal projection,*  
+Denote $L_1$ as a subset of $R^n$ with orthonormal basis $span\{u_1,u_2,...,u_p \}$, and $L_2$ with basis $span\{u_1,u_2,...,u_{p-k} \} \subseteq span\{u_1,...,u_p \}$. For a vector $x \in R^n$, we have an orthogonal projection onto $L_1$ and $L_2$ denoted as follows:
+
+$$P_{L_1}(x)  = \sum_{i=1}^{p}(x \cdot u_i) u_i ,\  P_{L_2}(x)  = \sum_{i=1}^{p-k}(x \cdot u_i)u_i  $$
+The difference of these projections is then: 
+
+$$P_{L_2}(x) - P_{L_1}(x) = (P_{L_2} - P_{L_1})x = \sum_{i=1}^{p-k}(x \cdot u_i)u_i - \sum_{i=1}^{p}(x \cdot u_i)u_i = (-1) \cdot \sum_{i=p-k+1}^{p}(x \cdot u_i)u_i$$
+which is an orthogonal projection onto the subspace, defined as $span\{u_{p-k+1}, u_{p-k+2}, ..., u_p\} \subseteq span\{u_1,...,u_p \}$.  
+
+*(b) $||PL2x|| \leq ||PL1x|| \  \forall x \in R^n$,*
+
+We have $||P_{L_2}x|| = ||\sum_{i=1}^{p-k}(x \cdot u_i)u_i||$ and $||P_{L_1}x|| = ||\sum_{i=1}^{p}(x \cdot u_i)u_i||$. For $k < p$, we have
+
+$$||P_{L_1}x - P_{L_2}|| = ||\sum_{i=p-k+1}^{p}(x \cdot u_i)u_i || \geq 0\ ,$$ and
+
+$$||P_{L_2}x|| \leq ||P_{L_1}||= ||P_{L_1}x - P_{L_2}x + P_{L_2}x|| \leq ||P_{L_1}x - P_{L_2}x||\ ||P_{L_2}x|| $$
+*(c) $PL2 \cdot PL1 = PL2$*  
+We can denote $P_{L_1}(x)  = \sum_{i=1}^{p}(x \cdot u_i) u_i = UU^{\intercal}x$, where matrix $U_{n \times p}$ consists of orthnormal vectors $[u_1,...,u_p]$, and denote $$P_{L_2}(x)  = \sum_{i=1}^{p-k}(x \cdot u_i) u_i = VV^{\intercal}x$$
+
+where matrix $V_{n \times (p-k)}$ consists of orthnormal vectors $[u_1,...,u_{p-k}]$. So the product $P_{L_2}P_{L_1}$ can be written $$P_{L_2}P_{L_1} = VV^{\intercal}UU^{\intercal}$$
+
+Since the first $p-k$ column vectors of $V$ and $U$ are the same, and orthonormal, the inner product $V^{\intercal}U$ generates a $(p-k) \times p$ block matrix of the form $\left[\begin{array}
+{rr}
+I_{p-k} & 0 
+\end{array}\right]$ where $0$ is a $k \times k$ matrix of zeroes. We then have 
+$$P_{L_2}P_{L_1}  = VV^{\intercal}UU^{\intercal} = V \left[\begin{array}
+{rr}
+I_{p-k} & 0 
+\end{array}\right] U^{\intercal} = VV^{\intercal} = P_{L_2}$$
 
 #### Section 2.1
 
