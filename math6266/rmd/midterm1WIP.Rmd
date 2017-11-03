@@ -36,8 +36,6 @@ $Var(Q(X)) =$
 
 *Exercise 9. In the Gaussian linear regression model 3, consider the target of estimation $\eta = H^{\intercal} \theta^*$ , where $H \in R^{q \times p}$ is some non-zero matrix with $q \leq p$. Find an analogue of the quadratic form $S2$ (from (4)) for the new target $\eta^{\ast}$, and prove for the new quadratic form statements similar to (e) from Theorem 2.1, and Corollary 2.1.2.*
 
-*Exercise 11. Find an elliptical confidence set for the expected response $E[Y]$ in model (3).* 
-
 *Exercise 12. Construct simultaneous confidence intervals (e.g., as in Corollary 2.2.1) for the
 expected responses $E[Y_1], . . . , E[Y_n]$ in model (3).*
 

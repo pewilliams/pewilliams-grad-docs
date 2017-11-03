@@ -1,5 +1,5 @@
 ---
-title: 'Midterm 1: Math 6266'
+title: 'Midterm 1: Math 6266 (Zhilova)'
 author: "Peter Williams"
 output: pdf_document
 ---
@@ -8,12 +8,13 @@ output: pdf_document
 knitr::opts_chunk$set(echo = TRUE)
 #completed
 ## 1.1: 1, 2
-## 1.3: 4, 5 
+## 1.3: 4, 5, 6 
 ## 2.1: 8
-## 2.2: 10
+## 2.2: 10, 11
 ```
 #### Section 1.1
-*Exercise 1. Consider the linear regression model with mean zero, uncorrelated, heteroscedastic noise:*
+##### Exercise 1. 
+*Consider the linear regression model with mean zero, uncorrelated, heteroscedastic noise:*
 \begin{equation}
   Y_i = X_i^{\intercal}\theta + \varepsilon_i,\ for\ i=1,..,n,\ E\varepsilon_i = 0,\  
   cov(\varepsilon_i, \varepsilon_j)=\left\{
@@ -32,7 +33,8 @@ $$\hat{\theta} = \underset{\theta}{argmin}\sum_{i=1}^n w_i (Y_i - X_i^{\intercal
 $$G(\theta) = ||W^{1/2}Y - W^{1/2}X^{\intercal}\theta||^2 =  (W^{1/2}Y - W^{1/2}X^{\intercal}\theta)^{\intercal}(W^{1/2}Y - W^{1/2}X^{\intercal}\theta) = Y^{\intercal}WY - 2\theta^{\intercal}XWY + \theta^{\intercal}XWX^{\intercal}\theta$$ with gradient, $$\nabla G(\theta)  = -2XWY + 2XWX^{\intercal}\theta$$ 
 Setting this expression equal to zero leads to estimator $\hat{\theta} = (XWX^{\intercal})^{-1}XWY$, which leads to response estimator $\hat{Y} = X^{\intercal}\hat{\theta} = X^{\intercal}(XWX^{\intercal})^{-1}XWY$.
 
-*Exercise 2.  Assume that $\varepsilon_i \sim N(0, \sigma_i^2)$ in the previous problem. What is known about the distribution of $\hat{\theta}$ and $\hat{Y}$?*
+##### Exercise 2.  
+*Assume that $\varepsilon_i \sim N(0, \sigma_i^2)$ in the previous problem. What is known about the distribution of $\hat{\theta}$ and $\hat{Y}$?*
 
 For $\hat{\theta}$, we have, 
 $$E[{\hat{\theta}}] = E[(XWX^{\intercal})^{-1}XWY] =  E[(XWX^{\intercal})^{-1}XW(X^{\intercal}\theta^{*} + \varepsilon)] = E[\theta^{*}] + E[(XWX^{\intercal})^{-1}XW\varepsilon] = \theta^{*}$$ indicating that $\hat{\theta}$ is unbiased. Further $\hat{\theta}$ is normally distributed, since is a linear transformation of $\varepsilon \sim N(0,W^{-1})$. Further we have,
@@ -61,7 +63,8 @@ $$\hat{\varepsilon}^{\intercal}\hat{\varepsilon} = ((I_n-\Pi)Y)^{\intercal}((I_n
 Since we know that $\varepsilon \sim N(0, \sigma^2 I_n)$, and further $\frac{\varepsilon^{\intercal}\varepsilon}{\sigma^2} \sim \chi^2(n)$, $(\frac{\varepsilon}{\sigma})^{\intercal}(I_n-\Pi)(\frac{\varepsilon}{\sigma}) \sim \chi^2(n-p)$, since we know from earlier that $(I_n - \Pi)$, is idempotent, with rank equal to $tr(I_n-\Pi) = tr(I_n) - tr(\Pi) = n - p$. 
 
 #### Section 1.3
-*Exercise 4. Let $A \in R^{n\times n}$ be a matrix (corresponding to a linear map in $R^n$). Show that $A$ preserves length for all $x \in R^n$ iff it preserves the inner product. I.e. one needs to show the following:*
+##### Exercise 4. 
+*Let $A \in R^{n\times n}$ be a matrix (corresponding to a linear map in $R^n$). Show that $A$ preserves length for all $x \in R^n$ iff it preserves the inner product. I.e. one needs to show the following:*
 
 *$||Ax|| = ||x||\  \forall\ x \in R^n \iff (Ax)^{\intercal}(Ay)\  \forall\  x,y \in R^n$.*
 
@@ -71,7 +74,8 @@ $$ A^\intercal A = I_n = A^{-1},\ A^\intercal = A^{-1}, ||Ax|| = ||x||$$
 this implies $A$ is an orthogonal matrix, and further, 
 $$(Ax)^\intercal (Ay)  = ||AxAy||^2 = x^\intercal A^\intercal A y = x^\intercal y = ||xy||^2$$
 
-*Exercise 5. (a) Let $x_0 \in R^n$ be some fixed vector, find a projection map on the subspace $span(x_0)$. Compare your result with matrix $\Pi$ (from section 1.3) for the case of $p=1$.*
+##### Exercise 5. 
+*(a) Let $x_0 \in R^n$ be some fixed vector, find a projection map on the subspace $span(x_0)$. Compare your result with matrix $\Pi$ (from section 1.3) for the case of $p=1$.*
  
 Let $x = span(x_0) = span(x_1,x_2,..,x_n)$, denote the subspace of interest, and $x_1,x_2,...$ are basis vectors and $y = (y_1,y_2, ..., y_n)^{\intercal}$. The projection map is,
 $$Proj_{x}(y) = \frac{y \cdot x}{y \cdot y} x = \sum_{i=1}^{n}\frac{y_i \cdot\ x_i}{y_i \cdot y_i}x_i$$
@@ -83,7 +87,8 @@ $$\Pi y  = \hat{y} = X^{\intercal}(XX^{\intercal})^{-1}Xy = X^{\intercal} \frac{
 Using the fact that $(I_n-\Pi)^{\intercal}(I_n-\Pi) = I_n - 2\Pi + \Pi  = I_n - \Pi$, we have,
 $$||h||^2 = ||\Pi h||^2 + ||h - \Pi h ||^2 = h^{\intercal}\Pi^{\intercal}\Pi h  + h^{\intercal}(I_n - \Pi)^{\intercal}(I_n - \Pi)h = h^{\intercal} \Pi h + h^{\intercal}(I_n - \Pi)h = h^{\intercal}I_n h  + h^{\intercal} \Pi h - h^{\intercal} \Pi h = ||h||^2$$
 
-*Exercise 6. Let $L_1, L_2$ be some subspaces in $R^n$, and $L_2 \subseteq L_1 \subseteq R^n$. Let $P_{L_1}, P_{L_2}$ denote orthogonal projections on these subspaces. Prove the following properties:*  
+##### Exercise 6. 
+*Let $L_1, L_2$ be some subspaces in $R^n$, and $L_2 \subseteq L_1 \subseteq R^n$. Let $P_{L_1}, P_{L_2}$ denote orthogonal projections on these subspaces. Prove the following properties:*  
 *(a) $P_{L_2} - P_{L_1}$ is an orthogonal projection,*  
 Denote $L_1$ as a subset of $R^n$ with orthonormal basis $span\{u_1,u_2,...,u_p \}$, and $L_2$ with basis $span\{u_1,u_2,...,u_{p-k} \} \subseteq span\{u_1,...,u_p \}$. For a vector $x \in R^n$, we have an orthogonal projection onto $L_1$ and $L_2$ denoted as follows:
 
@@ -97,9 +102,9 @@ which is an orthogonal projection onto the subspace, defined as $span\{u_{p-k+1}
 
 We have $||P_{L_2}x|| = ||\sum_{i=1}^{p-k}(x \cdot u_i)u_i||$ and $||P_{L_1}x|| = ||\sum_{i=1}^{p}(x \cdot u_i)u_i||$. For $k < p$, we have
 
-$$||P_{L_1}x - P_{L_2}|| = ||\sum_{i=p-k+1}^{p}(x \cdot u_i)u_i || \geq 0\ ,$$ and
-
-$$||P_{L_2}x|| \leq ||P_{L_1}||= ||P_{L_1}x - P_{L_2}x + P_{L_2}x|| \leq ||P_{L_1}x - P_{L_2}x||\ ||P_{L_2}x|| $$
+$$||P_{L_1}(x) - P_{L_2}(x)|| = ||\sum_{i=p-k+1}^{p}(x \cdot u_i)u_i || \geq 0\ ,$$ and
+and by the triangle inequality, 
+$$||P_{L_2}x|| \leq ||P_{L_1}(x)||= ||(P_{L_1}x - P_{L_2}x) + P_{L_2}x|| \leq ||P_{L_1}x - P_{L_2}x||\ + ||P_{L_2}x|| $$
 *(c) $PL2 \cdot PL1 = PL2$*  
 We can denote $P_{L_1}(x)  = \sum_{i=1}^{p}(x \cdot u_i) u_i = UU^{\intercal}x$, where matrix $U_{n \times p}$ consists of orthnormal vectors $[u_1,...,u_p]$, and denote $$P_{L_2}(x)  = \sum_{i=1}^{p-k}(x \cdot u_i) u_i = VV^{\intercal}x$$
 
@@ -115,8 +120,7 @@ I_{p-k} & 0
 \end{array}\right] U^{\intercal} = VV^{\intercal} = P_{L_2}$$
 
 #### Section 2.1
-
-*Exercise 8.* 
+##### Exercise 8. 
 *Let $X \sim N(0,I_n)$, $Q = X^{\intercal} X$.* 
 *Suppose that $Q$ is decomposed into the sum of two quadratic forms: $Q = Q1 + Q2$, where $Qi = X^{\intercal}A_iX$, $i = 1, 2$ for some symmetric matrices $A1,A2$ with $rank(A1) = n1$ and $rank(A2) = n2$. Show that if $n1 + n2 = n$, then $Q1$ and $Q2$ are independent and $Q_i \sim \chi^2(n_i) for\  i = 1,2$.*
  
@@ -141,7 +145,8 @@ Since each squared element $Y_i^2 = X_i^2 \sim \chi^2(1)$ in $Q$ only occurs onc
 
 #### Section 2.2
 
-*Exercise 10. (a) Consider model (3) for $p = 2, X_i = (1, x_i)^{\intercal}, \theta^{\ast} = (\theta_1^{\ast}, \theta_2^{\ast})^{\intercal}$ (similarly to section 1.5). Write explicit expressions for the confidence sets for $\theta^{\ast}, \theta_1^{\ast}, \theta_2^{\ast}$.*
+##### Exercise 10. 
+*(a) Consider model (3) for $p = 2, X_i = (1, x_i)^{\intercal}, \theta^{\ast} = (\theta_1^{\ast}, \theta_2^{\ast})^{\intercal}$ (similarly to section 1.5). Write explicit expressions for the confidence sets for $\theta^{\ast}, \theta_1^{\ast}, \theta_2^{\ast}$.*
 
 To set up explicit expression for the case above, we have: 
 $$XX^{\intercal} = \left[\begin{array}
@@ -232,3 +237,15 @@ $$y_i \pm  T_{n-3, \alpha/2} \sqrt{\frac{\sum_{i=1}^n (y_i - \hat{\theta_1} - \h
  - \bar{x} & 1
 \end{array}\right] x_i}$$
 
+
+##### Exercise 11. 
+*Find an elliptical confidence set for the expected response $E[Y]$ in model (3).* 
+
+For the model $Y = X^{\intercal}\theta^* + \varepsilon$, $\varepsilon \sim N(0, \sigma^2 I_n)$, $\hat{Y} = X^{\intercal}\hat{\theta} = X^{\intercal}(XX^{\intercal})^{-1}XY = \Pi Y$, we have 
+$$E(\hat{Y} - Y) = E(\hat{Y}) - Y = E[X^{\intercal}(XX^{\intercal})^{-1}X(X^{\intercal}\theta^* + \varepsilon)] - Y = E[X^{\intercal}\theta^*] - Y = Y - Y = 0$$
+and
+$$Var(\hat{Y} - Y) = Var(\hat{Y}) + Var(Y) = Var(\Pi Y) + \sigma^2 I_n = Var(\Pi (X^{\intercal}\theta^* + \varepsilon)) + \sigma^2I_n = Var(\Pi\varepsilon) + \sigma^2I_n = \sigma^2(\Pi + I_n)$$
+and assume that $\hat{Y} - Y \sim N(0, \sigma^2(\Pi + I_n))$, and $\frac{(\Pi + I_n)^{-1/2}(\hat{Y} - Y)}{\sigma} \sim N(0, I_n)$ Using this information we can set up a confidence region for $\hat{Y}$, assuming the statistic,
+$$\frac{\frac{(\hat{Y} - Y)^{\intercal}(\Pi + I+N)^{-1}(\hat{Y} - Y)}{\sigma^2}\frac{1}{n}}{\frac{||Y - X^{\intercal}\hat{\theta}||}{\sigma^2}\frac{1}{n-p}} =  \frac{(n-p)(\hat{Y} - Y)^{\intercal}(\Pi + I_n)^{-1}(\hat{Y} - Y)}{n||Y - X^{\intercal}\hat{\theta}||}\sim F_{n,n-p}$$
+With this statistic we can set up a $\%(100-\alpha)$ confidence region, using the $\alpha^{th}$ quantile of the F-distribution, $Q_{F_{(p,n-p)}}^*$, such that 
+$$P( \frac{(n-p)(\hat{Y} - Y)^{\intercal}(\Pi + I_n)^{-1}(\hat{Y} - Y)}{n||Y - X^{\intercal}\hat{\theta}||} < Q_{F_{(p,n-p)}}^* ) = 1-\alpha$$
