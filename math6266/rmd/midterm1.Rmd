@@ -7,12 +7,12 @@ output: pdf_document
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 #completed
-## 1.1: 1, 2
-## 1.3: 4, 5, 6 
-## 2.1: 8
-## 2.2: 10, 11
+## 1.1: 1, 2,
+## 1.3: 4, 5, 6,
+## 2.1: ,8,
+## 2.2: 9,10,
 ```
-#### Section 1.1
+### Section 1.1
 ##### Exercise 1. 
 *Consider the linear regression model with mean zero, uncorrelated, heteroscedastic noise:*
 \begin{equation}
@@ -62,7 +62,7 @@ $$\hat{\varepsilon}^{\intercal}\hat{\varepsilon} = ((I_n-\Pi)Y)^{\intercal}((I_n
 
 Since we know that $\varepsilon \sim N(0, \sigma^2 I_n)$, and further $\frac{\varepsilon^{\intercal}\varepsilon}{\sigma^2} \sim \chi^2(n)$, $(\frac{\varepsilon}{\sigma})^{\intercal}(I_n-\Pi)(\frac{\varepsilon}{\sigma}) \sim \chi^2(n-p)$, since we know from earlier that $(I_n - \Pi)$, is idempotent, with rank equal to $tr(I_n-\Pi) = tr(I_n) - tr(\Pi) = n - p$. 
 
-#### Section 1.3
+### Section 1.3
 ##### Exercise 4. 
 *Let $A \in R^{n\times n}$ be a matrix (corresponding to a linear map in $R^n$). Show that $A$ preserves length for all $x \in R^n$ iff it preserves the inner product. I.e. one needs to show the following:*
 
@@ -119,7 +119,7 @@ $$P_{L_2}P_{L_1}  = VV^{\intercal}UU^{\intercal} = V \left[\begin{array}
 I_{p-k} & 0 
 \end{array}\right] U^{\intercal} = VV^{\intercal} = P_{L_2}$$
 
-#### Section 2.1
+### Section 2.1
 ##### Exercise 8. 
 *Let $X \sim N(0,I_n)$, $Q = X^{\intercal} X$.* 
 *Suppose that $Q$ is decomposed into the sum of two quadratic forms: $Q = Q1 + Q2$, where $Qi = X^{\intercal}A_iX$, $i = 1, 2$ for some symmetric matrices $A1,A2$ with $rank(A1) = n1$ and $rank(A2) = n2$. Show that if $n1 + n2 = n$, then $Q1$ and $Q2$ are independent and $Q_i \sim \chi^2(n_i) for\  i = 1,2$.*
@@ -143,7 +143,20 @@ We know the rank of $A_2$ is $n_2 = n - n_1$. So the term $\sum_{i=1}^{n_1}(1 - 
 
 Since each squared element $Y_i^2 = X_i^2 \sim \chi^2(1)$ in $Q$ only occurs once in the summand, we can say that and $Q_1 = \sum_{i=1}^{n_1} Y_i^2 \sim \chi^2(n_1)$, and $Q_2 = \sum_{i=n_1 + 1}^{n} Y_i^2 \sim \chi^2(n_2)$, since $Q = Q_1 + Q_2 \sim \chi^2(n)$. 
 
-#### Section 2.2
+### Section 2.2
+
+##### Exercise 9. 
+*In the Gaussian linear regression model 3, consider the target of estimation $\eta = H^{\intercal} \theta^*$, where $H \in R^{q \times p}$ is some non-zero matrix with $q \leq p$. Find an analogue of the quadratic form $S2$ (from (4)) for the new target $\eta^{\ast}$, and prove for the new quadratic form statements similar to (e) from Theorem 2.1, and Corollary 2.1.2.*
+
+With $\eta^* = H^{\intercal}\theta^*$, and $\hat{\eta} = H^{\intercal}\hat{\theta}$, we have, 
+$$E[\hat{\eta}] = E[H^{\intercal}\hat{\theta}] = H^{\intercal}E[\hat{\theta}] = H^{\intercal}E[(XX^{\intercal})^{-1}XY] = H^{\intercal}E[(XX^{\intercal})^{-1}X(X^{\intercal}\theta^* + \varepsilon)] = H^{\intercal}\theta^*$$
+and 
+$$Var(H^{\intercal}\hat{\theta}) = H^{\intercal}Var(\hat{\theta})H = H^{\intercal}Var((XX^{\intercal})^{-1}X(X^{\intercal}\theta^* + \varepsilon))H = H^{\intercal}Var(\theta^* + (XX^{\intercal})^{-1}X\varepsilon)H =...$$
+$$...=H^{\intercal}((XX^{\intercal})^{-1}X\sigma^2 I_n X^{\intercal}(XX^{\intercal})^{-1}H = \sigma^2H^{\intercal}(XX^{\intercal})^{-1}H =  \sigma^2S = Var(H^{\intercal}\hat{\theta})$$
+Since $H^{\intercal}\hat{\theta}$ is a linear transformation of normal random variables, we have, 
+$$\frac{H^{\intercal}\hat{\theta} - H^{\intercal}\theta^*}{ \sqrt{ \sigma^2H^{\intercal}(XX^{\intercal})^{-1}H } } = \frac{\hat{\eta} - \eta^*}{\sigma\sqrt{S}} \sim N(0, I_p)$$
+We can then have an analog of $S_2$ from theorem $2.1$: 
+$$\frac{||S^{-1/2}(H^{\intercal}\hat{\theta} - H^{\intercal}\theta^*)||^2}{\sigma^2} = \frac{||S^{-1/2}(\hat{\eta} - \eta^*)||^2}{\sigma^2} = \frac{(\hat{\eta} - \eta^*)^{\intercal}(S^{-1})(\hat{\eta} - \eta^*)}{\sigma^2} \sim \chi^2(p)$$
 
 ##### Exercise 10. 
 *(a) Consider model (3) for $p = 2, X_i = (1, x_i)^{\intercal}, \theta^{\ast} = (\theta_1^{\ast}, \theta_2^{\ast})^{\intercal}$ (similarly to section 1.5). Write explicit expressions for the confidence sets for $\theta^{\ast}, \theta_1^{\ast}, \theta_2^{\ast}$.*
@@ -238,14 +251,4 @@ $$y_i \pm  T_{n-3, \alpha/2} \sqrt{\frac{\sum_{i=1}^n (y_i - \hat{\theta_1} - \h
 \end{array}\right] x_i}$$
 
 
-##### Exercise 11. 
-*Find an elliptical confidence set for the expected response $E[Y]$ in model (3).* 
 
-For the model $Y = X^{\intercal}\theta^* + \varepsilon$, $\varepsilon \sim N(0, \sigma^2 I_n)$, $\hat{Y} = X^{\intercal}\hat{\theta} = X^{\intercal}(XX^{\intercal})^{-1}XY = \Pi Y$, we have 
-$$E(\hat{Y} - Y) = E(\hat{Y}) - Y = E[X^{\intercal}(XX^{\intercal})^{-1}X(X^{\intercal}\theta^* + \varepsilon)] - Y = E[X^{\intercal}\theta^*] - Y = Y - Y = 0$$
-and
-$$Var(\hat{Y} - Y) = Var(\hat{Y}) + Var(Y) = Var(\Pi Y) + \sigma^2 I_n = Var(\Pi (X^{\intercal}\theta^* + \varepsilon)) + \sigma^2I_n = Var(\Pi\varepsilon) + \sigma^2I_n = \sigma^2(\Pi + I_n)$$
-and assume that $\hat{Y} - Y \sim N(0, \sigma^2(\Pi + I_n))$, and $\frac{(\Pi + I_n)^{-1/2}(\hat{Y} - Y)}{\sigma} \sim N(0, I_n)$ Using this information we can set up a confidence region for $\hat{Y}$, assuming the statistic,
-$$\frac{\frac{(\hat{Y} - Y)^{\intercal}(\Pi + I+N)^{-1}(\hat{Y} - Y)}{\sigma^2}\frac{1}{n}}{\frac{||Y - X^{\intercal}\hat{\theta}||}{\sigma^2}\frac{1}{n-p}} =  \frac{(n-p)(\hat{Y} - Y)^{\intercal}(\Pi + I_n)^{-1}(\hat{Y} - Y)}{n||Y - X^{\intercal}\hat{\theta}||}\sim F_{n,n-p}$$
-With this statistic we can set up a $\%(100-\alpha)$ confidence region, using the $\alpha^{th}$ quantile of the F-distribution, $Q_{F_{(p,n-p)}}^*$, such that 
-$$P( \frac{(n-p)(\hat{Y} - Y)^{\intercal}(\Pi + I_n)^{-1}(\hat{Y} - Y)}{n||Y - X^{\intercal}\hat{\theta}||} < Q_{F_{(p,n-p)}}^* ) = 1-\alpha$$
