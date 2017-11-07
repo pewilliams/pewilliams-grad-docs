@@ -7,9 +7,9 @@ output: pdf_document
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 #completed
-## 1.1: 1, 2,
-## 1.3: 4, 5, 6,
-## 2.1: ,8,
+## 1.1: 1, 2, 3
+## 1.3: 4, 5, 6
+## 2.1: ,8
 ## 2.2: 9,10,
 ```
 ### Section 1.1
@@ -61,6 +61,39 @@ Looking further at the distribution of $||Y-X^{\intercal}\hat{\theta}||^2 = \hat
 $$\hat{\varepsilon}^{\intercal}\hat{\varepsilon} = ((I_n-\Pi)Y)^{\intercal}((I_n-\Pi)Y) = Y^\intercal(I_n-\Pi)Y = (X^{\intercal}\theta^* + \varepsilon)^{\intercal}(I_n - \Pi)(X^{\intercal}\theta^* + \varepsilon) = \varepsilon^{\intercal}(I_n - \Pi)\varepsilon$$ 
 
 Since we know that $\varepsilon \sim N(0, \sigma^2 I_n)$, and further $\frac{\varepsilon^{\intercal}\varepsilon}{\sigma^2} \sim \chi^2(n)$, $(\frac{\varepsilon}{\sigma})^{\intercal}(I_n-\Pi)(\frac{\varepsilon}{\sigma}) \sim \chi^2(n-p)$, since we know from earlier that $(I_n - \Pi)$, is idempotent, with rank equal to $tr(I_n-\Pi) = tr(I_n) - tr(\Pi) = n - p$. 
+
+##### Exercise 3. 
+*Consider the linear regression model from exercise 1. Suppose, that the target of
+estimation is $\gamma^{\intercal}\theta$ for some determinate non-zero vector $\gamma\in R^p$. Find expression for the LSE of $\gamma^{\intercal}\theta$. Is this estimate optimal in sense of Gauss-Markov theorem, i.e. does it have the smallest
+variance among all linear unbiased estimators?*
+
+Using our findings from exercise 2, we have an unbiased LSE estimator in $\gamma^{\intercal}\hat{\theta}$ since $E[\gamma^{\intercal}\hat{\theta} - \gamma^{\intercal}\theta] = \gamma^{\intercal}E[(XWX^{\intercal})^{-1}XWY] - \gamma^{\intercal}\theta = \gamma^{\intercal}\theta - \gamma^{\intercal}\theta = 0$.  
+
+Using another finding from exercise 2 we have, $Var(\gamma^{\intercal}\hat{\theta}) = \gamma^{\intercal}Var(\hat{\theta})\gamma = \gamma^{\intercal}(XWX^{\intercal})^{-1}\gamma$. 
+
+To show that $\gamma^{\intercal}\hat{\theta}$ is BLUE, we compare it to, to another estimator $\tilde{\theta} = ((XWX^{\intercal})^{-1}XW + D) Y$, where $D$ is a $p \times n$ matrix. We then have 
+
+$$E[\tilde{\theta}] = E[((XWX^{\intercal})^{-1}XW + D) Y] = E[((XWX^{\intercal})^{-1}XW + D)(X^{\intercal}\theta + \varepsilon)] =...$$ 
+$$=E[\theta] + E[DX^{\intercal}\theta] + E[(XWX^{\intercal})^{-1}XW)\varepsilon] = \theta + DX^{\intercal}\theta + 0$$
+
+So $\tilde{\theta}$ is only an unbiased estimator when $DX^{\intercal} = 0$. 
+
+The variance of $\tilde{\theta}$ is: 
+$$Var(\tilde{\theta}) = Var[((XWX^{\intercal})^{-1}XW + D)Y] =$$ 
+$$=[((XWX^{\intercal})^{-1}XW + D)]Var(Y)[((XWX^{\intercal})^{-1}XW + D)^{\intercal}] =...$$ 
+$$= [((XWX^{\intercal})^{-1}XW + D)]Var(X^{\intercal}\theta^* + \varepsilon)[(WX^{\intercal}(XWX^{\intercal})^{-1} + D^{\intercal})] =...$$ 
+$$=[((XWX^{\intercal})^{-1}XW + D)]W^{-1}[(WX^{\intercal}(XWX^{\intercal})^{-1} + D^{\intercal})] = ...$$
+$$= [((XWX^{\intercal})^{-1}XW + D)][(X^{\intercal}(XWX^{\intercal})^{-1} + W^{-1}D^{\intercal})] =...$$ $$=(XWX^{\intercal})^{-1} + DW^{-1}D^{\intercal} + DX^{\intercal}(XWX^{\intercal})^{-1} + (XWX^{\intercal})^{-1}XD^{\intercal} = Var(\tilde{\theta})$$
+
+But in order for our estimator to be unbiased, we have $DX^{\intercal} = XD^{\intercal} = 0$. Therefore we have:
+
+$$Var(\tilde{\theta}) = (XWX^{\intercal})^{-1} + DW^{-1}D^{\intercal}$$
+Finally, taking $\gamma \in R^p$ we have $Var(\gamma^{\intercal}\tilde{\theta}) = \gamma^{\intercal}Var(\tilde{\theta})\gamma = \gamma^{\intercal}((XWX^{\intercal})^{-1} + DW^{-1}D^{\intercal}) \gamma$. In comparison, our LSE estimator $\hat{\theta}$, has $Var(\gamma^{\intercal}\hat{\theta}) = \gamma^{\intercal}((XWX^{\intercal})^{-1})\gamma$.
+
+We have then $$Var(\gamma^{\intercal}\tilde{\theta}) = \gamma^{\intercal}Var(\tilde{\theta})\gamma = \gamma^{\intercal}((XWX^{\intercal})^{-1} + DW^{-1}D^{\intercal}) \gamma \geq Var(\gamma^{\intercal}\hat{\theta}) = \gamma^{\intercal}((XWX^{\intercal})^{-1})\gamma$$
+
+Since $W^{-1}$ is a diagonal matrix with all positive elements, $DD^{\intercal}$ is symmetric positive, the form $\gamma^{\intercal}DW^{-1}D^{\intercal}\gamma \geq 0$, implying $Var(\gamma^{\intercal}\tilde{\theta}) \geq Var(\gamma^{\intercal}\hat{\theta})$.
+
 
 ### Section 1.3
 ##### Exercise 4. 

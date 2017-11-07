@@ -7,14 +7,6 @@ output: pdf_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-##### Exercise 3. 
-*Consider the linear regression model from exercise 1. Suppose, that the target of
-estimation is $h^{\intercal}\theta$ for some determinate non-zero vector $h\in R^p$. Find expression for the LSE of $h^{\intercal}\theta$. Is this estimate optimal in sense of Gauss-Markov theorem, i.e. does it have the smallest
-variance among all linear unbiased estimators?*
-
-
-
-
 <!-->
 
 #### Section 2.1
