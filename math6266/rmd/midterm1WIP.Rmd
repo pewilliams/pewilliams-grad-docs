@@ -25,14 +25,6 @@ $$E(Q(X)) = tr(AE(XX^{\intercal})) = tr(A(\Sigma + \mu\mu^{\intercal})) = tr(A\S
 $Var(Q(X)) =$
  
 #### Section 2.2
-##### Exercise 11. 
-*Find an elliptical confidence set for the expected response $E[Y]$ in model (3).* 
-
-For the model $Y = X^{\intercal}\theta^* + \varepsilon$, $\varepsilon \sim N(0, \sigma^2 I_n)$, $\hat{Y} = X^{\intercal}\hat{\theta} = X^{\intercal}(XX^{\intercal})^{-1}XY = \Pi Y$, we have 
-$$E(\hat{Y} - Y) = E(\hat{Y}) - Y = E[X^{\intercal}(XX^{\intercal})^{-1}X(X^{\intercal}\theta^* + \varepsilon)] - Y = E[X^{\intercal}\theta^*] - Y = Y - Y = 0$$
-and
-$$Var(\hat{Y} - Y) = Var((\Pi - I_n)Y) = (\Pi - I_n)Var(X^{\intercal}\theta^* + \varepsilon)(\Pi - I_n)^{\intercal} = (\Pi - I_n)\sigma^2I_n(\Pi - I_n)^{\intercal}  = \sigma^2(I_n-\Pi)$$
-and assume that $\hat{Y} - Y \sim N(0, \sigma^2(\Pi - I_n))$, and $\frac{(I_n -\Pi)^{-1/2}(\hat{Y} - Y)}{\sigma} \sim N(0, I_n)$ Using this information we can set up a confidence region for $\hat{Y}$, 
 
 
 *Exercise 12. Construct simultaneous confidence intervals (e.g., as in Corollary 2.2.1) for the
