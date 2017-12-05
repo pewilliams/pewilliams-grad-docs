@@ -12,23 +12,28 @@ knitr::opts_chunk$set(echo = TRUE)
 ```
 
 ### Exercise 1 (The James-Stein estimator) 
-*Let $X \sim N(\theta, \sigma^2 I_p)$ for some $\sigma^2 > 0$, $\theta \in R^p$; dimension $\ \geq 3$; $\theta$ is an unknown true parameter. Denote the quadratic risk function as $R(\delta, \theta) = E_{\theta}(|\delta = \theta|)$, where $\delta = \delta(X)$ is some estimator of $\theta$, and $|\cdot|$ is the $\ell_2$-norm in $R^p$.
+*Let $X \sim N(\theta, \sigma^2 I_p)$ for some $\sigma^2 > 0$, $\theta \in R^p$; dimension $\ \geq 3$; $\theta$ is an unknown true parameter. Denote the quadratic risk function as $R(\delta, \theta) = E_{\theta}(|\delta - \theta|)$, where $\delta = \delta(X)$ is some estimator of $\theta$, and $|\cdot|$ is the $\ell_2$-norm in $R^p$.*
 
-1. Calculate the quadratic risk for $\delta = X$
+*1. Calculate the quadratic risk for $\delta = X$*
 
-2. Let $R = p\sigma + ||h(X)||^2 - 2\sigma\ trace(Dh(X))$, where $h = (h_1,...,h_p)^{\intercal} : R^p \rightarrow R^p$ is a differentiable function, s.t. all necessary moments exist. $Dh(X)$ is a $p \times p$ matrix of partial
+With $R(\theta, \delta) = R(\theta, X) = E[L(0, X)] = E ||X - \theta||^2$. We can calculate the quadratic risk: 
+$$E ||X - \theta||^2 = E (X-\theta)^{\intercal}(X - \theta) = E[X^{\intercal}X] - 2\theta^{\intercal}E[X] + \theta^{\intercal}\theta = E[X^{\intercal}X] - \theta^{\intercal}\theta = E[X^{\intercal}X] - ||\theta||^2$$
+which for $X \sim N(\theta, \sigma^2 I_p)$, reduces to
+$$E[X^{\intercal}X] - ||\theta||^2  = \sum_{i=1}^{p}E[X_i^2] - ||\theta||^2 = \sum_{i=1}^{p}(\theta_i^2 + \sigma^2) - ||\theta||^2 = p\sigma^2 + ||\theta||^2 - ||\theta||^2 = p\sigma^2$$
+
+*2. Let $R = p\sigma^2 + ||h(X)||^2 - 2\sigma\ trace(Dh(X))$, where $h = (h_1,...,h_p)^{\intercal} : R^p \rightarrow R^p$ is a differentiable function, s.t. all necessary moments exist. $Dh(X)$ is a $p \times p$ matrix of partial
 derivatives: $\{Dh(x)\}_{i,j} = \frac{\partial}{\partial x_j} h_i(x)$
-Show that $\hat{R}$ is an unbiased risk estimator for $\delta(X) = h(X)$, i.e. 
+Show that $\hat{R}$ is an unbiased risk estimator for $\delta(X) = h(X)$, i.e.* 
 $$R(\theta, X - h(X)) = E_\theta \hat{R}$$
 *(Hint: use Stein’s identity)* 
 
-3. Consider $h(X) = \frac{(p-2)\sigma^2}{||X||^2}X$ and the James-Stein estimator
-$X - h(X)$. Show that $R(\theta,\hat{\theta}_{JS}) < R(\theta,X)$, for all $\theta \in R^p$.
+*3. Consider $h(X) = \frac{(p-2)\sigma^2}{||X||^2}X$ and the James-Stein estimator
+$X - h(X)$. Show that $R(\theta,\hat{\theta}_{JS}) < R(\theta,X)$, for all $\theta \in R^p$.*
 
-4. Now consider an $i.i.d.$ sample $Y_1,...,Y_n$ where $Y_i \sim N(\theta, I_p)$. Denote $\bar{Y} = n^{-1}\sum_{i=1}^{n}Y_i$. Calculate the risk $R(\theta,Y)$. 
+*4. Now consider an $i.i.d.$ sample $Y_1,...,Y_n$ where $Y_i \sim N(\theta, \sigma^2 I_p)$. Denote $\bar{Y} = n^{-1}\sum_{i=1}^{n}Y_i$. Calculate the risk $R(\theta,\bar{Y})$.* 
 
-5. Consider the estimator $\hat{\theta}_{JS} = \bar{Y} - \frac{(p-2)\sigma^2}{||\bar{Y}||^2}\bar{Y}$. Show that $R(\theta, \hat{\theta}_{JS}) < R(\theta,\bar{Y})$ for all $\theta \in R^p$.  
-*(Hint: Use that* $Y \sim N(\theta, \frac{\sigma^2}{n}I_p$ *).*
+*5. Consider the estimator $\hat{\theta}_{JS} = \bar{Y} - \frac{(p-2)\sigma^2}{||\bar{Y}||^2}\bar{Y}$. Show that $R(\theta, \hat{\theta}_{JS}) < R(\theta,\bar{Y})$ for all $\theta \in R^p$.*  
+*(Hint: Use that $Y \sim N(\theta, \frac{\sigma^2}{n}I_p$).*
 
 ### Exercise 2
 Consider the linear regression model $Y_i = X_i^{\intercal}\theta^* + \varepsilon_i$, $i = 1,...,n$, the errors $\varepsilon_i$ are $i.i.d.$,$E\varepsilon_i = 0$, $Var(\varepsilon_i) = \sigma^2 > 0$ The unknown true parameter $\theta^* \in R^p$. Assume that matrix $XX^{\intercal} = \sum_{i=1}^{n} X_iX_i^{\intercal}$ is not invertible, i.e. some of its eigenvalues equal to zero.
@@ -51,7 +56,7 @@ Find bias, variance and the quadratic risk of $\hat{\eta}A: R(\eta^*, \hat{\eta}
 
 ### Exercise 3 
 Let $X_1,...,X_n$ be real valued $i.i.d.$ random variables. Assume $E(|X_i|M) < \infty$ for some $M \geq 2$. Let $X_1^*,...,X_n^*$ be a bootstrap sample based on the original data $X_1,...,X_n$ and obtained by the Efron’s bootstrap procedure, i.e. 
-$$P(X_j^* X_i | \{X_i\}_{i=1}^{n}) = 1/n\ \ \ \forall\ j = 1,...,n$$
+$$P(X_j^* = X_i | \{X_i\}_{i=1}^{n}) = 1/n\ \ \ \forall\ j = 1,...,n$$
 Show that for all integer $m \in [0,M]$
 $$E(X_j^{*m} | \{X_i\}_{i=1}^{n}) \xrightarrow{P} E(X_1^m)\ for\ n \rightarrow \infty.$$
 Show also that
