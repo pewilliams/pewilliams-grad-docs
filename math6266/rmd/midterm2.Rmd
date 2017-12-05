@@ -1,10 +1,9 @@
 ---
 title: "Midterm 2: Math 6266 (Zhilova)"
 author: "Peter Williams"
-date: "11/30/2017"
+date: "12/09/2017"
 output:
   pdf_document: default
-  html_document: default
 ---
 
 ```{r setup, include=FALSE}
@@ -16,24 +15,46 @@ knitr::opts_chunk$set(echo = TRUE)
 
 *1. Calculate the quadratic risk for $\delta = X$*
 
-With $R(\theta, \delta) = R(\theta, X) = E[L(0, X)] = E ||X - \theta||^2$. We can calculate the quadratic risk: 
+With $R(\theta, \delta) = R(\theta, X) = E[\ell(\theta, X)] = E ||X - \theta||^2$. We can calculate the quadratic risk: 
 $$E ||X - \theta||^2 = E (X-\theta)^{\intercal}(X - \theta) = E[X^{\intercal}X] - 2\theta^{\intercal}E[X] + \theta^{\intercal}\theta = E[X^{\intercal}X] - \theta^{\intercal}\theta = E[X^{\intercal}X] - ||\theta||^2$$
 which for $X \sim N(\theta, \sigma^2 I_p)$, reduces to
 $$E[X^{\intercal}X] - ||\theta||^2  = \sum_{i=1}^{p}E[X_i^2] - ||\theta||^2 = \sum_{i=1}^{p}(\theta_i^2 + \sigma^2) - ||\theta||^2 = p\sigma^2 + ||\theta||^2 - ||\theta||^2 = p\sigma^2$$
 
-*2. Let $R = p\sigma^2 + ||h(X)||^2 - 2\sigma\ trace(Dh(X))$, where $h = (h_1,...,h_p)^{\intercal} : R^p \rightarrow R^p$ is a differentiable function, s.t. all necessary moments exist. $Dh(X)$ is a $p \times p$ matrix of partial
-derivatives: $\{Dh(x)\}_{i,j} = \frac{\partial}{\partial x_j} h_i(x)$
+*2. Let $\hat{R} = p\sigma^2 + ||h(X)||^2 - 2\sigma^2\ tr(Dh(X))$, where $h = (h_1,...,h_p)^{\intercal} : R^p \rightarrow R^p$ is a differentiable function, s.t. all necessary moments exist. $Dh(X)$ is a $p \times p$ matrix of partial
+derivatives: $\{Dh(x)\}_{i,j} = \frac{\partial}{\partial x_j} h_i(x)$.
 Show that $\hat{R}$ is an unbiased risk estimator for $\delta(X) = h(X)$, i.e.* 
 $$R(\theta, X - h(X)) = E_\theta \hat{R}$$
-*(Hint: use Stein’s identity)* 
+Relying on the lecture notes from Jordan (2014) referred to in the midterm problem, we have, 
+$$R(\theta,X - h(X)) = E_{\theta}[\sum_{i=1}^{p}((X_i - \theta_i) - h_i(X))^2] = E_\theta [\sum_{i=1}^{p}(X_i - \theta_i)^2 - 2 \sum_{i=1}^{p}(X_i - \theta_i)h_i(X) + \sum_{i=1}^{p}(h_i(X))^2]$$
+Using Stein's identity, $E(X-\theta)h(X) = \sigma^2E[h^{\prime}(X)]$ we have, 
+$$p\sigma^2 - 2 E_\theta\sum_{i=1}^{p}(X_i - \theta_i)h_i(X) + ||h(X)||^2  = p\sigma^2 + ||h(X)||^2 - 2 \sigma^2 E_\theta[\sum_{i=1}^{p}h_i^{\prime}(X)] = $$
+$$p\sigma^2 + ||h(X)||^2 - 2 \sigma^2 [\sum_{i=1}^{p}\frac{\partial h_i(X)}{\partial x_i}] = p\sigma^2 + ||h(X)||^2 - 2\sigma^2 tr(Dh(X))  = p\sigma^2 + ||h(X)||^2 - 2\sigma^2 tr(Dh(X)) = \hat{R}$$
 
 *3. Consider $h(X) = \frac{(p-2)\sigma^2}{||X||^2}X$ and the James-Stein estimator
-$X - h(X)$. Show that $R(\theta,\hat{\theta}_{JS}) < R(\theta,X)$, for all $\theta \in R^p$.*
+$X - h(X)$. Show that $R(\theta,\hat{\theta}_{JS}) < R(\theta,X)$, for all $\theta \in R^p$.*  
 
-*4. Now consider an $i.i.d.$ sample $Y_1,...,Y_n$ where $Y_i \sim N(\theta, \sigma^2 I_p)$. Denote $\bar{Y} = n^{-1}\sum_{i=1}^{n}Y_i$. Calculate the risk $R(\theta,\bar{Y})$.* 
+Noting, $X = (x_1,...,x_p)^{\intercal}$, we have, 
+$$R(\hat{\theta}_{js}, \theta) = E||\hat{\theta}_{js} - \theta||^2 = E||X - h(X) - \theta||^2 = E||(X-\theta) - h(X)||^2 = E[((X-\theta) - h(X))^{\intercal}((X-\theta) - h(X))] = $$ 
+$$E[(X-\theta)^{\intercal}(X-\theta) - 2(X-\theta)^{\intercal}h(X) + (h(X))^{\intercal}(h(X))] = E||(X-\theta)||^2 - 2 E[(X-\theta)^{\intercal}h(X)] + E||h(X)||^2$$
+which by Stein's Identity reduces to, 
+$$R(\hat{\theta}_{js}, \theta) = p\sigma^2 - 2 \sigma^2 E(h^{\prime}(X)) + ((p-2)\sigma^2)^2 E||\frac{X}{||X||^2}||^2$$
+Focusing in on $h^{\prime}(X)$, we have
+$$h^{\prime}(X) = \nabla h(X) = \frac{\partial{h(X)}}{\partial{x_1}} + ... + \frac{\partial{h(X)}}{\partial{x_p}} = (p-2)\sigma^2[\frac{(X\cdot X) - 2x_1^2}{(X \cdot X)^2} + ... + \frac{(X\cdot X) - 2x_p^2}{(X \cdot X)^2}] =\ ...$$
+$$ = (p-2)\sigma^2 [\frac{1}{(X \cdot X)^2} \sum_{i=1}^{p}[(X \cdot X) - 2x_i^2] = (p-2)\sigma^2[\frac{1}{(X \cdot X)^2}[p(X \cdot X) - 2(X \cdot X)]]  = (p-2)\sigma^2[\frac{(p-2)(X \cdot X)}{(X \cdot X)^2}]$$
+which reduces to $h^{\prime}(X) = \frac{(p-2)^2\sigma^2}{(X \cdot X)}$. So we have $E[h^{\prime}(X)] = (p-2)^2\sigma^2E[\frac{1}{X \cdot X}]$.
 
-*5. Consider the estimator $\hat{\theta}_{JS} = \bar{Y} - \frac{(p-2)\sigma^2}{||\bar{Y}||^2}\bar{Y}$. Show that $R(\theta, \hat{\theta}_{JS}) < R(\theta,\bar{Y})$ for all $\theta \in R^p$.*  
-*(Hint: Use that $Y \sim N(\theta, \frac{\sigma^2}{n}I_p$).*
+Returning to the risk function, we have, 
+$$R(\hat{\theta}_{js}, \theta) = p\sigma^2 - 2 \sigma^2 E(h^{\prime}(X)) + ((p-2)\sigma^2)^2 E||\frac{X}{||X||^2}||^2  = p\sigma^2 - 2\sigma^4(p-2)^2 E[\frac{1}{X \cdot X}] + (p-2)^2\sigma^4E[\frac{1}{X \cdot X}] = $$
+$$ = R(\hat{\theta}_{js}, \theta) = p\sigma^2 - \sigma^4(p-2)^2 E[\frac{1}{X \cdot X}] < p\sigma^2 = R(\theta,X)$$
+*4. Now consider an $i.i.d.$ sample $Y_1,...,Y_n$ where $Y_i \sim N(\theta, \sigma^2 I_p)$. Denote $\bar{Y} = n^{-1}\sum_{i=1}^{n}Y_i$. Calculate the risk $R(\theta,\bar{Y})$.*  
+With $\theta = (\theta_1, ..., \theta_n)^{\intercal}$, and $\theta_1 = \theta_2 = ... = \theta_p$, we have, 
+$$R(\theta,\bar{Y}) = E \sum_{i=1}^{p}(\bar{Y} - \theta)^2 = p E(\bar{Y} - \theta_1)^2 = p[E(\bar{Y}^2) - \theta_1E(\bar{Y}) + \theta_1^2] = p(\theta_1^2 + \frac{\sigma^2}{n}) - 2p\theta_1^2 + p\theta_1^2 =  p \frac{\sigma^2}{n}$$
+*5. Consider the estimator $\hat{\theta}_{JS} = \bar{Y} - \frac{(p-2)\sigma^2}{||\bar{Y}||^2}\bar{Y}$. Show that $R(\theta, \hat{\theta}_{JS}) < R(\theta,\bar{Y})$ for all $\theta \in R^p$, with $\bar{Y} \sim N(\theta, \frac{\sigma^2}{n}I_p$)*
+Setting $g(Y) = \frac{(p-2)\sigma^2/n \bar{Y}}{||\bar{Y}||^2}$, we have, 
+$$R(\theta, \hat{\theta}_{js}) = E||\bar{Y} - g(Y) - \theta||^2 = E[(\bar{Y}-\theta)^{\intercal}(\bar{Y}-\theta) - 2(\bar{Y}- \theta)^{\intercal}g(Y) + g(Y)^\intercal g(Y)] = E||\bar{Y} - \theta||^2 - 2 E(\bar{Y}-\theta)^{\intercal}g(Y) + E||g(Y)||^2 = $$
+$$p\frac{\sigma^2}{n} - 2 \frac{\sigma^2}{n}E(g^{\prime}(Y)) + E||g(Y)||^2 = p\frac{\sigma^2}{n} - 2(\frac{\sigma^2}{n})^2 (p-2)^2 E(\frac{1}{||\bar{Y}||^2}) + (\frac{\sigma^2}{n})^2 (p-2)^2 E(\frac{1}{||\bar{Y}||^2}) = p\frac{\sigma^2}{n} - (\frac{\sigma^2}{n})^2 (p-2)^2 E(\frac{1}{||\bar{Y}||^2})$$
+using Stein's identity. Thus we have, 
+$$ R(\theta, \hat{\theta}_{js}) = p\frac{\sigma^2}{n} - (\frac{\sigma^2}{n})^2 (p-2)^2 E(\frac{1}{||\bar{Y}||^2}) < p\frac{\sigma^2}{n} = R(\theta, \bar{Y})$$  
 
 ### Exercise 2
 Consider the linear regression model $Y_i = X_i^{\intercal}\theta^* + \varepsilon_i$, $i = 1,...,n$, the errors $\varepsilon_i$ are $i.i.d.$,$E\varepsilon_i = 0$, $Var(\varepsilon_i) = \sigma^2 > 0$ The unknown true parameter $\theta^* \in R^p$. Assume that matrix $XX^{\intercal} = \sum_{i=1}^{n} X_iX_i^{\intercal}$ is not invertible, i.e. some of its eigenvalues equal to zero.
