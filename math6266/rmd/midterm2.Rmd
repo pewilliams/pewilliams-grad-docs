@@ -1,9 +1,10 @@
 ---
-title: "Midterm 2: Math 6266 (Zhilova)"
+title: 'Midterm 2: Math 6266 (Zhilova)'
 author: "Peter Williams"
 date: "12/09/2017"
 output:
   pdf_document: default
+  html_document: default
 ---
 
 ```{r setup, include=FALSE}
@@ -43,7 +44,7 @@ $$h^{\prime}(X) = \nabla h(X) = \frac{\partial{h(X)}}{\partial{x_1}} + ... + \fr
 $$ = (p-2)\sigma^2 [\frac{1}{(X \cdot X)^2} \sum_{i=1}^{p}[(X \cdot X) - 2x_i^2] = (p-2)\sigma^2[\frac{1}{(X \cdot X)^2}[p(X \cdot X) - 2(X \cdot X)]]  = (p-2)\sigma^2[\frac{(p-2)(X \cdot X)}{(X \cdot X)^2}]$$
 which reduces to $h^{\prime}(X) = \frac{(p-2)^2\sigma^2}{(X \cdot X)}$. So we have $E[h^{\prime}(X)] = (p-2)^2\sigma^2E[\frac{1}{X \cdot X}]$.
 
-Returning to the risk function, we have, 
+Returning to the risk function, we have,
 $$R(\hat{\theta}_{js}, \theta) = p\sigma^2 - 2 \sigma^2 E(h^{\prime}(X)) + ((p-2)\sigma^2)^2 E||\frac{X}{||X||^2}||^2  = p\sigma^2 - 2\sigma^4(p-2)^2 E[\frac{1}{X \cdot X}] + (p-2)^2\sigma^4E[\frac{1}{X \cdot X}] = $$
 $$ = R(\hat{\theta}_{js}, \theta) = p\sigma^2 - \sigma^4(p-2)^2 E[\frac{1}{X \cdot X}] < p\sigma^2 = R(\theta,X)$$
 *4. Now consider an $i.i.d.$ sample $Y_1,...,Y_n$ where $Y_i \sim N(\theta, \sigma^2 I_p)$. Denote $\bar{Y} = n^{-1}\sum_{i=1}^{n}Y_i$. Calculate the risk $R(\theta,\bar{Y})$.*  
@@ -57,33 +58,52 @@ using Stein's identity. Thus we have,
 $$ R(\theta, \hat{\theta}_{js}) = p\frac{\sigma^2}{n} - (\frac{\sigma^2}{n})^2 (p-2)^2 E(\frac{1}{||\bar{Y}||^2}) < p\frac{\sigma^2}{n} = R(\theta, \bar{Y})$$  
 
 ### Exercise 2
-Consider the linear regression model $Y_i = X_i^{\intercal}\theta^* + \varepsilon_i$, $i = 1,...,n$, the errors $\varepsilon_i$ are $i.i.d.$,$E\varepsilon_i = 0$, $Var(\varepsilon_i) = \sigma^2 > 0$ The unknown true parameter $\theta^* \in R^p$. Assume that matrix $XX^{\intercal} = \sum_{i=1}^{n} X_iX_i^{\intercal}$ is not invertible, i.e. some of its eigenvalues equal to zero.
+*Consider the linear regression model $Y_i = X_i^{\intercal}\theta^* + \varepsilon_i$, $i = 1,...,n$, the errors $\varepsilon_i$ are $i.i.d.$,$E\varepsilon_i = 0$, $Var(\varepsilon_i) = \sigma^2 > 0$. The unknown true parameter $\theta^* \in R^p$. Assume that matrix $XX^{\intercal} = \sum_{i=1}^{n} X_iX_i^{\intercal}$ is not invertible, i.e. some of its eigenvalues equal to zero.*
 
-Derive the spectral representation of the model$Y = X^{\intercal}\theta^* + \varepsilon$ (this was done at a lecture), i.e. show that for some $Z, \xi, \eta^* \in R^p$ the model is equivalent to $Z = \lambda \eta^* + \xi$,
+*1. Derive the spectral representation of the model* $Y = X^{\intercal}\theta^{*} + \varepsilon$, *i.e. show that for some* $Z, \xi, \eta^* \in R^p$ *the model is equivalent to* $Z = \lambda \eta^* + \xi$, *where* $\lambda = diag\{\lambda_1,...,\lambda_p\}$, *and* $\lambda_1 \geq ... \geq \lambda_p \geq 0$ *are eigenvalues* of $XX^{\intercal}$.
 
-where $\lambda = diag\{\lambda_1,...,\lambda_p\}$, and $\lambda_1 \geq ... \geq \lambda_p \geq 0$ are eigenvalues of $XX^{\intercal}$
+The symmetric matrix $XX^{\intercal}$ has spectral decomposition $XX^{\intercal} = U^{\intercal}\lambda U \rightarrow \lambda = U (XX^{\intercal})U^{\intercal}$, with $U^{\intercal}U = I_p$. If we take the original model and multiple through by $UX$, we have spectral representation, 
+$$ (UX)Y = (UX)X^{\intercal}(I_p)\theta^* + (UX)\varepsilon = (UX)Y = U(XX^{\intercal})U^{\intercal}U\theta^* + (UX)\varepsilon = Z = \lambda \eta^* + \xi$$
+with, $Z = (UX)Y$, $\eta^* = U\theta^*$, and $\xi = (UX)\varepsilon$.
 
-Let $A = diag\{\alpha_1,...,\alpha_p \}$ for some numbers $\alpha_1,...,\alpha_p \in [0,1]$. Let $\hat{\eta}_A = (\hat{\eta}_{A,1},...,\hat{\eta}_{A,p})^{\intercal}$, be a shrinkage estimator of $\hat{\eta}^* = (\eta_{1}^{*},...,\eta_{p}^{*})^{\intercal}$
+*2. Let $A = diag\{\alpha_1,...,\alpha_p \}$ for some numbers $\alpha_1,...,\alpha_p \in [0,1]$. Let $\hat{\eta}_A = (\hat{\eta}_{A,1},...,\hat{\eta}_{A,p})^{\intercal}$, be a shrinkage estimator of $\hat{\eta}^* = (\eta_{1}^{*},...,\eta_{p}^{*})^{\intercal}$*
 
 \begin{equation}
-  \hat{\eta}A,j=
+  \hat{\eta}A_{,j}=
     \begin{cases}
       \alpha_j\lambda_{j}^{-1}z_j, & \text{if}\ \lambda_j \ne 0 \\
       0, & \text{otherwise}
     \end{cases}
 \end{equation}
 
-Find bias, variance and the quadratic risk of $\hat{\eta}A: R(\eta^*, \hat{\eta}A) = E(||\hat{\eta}A - \eta^*||^2)$
+*Find the bias, variance and the quadratic risk of $\hat{\eta}A: R(\eta^*, \hat{\eta}A) = E(||\hat{\eta}A - \eta^*||^2)$*
 
+Using the bias-variance decomposition we have:   
+$$E||\hat{\eta}A - \eta^*||^2  = E||\hat{\eta}A - E(\hat{\eta}A)||^2 + ||E(\hat{\eta}A) - \eta^*||^2$$
+with, $Var(\hat{\eta}A) = E||\hat{\eta}A - E(\hat{\eta}A)||^2$, and $Bias^2(\hat{\eta}A) = ||E(\hat{\eta}A) - \eta^*||^2$.    
+
+Returning to the notation above for individual coefficient estimates, we have for $i = 1, ..., p$, with $z_j = \lambda_j \hat{\eta_j}$, we have $E(\alpha_j \lambda_j^{-1} z_j) = \alpha_j \lambda_j^{-1}E(z_j) = \alpha \frac{\lambda_j}{\lambda_j}E(\hat{\eta}_j) = \alpha_j \eta^*_j$. Using this, for the bias component we have,
+$$Bias^2(\hat{\eta}A) = ||E(\hat{\eta}A) - \eta^*||^2 = \sum_{i=1}^{p}(E(\hat{\eta}A_{,j}) - \eta_j^*)^2 = \sum_{i=1}^{p} (E(\alpha_j \lambda_j^{-1} z_j)-\eta_j^*)^2 = \sum_{i=1}^{p} (\alpha_j \eta^*_j-\eta_j^*)^2 = \sum_{i=1}^{p} ((\alpha_j -1)\eta_j^*)^2$$
+Thus for the bias we have $\sum_{i=1}^{p}|((\alpha_j -1)\eta_j^*)|$.  
+  
+For the variance component, $Var(\hat{\eta}A) = E||\hat{\eta}A - E(\hat{\eta}A)||^2$, using $Var(z_j) = U_jX^{\intercal}_jVar(Y)X_jU_j^{\intercal} = \sigma^2 U_jX^{\intercal}_jX_jU_j^{\intercal} = \sigma^2\lambda_j$. We have, 
+$$Var(\hat{\eta}A) = E||\hat{\eta}A - E(\hat{\eta}A)||^2 = E[\sum_{i=1}^{p}(\hat{\eta}A_{,j} -\alpha_j \eta^*_j )^2] = E[\sum_{i=1}^{p}(\alpha_j(\lambda^{-1}_j z_j - \eta^*_j ))^2] = E \sum_{i=1}^{p}\alpha_j^2(\lambda_j^{-2}z_j^2 - 2 \lambda_j^{-1}z_j\eta^*_j + (\eta^*_j)^2) =$$ 
+
+$$\sum_{i=1}^{p}\alpha_j^2(\lambda_j^{-2}E(z_j^2) - (\eta^*_j)^2) = \sum_{i=1}^{p}\alpha_j^2(\lambda_j^{-2}(\lambda_j(\sigma^2 + \lambda_j(\eta_j^*)^2) - (\eta^*_j)^2) = \sum_{i=1}^{p}\alpha_j^2(\lambda_j^{-1}\sigma^2) = Var(\hat{\eta}A)$$.
+
+Thus for the quadratic risk we have, 
+$$E||\hat{\eta}A - \eta^*||^2 = Bias^2(\hat{\eta}A) + Var(\hat{\eta}A) = \sum_{i=1}^{p} ((\alpha_j -1)\eta_j^*)^2 + \sum_{i=1}^{p}\alpha_j^2(\lambda_j^{-1}\sigma^2)$$
+  
 ### Exercise 3 
 Let $X_1,...,X_n$ be real valued $i.i.d.$ random variables. Assume $E(|X_i|M) < \infty$ for some $M \geq 2$. Let $X_1^*,...,X_n^*$ be a bootstrap sample based on the original data $X_1,...,X_n$ and obtained by the Efron’s bootstrap procedure, i.e. 
 $$P(X_j^* = X_i | \{X_i\}_{i=1}^{n}) = 1/n\ \ \ \forall\ j = 1,...,n$$
-Show that for all integer $m \in [0,M]$
+*1. Show that for all integer $m \in [0,M]$*
 $$E(X_j^{*m} | \{X_i\}_{i=1}^{n}) \xrightarrow{P} E(X_1^m)\ for\ n \rightarrow \infty.$$
-Show also that
-$$Var(X_j^{*} | \{X_i\}_{i=1}^{n}) \xrightarrow{P} Var(X_1)\ for\ n \rightarrow \infty.$$ 
-
 *(Hint 1: Use the Weak Law of Large Numbers.)*  
+
+
+*2. Show also that*
+$$Var(X_j^{*} | \{X_i\}_{i=1}^{n}) \xrightarrow{P} Var(X_1)\ for\ n \rightarrow \infty.$$ 
 *(Hint 2: the 1-st bootstrap moment of* $X_j^*$ *equals to* $E(X_j^* | \{X_i\}_{i=1}^{n}) = \sum_{i=1}^{n}X_i/n$.)
 
 
