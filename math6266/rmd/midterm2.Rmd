@@ -1,7 +1,7 @@
 ---
 title: 'Midterm 2: Math 6266 (Zhilova)'
 author: "Peter Williams"
-date: "12/09/2017"
+date: "12/07/2017"
 output:
   pdf_document: default
   html_document: default
@@ -12,7 +12,7 @@ knitr::opts_chunk$set(echo = TRUE)
 ```
 
 ### Exercise 1 (The James-Stein estimator) 
-*Let $X \sim N(\theta, \sigma^2 I_p)$ for some $\sigma^2 > 0$, $\theta \in R^p$; dimension $\ \geq 3$; $\theta$ is an unknown true parameter. Denote the quadratic risk function as $R(\delta, \theta) = E_{\theta}(|\delta - \theta|)$, where $\delta = \delta(X)$ is some estimator of $\theta$, and $|\cdot|$ is the $\ell_2$-norm in $R^p$.*
+*Let $X \sim N(\theta, \sigma^2 I_p)$ for some $\sigma^2 > 0$, $\theta \in R^p$; dimension $\ \geq 3$; $\theta$ is an unknown true parameter. Denote the quadratic risk function as $R(\delta, \theta) = E_{\theta}(||\delta - \theta||^2)$, where $\delta = \delta(X)$ is some estimator of $\theta$, and $||\cdot||^2$ is the $\ell_2$-norm in $R^p$.*
 
 *1. Calculate the quadratic risk for $\delta = X$*
 
@@ -50,10 +50,14 @@ $$ = R(\hat{\theta}_{js}, \theta) = p\sigma^2 - \sigma^4(p-2)^2 E[\frac{1}{X \cd
 *4. Now consider an $i.i.d.$ sample $Y_1,...,Y_n$ where $Y_i \sim N(\theta, \sigma^2 I_p)$. Denote $\bar{Y} = n^{-1}\sum_{i=1}^{n}Y_i$. Calculate the risk $R(\theta,\bar{Y})$.*  
 With $\theta = (\theta_1, ..., \theta_n)^{\intercal}$, and $\theta_1 = \theta_2 = ... = \theta_p$, we have, 
 $$R(\theta,\bar{Y}) = E \sum_{i=1}^{p}(\bar{Y} - \theta)^2 = p E(\bar{Y} - \theta_1)^2 = p[E(\bar{Y}^2) - \theta_1E(\bar{Y}) + \theta_1^2] = p(\theta_1^2 + \frac{\sigma^2}{n}) - 2p\theta_1^2 + p\theta_1^2 =  p \frac{\sigma^2}{n}$$
-*5. Consider the estimator $\hat{\theta}_{JS} = \bar{Y} - \frac{(p-2)\sigma^2}{||\bar{Y}||^2}\bar{Y}$. Show that $R(\theta, \hat{\theta}_{JS}) < R(\theta,\bar{Y})$ for all $\theta \in R^p$, with $\bar{Y} \sim N(\theta, \frac{\sigma^2}{n}I_p$)*
+*5. Consider the estimator $\hat{\theta}_{JS} = \bar{Y} - \frac{(p-2)\sigma^2}{||\bar{Y}||^2}\bar{Y}$. Show that $R(\theta, \hat{\theta}_{JS}) < R(\theta,\bar{Y})$ for all $\theta \in R^p$, with $\bar{Y} \sim N(\theta, \frac{\sigma^2}{n}I_p$)*.  
+
 Setting $g(Y) = \frac{(p-2)\sigma^2/n \bar{Y}}{||\bar{Y}||^2}$, we have, 
-$$R(\theta, \hat{\theta}_{js}) = E||\bar{Y} - g(Y) - \theta||^2 = E[(\bar{Y}-\theta)^{\intercal}(\bar{Y}-\theta) - 2(\bar{Y}- \theta)^{\intercal}g(Y) + g(Y)^\intercal g(Y)] = E||\bar{Y} - \theta||^2 - 2 E(\bar{Y}-\theta)^{\intercal}g(Y) + E||g(Y)||^2 = $$
-$$p\frac{\sigma^2}{n} - 2 \frac{\sigma^2}{n}E(g^{\prime}(Y)) + E||g(Y)||^2 = p\frac{\sigma^2}{n} - 2(\frac{\sigma^2}{n})^2 (p-2)^2 E(\frac{1}{||\bar{Y}||^2}) + (\frac{\sigma^2}{n})^2 (p-2)^2 E(\frac{1}{||\bar{Y}||^2}) = p\frac{\sigma^2}{n} - (\frac{\sigma^2}{n})^2 (p-2)^2 E(\frac{1}{||\bar{Y}||^2})$$
+$$R(\theta, \hat{\theta}_{js}) = E||\bar{Y} - g(Y) - \theta||^2 = E[(\bar{Y}-\theta)^{\intercal}(\bar{Y}-\theta) - 2(\bar{Y}- \theta)^{\intercal}g(Y) + g(Y)^\intercal g(Y)] =$$ 
+$$E||\bar{Y} - \theta||^2 - 2 E(\bar{Y}-\theta)^{\intercal}g(Y) + E||g(Y)||^2 = $$
+$$p\frac{\sigma^2}{n} - 2 \frac{\sigma^2}{n}E(g^{\prime}(Y)) + E||g(Y)||^2 = p\frac{\sigma^2}{n} - 2(\frac{\sigma^2}{n})^2 (p-2)^2 E(\frac{1}{||\bar{Y}||^2}) + (\frac{\sigma^2}{n})^2 (p-2)^2 E(\frac{1}{||\bar{Y}||^2})=$$ 
+$$p\frac{\sigma^2}{n} - (\frac{\sigma^2}{n})^2 (p-2)^2 E(\frac{1}{||\bar{Y}||^2})$$
+
 using Stein's identity. Thus we have, 
 $$ R(\theta, \hat{\theta}_{js}) = p\frac{\sigma^2}{n} - (\frac{\sigma^2}{n})^2 (p-2)^2 E(\frac{1}{||\bar{Y}||^2}) < p\frac{\sigma^2}{n} = R(\theta, \bar{Y})$$  
 
@@ -99,13 +103,15 @@ Let $X_1,...,X_n$ be real valued $i.i.d.$ random variables. Assume $E(|X_i|M) < 
 $$P(X_j^* = X_i | \{X_i\}_{i=1}^{n}) = 1/n\ \ \ \forall\ j = 1,...,n$$
 *1. Show that for all integer $m \in [0,M]$*
 $$E(X_j^{*m} | \{X_i\}_{i=1}^{n}) \xrightarrow{P} E(X_1^m)\ for\ n \rightarrow \infty.$$
-*(Hint 1: Use the Weak Law of Large Numbers.)*  
+By extension of $P(X_j^* = X_i | \{X_i\}_{i=1}^{n}) = 1/n\ \ \ \forall\ j = 1,...,n$, we have $E(X_j^{*} | \{X_i\}_{i=1}^{n}) = E(X_j^{*} | X_1, X_2,...,X_n) = 1/n (X_1) + 1/n (X_2) + ... + 1/n(X_n) = n^{-1} \sum_{i=1}^{n}X_i = \bar{X}$. By the weak law of large numbers, as $n \rightarrow \infty$, we have $(X_1 + ... + X_n)/n = n E(X_1)/n = E(X_1)$, since $E(X_1) = ... = E(X_n)$. For the more general case we have, 
+$$E(X_j^{*m} | \{X_i\}_{i=1}^{n}) = \sum_{i=1}^{n}\frac{1}{n}X_i^m, \text{as} \ n \rightarrow \infty, \frac{(X_1^m + X_2^m+...+X_n^m)}{n} = n E(X_1^m) / n = E(X_1^m)$$
+$$\rightarrow E(X_j^{*m} | \{X_i\}_{i=1}^{n}) \xrightarrow{P} E(X_1^m)$$
 
 
-*2. Show also that*
-$$Var(X_j^{*} | \{X_i\}_{i=1}^{n}) \xrightarrow{P} Var(X_1)\ for\ n \rightarrow \infty.$$ 
-*(Hint 2: the 1-st bootstrap moment of* $X_j^*$ *equals to* $E(X_j^* | \{X_i\}_{i=1}^{n}) = \sum_{i=1}^{n}X_i/n$.)
+*2. Show also that*  
 
-
-
-
+$$Var(X_j^{*} | \{X_i\}_{i=1}^{n}) \xrightarrow{P} Var(X_1)\ for\ n \rightarrow \infty.$$
+Noting from above, $E(X_j^{*} | \{X_i\}_{i=1}^{n}) = \bar{X}$, and using empirical distribution, we can write,  
+$$Var(X_j^{*} | \{X_i\}_{i=1}^{n}) = E(X_j^* - E(X_j^{*} | \{X_i\}_{i=1}^{n}))^2 =  \frac{1}{n}\sum_{i}^{n}(X_i - E(X_j^{*} | \{X_i\}_{i=1}^{n}))^2 = \frac{1}{n}\sum_{i}^{n}(X_i - \bar{X})^2$$
+By the weak law of large numbers, we have $\bar{X} \xrightarrow{P} E(X_i)$, so we can say, 
+$$\text{as}\ n \rightarrow \infty,\frac{1}{n}\sum_{i}^{n}(X_i - \bar{X})^2 \xrightarrow{P} E(X_i - E(X_i))^2 \rightarrow Var(X_j^{*} | \{X_i\}_{i=1}^{n}) \xrightarrow{P} Var(X_1)$$
