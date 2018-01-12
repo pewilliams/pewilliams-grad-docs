@@ -1,0 +1,38 @@
+---
+title: 'Math 4317 (Prof. Swiech, S''18): HW #1'
+author: "Peter Williams"
+date: "1/25/2018"
+output:
+  pdf_document: default
+  word_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+#### Section 1
+*F. Show that the symmetric difference $D$, defined in the preceding exercise is also given by $D = (A \cup B) \setminus (A \cap B)$*
+
+*I. If $\{A_1,A_2, ...,A_n \}$ is a collection of sets, and if E is any set, show that:*
+$$E \cap \cup_{j=1}^{n}A_j = \cup_{j=1}^{n} (E \cap A_j),\ \ \ E \cup \cup_{j=1}^{n}A_j = \cup_{j=1}^{n} (E \cup A_j)$$
+
+*J. If $\{A_1,A_2, ...,A_n \}$ is a collection of sets, and if E is any set, show that:*
+$$E \cap \cap_{j=1}^{n}A_j = \cap_{j=1}^{n} (E \cap A_j),\ \ \ E \cup \cap_{j=1}^{n}A_j = \cap_{j=1}^{n} (E \cup A_j)$$
+
+*K. Let E be a set and $\{A_1,A_2, ...,A_n \}$ be a collection of sets. Establish the De Morgan laws:*
+$$E \setminus \cap_{j=1}^{n}A_j = \cup_{j=1}^{n} (E \setminus A_j),\ \ \ E \setminus \cup_{j=1}^{n}A_j = \cap_{j=1}^{n} (E \setminus A_j)$$
+
+#### Section 2
+*C. Consider the subset of $\mathbb{R}\times \mathbb{R}$ defined by $D = \{(x,y)\ :|x| + |y| = 1  \}$. Describe this set in words. Is it a function?*  
+
+*E. Prove that if $f$ is an injection from $A$ to $B$, than $f^{-1} = \{(b,a): (a,b) \in f \}$ is a function. Then prove it is an injection.*  
+
+*H. Let $f,g$ be functions such that*
+$$ g \circ f(x) = x, \ \ for\ all\ x\ in\ D(f) $$
+$$ f \circ g(y) = y, \ \ for\ all\ y\ in\ D(g) $$
+*Prove that $g = f^{-1}$*  
+
+
+*J. Let $f$ be the function on $\mathbb{R}$ to $\mathbb{R}$ given by $f(x) = x^2$, and let $E = \{x \in \mathbb{R} \: -1 \leq x \leq 0 \}$  and $F = \{x \in \mathbb{R}: 0 \leq x \leq 1 \}$.Then $E \cap F = \{0\}$ and $f(E \cap F) = \{0\}$ while $f(E) = f(F) = \{ y \in \mathbb{R}: 0 \leq y \leq 1\}$. Hence $f(E \cap F)$ is a proper subset of $f(E) \cap f(F)$. Now delete $0$ from E and F.*
+
