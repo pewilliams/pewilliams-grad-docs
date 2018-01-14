@@ -17,29 +17,33 @@ Show $D = (A \setminus B ) \cup (B \setminus A) = (A \cup B ) \setminus (A \cap 
 
 First, $x \in (A \setminus B ) \cup (B \setminus A) \implies x \in (A \setminus B)$ or $x \in (B \setminus A) \implies$, $x$ is in $A$ but not $B$, or, $x$ is in $B$ but not $A \implies x$ is in $A$ or $B$ but not in $A$ and $B \implies x \in (A \cup B) \setminus (A \cap B)$.
 
-Second, $x \in (A \cup B) \setminus (A \cap B) \implies x \in (A \cup B)$ but not in $(A \cap B) \implies x$ is in $A$ but not $B$, or, $x$ is in $B$ but not $A \implies x \in (A \setminus B)$ or $x \in (B \setminus A) \implies x \in (A \setminus B) \cup (B \setminus A) \implies (A \setminus B ) \cup (B \setminus A) = (A \cup B ) \setminus (A \cap B)$\newline
+In the other direction, $x \in (A \cup B) \setminus (A \cap B) \implies x \in (A \cup B)$ but not in $(A \cap B) \implies x$ is in $A$ but not $B$, or, $x$ is in $B$ but not $A \implies x \in (A \setminus B)$ or $x \in (B \setminus A) \implies x \in (A \setminus B) \cup (B \setminus A) \implies (A \setminus B ) \cup (B \setminus A) = (A \cup B ) \setminus (A \cap B)$\newline
 
 *I. If $\{A_1,A_2, ...,A_n \}$ is a collection of sets, and if E is any set, show that:*
 $$(i)\ \ E \cap \cup_{j=1}^{n}A_j = \cup_{j=1}^{n} (E \cap A_j),\ and\ (ii),\ \ E \cup \cup_{j=1}^{n}A_j = \cup_{j=1}^{n} (E \cup A_j)$$
   
-(i) First, $x \in E \cap \cup_{j=1}^{n}A_j \implies x \in E\ and\ x \in \{A_1\ or\ A2\ ... or\ A_n\} \implies x \in E$ and that there exists for some $j=1,2,...,n$ an $A_j$ such that $x \in A_j\ and\ x \in E \implies (x\in E\ and\ A_1)\ or\ (x \in E\ and\ A_2)\ ...\ or\ (x \in E\ and\ A_n) \implies x \in \cup_{j=1}^{n}(E \cap A_j)$.  
+(i) $x \in E \cap \cup_{j=1}^{n}A_j \implies x \in E\ and\ x \in \{A_1\ or\ A2\ ... or\ A_n\} \implies x \in E$ and that there exists for some $j=1,2,...,n$ an $A_j$ such that $x \in A_j\ and\ x \in E \implies (x\in E\ and\ A_1)\ or\ (x \in E\ and\ A_2)\ ...\ or\ (x \in E\ and\ A_n) \implies x \in \cup_{j=1}^{n}(E \cap A_j)$.  
 In the other direction, $x \in \cup_{j=1}^{n}(E \cap A_j) \Leftrightarrow x \in (E \cap A_1) \cup (E \cap A_2)\ ... \ \cup (E \cap A_n) \implies x \in E$ and $A_1$ or $E$ and $A_2$ ... $\implies$ there exists a $j = 1,...,n$ such that $x \in (E \cap A_j) \implies x \in E$ and $x \in A_1$ or $A_2$, ..., or $A_n \implies x \in E$ and $\cup_{j=1}^{n} A_j \implies x \in  E \cap \cup_{j=1}^{n}A_j$.  
 
-(ii) First, $x \in E \cup \cup_{j=1}^{n} A_j \implies x \in E$ or $x \in A_1$ or $A_2$ ... or $A_n \implies$ for some $j=1,..,n$ that $x \in E \cup A_j \implies x \in E \cup A_1$ or $x \in E \cup A_2$ ... or $x \in E \cup A_n \implies x \in \cup_{j=1}^{n} (E \cup A_j)$. 
+(ii) $x \in E \cup \cup_{j=1}^{n} A_j \implies x \in E$ or $x \in A_1$ or $A_2$ ... or $A_n \implies$ for some $j=1,..,n$ that $x \in E \cup A_j \implies x \in E \cup A_1$ or $x \in E \cup A_2$ ... or $x \in E \cup A_n \implies x \in \cup_{j=1}^{n} (E \cup A_j)$. 
 In the other direction, $x \in \cup_{j=1}^{n} (E \cup A_j) \Leftrightarrow x \in E \cup A_1$ or $x \in E \cup A_2$ ... or $x \in E \cup A_n \implies$ there exists some $j = 1,...,n$ such that $x \in E \cup A_j \implies (x \in E\ or\ x \in A_1)$ or $(x \in E\ or\ x \in A_2)$ ... or $(x \in E\ or\ x \in A_n) \implies x \in E$ or $x \in \cup_{j=1}^{n} A_j \implies x \in E \cup \cup_{j=1}^{n} A_j$.
 
 
 *J. If $\{A_1,A_2, ...,A_n \}$ is a collection of sets, and if E is any set, show that:*
 $$(i)\ E \cap \cap_{j=1}^{n}A_j = \cap_{j=1}^{n} (E \cap A_j),\ and\ (ii), \ \ E \cup \cap_{j=1}^{n}A_j = \cap_{j=1}^{n} (E \cup A_j)$$  
 
-(i) First, $x \in \cap \cap_{j=1}^{n}A_j \implies x \in E$ and $x \in \cap_{j=1}^{n} A_j \implies x \in E\ and\ x \in A_j$ for all $j = 1,..,n  \implies x \in E$ and $[x \in A_1\ and\ x \in A_2\ ...\ and\ x \in A_n] \implies [x \in E\ and\ A_1]$ and ... and $[x \in E\ and\ A_n] \implies x \in \cap_{j=1}^{n} (E \cap A_j)$.
+(i) $x \in \cap \cap_{j=1}^{n}A_j \implies x \in E$ and $x \in \cap_{j=1}^{n} A_j \implies x \in E\ and\ x \in A_j$ for all $j = 1,..,n  \implies x \in E$ and $[x \in A_1\ and\ x \in A_2\ ...\ and\ x \in A_n] \implies [x \in E\ and\ A_1]$ and ... and $[x \in E\ and\ A_n] \implies x \in \cap_{j=1}^{n} (E \cap A_j)$.
 In the other direction, $x \in \cap_{j=1}^{n} (E \cap A_j) \implies x \in (E \cap A_1)$ and $a \in (E \cap A_2)$ ... and $x \in (E \cap A_n) \implies x \in (E \cap A_j)$ for all $j = 1,...,n \implies x \in E$ and $x \in A_1$ and $x \in A_2$ ... and $x \in A_n \implies x \in E$ and $x \in \cap_{j=1}^{n A_j} \implies x \in E \cap \cap_{j=1}^{n A_j}$.
 
-(ii) First, $x \in E \cup \cap_{j=1}^{n}A_j \implies x \in E$ or $x \in \cap_{j=1}^{n} A_j \implies x \in E$ or $[x \in A_1$ and $x \in A_2$ ... and $x \in A_n] \implies x \in E\ or\ A_1\ and\ x \in E\ or\ A_2\ ...\ and\ x \in E\ or\ A_n \implies x \in \cap_{j=1}^{n}(E \cup A_j)$.
-In the other direction, 
+(ii) $x \in E \cup \cap_{j=1}^{n}A_j \implies x \in E$ or $x \in \cap_{j=1}^{n} A_j \implies x \in E$ or $[x \in A_1$ and $x \in A_2$ ... and $x \in A_n] \implies x \in E\ or\ A_1\ and\ x \in E\ or\ A_2\ ...\ and\ x \in E\ or\ A_n \implies x \in \cap_{j=1}^{n}(E \cup A_j)$.
+In the other direction, $x \in \cap_{j=1}^{n}(E \cup A_j) \implies x \in (E\ or\ A_1)\ and\ x \in (E\ or\ A_2)\ ... and\ x \in (E\ or\ A_n) \implies$ that for all $j = 1,...,n\ , x \in (E\ or\ A_j) \implies x \in E\ or\ (x \in A_1\ and\ x \in A_2 ...\ and\ x \in A_n) \implies x \in \cap_{j=1}^{n}A_j\ or\ x \in E \implies x \in E \cup \cap_{j=1}^{n}A_j$. 
 
 *K. Let E be a set and $\{A_1,A_2, ...,A_n \}$ be a collection of sets. Establish the De Morgan laws:*
-$$E \setminus \cap_{j=1}^{n}A_j = \cup_{j=1}^{n} (E \setminus A_j),\ \ \ E \setminus \cup_{j=1}^{n}A_j = \cap_{j=1}^{n} (E \setminus A_j)$$
+$$(i)\ E \setminus \cap_{j=1}^{n}A_j = \cup_{j=1}^{n} (E \setminus A_j),\ and,\ (ii) \ \ E \setminus \cup_{j=1}^{n}A_j = \cap_{j=1}^{n} (E \setminus A_j)$$ 
+
+(i) $x \in E \setminus \cap_{j=1}^{n}A_j \implies x \in E$ but not $(A_1$ and $A_2$ ... and $A_n) \implies$ there exists a $j = 1,...,n$ such that $x \in E$ but not $A_j \implies x \in E$ but not $A_1$, or $x \in E$ but not $A_2$,...,or $x \in E$ but not $A_n \implies x \in E \setminus A_1$ or $x \in E \setminus A_2$ ... or $x \in E \setminus A_n \implies x \in \cup_{j=1}^{n}(E \setminus A_j)$. In the other direction, $x \in \cup_{j=1}^{n}(E \setminus A_j) \implies x \in (E\ but\ not\ A_1)$ or $(E\ but\ not\ A_2)$ or $(E\ but\ not\ A_n) \implies$ there exists $j = 1,...,n,\ x \in E$ but not $A_j \implies x \in E$ but not $(A_1\ and\ A_2\ ...\ and\ A_n) \implies x \in E \setminus \cap_{j=1}^{n} A_j$.   
+
+(ii) $x \in E \setminus \cup_{j=1}^{n} \implies x \in E$ but $A_1$ or $A_2$ ... or $A_n \implies x \in E$ and $x \notin A_j$ for all $j = 1,...,n \implies x \in E$ but not $A_1$, and $x \in E$ but not $A_2$, ..., and $x \in E$ but not $A_n \implies x \in (E \setminus A_1)\ and\ x \in (E \setminus A_2)\ ...\ and\ x \in (E \setminus A_n) \implies x \in \cap_{j=1}^{n}(E \setminus A_j)$. In the other direction, $x \in \cap_{j=1}^{n}(E \setminus A_j) \implies x \in (E \setminus A_1\ and\ E \setminus A_2\ ...\ and\ E \setminus A_n) \implies x \in E$ but not $A_j$ for all $j = 1,...,n \implies x \in E$ but $A_1$ or $A_2$ ... or $A_n \implies x \in E$ but not $\cup_{j=1}^{n}A_j \implies x \in E \setminus \cup_{j=1}^{n}A_j$
 
 #### Section 2
 *C. Consider the subset of $\mathbb{R}\times \mathbb{R}$ defined by $D = \{(x,y)\ :|x| + |y| = 1  \}$. Describe this set in words. Is it a function?*  
