@@ -52,7 +52,8 @@ This set consists of points on the line segments connecting a rotated square in 
 
 *E. Prove that if $f$ is an injection from $A$ to $B$, then $f^{-1} = \{(b,a): (a,b) \in f \}$ is a function. Then prove it is an injection.*  
 
-Solution in text
+If $f$ is an injection, and $(a,b) \in f$, and $({a',b}) \in f$, then $a = a'$. $f^{-1} = \{(b,a) : (a,b) \in f\}$ contains the pair $(b,a)$ and $(b,a')$, and we know that $a = a'$ from the definition of $f$, so we can assume that $f^{-1}$ is a function. 
+Since $f$ is injective, each unique element $b = f(a)$, is mapped to by a unique element $a$, and by definition $f^{-1} = \{(b,a) : (a,b) \in f\}$ maps the unique element $b$ back to $a$, meaning $f^{-1}(b) = a$ and $f^{-1}(b') = a$ if and only if $b = b'$, thus $f^{-1}$ is also injective. 
 
 *H. Let $f,g$ be functions such that*
 $$ g \circ f(x) = x, \ \ for\ all\ x\ in\ D(f) $$
