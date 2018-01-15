@@ -46,9 +46,13 @@ $$(i)\ E \setminus \cap_{j=1}^{n}A_j = \cup_{j=1}^{n} (E \setminus A_j),\ and,\ 
 (ii) $x \in E \setminus \cup_{j=1}^{n} \implies x \in E$ but $A_1$ or $A_2$ ... or $A_n \implies x \in E$ and $x \notin A_j$ for all $j = 1,...,n \implies x \in E$ but not $A_1$, and $x \in E$ but not $A_2$, ..., and $x \in E$ but not $A_n \implies x \in (E \setminus A_1)\ and\ x \in (E \setminus A_2)\ ...\ and\ x \in (E \setminus A_n) \implies x \in \cap_{j=1}^{n}(E \setminus A_j)$. In the other direction, $x \in \cap_{j=1}^{n}(E \setminus A_j) \implies x \in (E \setminus A_1\ and\ E \setminus A_2\ ...\ and\ E \setminus A_n) \implies x \in E$ but not $A_j$ for all $j = 1,...,n \implies x \in E$ but $A_1$ or $A_2$ ... or $A_n \implies x \in E$ but not $\cup_{j=1}^{n}A_j \implies x \in E \setminus \cup_{j=1}^{n}A_j$
 
 #### Section 2
-*C. Consider the subset of $\mathbb{R}\times \mathbb{R}$ defined by $D = \{(x,y)\ :|x| + |y| = 1  \}$. Describe this set in words. Is it a function?*  
+*C. Consider the subset of $\mathbb{R}\times \mathbb{R}$ defined by $D = \{(x,y)\ :|x| + |y| = 1  \}$. Describe this set in words. Is it a function?*
 
-*E. Prove that if $f$ is an injection from $A$ to $B$, than $f^{-1} = \{(b,a): (a,b) \in f \}$ is a function. Then prove it is an injection.*  
+This set consists of points on the line segments connecting a rotated square in the $(x,y)$ plane with vertices $(1,0)$, $(0,1)$, $(-1,0)$, and $(0,-1)$. If we attempt to define a function, with the elements $(x,y)$ from the set $D$, i.e. $y = f(x), f: x \rightarrow y$, we have $|x| + |y| = 1 \implies \sqrt{y^2} = 1 - |x| \implies y = \pm \sqrt{(1 - |x|)^2}$. $f(x) = y = \pm \sqrt{(1 - |x|)^2}$ does not fit the defintion of a function, since, as an example, the set $D$ includes the elements $(0,1)$ and $(0,-1)$, which if, $f$ is a function, $f: x \rightarrow y \implies -1 = 1$, which is clearly not true.  
+
+*E. Prove that if $f$ is an injection from $A$ to $B$, then $f^{-1} = \{(b,a): (a,b) \in f \}$ is a function. Then prove it is an injection.*  
+
+Solution in text
 
 *H. Let $f,g$ be functions such that*
 $$ g \circ f(x) = x, \ \ for\ all\ x\ in\ D(f) $$
