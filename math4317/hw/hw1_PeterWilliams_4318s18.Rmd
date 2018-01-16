@@ -60,6 +60,13 @@ $$ g \circ f(x) = x, \ \ for\ all\ x\ in\ D(f) $$
 $$ f \circ g(y) = y, \ \ for\ all\ y\ in\ D(g) $$
 *Prove that $g = f^{-1}$*  
 
+For two elements $x, x' \in D(f)$, if $f(x) = f(x') \implies g \circ f (x) = g(f(x)) = g(f(x')) \implies g(f(x)) = x = g(f(x')) = x'$, that is $x = x' \implies g \circ f$ is an injection. For two elements $y, y' \in D(g)$, if $g(y) = g(y') \implies f \circ g (y) = f(g(y)) = f(g(y')) \implies f(g(y)) = y = f(g(y')) = y'$, that is $y = y' \implies f \circ g$ is an injection, and implies $f$ and $g$ are injections as well. 
 
-*J. Let $f$ be the function on $\mathbb{R}$ to $\mathbb{R}$ given by $f(x) = x^2$, and let $E = \{x \in \mathbb{R} \: -1 \leq x \leq 0 \}$  and $F = \{x \in \mathbb{R}: 0 \leq x \leq 1 \}$.Then $E \cap F = \{0\}$ and $f(E \cap F) = \{0\}$ while $f(E) = f(F) = \{ y \in \mathbb{R}: 0 \leq y \leq 1\}$. Hence $f(E \cap F)$ is a proper subset of $f(E) \cap f(F)$. Now delete $0$ from E and F.*
+This implies $g$ can be defined $g = \{(f(x), x): (x, f(x)) \in f  \}$, which is the definition for $f^{-1}$, implying $g = f^{-1}$. 
+
+*J. Let $f$ be the function on $\mathbb{R}$ to $\mathbb{R}$ given by $f(x) = x^2$, and let $E = \{x \in \mathbb{R} \: -1 \leq x \leq 0 \}$  and $F = \{x \in \mathbb{R}: 0 \leq x \leq 1 \}$.Then $E \cap F = \{0\}$ and $f(E \cap F) = \{0\}$ while $f(E) = f(F) = \{ y \in \mathbb{R}: 0 \leq y \leq 1\}$. Hence $f(E \cap F)$ is a proper subset of $f(E) \cap f(F)$. Now delete $0$ from E and F.*  
+
+The sets $E$ and $F$ with $0$ deleted are denoted $E' = \{ x \in \mathbb{R} : -1 \leq x < 0 \}$ and $F' = \{x \in \mathbb{R} : 0 < x \leq 1\}$, respectively. We still have the equality $f(E') = f(F') = \{ y \in \mathbb{R}: 0 < y \leq 1\} = f(E') \cap f(F')$. We also have $E' \cap F' = \emptyset$, and thus $f(E' \cap F') = \emptyset$, and $\emptyset = f(E' \cap F') \subseteq F(E') \cap f(F')$, since the empty set is a subset of all sets. 
+
+#### Section 3
 
