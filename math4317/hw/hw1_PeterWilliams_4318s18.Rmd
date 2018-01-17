@@ -70,3 +70,21 @@ The sets $E$ and $F$ with $0$ deleted are denoted $E' = \{ x \in \mathbb{R} : -1
 
 #### Section 3
 
+*B. Exhibit a one-to-one correspondence between the set $O$ of odd natural numbers and $\mathbb{N}$*
+
+The function $f(x) = \frac{x + 1}{2}, x\in \mathbb{N}$ maps the set of odd natural numbers, $O = \{2k - 1: k \in N\} \rightarrow \mathbb{N}$.
+
+*D. If $A$ is contained in some initial segment of $\mathbb{N}$, use the well-ordering property of $\mathbb{N} to define a bijection of $A$ onto some initial segment of $\mathbb{N}$.*
+
+*F. Use the fact that every infinite set has a denumerable subset to show that every infinite set can be put into one-one correspondence with a proper subset of itself.*
+
+*H. Show that if the set $A$ can be put into one-one correspondence with a set $B$, and if $B$ can be put into one-one correspondence with a set $C$, then $A$ can be put into one-one correspondence with $C$.*
+
+*I. Using induction on $n \in \mathbb{N}$, show that the initial segment determined by $n$ cannot be put into one-one correspondence with the initial segment determined by $m \in \mathbb{N}$, if $m < n$.*
+
+#### Section 4 (C, F, G, H)
+#### Section 5 (B, C, F, G, K, L)
+#### Section 6 (B, C, G, H, J, K)
+#### Section 7 (F, G, K)
+
+
