@@ -74,7 +74,7 @@ The sets $E$ and $F$ with $0$ deleted are denoted $E' = \{ x \in \mathbb{R} : -1
 
 The function $f(x) = \frac{x + 1}{2}, x\in \mathbb{N}$ maps the set of odd natural numbers, $O = \{2k - 1: k \in N\} \rightarrow \mathbb{N}$.
 
-*D. If $A$ is contained in some initial segment of $\mathbb{N}$, use the well-ordering property of $\mathbb{N} to define a bijection of $A$ onto some initial segment of $\mathbb{N}$.*
+*D. If $A$ is contained in some initial segment of $\mathbb{N}$, use the well-ordering property of $\mathbb{N}$ to define a bijection of $A$ onto some initial segment of $\mathbb{N}$.*
 
 *F. Use the fact that every infinite set has a denumerable subset to show that every infinite set can be put into one-one correspondence with a proper subset of itself.*
 
