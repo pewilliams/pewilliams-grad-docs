@@ -78,7 +78,11 @@ The function $f(x) = \frac{x + 1}{2}, x\in \mathbb{N}$ maps the set of odd natur
 
 *F. Use the fact that every infinite set has a denumerable subset to show that every infinite set can be put into one-one correspondence with a proper subset of itself.*
 
+Notes: The fact that every infinite set has denumberable $implies$ there exists a bijective function that maps a proper subset of an infinite set, $B$, onto $\mathbb{N}$. One-one correspondence implies injection from proper subset $B$
+
 *H. Show that if the set $A$ can be put into one-one correspondence with a set $B$, and if $B$ can be put into one-one correspondence with a set $C$, then $A$ can be put into one-one correspondence with $C$.*
+
+If $A$ can be put into one-one correspondence with a set $B \implies$ there exists an injective function, $f$ from $A \rightarrow B$. This means that for $a,a' \in A$, and $b \in B$, $f(a) = f(a') = b \implies a = a'$. Similarly, if $B$ can be put into one-one correspondence with a set $B \implies$ there exists an injective function, $g$ from $B \rightarrow C$, and with $b,b' \in A$, $g(b) = g(b') = c \in C \implies b = b'$. By these properties, the composition of these two injective functions, $g \circ f (a) = g \circ f (a') \implies f(a) = f(a') \implies a = a'$ putting $A$ and $C$ in one-one correspondence.  
 
 *I. Using induction on $n \in \mathbb{N}$, show that the initial segment determined by $n$ cannot be put into one-one correspondence with the initial segment determined by $m \in \mathbb{N}$, if $m < n$.*
 
