@@ -76,15 +76,19 @@ The function $f(x) = \frac{x + 1}{2}, x\in \mathbb{N}$ maps the set of odd natur
 
 *D. If $A$ is contained in some initial segment of $\mathbb{N}$, use the well-ordering property of $\mathbb{N}$ to define a bijection of $A$ onto some initial segment of $\mathbb{N}$.*
 
+If $A \neq \emptyset$ is a subset of some initial segment $\mathbb{N}$, by the well-ordering principle, there exists an $m \in A$ such that $m \leq k$ for all $k \in A$. A bijection $f$ can be defined by the mapping from set $A$ consisting of elements $\{a_1,a_2,...,a_k\}$ to elements of some initial segment $S_k = \{1,2,...,k\}$ as a set of ordered pairs $\{(a_1,1),(a_2,2),...,(a_k,k)\}$, such that $a_1 \leq a_2 \leq ... \leq a_k$ and clearly the corresponding elements in the pairs from set $S_k$, $1 \leq 2 \leq ... \leq k$. Here the number of elements in $A$ and $S_k$ are the same, which has a one-one correspondence $f: A \rightarrow S_k$ and the $R(f) = S_k$.
+
 *F. Use the fact that every infinite set has a denumerable subset to show that every infinite set can be put into one-one correspondence with a proper subset of itself.*
 
-Notes: The fact that every infinite set has denumberable $implies$ there exists a bijective function that maps a proper subset of an infinite set, $B$, onto $\mathbb{N}$. One-one correspondence implies injection from proper subset $B$
+---------------Notes: The fact that every infinite set has a denumberable subset $implies$ there exists a bijective function that maps a proper subset of an infinite set, $B$, onto $\mathbb{N}$. One-one correspondence implies injection from proper subset $B$ solution in back (need to check)
 
 *H. Show that if the set $A$ can be put into one-one correspondence with a set $B$, and if $B$ can be put into one-one correspondence with a set $C$, then $A$ can be put into one-one correspondence with $C$.*
 
 If $A$ can be put into one-one correspondence with a set $B \implies$ there exists an injective function, $f$ from $A \rightarrow B$. This means that for $a,a' \in A$, and $b \in B$, $f(a) = f(a') = b \implies a = a'$. Similarly, if $B$ can be put into one-one correspondence with a set $B \implies$ there exists an injective function, $g$ from $B \rightarrow C$, and with $b,b' \in A$, $g(b) = g(b') = c \in C \implies b = b'$. By these properties, the composition of these two injective functions, $g \circ f (a) = g \circ f (a') \implies f(a) = f(a') \implies a = a'$ putting $A$ and $C$ in one-one correspondence.  
 
 *I. Using induction on $n \in \mathbb{N}$, show that the initial segment determined by $n$ cannot be put into one-one correspondence with the initial segment determined by $m \in \mathbb{N}$, if $m < n$.*
+
+Let $S_n = \{1,2,3,...,n\}$ be the initial segment determined by $n \in N$ and $S_m$ be the initial segment determined by $m \in N, m < n$. If $S_n$ can be put into one-one correspondence with $S_m \implies$ there exists and injection $f : S_n \rightarrow S_m$. For $n = 1$ we have $f : \{1\} \rightarrow S_m,\ m < 1$, but $S_m$ does not exist by definition for $m < 1$ implying the function is not valid for the case $n = 1$, $m < n$. For, the case $n = k + 1$, we again have a map $f: \{1,2,...,k+1\} \rightarrow \{1,...,m\},\ m < k + 1$ which implies a mapping of $k+1$ elements to $m < k+1$ elements $\implies$ there exists at least two elements $x,x' \in S_{k+1}$ for which $f(x) = f(x')$ and $x \neq x' \implies$ an injection does not exist between these sets. 
 
 #### Section 4 (C, F, G, H)
 #### Section 5 (B, C, F, G, K, L)
