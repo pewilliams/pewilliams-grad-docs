@@ -80,7 +80,7 @@ If $A \neq \emptyset$ is a subset of some initial segment $\mathbb{N}$, by the w
 
 *F. Use the fact that every infinite set has a denumerable subset to show that every infinite set can be put into one-one correspondence with a proper subset of itself.*
 
----------------Notes: The fact that every infinite set has a denumberable subset $implies$ there exists a bijective function that maps a proper subset of an infinite set, $B$, onto $\mathbb{N}$. One-one correspondence implies injection from proper subset $B$ solution in back (need to check)
+By defintion, having a denumberable subset $\implies$ there exists a bijective function that maps a proper subset of an infinite set, $B$, onto $\mathbb{N}$. If we take infinite set $B = \{b_1,b_2,...,b_n,...\}$ and $B_1 = \{b_2,b_3,...,b_n,b_{n+1},...\}$, $B_1 \subseteq B$, we can create a one-one correspondence $f: B \rightarrow B_1$ defined by the set or ordered pairs $\{(b_n, b_{n+1}): n \in N\}$ which maps $B$ to $B_1 = B \setminus \{b_1\}$. 
 
 *H. Show that if the set $A$ can be put into one-one correspondence with a set $B$, and if $B$ can be put into one-one correspondence with a set $C$, then $A$ can be put into one-one correspondence with $C$.*
 
