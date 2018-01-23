@@ -38,6 +38,8 @@ In the other direction, $x \in \cap_{j=1}^{n} (E \cap A_j) \implies x \in (E \ca
 (ii) $x \in E \cup \cap_{j=1}^{n}A_j \implies x \in E$ or $x \in \cap_{j=1}^{n} A_j \implies x \in E$ or $[x \in A_1$ and $x \in A_2$ ... and $x \in A_n] \implies x \in E\ or\ A_1\ and\ x \in E\ or\ A_2\ ...\ and\ x \in E\ or\ A_n \implies x \in \cap_{j=1}^{n}(E \cup A_j)$.
 In the other direction, $x \in \cap_{j=1}^{n}(E \cup A_j) \implies x \in (E\ or\ A_1)\ and\ x \in (E\ or\ A_2)\ ... and\ x \in (E\ or\ A_n) \implies$ that for all $j = 1,...,n\ , x \in (E\ or\ A_j) \implies x \in E\ or\ (x \in A_1\ and\ x \in A_2 ...\ and\ x \in A_n) \implies x \in \cap_{j=1}^{n}A_j\ or\ x \in E \implies x \in E \cup \cap_{j=1}^{n}A_j$. 
 
+\newpage
+
 *K. Let E be a set and $\{A_1,A_2, ...,A_n \}$ be a collection of sets. Establish the De Morgan laws:*
 $$(i)\ E \setminus \cap_{j=1}^{n}A_j = \cup_{j=1}^{n} (E \setminus A_j),\ and,\ (ii) \ \ E \setminus \cup_{j=1}^{n}A_j = \cap_{j=1}^{n} (E \setminus A_j)$$ 
 
@@ -68,6 +70,8 @@ This implies $g$ can be defined $g = \{(f(x), x): (x, f(x)) \in f  \}$, which is
 
 The sets $E$ and $F$ with $0$ deleted are denoted $E' = \{ x \in \mathbb{R} : -1 \leq x < 0 \}$ and $F' = \{x \in \mathbb{R} : 0 < x \leq 1\}$, respectively. We still have the equality $f(E') = f(F') = \{ y \in \mathbb{R}: 0 < y \leq 1\} = f(E') \cap f(F')$. We also have $E' \cap F' = \emptyset$, and thus $f(E' \cap F') = \emptyset$, and $\emptyset = f(E' \cap F') \subseteq F(E') \cap f(F')$, since the empty set is a subset of all sets. 
 
+\newpage
+
 #### Section 3
 
 *B. Exhibit a one-to-one correspondence between the set $O$ of odd natural numbers and $\mathbb{N}$*
@@ -90,7 +94,24 @@ If $A$ can be put into one-one correspondence with a set $B \implies$ there exis
 
 Let $S_n = \{1,2,3,...,n\}$ be the initial segment determined by $n \in N$ and $S_m$ be the initial segment determined by $m \in N, m < n$. If $S_n$ can be put into one-one correspondence with $S_m \implies$ there exists and injection $f : S_n \rightarrow S_m$. For $n = 1$ we have $f : \{1\} \rightarrow S_m,\ m < 1$, but $S_m$ does not exist by definition for $m < 1$ implying the function is not valid for the case $n = 1$, $m < n$. For, the case $n = k + 1$, we again have a map $f: \{1,2,...,k+1\} \rightarrow \{1,...,m\},\ m < k + 1$ which implies a mapping of $k+1$ elements to $m < k+1$ elements $\implies$ there exists at least two elements $x,x' \in S_{k+1}$ for which $f(x) = f(x')$ and $x \neq x' \implies$ an injection does not exist between these sets. 
 
-#### Section 4 (C, F, G, H)
+#### Section 4 
+
+*C. Prove part (b) of Theorem 4.4, that is, Let $a \neq 0$ and $b$ be arbitrary elements of $\mathbb{R}$. Then the equation $a \cdot x = b$ has the unique solution $x = \frac{1}{a} b$*
+
+Let $x_1$ be any solution to the equation, that is, $a \cdot x_1 = b$. By $(M4)$ we have that there is exists for each element $a \neq 0$ in $\mathbb{R}$ there exists an element $\frac{1}{a}$ such that $a(\frac{1}{a}) = 1$. Thus we have $(\frac{1}{a})ax_1= b(\frac{1}{a}) \implies 1 \cdot x_1 = b (\frac{1}{a}) \implies a \cdot x_1 = b$ has the unique solution $x_1 = \frac{b}{a}$.
+
+*F. Use the argument in Theorem 4.7 to show that there does not exist a rational number $s$ such that $s^2 = 6.$*
+
+If we assume that $s^2 = (\frac{p}{q})^2 = 6$, where $p, q \in \mathbb{Z}, q \neq 0$ and assume that $p$ and $q$ have no common integral factors, since $p^2 = 2 (3q^2) \implies$ that $p^2$, and $p$ is even for some $p = 2k$, $k \in \mathbb{N} \implies p^2 = 4k^2 = 2 (3q^2) \implies 2k^2 = 3q^2 \implies q^2$, and $q$ must be even, which is a contradiction of the assumption that $p$ and $q$ have no common integral factors, and thus a rational number $s$ such that $s^2 = 6$ does not exist.
+
+*G. Modify the argument in Theorem 4.7 to shwo there there does not exists a ration number $t$ such that $t^2 = 3$.*
+
+If we assume that $t^2 = (\frac{p}{q})^2 = 3$, where $p, q \in \mathbb{Z}, q \neq 0$ and assume that $p$ and $q$ have no common integral factors, we have $p^2 = 3q^3$ which implies that $p^2$ and $p$ are divisible by $3 \implies$ there exists $k \in \mathbb{N}$ such that $p = 3k \implies p^2 = 9k^2 = 3q^2 \implies 3k^2 = q^2$. This implies that $q^2$ is also divisible by $3 \implies q$ is divisible by $3$. This is again a contradiction of assumption $p$ and $q$ have no common integral factors, and thus a rational number $t$ such that $t^2 = 3$ does not exist.   
+
+*H. If $\xi \in \mathbb{R}$ is irrational and $r \in \mathbb{R}$, $r \neq 0$, is rational, show that $r + \xi$ and $r\xi$ are irrational.*
+
+If we take another rational number $c = \frac{a}{b},\ a,b \in \mathbb{Z}, b \neq 0$, and assume the contradiction that $r + \xi, r = \frac{p}{q},\ p,q \in \mathbb{Z}, q \neq 0$ is rational, that is $r + \xi = c$, we have $\xi = c - r = \frac{a}{b} - \frac{p}{q} = \frac{aq - bp}{bq}$ where $\frac{aq - bp}{bq}$ is a rational number, but clearly $\xi$ cannot not be equal to a rational number. Similarly for $r \xi = c \implies \xi = \frac{c}{r} = \frac{aq}{bp}$ where $\frac{aq}{bp}$ is clearly a rational number, again implying the contradiction that $\xi$ is equal to a rational number. Thus, by contradiction, $r + \xi$ and $r\xi$ must be irrational. 
+
 #### Section 5 (B, C, F, G, K, L)
 #### Section 6 (B, C, G, H, J, K)
 #### Section 7 (F, G, K)
