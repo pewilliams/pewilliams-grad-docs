@@ -112,8 +112,39 @@ If we assume that $t^2 = (\frac{p}{q})^2 = 3$, where $p, q \in \mathbb{Z}, q \ne
 
 If we take another rational number $c = \frac{a}{b},\ a,b \in \mathbb{Z}, b \neq 0$, and assume the contradiction that $r + \xi, r = \frac{p}{q},\ p,q \in \mathbb{Z}, q \neq 0$ is rational, that is $r + \xi = c$, we have $\xi = c - r = \frac{a}{b} - \frac{p}{q} = \frac{aq - bp}{bq}$ where $\frac{aq - bp}{bq}$ is a rational number, but clearly $\xi$ cannot not be equal to a rational number. Similarly for $r \xi = c \implies \xi = \frac{c}{r} = \frac{aq}{bp}$ where $\frac{aq}{bp}$ is clearly a rational number, again implying the contradiction that $\xi$ is equal to a rational number. Thus, by contradiction, $r + \xi$ and $r\xi$ must be irrational. 
 
-#### Section 5 (B, C, F, G, K, L)
-#### Section 6 (B, C, G, H, J, K)
-#### Section 7 (F, G, K)
+#### Section 5
 
+*B. If $n \in \mathbb{N}$, show that $n^2 \geq n$ and hence $\frac{1}{n^2} \leq \frac{1}{n}$.*
+
+If $n \in \mathbb{N}$, then $n \geq 1 \implies n^2 \geq n$, since $n^2 = n \cdot n \cdot 1 \geq n \cdot 1 \implies n \geq \frac{n \cdot 1}{n \cdot 1} \implies n \geq 1$, a condition of $n$ being a natural number. 
+
+*C. If $a \geq -1$, $a \in \mathbb{R}$, show that $(1 + a)^n \geq 1 + na$ for all $n \in \mathbb{N}$.*
+
+*F. Suppose that $0 < c < 1$. If $m \geq n,\ m, n \in \mathbb{N}$, show that $0 < c^m \leq c^n < 1$.*
+
+*G. Show that $n < 2^n$ for all $n \in \mathbb{N}$. Hence $(1/2)^n < 1/n$ for all $n \in \mathbb{N}$.*
+
+*K. If $a,b \in \mathbb{R}$ and $b \neq 0$, show that $|a/b| = |a|/|b|$*
+  
+(i) For the case, $a \geq 0,\ b > 0$, $a \cdot 1/b \geq 0$, and we thus have $|a/b| = |a \cdot 1/b| = a/b = |a| \cdot |1/b|$, thus $a/b = |a|/|b|$.  
+(ii) For the case, $a \geq 0,\ b < 0$, we have $a/b \leq 0\ \ \forall\ a,b$, thus $|a/b| = |a \cdot 1/b| = -(a/b) = a \cdot 1/-b$, and $a, -b \in \mathbb{P} \implies a \cdot 1/-b \geq 0$, thus $a/-b = |a|/|b|$.  
+(iii) For the case, $a \leq 0,\ b < 0$, we have $a/b \geq 0,\ \forall\ a,b$, thus, $|a/b| = |a \cdot 1/b| = (a/b) = -a \cdot 1/-b$, thus $-a/-b = a/b = |a|/|b|$.  
+(iiii) For the case, $a \leq 0,\ b > 0$ we have $a/b \leq 0\ \  \forall\ a,b$, thus, $|a/b| = -(a/b) = -a/b = -a/|b| = |a|/|b|$.
+
+*L. If $a,b \in \mathbb{R}$, then $|a + b| = |a| + |b|$ if and only if $ab \geq 0$.*
+
+$ab \geq 0 \implies a,b \in \mathbb{P}\ \ \text{or} -a, -b \in \mathbb{P}$. For the case, $a,b \in \mathbb{P}$, we have $|a + b| = a + b = |a| + |b|\ \  \forall\ a,b \in \mathbb{P}$. For the case, $-a,-b \in \mathbb{P}$, we have, $|a + b| = -(a + b) = -a - b = |a| + |b|$. 
+
+#### Section 6 
+*B.*
+*C.*
+*G.*
+*H.*
+*J.*
+*K.*
+
+#### Section 7
+*F.*
+*G.*
+*K.*
 
