@@ -120,9 +120,19 @@ If $n \in \mathbb{N}$, then $n \geq 1 \implies n^2 \geq n$, since $n^2 = n \cdot
 
 *C. If $a \geq -1$, $a \in \mathbb{R}$, show that $(1 + a)^n \geq 1 + na$ for all $n \in \mathbb{N}$.*
 
+Let $S$ be the set of all $n \in \mathbb{N}$ for which $(1 + a)^n \geq 1 + na$ is true. 
+For $n = 1$ we have $(1 + a)^1 \geq 1 + (1)a = 1 + a$. For $k \in S$, we assume $(1 + a)^k \geq 1 + ka$
+is true. For case $n = k + 1$, we have, using the binomial theorem,  
+$$(1 + a)^{k + 1} = (1 + a)(1 + a)^k = (1 + a)\sum_{j = 0}^{k}{k \choose j}a^j = (1 + a)({k\choose0}a^0 + {k \choose 1}a^1 + ... + {k \choose k}a^k) = (1+a)(1 + ka + ... + a^k)$$
+This implies, $(1 + a)^{k + 1} \geq (1 + a)(1 + ka) = 1 + ka + a + ka^2 = 1 + (k +1)a + ka^2 \geq 1 + (k+1)a$, since $k a^2 \geq 0$. Thus, $(1 + a)^{k + 1} \geq 1 + (k + 1)a$ holds, for $k + 1 \in S$. 
+
 *F. Suppose that $0 < c < 1$. If $m \geq n,\ m, n \in \mathbb{N}$, show that $0 < c^m \leq c^n < 1$.*
 
+By property 5.6(c), for $a,b,c \in \mathbb{R}$, if $a > b\ \text{and}\ c > 0$, then $ac > bc$. Applying this property here we have, $0 < c < 1 \implies 1 > c\ \text{and}\ c > 0 \implies c = 1 \cdot c > c \cdot c = c^2$, thus $0 < c^2 < c < 1 \implies 1 > c\ \text{and}\ c^2 > 0$, and $c^2 > c^3$, up to $c^k > c^{k+1}$, $k \in \mathbb{N}$. Thus for $m, n \in \mathbb{N}$, $m \geq n$, we have $0 < c^m \leq c^n < 1$.    
+
 *G. Show that $n < 2^n$ for all $n \in \mathbb{N}$. Hence $(1/2)^n < 1/n$ for all $n \in \mathbb{N}$.*
+
+Applying induction, for case $n=1$ we have true statement $1 < 2^1$. We assume the inequality is valid for $k \in \mathbb{N}$, and for case $n = k + 1$, we have $k + 1 < 2^{k + 1} = 2 \cdot 2^k$. For all $k \geq 1$ we have first, $k + 1 \leq k + k = 2k$, and since $2k \leq 2^{k + 1}$, i.e. $k \leq 2^k \implies k + 1 \leq 2^{k + 1}$. Since the inequality holds for $n = k + 1$, we assume it holds for all $n \in \mathbb{N}$.
 
 *K. If $a,b \in \mathbb{R}$ and $b \neq 0$, show that $|a/b| = |a|/|b|$*
   
