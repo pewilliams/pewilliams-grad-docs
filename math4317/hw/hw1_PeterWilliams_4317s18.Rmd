@@ -146,12 +146,36 @@ Applying induction, for case $n=1$ we have true statement $1 < 2^1$. We assume t
 $ab \geq 0 \implies a,b \in \mathbb{P}\ \ \text{or} -a, -b \in \mathbb{P}$. For the case, $a,b \in \mathbb{P}$, we have $|a + b| = a + b = |a| + |b|\ \  \forall\ a,b \in \mathbb{P}$. For the case, $-a,-b \in \mathbb{P}$, we have, $|a + b| = -(a + b) = -a - b = |a| + |b|$. 
 
 #### Section 6 
-*B.*
-*C.*
-*G.*
-*H.*
-*J.*
-*K.*
+*B. Show that if a subset $S$ of $\mathbb{R}$ contains an upper bound, then this upper bound is the supremum of $S$.*
+
+Let the upper bound of $S \subseteq \mathbb{R}$ be $u \in \mathbb{R}$, then assume for all $s \in S$, $u \geq s$. If $s \leq v\ \ \forall s \in S$, then $u \leq v$, then there is another number that satisfies the supremum and $u$ is not a supremum of $S$.
+
+*C. Give an example of a set of rational numbers which is bounded but does not have a rational supremum.*
+
+Take the set $S = \{ x \in \mathbb{Q}: x^2 < 3 \}$, bounded above by the irrational $\sqrt(3)$, where $\mathbb{Q} = \{\frac{m}{n} : m,n \in \mathbb{Z}, n \neq 0\}$.
+
+*G. If $S$ is a bounded set in $\mathbb{R}$ and if $S_0$ is a non-empty subset of $S$, then show that $\text{inf}\ S \leq \text{inf}\ S_0 \leq \text{sup}\ S_0 \leq \text{sup}\ S$*
+
+By definition, $S_0 \subseteq S \implies$ there exists either, an element in $S$ that is not in $S_0$ or $S_0$ exhausts all of $S$ (i.e. they are equal). 
+Let $u = \text{inf}\ S \implies u \leq s \ \ \forall s \in S$ and $s \in S_0$. Let $u_0 = \text{inf}\ S_0 \implies u_0 \leq s\ \ \forall s \in S_0 \subseteq S \implies u \leq u_0 \implies \text{inf }\ S \leq \text{inf}\ S_0$. 
+Let $w = \text{sup}\ S \implies w \geq s \forall s \in S$ and $s \in S_0$. Let $w_0 = \text{sup}\ S_0 \implies w_0 \geq s\ \ \forall s \in S_0$, but not necessarily for all $s \in S$. This implies $w \geq w_0\ \ \forall s \in S$. Since by definition $\text{sup}\ S_0 \geq \text{inf}\ S$, and since $w \geq w_0 \implies u \leq u_0 \leq w_0 \leq w \Leftrightarrow \text{inf}\ S \leq \text{inf}\ S_0 \leq \text{sup}\ S_0 \leq \text{sup}\ S$.
+
+*H. Let $X$ and $Y$ be non-empty sets and let $f: X \times Y \rightarrow \mathbb{R}$ have a bounded range in $\mathbb{R}$. Let, $f_1(x) = \text{sup} \{f(x,y): y \in Y\}$, and $f_2(y) = \text{sup} \{f(x,y): x \in X\}$. Establish the Principle of Iterated Suprema: $\text{sup} \{f(x,y): x \in X, y \in Y\} = \text{sup} \{f(x,y): y \in Y\} = \text{sup} \{f(x,y): x \in X\}$.*
+
+Let $u = \text{sup}\ \{f(x,y): x \in X, y \in Y\} \implies u \geq f(x,y)\ \ \forall f(x,y)$ where $x \in X, y \in Y$. This implies that $f_1(x) \leq u \ \forall y \in Y$. Conversely, let $u_0 = \text{sup}\ f_1(x) = \text{sup}\ \{f(x,y): y \in Y\}$. This implies $u_0 \geq u \ \ \forall x \in X, y \in Y$. 
+This implies that $u = u_0$, and thus $\text{sup}\ \{f(x,y): x \in X, y \in Y\} = f_1(x) = \text{sup}\ \{f(x,y): y \in Y\}$. By extension the same argument hold for $\text{sup}\ \{f(x,y): x \in X, y \in Y\} = \text{sup}\ f_2(y) = \text{sup} \{f(x,y): x \in X\}$.
+
+*J. Let $X$ be a non-empty set and let $f: X \rightarrow \mathbb{R}$ have a bounded range in $\mathbb{R}$. If $a \in \mathbb{R}$, show that:*
+*$\text{sup} \{a + f(x): x \in X\} = a + \text{sup} \{f(x): x \in X\}$*, and
+*$\text{inf} \{a + f(x): x \in X\} = a + \text{inf} \{f(x): x \in X\}$*.
+
+Let $u = \text{sup} \{a + f(x): x \in X\} \implies u \geq a + f(x)\ \ \forall\ x \in X \implies u -a \geq f(x)\ \ \forall x \in X \implies \text{sup} \{f(x): x \in X\} = u-a$. This implies that $u = a + \text{sup} \{f(x): x \in X\}$, and thus $\text{sup} \{a + f(x): x \in X\} = a + \text{sup} \{f(x): x \in X\}$.
+
+Using the same argument, let $w = \text{inf} \{a + f(x): x \in X\} \implies w \leq a + f(x)\ \ \forall\ x \in X \implies w -a \leq f(x)\ \ \forall x \in X \implies \text{inf} \{f(x): x \in X\} = w-a$. This implies that $w = a + \text{inf} \{f(x): x \in X\}$, and thus $\text{inf} \{a + f(x): x \in X\} = a + \text{inf} \{f(x): x \in X\}$. 
+
+*K. Let $X$ be a non-empty set and let $f$ and $g$ be defined on $X$ have a bounded ranges in $\mathbb{R}$. Show that:*
+*$\text{inf}\ \{f(x): x \in X\} + \text{inf}\ \{g(x): x \in X\} \leq \text{inf}\ \{f(x) + g(x): x \in X\} \leq \text{inf}\ \{f(x): x \in X\} + \text{sup}\ \{g(x): x \in X\} \leq \text{sup}\ \{f(x) + g(x): x \in X\} \leq \text{sup}\ \{f(x): x \in X\} + \text{sup}\ \{g(x): x \in X\}$*
+
 
 #### Section 7
 *F.*
