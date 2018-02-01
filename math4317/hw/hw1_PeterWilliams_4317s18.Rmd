@@ -183,7 +183,7 @@ $l \leq f(x)\ \forall x \in X$ and $l_0 \leq g(x)\ \forall x \in X$, summing the
 (iv) Let $u = \text{sup}\ \{f(x): x \in X\}$ and $u_0 = \text{sup}\ \{g(x): x \in X\}$, thus, 
 $u \geq f(x)\ \forall x \in X$ and $u_0 \geq g(x)\ \forall x \in X$, summing these inequalities we have $u + u_0 \geq f(x) + g(x)\ \forall x \in X \implies u + u_0 = \text{sup}\ \{f(x): x \in X\} + \text{sup}\ \{g(x): x \in X\} \geq \text{sup}\ \{f(x) + g(x): x \in X\}$.
 
-An example of a strict inequality: the functions $f, g$, on the set $X = \{x: 0<x<1\}$ for $f(x) = g(x) = x$. Clearly $\text{inf}\{x: 0<x<1\} = 0$, thus $\text{inf}\{f(x): x \in X\} + \text{inf}\{g(x): x \in X\} = 0$ which is less than $\text{inf}\{f(x) + g(x): 0<x<1 \} > 0$, since, $f(x) > 0$ and $g(x) > 0\ \ \forall x \in X$. 
+An example of a strict inequality: the functions $f, g$, on the set $X = \{x \in \mathbb{R}: 0<x<1\}$ for $f(x) = g(x) = x$. Clearly $\text{inf}\{x: 0<x<1\} = 0$, thus $\text{inf}\{f(x): x \in X\} + \text{inf}\{g(x): x \in X\} = 0$ which is less than $\text{inf}\{f(x) + g(x): 0<x<1 \} > 0$, since, $f(x) > 0$ and $g(x) > 0\ \ \forall x \in X$. 
 $\text{inf}\ \{f(x) + g(x): x \in X\} \leq \text{inf}\ \{f(x): x \in X\} + \text{sup}\ \{g(x): x \in X\}$, holds, since $\text{sup}\ \{x: 0<x<1\} = 1$, which is clearly greater than $\text{inf}\ \{f(x) + g(x): x \in X\}$, since the bound $\text{inf}\ \{f(x) + g(x): x \in X\}$ is close to zero and is clearly less than 1. 
 
 For the inequality $\text{inf}\ \{f(x): x \in X\} + \text{sup}\ \{g(x): x \in X\} \leq \text{sup}\ \{f(x) + g(x): x \in X\}$, clearly the left hand side is 1, since $\text{sup}\ \{x: x \in X\} = 1$, and the right hand must be greater than one since $f(x) + g(x)$ can clearly equate to a number greater than 1 given range and domain. 
@@ -191,7 +191,10 @@ For the inequality $\text{inf}\ \{f(x): x \in X\} + \text{sup}\ \{g(x): x \in X\
 Lastly , $\text{sup}\{f(x): x \in X\} + \text{sup} \{g(x): x \in X\} = 2$, clearly, which is greater than $\text{sup}\{f(x) + g(x) : 0 < x < 1\}$, since $f(x) < 1$, and $g(x) < 1\ \forall x \in X$.
 
 #### Section 7
-*F.*
+*F. Let $J_n = (0,\frac{1}{n})$, for $n \in \mathbb{N}$. Show that this sequence of intervals is nested, but that there is no common point.*
+
+First, $J_1 \supseteq J_2 \supseteq ... \supseteq J_n \supseteq ...$, clearly, since for $n = 1$, $(0,1) \supseteq (0,\frac{1}{2})$, and for $(0,\frac{1}{n}) \supseteq (0,\frac{1}{n+1})$, for $n \in \mathbb{N}$. Using corollary $6.7(b)$, there exists a natural number $n \in \mathbb{N}$ such that $0 < \frac{1}{n} < z,\ z \in \mathbb{R},\ z > 0$, which implies there are arbitrarily small rational numbers of the form $1/n$. Therefore the sequence $J_n$ has no common point, i.e. $\cap_{j=1}^{n} J_n = \emptyset$, because for each open interval $(0,\frac{1}{n})$, there is a narrower open cell for $n \in \mathbb{N}$, such that the elements in that cell are always less than $1/n$.
+
 *G.*
 *K.*
 
