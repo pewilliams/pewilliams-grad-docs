@@ -1,7 +1,7 @@
 ---
 title: 'Math 4317 (Prof. Swiech, S''18): HW #1'
 author: "Peter Williams"
-date: "1/25/2018"
+date: "1/31/2018"
 output:
   pdf_document: default
   word_document: default
@@ -176,6 +176,19 @@ Using the same argument, let $w = \text{inf} \{a + f(x): x \in X\} \implies w \l
 *K. Let $X$ be a non-empty set and let $f$ and $g$ be defined on $X$ have a bounded ranges in $\mathbb{R}$. Show that:*
 *$\text{inf}\ \{f(x): x \in X\} + \text{inf}\ \{g(x): x \in X\} \leq \text{inf}\ \{f(x) + g(x): x \in X\} \leq \text{inf}\ \{f(x): x \in X\} + \text{sup}\ \{g(x): x \in X\} \leq \text{sup}\ \{f(x) + g(x): x \in X\} \leq \text{sup}\ \{f(x): x \in X\} + \text{sup}\ \{g(x): x \in X\}$*
 
+(i) Let $l = \text{inf}\ \{f(x): x \in X\}$ and $l_0 = \text{inf}\ \{g(x): x \in X\}$, thus, 
+$l \leq f(x)\ \forall x \in X$ and $l_0 \leq g(x)\ \forall x \in X$, summing these inequalities we have $l + l_0 \leq f(x) + g(x)\ \forall x \in X \implies l + l_0 = \text{inf}\ \{f(x): x \in X\} + \text{inf}\ \{g(x): x \in X\} \leq \text{inf}\ \{f(x) + g(x): x \in X\}$.
+(ii) Since $l + l_0 \leq \text{inf}\ \{f(x) + g(x): x \in X\} \leq \text{inf}\ \{f(x): x \in X\} + \text{sup}\ \{g(x): x \in X\} \implies l + l_0 \leq l + \text{sup}\{g(x) : x \in X\} \implies l_0 \leq \text{sup}\{g(x) : x \in X\}$, which must be true, since $\text{inf}\{g(x) : x \in X\} \leq \text{sup}\{g(x) : x \in X\}$ by definition. 
+(iii) Let $w = \text{sup}\ \{f(x) + g(x): x \in X\}$, $\text{inf}\ \{f(x): x \in X\} + \text{sup}\ \{g(x): x \in X\} \leq w \implies w \geq f(x) + g(x)\ \forall x \in X \implies w \geq u_0 + l$, where again $u_0 \geq g(x)\ \forall x \in X$, thus $w - u_0 \geq f(x)\ \forall x \in X$, implying $w - u_0$ is an upper bound for $f(x)$. Thus $w - u_0$, must be greater than $\text{inf}\{f(x): x \in X\} \implies \text{inf}\ \{f(x): x \in X\} + \text{sup}\ \{g(x): x \in X\} \leq \text{sup}\ \{f(x) + g(x): x \in X\}$. 
+(iv) Let $u = \text{sup}\ \{f(x): x \in X\}$ and $u_0 = \text{sup}\ \{g(x): x \in X\}$, thus, 
+$u \geq f(x)\ \forall x \in X$ and $u_0 \geq g(x)\ \forall x \in X$, summing these inequalities we have $u + u_0 \geq f(x) + g(x)\ \forall x \in X \implies u + u_0 = \text{sup}\ \{f(x): x \in X\} + \text{sup}\ \{g(x): x \in X\} \geq \text{sup}\ \{f(x) + g(x): x \in X\}$.
+
+An example of a strict inequality: the functions $f, g$, on the set $X = \{x: 0<x<1\}$ for $f(x) = g(x) = x$. Clearly $\text{inf}\{x: 0<x<1\} = 0$, thus $\text{inf}\{f(x): x \in X\} + \text{inf}\{g(x): x \in X\} = 0$ which is less than $\text{inf}\{f(x) + g(x): 0<x<1 \} > 0$, since, $f(x) > 0$ and $g(x) > 0\ \ \forall x \in X$. 
+$\text{inf}\ \{f(x) + g(x): x \in X\} \leq \text{inf}\ \{f(x): x \in X\} + \text{sup}\ \{g(x): x \in X\}$, holds, since $\text{sup}\ \{x: 0<x<1\} = 1$, which is clearly greater than $\text{inf}\ \{f(x) + g(x): x \in X\}$, since the bound $\text{inf}\ \{f(x) + g(x): x \in X\}$ is close to zero and is clearly less than 1. 
+
+For the inequality $\text{inf}\ \{f(x): x \in X\} + \text{sup}\ \{g(x): x \in X\} \leq \text{sup}\ \{f(x) + g(x): x \in X\}$, clearly the left hand side is 1, since $\text{sup}\ \{x: x \in X\} = 1$, and the right hand must be greater than one since $f(x) + g(x)$ can clearly equate to a number greater than 1 given range and domain. 
+
+Lastly , $\text{sup}\{f(x): x \in X\} + \text{sup} \{g(x): x \in X\} = 2$, clearly, which is greater than $\text{sup}\{f(x) + g(x) : 0 < x < 1\}$, since $f(x) < 1$, and $g(x) < 1\ \forall x \in X$.
 
 #### Section 7
 *F.*
