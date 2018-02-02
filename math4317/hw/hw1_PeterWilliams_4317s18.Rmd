@@ -73,7 +73,6 @@ The sets $E$ and $F$ with $0$ deleted are denoted $E' = \{ x \in \mathbb{R} : -1
 \newpage
 
 #### Section 3
-
 *B. Exhibit a one-to-one correspondence between the set $O$ of odd natural numbers and $\mathbb{N}$*
 
 The function $f(x) = \frac{x + 1}{2}, x\in \mathbb{N}$ maps the set of odd natural numbers, $O = \{2k - 1: k \in N\} \rightarrow \mathbb{N}$.
@@ -95,7 +94,6 @@ If $A$ can be put into one-one correspondence with a set $B \implies$ there exis
 Let $S_n = \{1,2,3,...,n\}$ be the initial segment determined by $n \in N$ and $S_m$ be the initial segment determined by $m \in N, m < n$. If $S_n$ can be put into one-one correspondence with $S_m \implies$ there exists and injection $f : S_n \rightarrow S_m$. For $n = 1$ we have $f : \{1\} \rightarrow S_m,\ m < 1$, but $S_m$ does not exist by definition for $m < 1$ implying the function is not valid for the case $n = 1$, $m < n$. For, the case $n = k + 1$, we again have a map $f: \{1,2,...,k+1\} \rightarrow \{1,...,m\},\ m < k + 1$ which implies a mapping of $k+1$ elements to $m < k+1$ elements $\implies$ there exists at least two elements $x,x' \in S_{k+1}$ for which $f(x) = f(x')$ and $x \neq x' \implies$ an injection does not exist between these sets. 
 
 #### Section 4 
-
 *C. Prove part (b) of Theorem 4.4, that is, Let $a \neq 0$ and $b$ be arbitrary elements of $\mathbb{R}$. Then the equation $a \cdot x = b$ has the unique solution $x = \frac{1}{a} b$*
 
 Let $x_1$ be any solution to the equation, that is, $a \cdot x_1 = b$. By $(M4)$ we have that there is exists for each element $a \neq 0$ in $\mathbb{R}$ there exists an element $\frac{1}{a}$ such that $a(\frac{1}{a}) = 1$. Thus we have $(\frac{1}{a})ax_1= b(\frac{1}{a}) \implies 1 \cdot x_1 = b (\frac{1}{a}) \implies a \cdot x_1 = b$ has the unique solution $x_1 = \frac{b}{a}$.
@@ -113,7 +111,6 @@ If we assume that $t^2 = (\frac{p}{q})^2 = 3$, where $p, q \in \mathbb{Z}, q \ne
 If we take another rational number $c = \frac{a}{b},\ a,b \in \mathbb{Z}, b \neq 0$, and assume the contradiction that $r + \xi, r = \frac{p}{q},\ p,q \in \mathbb{Z}, q \neq 0$ is rational, that is $r + \xi = c$, we have $\xi = c - r = \frac{a}{b} - \frac{p}{q} = \frac{aq - bp}{bq}$ where $\frac{aq - bp}{bq}$ is a rational number, but clearly $\xi$ cannot not be equal to a rational number. Similarly for $r \xi = c \implies \xi = \frac{c}{r} = \frac{aq}{bp}$ where $\frac{aq}{bp}$ is clearly a rational number, again implying the contradiction that $\xi$ is equal to a rational number. Thus, by contradiction, $r + \xi$ and $r\xi$ must be irrational. 
 
 #### Section 5
-
 *B. If $n \in \mathbb{N}$, show that $n^2 \geq n$ and hence $\frac{1}{n^2} \leq \frac{1}{n}$.*
 
 If $n \in \mathbb{N}$, then $n \geq 1 \implies n^2 \geq n$, since $n^2 = n \cdot n \cdot 1 \geq n \cdot 1 \implies n \geq \frac{n \cdot 1}{n \cdot 1} \implies n \geq 1$, a condition of $n$ being a natural number. 
@@ -195,6 +192,14 @@ Lastly , $\text{sup}\{f(x): x \in X\} + \text{sup} \{g(x): x \in X\} = 2$, clear
 
 First, $J_1 \supseteq J_2 \supseteq ... \supseteq J_n \supseteq ...$, clearly, since for $n = 1$, $(0,1) \supseteq (0,\frac{1}{2})$, and for $(0,\frac{1}{n}) \supseteq (0,\frac{1}{n+1})$, for $n \in \mathbb{N}$. Using corollary $6.7(b)$, there exists a natural number $n \in \mathbb{N}$ such that $0 < \frac{1}{n} < z,\ z \in \mathbb{R},\ z > 0$, which implies there are arbitrarily small rational numbers of the form $1/n$. Therefore the sequence $J_n$ has no common point, i.e. $\cap_{j=1}^{n} J_n = \emptyset$, because for each open interval $(0,\frac{1}{n})$, there is a narrower open cell for $n \in \mathbb{N}$, such that the elements in that cell are always less than $1/n$.
 
-*G.*
-*K.*
+*G. If $I_n = [a_n,b_n], n \in \mathbb{N}$ is a nested sequence of closed cells, show that $a_1 \leq a_2 \leq ... \leq a_n \leq ... \leq b_m \leq ... \leq b_2 \leq b_1$.*
 
+If $I_n = [a_n,b_n]$ is a nested sequence of closed cells, that is $I_1 \supseteq I_2 \supseteq ...\supseteq I_n \supseteq ... \implies [a_1,b_1] \supseteq [a_n,b_n], \ n \in \mathbb{N}$. For the case $n = 2$, we have $I_1 \supseteq I_2 \Leftrightarrow [a_1,b_1]\supseteq[a_2,b_2] \implies a_1 \leq a_2,\ b_2 \leq b_1$ and $a_2 \leq b_1$. For case $n = k + 1, k \in \mathbb{N}$, we have $I_k \supseteq I_{k+1} \Leftrightarrow [a_k,b_k]\supseteq[a_{k+1},b_{k+1}] \implies a_{k} \leq a_{k+1},\ b_{k+1} \leq b_k$ and $a_{k+1} \leq b_{k+1} \leq b_k ... \implies a_1 \leq a_2 \leq ... \leq a_n \leq ... \leq b_m \leq ... \leq b_2 \leq b_1$.
+
+*If we put $\xi = \text{sup}\{a_n: n \in \mathbb{N}\}$ and $\eta = \text{inf}\{b_n: n \in \mathbb{N}$, show that $[\xi,\eta] = \cap_{n\in \mathbb{N}}\ I_n$.*
+
+With $\xi = \text{sup}\{a_n: n \in \mathbb{N}\},\ \eta = \text{inf}\{b_n: n \in \mathbb{N} \implies \xi \geq a_n\ \ \forall n \in \mathbb{N}, \eta \leq b_n\ \ \forall n \in \mathbb{N}$. By the nested cell property, $\xi \leq \eta\ \forall\ \ n \in \mathbb{N} \implies [a_n,b_n] \supseteq [\eta,\xi],\ n \in \mathbb{N} \implies [a_1,b_1]\cap[a_2,b_2]\cap...\cap[a_n,b_n]\cap ... = \cap_{n\in \mathbb{N}}\ I_n = [\eta,\xi]$.
+
+*K. By removing sets with ever decreasing length, show that we can construct a "Cantor-like" set which has positive length. How large can we make the length of this set?*
+
+If, as an example, we construct a "Cantor-like" set where instead of removing the "middle-third" intervals, we remove "middle-fourths", i.e. for $F_1 = [0,\frac{3}{8}]\cup[\frac{5}{8},1]$ we remove the middle $\frac{2^0}{4^1} = \frac{1}{4}$, for $F_2$ we remove the middle $\frac{2^1}{4^2} = \frac{2}{16}$ from preceding intervals, $F_2= [0,\frac{5}{32}]\cup[\frac{7}{32},\frac{12}{32}]\cup[\frac{20}{32},\frac{25}{32}]\cup[\frac{27}{32},1]$, and so on. This construction leads to removing 1 section of length, $\frac{1}{4}$, at the first cut, 2 sections of of length $\frac{2}{16}$ at the second cut, and on. That is, the sum of the length removed from the interval $[0,1]$ at the $n^{th}$ cut, can be represented by the sum $\frac{2^0}{4^1} + \frac{2^1}{4^2} + ... + \frac{2^{n-1}}{4^n} = \sum_{i = 1}^{n} \frac{2^{i-1}}{4^i} = \frac{1}{2} \sum_{i = 1}^{n} (\frac{1}{2})^i = \frac{1}{2} \frac{\frac{1}{2}}{1 - \frac{1}{2}} = \frac{1}{2}$. By this logic, for an arbitrarily large $n$, if we remove the "middle $n^{ths}$", we can remove an amount approaching 0, that is, create a set with a length approaching 1.
