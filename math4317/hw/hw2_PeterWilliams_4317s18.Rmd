@@ -1,5 +1,5 @@
 ---
-title: 'Math 4317 (Prof. Swiech, S''18): HW #1'
+title: 'Math 4317 (Prof. Swiech, S''18): HW #2'
 author: "Peter Williams"
 date: "2/08/2018"
 output:
@@ -14,12 +14,20 @@ knitr::opts_chunk$set(echo = TRUE)
 #### Section 8
 *D. If $w_1$ and $w_2$ are strictly positive, show that the definition, $(x_1,x_2) \cdot (y_1,y_2) = x_1 y_1 w_1 + x_2 y_2 w_2$ , yields an inner product on $\mathbb{R}^2$, generalize this for $\mathbb{R}^p$ .*
 
+Checking the properties of inner products, we have, based on definition above,  $(i)\ x \cdot x \geq 0$, since $(x_1,x_2)(x_1,x_2) = w_1x_1^2 + w_2x_2^2 \geq 0$, since $w_1, w_2 > 0$, and $x_i^2 > 0$, $i = 1,2$. For $x \in \mathbb{R}^p$, we have $x \cdot x = \sum_{j = 1}^{p}w_jx_j^2 \geq 0$, since each element in the summation $w_i, x_i^2 > 0$. 
+For property $(ii)$, we have $x \cdot x = 0$, if and only if $x=0$. In this case, since $w_1,w_2 > 0$, $w_1x_2^2 + w_2x_2^2 = 0$, when $x_1^2$ and $x_2^2$ equal zero, that is when $x = 0$. This holds for $x \in \mathbb{R}^p$, since for $w_i > 0,\ \ i = 1,...,p$ we have $\sum_{j=1}^{p}w_jx_j^2 = 0$, only when each element $w_ix_i2 = 0$, since each element is greater than or equal to zero. 
+For property $(iii)$, we show $x \cdot y = y \cdot x$ since $x \cdot y = w_1 x_1 y_1 + w_2 x_2 y_2 = w_1 x_1 y_1 + w_2 x_2 y_2 = w_1 y_1 x_2 + w_2 y_2 x_2 = y \cdot x$. Extending to $x \in \mathbb{R}^p$, we have again, by commutative property, $x \cdot y = \sum_{j=1}^{p} w_jx_jy_j = \sum_{j=1}^{p} w_jy_jx_j = y \cdot x$.
+Property $(iv)$, $x \cdot (y + z) = x \cdot y + x \cdot z,\ x,y,z \in \mathbb{R}^p$. In this case we have $\sum_{j=1}^{p}w_jx_j(y_j + z_j) = \sum_{j=1}^{p}w_jx_jy_j + w_jx_jz_j =\sum_{j=1}^{p}w_jx_jy_j + \sum_{j=1}^{p} w_jx_jz_j = x\cdot y + x \cdot z$, which clearly holds for base case, $p=2$ as well.
+For property $(v)$, we have $(ax)\cdot y = x \cdot (ay),\ a \in \mathbb{R}$. We have $(ax)\cdot y  = \sum_{j=1}^{p}w_jax_jy_j = a\sum_{j=1}^{p}w_jx_jy_j = a(x \cdot y) = \sum_{j=1}^{p}w_jx_jay_j = x \cdot (ay)$. Since all five properties are satisfied, an inner product is yielded here. 
+
 *E. $(x_1,x_2)\cdot(y_1,y_2) = x_1 y_1$ is not an inner product on $\mathbb{R}^2$. Why?*
 
-*F.*
-*G.*
-*H.*
-*P.*
+By property $(ii)$, i.e. $x \cdot x = 0$ if and only if $x = 0$, the definition above, $(x_1,x_2)\cdot(y_1,y_2) = x_1 y_1 = 0 \Leftrightarrow x =0$, however, we can't say $x = 0$, since in this case if $x_1 y_1 = 0 \implies x_1 = 0$, but we don't have information about $x_2$, or $x_i, i  = 3,...,p$, for $x in \mathbb{R}^p$. Thus for this operation $x \cdot x = 0$ does not necessarily mean $x = 0$.
+
+*F.*  
+*G.*  
+*H.*  
+*P.*  
 *Q.*
 
 #### Section 9
