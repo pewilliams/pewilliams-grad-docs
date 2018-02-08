@@ -1,0 +1,28 @@
+---
+title: 'Math 4317 (Prof. Swiech, S''18): HW #1'
+author: "Peter Williams"
+date: "2/08/2018"
+output:
+  pdf_document: default
+  word_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+#### Section 8
+*D. If $w_1$ and $w_2$ are strictly positive, show that the definition, $(x_1,x_2) \cdot (y_1,y_2) = x_1 y_1 w_1 + x_2 y_2 w_2$ , yields an inner product on $\mathbb{R}^2$, generalize this for $\mathbb{R}^p$ .*
+
+*E. $(x_1,x_2)\cdot(y_1,y_2) = x_1 y_1$ is not an inner product on $\mathbb{R}^2$. Why?*
+
+*F.*
+*G.*
+*H.*
+*P.*
+*Q.*
+
+#### Section 9
+#### Section 10
+#### Section 11
+
