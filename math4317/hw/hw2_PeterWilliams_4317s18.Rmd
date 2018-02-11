@@ -22,15 +22,40 @@ For property $(v)$, we have $(ax)\cdot y = x \cdot (ay),\ a \in \mathbb{R}$. We 
 
 *E. $(x_1,x_2)\cdot(y_1,y_2) = x_1 y_1$ is not an inner product on $\mathbb{R}^2$. Why?*
 
-By property $(ii)$, i.e. $x \cdot x = 0$ if and only if $x = 0$, the definition above, $(x_1,x_2)\cdot(y_1,y_2) = x_1 y_1 = 0 \Leftrightarrow x =0$, however, we can't say $x = 0$, since in this case if $x_1 y_1 = 0 \implies x_1 = 0$, but we don't have information about $x_2$, or $x_i, i  = 3,...,p$, for $x in \mathbb{R}^p$. Thus for this operation $x \cdot x = 0$ does not necessarily mean $x = 0$.
+By property $(ii)$, i.e. $x \cdot x = 0$ if and only if $x = 0$, the definition above, $(x_1,x_2)\cdot(y_1,y_2) = x_1 y_1 = 0 \Leftrightarrow x =0$, however, we can't say $x = 0$, since in this case if $x_1 y_1 = 0 \implies x_1 = 0$, but we don't have information about $x_2$, or $x_i, i  = 3,...,p$, for $x \in \mathbb{R}^p$. Thus for this operation $x \cdot x = 0$ does not necessarily mean $x = 0$.
 
-*F.*  
-*G.*  
-*H.*  
-*P.*  
-*Q.*
+*F. If $x = (x_1,x_2,...,x_p) \in \mathbb{R}^p$, define $||x||_1$ by $||x||_1 = |x_1| + |x_2| + ... + |x_p|$. Prove that $x \rightarrow ||x||_1$ is a norm on $\mathbb{R}^p$.*
+
+(i) $||x||_1 \geq 0$?. Since $|x_j| \geq 0\ \forall j \implies ||x|| = \sum_{j=1}^{p}|x_j| \geq 0$ by definition of the absolute value. 
+(ii) $||x||_1 = 0$ if and only if $x = 0$?. $||x|| = \sum_{j=1}^{p}|x_j| = 0 \implies x_j = 0\ \forall j \implies x = 0$.
+(iii) $||ax||_1 = |a|||x||\ \forall a \in \mathbb{R},\ x \in V$? When $a \geq 0$, and $x_j \geq 0$ or $a < 0$ and $x_j < 0$, $||ax_j|| = a x_j = |a||x_j|$. For the case $a < 0$ and $x_j \geq 0$ or $a \geq 0$ and $x_j < 0$, we have $||a_x)j||  = |ax_j| = (-1)a x_j$ or $a (-1) x_j = a |x_j| = |a||x_j|$.
+(iv) $||x + y||_1 \leq ||x|| + ||y||$ for $x, y \in \mathbb{R}^p$?. $||x + y|| = |x_1 + y_1| + |x_2 + y_2| + ... + |x_p + y_p|$. By the triangle inequality, $|x_j + y_j| \leq |x_j| + |y_j|$ for all $j$. Therefore $|x_1 + y_1| + |x_2 + y_2| + ... + |x_p + y_p| \leq |x_1| + |x_2| + ... + |x_p| + |y_1| + |y_2| + ... + |y_p| = ||x|| + ||y||$. Thus $||x||_1$ is a norm on $\mathbb{R}^p$. 
+
+*G.If $x = (x_1,x_2,...,x_p) \in \mathbb{R}^p$, define $||x||_{\infty}$ by $||x||_{\infty} = \text{sup} \{ |x_1| + |x_2| + ... + |x_p| \}$. Prove that $x \rightarrow ||x||_{\infty}$ is a norm on $\mathbb{R}^p$.*
+
+(i) $||x||_{\infty} \geq 0$? Since $|x_j| \geq 0\ \forall j \implies ||x||_{\infty} = \text{sup} \{ |x_1| + |x_2| + ... + |x_p| \} \geq 0$ since each element in the set is greater than zero.
+(ii) $||x||_{\infty} = 0$ if and only if $x = 0$?. Since each element in the set $\{ |x_1| + |x_2| + ... + |x_p| \}$ is greater than or equal to zero, $||x||_{\infty} = 0$ if and only if $x_j = 0$ for all $j$, which implies $x = 0$.
+(iii) $||ax||_{\infty} = |a|||x||_{\infty}\ \forall a \in \mathbb{R},\ x \in V$? $||ax||_{\infty} = \text{sup} \{|ax_1| + |ax_2| + ... + |ax_p| \}$, and as shown in 8.F $|ax_j| = |a||x_j|$, which implies $||ax||_{\infty} = \text{sup} \{|a||x_1| + |a||x_2| + ... + |a||x_p| \} = |a| \text{sup}\{|x_1| + |x_2| + ... + |x_p|\} = |a|||x||_{\infty}$, since $|a|,|x_j| > 0$.
+(iv)$||x + y||_{\infty} \leq ||x||_{\infty} + ||y||_{\infty}$ for $x, y \in \mathbb{R}^p$?. Again, by the triangle inequality, $|x_j + y_j| \leq |x_j| + |y_j|$ for all $j$. Therefore $\text{sup} \{ |x_1 + y_1| , |x_2 + y_2| , ... , |x_p + y_p| \} \leq \text{sup} \{ |x_1| + |y_1| , |x_2| + |y_2| , ... , |x_p| + |y_p| \}$. If we take $u_x = \text{sup}\{|x_j|\}$,$u_y = \text{sup}\{|y_j|\}$. $u_x + u_y \geq |x_j| + |y_j|$ for all $j \implies \text{sup}\{|x_j|\} + \text{sup}\{|y_j|\} = \text{sup}\{|x_j| + |y_j|\} \implies ||x+y||_{\infty} \leq ||x||_{\infty} + ||y||_{\infty}$. Thus, $||x||_{\infty}$ is a norm on $\mathbb{R}^p$. 
+
+*H. In the set $\mathbb{R}^2$, describe the sets:* 
+
+$S_1 = \{x \in \mathbb{R}^2 : ||x||_1 < 1\}$. $||x||_1 = \sqrt{x_1^2 + x_2^2} < 1$ describes and open circle consisting of points less than 1 in all directions from the origin, satisfying the inequality, $\sqrt{x_1^2} < \sqrt{ 1 - x_2^2}$.
+$S_{\infty} = \{x \in \mathbb{R}^2 : ||x||_{\infty} < 1 \}$, where $||x||_{\infty} = \text{sup}\{|x_1|, |x_2|\}$, is a dense open box with vertices vertices at $(1,1), (-1,1), (-1,-1), (1,-1)$ with $-1 < x_1 < 1$, and $-1< x_2 < 1$.
+
+
+*P. If $x,y$ belongs to $\mathbb{R}^p$, show that $||x+y||^2 = ||x||^2 + ||y||^2$ if and only if $x \cdot y = 0$.*
+
+$||x + y||^2 = (x + y)\cdot(x + y) = x \cdot x + y \cdot x + x \cdot + y + y \cdot y  = ||x||^2 + 2 x\cdot y + ||y||^2$, and $2 x \cdot y = 0$ if and only if $x \cdot y = 0$, thus, in order for $||x+y||^2 = ||x||^2 + ||y||^2$ to hold, $x \cdot y$ must equal zero. 
+
+*Q. A subset $K$ of $\mathbb{R}^p$ is said to be convex if, whenever, $x, y \in K$, and $t$ is a real number such that $0 \leq t \leq 1$, then the point $tx + (1-t)y$ also belongs to $K$. Show that $K_1,K_2, K_3$ are convex, but that $K_4$ is not.*
+
+1) $K_1 = \{x \in \mathbb{R}^2 : ||x|| < 1\}$. Let $x, y \in K_1$, then $||tx + (1-t)y|| \leq ||tx|| + ||(1 - t)y|| = |t|||x|| + |(1-t)|||y||$, and since $||x|| \leq 1$ and $||y|| \leq 1$, it implies $|t|||x|| + |(1-t)|||y|| \leq |t|(1) + |(1 -t)|(1) = t + 1 - t = 1 \implies tx + (1 - t)y \in K_1$.
+2) For $K_2  = \{(\xi, \eta) \in \mathbb{R}^2 : 0 < \xi < \eta \}$. Let $x = (x_1, x_2), y = (y_1, y_2) \in K_2 \implies 0 < x_1 < x_2$ and $0 < y_2 < y_2$, for the point $tx + (1- t)y$ to belong in $K_2$ it implies for $t \in [0,1] \implies 0 < tx_1 < tx_2$, and $0 < (1-t)y_1 < (1-t)y2$. Adding these inequalities, we have for $tx + (1- t)y$, $0 < tx_1 + (1 - t)y_1 < tx_2 + (1 - t)y_2 \implies tx + (1- t)y \in K_2$.
+3) Similarly for $K_3  = \{(\xi, \eta) \in \mathbb{R}^2 : 0 \leq \xi \leq \eta \leq 1 \}$, $x, y \in K_3$, $t \in [0,1]$, we have $0 \leq x_1 \leq x_2 \leq 1$ and $0 \leq y_1 \leq y_2 \leq 1 \implies 0 \leq tx_1 \leq tx_2 \leq t$ and $0 \leq (1-t)y_1 \leq (1-t)y_2 \leq (1-t)$, again adding the inequalities, we have $0 \leq tx_1  + (1- t)y_1\leq tx_2 + (1-t)y_2 \leq t + (1 - t) = 1 \implies tx + (1-t)y \in K_3$.
+4) For $K_4 = \{x \in \mathbb{R}^2 : ||x|| = 1\}$. Like in $K_1$, $x, y \in K_4$, then $||tx + (1-t)y|| = ||tx|| + ||(1 - t)y|| = |t|||x|| + |(1-t)|||y||$, and since $||x|| \leq 1$ and $||y|| \leq 1$, it implies $|t|||x|| + |(1-t)|||y|| \leq |t|(1) + |(1 -t)|(1) = 1$. This equality could hold in some cases where $||x|| = 1$, e.g. $(1,0), (0,1)$, but does not hold for all points, and thus $K_4$ is not convex.  
 
 #### Section 9
 #### Section 10
 #### Section 11
-
+#### Section 12
