@@ -43,7 +43,6 @@ By property $(ii)$, i.e. $x \cdot x = 0$ if and only if $x = 0$, the definition 
 $S_1 = \{x \in \mathbb{R}^2 : ||x||_1 < 1\}$. $||x||_1 = \sqrt{x_1^2 + x_2^2} < 1$ describes and open circle consisting of points less than 1 in all directions from the origin, satisfying the inequality, $\sqrt{x_1^2} < \sqrt{ 1 - x_2^2}$.
 $S_{\infty} = \{x \in \mathbb{R}^2 : ||x||_{\infty} < 1 \}$, where $||x||_{\infty} = \text{sup}\{|x_1|, |x_2|\}$, is a dense open box with vertices vertices at $(1,1), (-1,1), (-1,-1), (1,-1)$ with $-1 < x_1 < 1$, and $-1< x_2 < 1$.
 
-
 *P. If $x,y$ belongs to $\mathbb{R}^p$, show that $||x+y||^2 = ||x||^2 + ||y||^2$ if and only if $x \cdot y = 0$.*
 
 $||x + y||^2 = (x + y)\cdot(x + y) = x \cdot x + y \cdot x + x \cdot + y + y \cdot y  = ||x||^2 + 2 x\cdot y + ||y||^2$, and $2 x \cdot y = 0$ if and only if $x \cdot y = 0$, thus, in order for $||x+y||^2 = ||x||^2 + ||y||^2$ to hold, $x \cdot y$ must equal zero. 
@@ -56,6 +55,22 @@ $||x + y||^2 = (x + y)\cdot(x + y) = x \cdot x + y \cdot x + x \cdot + y + y \cd
 4) For $K_4 = \{x \in \mathbb{R}^2 : ||x|| = 1\}$. Like in $K_1$, $x, y \in K_4$, then $||tx + (1-t)y|| = ||tx|| + ||(1 - t)y|| = |t|||x|| + |(1-t)|||y||$, and since $||x|| \leq 1$ and $||y|| \leq 1$, it implies $|t|||x|| + |(1-t)|||y|| \leq |t|(1) + |(1 -t)|(1) = 1$. This equality could hold in some cases where $||x|| = 1$, e.g. $(1,0), (0,1)$, but does not hold for all points, and thus $K_4$ is not convex.  
 
 #### Section 9
+*B. Justify assertions from 9.2(c):*  
+
+(i) Denote $x = (x_1,x_2)$ the set $G =\{x \in \mathbb{R}^2 : x_1^2 + x_2^2 < 1 \}$ which is equivalent to $G =\{x \in \mathbb{R}^2 : \sqrt{x_1^2 + x_2^2} = ||x|| < 1 \}$. Let $\varepsilon = 1 - ||x|| > 0$. Take $y \in \mathbb{R}^2$ such that $||y - x|| < 1$, then, by triangle inequality $||y|| = ||y - x + x|| \leq ||y - x|| + ||x|| < \varepsilon + ||x|| = 1 - ||x|| + ||x|| = 1 \implies y \in G$, and thus $G$ is open.  
+(ii) Take $x = (x_1,x_2)$, and $H = \{x \in \mathbb{R}^2 : 0 < ||x||^2 < 1\}$. Take $y \in \mathbb{R}^2$ such that $||y-x|| < \varepsilon$, where $\varepsilon = \text{inf}\{||x||, 1 - ||x||\}$. Again $||y|| = ||y - x + x|| \leq ||y - x|| + ||x|| < \varepsilon + ||x|| = 1 - ||x|| + ||x|| = 1 \implies ||y|| < 1$. With $||x- y|| < \varepsilon \implies ||x|| - ||y|| < \varepsilon  \implies ||y|| > ||x|| - \varepsilon \implies ||y|| > ||x|| - ||x|| \implies ||y|| > 0 \implies y \in H$, and $H$ is open.  
+(iii) $F = \{x \in \mathbb{R}^2 : ||x||^2 \leq 1\}$. The complement of $F$, $F^c = \{x \in \mathbb{R}^2: ||x||^2 > 1\}$ is open, since for $\varepsilon = ||x|| -1 > 0$, $y \in \mathbb{R}^2$, $||x - y|| > ||x|| - ||y|| < 1 \implies ||x|| - \varepsilon < ||y|| \implies 1 < ||y|| \implies y \in F^c \implies F^c$ is open, and its complement $F$ must be closed as a result.  
+
+*D. What are the interior, boundary, and exterior points in $\mathbb{R}$ of the set $[0,1)$. Conclude that it is neither open nor closed.*  
+
+Let $A = [0,1)$. The interior points of $A$ consist of points in the open interval $(0,1)$ which is entirely contained in $A$. The boundary points of $A$ are the points $0$ and $1$. Since neighborhoods around the point $1$ and $0$ contain both points in $A$ and in its complement $A^c$. The exterior points of $A$ are points in the set consisting of the union of the intervals $(-\infty, 0) \cup [1,\infty)$. $A$ is not closed, since it does not contain the boundary point, $1$. $A$ is not open, by construction, since it is the union of an open and closed set or interval. 
+
+*G. Show that a subset of $\mathbb{R}^p$ is open if and only if it is the union of a countable collection of open balls.*  
+*I. Show every closed subset of $\mathbb{R}^p$ is the intersection of a countable collection of open sets.*  
+*J. If $A$ is any subset of $\mathbb{R}^p$, let $A^0$ denote the union of all open sets which are contained in $A$; the set $A^0$ is called the interior of $A$ Note that $A^0$ is an open set; (i) prove that it is the largest open set contained in $A$, also prove: (ii) $A^0 \subseteq A$, (iii) $(A^0)^0 = A^0$, (iv) $(A \cap B)^0 = A^0 \cap B^0$, and (v) $(\mathbb{R}^p)^0 = \mathbb{R}^p$. Also give and example to show $(A \cup B)^0 = A^0 \cup B^0$ may not hold.*  
+*K.Prove that a point belond to $A^0$ if and only if it is an interior point of $A$.*
+*L. If $A$ is any subset of $\mathbb{R}^p$, let $A^0$ denote the intersection of all closed sets which are containing $A$; the set $A^{-}$ is called the closure of $A$ Note that $A^{-}$ is an closed set; (i) prove that it is the smallest closed set containing $A$, prove that : (ii) $A \subseteq A^{-}$, (iii) $(A^{-})^{-} = A^{-}$, (iv) $(A \cup B)^{-} = A^{-} \cup B^{-}$, and (v) $\emptyset^{-} = \emptyset$*
+*M. Prove that a point belongs to $A^{-}$ if and only if it is either and interior or boundary point of $A$.*
 #### Section 10
 #### Section 11
 #### Section 12
