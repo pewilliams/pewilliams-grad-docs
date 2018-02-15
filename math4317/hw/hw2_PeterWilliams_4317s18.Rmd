@@ -41,7 +41,7 @@ By property $(ii)$, i.e. $x \cdot x = 0$ if and only if $x = 0$, the definition 
 *H. In the set $\mathbb{R}^2$, describe the sets:* 
 
 $S_1 = \{x \in \mathbb{R}^2 : ||x||_1 < 1\}$. $||x||_1 = \sqrt{x_1^2 + x_2^2} < 1$ describes and open circle consisting of points less than 1 in all directions from the origin, satisfying the inequality, $\sqrt{x_1^2} < \sqrt{ 1 - x_2^2}$.
-$S_{\infty} = \{x \in \mathbb{R}^2 : ||x||_{\infty} < 1 \}$, where $||x||_{\infty} = \text{sup}\{|x_1|, |x_2|\}$, is a dense open box with vertices vertices at $(1,1), (-1,1), (-1,-1), (1,-1)$ with $-1 < x_1 < 1$, and $-1< x_2 < 1$.
+$S_{\infty} = \{x \in \mathbb{R}^2 : ||x||_{\infty} < 1 \}$, where $||x||_{\infty} = \text{sup}\{|x_1|, |x_2|\}$, is a dense open box with vertices at $(1,1), (-1,1), (-1,-1), (1,-1)$ with $-1 < x_1 < 1$, and $-1< x_2 < 1$.
 
 *P. If $x,y$ belongs to $\mathbb{R}^p$, show that $||x+y||^2 = ||x||^2 + ||y||^2$ if and only if $x \cdot y = 0$.*
 
@@ -65,12 +65,49 @@ $||x + y||^2 = (x + y)\cdot(x + y) = x \cdot x + y \cdot x + x \cdot + y + y \cd
 
 Let $A = [0,1)$. The interior points of $A$ consist of points in the open interval $(0,1)$ which is entirely contained in $A$. The boundary points of $A$ are the points $0$ and $1$. Since neighborhoods around the point $1$ and $0$ contain both points in $A$ and in its complement $A^c$. The exterior points of $A$ are points in the set consisting of the union of the intervals $(-\infty, 0) \cup [1,\infty)$. $A$ is not closed, since it does not contain the boundary point, $1$. $A$ is not open, by construction, since it is the union of an open and closed set or interval. 
 
+\newpage
+
 *G. Show that a subset of $\mathbb{R}^p$ is open if and only if it is the union of a countable collection of open balls.*  
+
+Let $U \subseteq \mathbb{R}^p$ be open, and $\{x_n : n \in \mathbb{N} \}$ be the set of all rational points in $U$. Since $U$ is open $\implies$ there exists $r > 0$, such that each point $x_n$ can be contained in the open ball $B_r(x_n) = \{y \in \mathbb{R}^p : |y - x_n| < r\}$, such that $B_r(x_n) \subseteq U \implies \cup_{n \in \mathbb{N}} B_r(x_n) \subseteq U$ if we choose $r$ large enough.
+
+Let $U \subseteq \mathbb{R}^p$ be a countable collection of open balls $\implies$ for every rational point $x_n$, there exists an open ball $B_r(x_n),\ r > 0$, where $x_n \in B_r(x_n) \implies U \subseteq \cup_{n \in \mathbb{N}} B_r(x_n)$. Which implies $U = \subseteq \cup_{n \in \mathbb{N}} B_r(x_n)$.
+
 *I. Show every closed subset of $\mathbb{R}^p$ is the intersection of a countable collection of open sets.*  
-*J. If $A$ is any subset of $\mathbb{R}^p$, let $A^0$ denote the union of all open sets which are contained in $A$; the set $A^0$ is called the interior of $A$ Note that $A^0$ is an open set; (i) prove that it is the largest open set contained in $A$, also prove: (ii) $A^0 \subseteq A$, (iii) $(A^0)^0 = A^0$, (iv) $(A \cap B)^0 = A^0 \cap B^0$, and (v) $(\mathbb{R}^p)^0 = \mathbb{R}^p$. Also give and example to show $(A \cup B)^0 = A^0 \cup B^0$ may not hold.*  
-*K.Prove that a point belond to $A^0$ if and only if it is an interior point of $A$.*
-*L. If $A$ is any subset of $\mathbb{R}^p$, let $A^0$ denote the intersection of all closed sets which are containing $A$; the set $A^{-}$ is called the closure of $A$ Note that $A^{-}$ is an closed set; (i) prove that it is the smallest closed set containing $A$, prove that : (ii) $A \subseteq A^{-}$, (iii) $(A^{-})^{-} = A^{-}$, (iv) $(A \cup B)^{-} = A^{-} \cup B^{-}$, and (v) $\emptyset^{-} = \emptyset$*
-*M. Prove that a point belongs to $A^{-}$ if and only if it is either and interior or boundary point of $A$.*
+
+If $U \subseteq \mathbb{R}^p$ is a closed subset, i.e. for $y \in \mathbb{R}^p,\ x \in U,\ r_c > 0,\ U = \{y : ||x- y|| \leq r_c\}$, take the open set $\{y : ||x - y|| > r_c + 1/n\},\ n \in \mathbb{N} \implies x \in U \subseteq \cap_{n \in N} \{y : ||x-y|| < r_c + 1/n\}$.
+
+If $x \notin U \implies x \in \mathbb{R}^p \setminus U \implies x \in \{y : ||x - y|| > r_c\} \implies x \notin \{y : ||x - y|| > r_c + 1/n\},\ n \in \mathbb{N} \implies x \in \mathbb{R}^p \setminus \cap_{n \in N}\{y : ||x - y|| > r_c + 1/n\} \implies \mathbb{R}^p \setminus U \subseteq \cap_{n \in N}\{y : ||x - y|| > r_c + 1/n\} \implies \cap_{n \in N}\{y : ||x - y|| > r_c + 1/n\} \subseteq U$. Thus $U = \cap_{n \in N}\{y : ||x - y|| > r_c + 1/n\}$.
+
+*J. If $A$ is any subset of $\mathbb{R}^p$, let $A^0$ denote the union of all open sets which are contained in $A$; the set $A^0$ is called the interior of $A$ Note that $A^0$ is an open set; (i) prove that it is the largest open set contained in $A$, also prove: (ii) $A^0 \subseteq A$, (iii) $(A^0)^0 = A^0$, (iv) $(A \cap B)^0 = A^0 \cap B^0$, and (v) $(\mathbb{R}^p)^0 = \mathbb{R}^p$. Also give and example to show $(A \cup B)^0 = A^0 \cup B^0$ may not hold.*
+
+(i) Take $U$ as any open set contained in $A$. $A^0$ by definition is a union of all these sets, thus each $U \subseteq A^0 \implies A^0 \subseteq A$.  
+(ii) By definition $(A^0)^0 \subseteq A^0$, and since $(A^0)^0$ is by definition, the union of all open sets in $A^0 \implies A^0 \subseteq (A^0)^0 \implies A^0 = (A^0)^0$.  
+(iii) $(A \cap B)^0$ is the union of all open sets in $A \cap B \implies (A \cap B)^0 \subseteq A \cap B \implies (A \cap B)^0 \subseteq A$ and $(A \cap B)^0 \subseteq B$. Since $A^0, B^0$ contain all their open sets $\implies (A \cap B)^0 \subseteq A^0$ and that  $(A \cap B)^0 \subseteq B^0 \implies (A \cap B)^0 \subseteq A^0 \cap B^0$.
+In the other direction, $A^0 \subseteq A, B^0 \subseteq B \implies A^0 \cap B^0 \subseteq (A \cap B)$, and since $A^0 \cap B^0$ is the intersection of two open sets, it follows that $A^0 \cap B^0 \subseteq (A \cap B)^0$. This implies $(A \cap B)^0 = A^0 \cap B^0$.  
+(iv) $\mathbb{R}^p$ is an open set, and equals the collection of all open sets in it, which implies $\mathbb{R}^p = (\mathbb{R}^p)^0$.
+(v) Example that $(A \cup B)^0 = A^0 \cup B^0$ may not hold. If we take $A = [0,1], B = [1,2] \implies A^0 = (0,1), B^0 = (1,2) \implies A^0 \cup B^0 = (0,1) \cup (1,2),\ (A \cup B)^0 = (0,2) \implies \{1\} \in (A \cup B)^0,\ \{1\} \notin A^0 \cup B^0$. 
+
+*K.Prove that a point belongs to $A^0$ if and only if it is an interior point of $A$.*  
+Let $x$ be an interior point of $A \implies x$ can be contained in an open set in $A$, and since $A^0$ is the union of all open sets in $A \implies x \in A^0$.
+Let $x$ belong to $A^0 \implies$ belongs to an open set that is contained in $A^0 \implies x$ is an interior point in $A^0 implies$ x in an interior point of $A$.
+
+*L. If $A$ is any subset of $\mathbb{R}^p$, let $A^0$ denote the intersection of all closed sets which are containing $A$; the set $A^{-}$ is called the closure of $A$ Note that $A^{-}$ is an closed set; (i) prove that it is the smallest closed set containing $A$, prove that : (ii) $A \subseteq A^{-}$, (iii) $(A^{-})^{-} = A^{-}$, (iv) $(A \cup B)^{-} = A^{-} \cup B^{-}$, and (v) $\emptyset^{-} = \emptyset$*  
+(i) Since $A^{-}$ is an intersection of all closed sets containing $A$, including the smallest closed set containing $A$, $A^-$ must be the smallest closed set containing $A$. This implies that a closed set $A \subseteq A^-$.  
+(ii) Since $A^-$ is closed the smallest closed set that contains $A^-$ is $A^- \implies A^- \supseteq (A^-)^-$ and $A^- \subseteq (A^-)^- \implies A^- = (A^-)^-$.  
+(iii) Let point $x \in (A \cup B)^- = A^- \cup B^- \implies x$ belongs to the smallest closed set containing A or B $\implies x \in A^-$ or $x \in B^- \implies x \in A^- \cup B^-$.  
+(iv) Since $\emptyset$ is closed and contains no elements, the smallest losed set containing $\emptyset$ is $\emptyset^- \implies \emptyset^- = \emptyset$.
+
+Give an example to show that $(A \cap B)^- = A^- \cap B^-$ may not hold. Take $A = [0,1], B = (1,2]$, thus $(A \cap B) = \emptyset = (A \cap B)^-, A^- = [0,1], B^- = [1,2]$ and $A^- \cap B^- = \{1\} \neq (A \cap B)^-$.
+
+*M. Prove that a point belongs to $A^{-}$ if and only if it is either and interior or boundary point of $A$.*  
+
+Let $x \in A^- \implies x$ belongs to the smallest closed set that contains $A \implies$ a neighborhood of $x$ is either entirely in $A$ or partly in $A$ and $A^c \implies x$ is either an interior or boundary point.
+
+Let $x$ be an interior or boundary point of $A \implies$ any neighborhood of $x$ is either contained in $A$ and $A^c \implies x$ is either in $A$ or in a closed set containing $A$, i.e. $x \in A^-$.
+
 #### Section 10
+
 #### Section 11
+
 #### Section 12
