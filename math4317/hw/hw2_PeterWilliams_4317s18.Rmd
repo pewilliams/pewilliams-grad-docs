@@ -1,7 +1,7 @@
 ---
 title: 'Math 4317 (Prof. Swiech, S''18): HW #2'
 author: "Peter Williams"
-date: "2/08/2018"
+date: "2/27/2018"
 output:
   pdf_document: default
   word_document: default
@@ -107,6 +107,11 @@ Let $x \in A^- \implies x$ belongs to the smallest closed set that contains $A \
 Let $x$ be an interior or boundary point of $A \implies$ any neighborhood of $x$ is either contained in $A$ and $A^c \implies x$ is either in $A$ or in a closed set containing $A$, i.e. $x \in A^-$.
 
 #### Section 10
+*C. A point $x$ is a cluster point of a set $A \subseteq \mathbb{R}^p$ if and only if every neighborhood of $x$ contains infinitely man points of $A$.*
+*D. Let $A = \{\frac{1}{n} : n \in \mathbb{N} \}$. Show that every point of $A$ is a boundary point in $\mathbb{R}$, but that $0$ is the only clustter point of $A$ in $\mathbb{R}^p$.*
+*E. Let $A,B$ be subsets of $\mathbb{R}^p$ and let $x$ be a cluster point in $A \cap B in \mathbb{R}^p$. Prove that $x$ is a cluster point of both $A$ and $B$.*
+*F.Let $A,B$ be subsets of $\mathbb{R}^p$ and let $x$ be a cluster point in $A \cup B in \mathbb{R}^p$. Prove that $x$ is a cluster point of either $A$ or $B$.*
+*G. Show that every point in the Canton set $F is a cluster point of both $F$ and the complement of $F$,$F^c$.*
 
 #### Section 11
 
