@@ -107,11 +107,27 @@ Let $x \in A^- \implies x$ belongs to the smallest closed set that contains $A \
 Let $x$ be an interior or boundary point of $A \implies$ any neighborhood of $x$ is either contained in $A$ and $A^c \implies x$ is either in $A$ or in a closed set containing $A$, i.e. $x \in A^-$.
 
 #### Section 10
-*C. A point $x$ is a cluster point of a set $A \subseteq \mathbb{R}^p$ if and only if every neighborhood of $x$ contains infinitely man points of $A$.*
-*D. Let $A = \{\frac{1}{n} : n \in \mathbb{N} \}$. Show that every point of $A$ is a boundary point in $\mathbb{R}$, but that $0$ is the only clustter point of $A$ in $\mathbb{R}^p$.*
-*E. Let $A,B$ be subsets of $\mathbb{R}^p$ and let $x$ be a cluster point in $A \cap B in \mathbb{R}^p$. Prove that $x$ is a cluster point of both $A$ and $B$.*
-*F.Let $A,B$ be subsets of $\mathbb{R}^p$ and let $x$ be a cluster point in $A \cup B in \mathbb{R}^p$. Prove that $x$ is a cluster point of either $A$ or $B$.*
-*G. Show that every point in the Canton set $F is a cluster point of both $F$ and the complement of $F$,$F^c$.*
+*C. A point $x$ is a cluster point of a set $A \subseteq \mathbb{R}^p$ if and only if every neighborhood of $x$ contains infinitely many points of $A$.*  
+Let $x$ be a cluster point of $A \subseteq \mathbb{R}^p \implies$ there exists and element $a_n \in A$ such that $a_n \neq x$, $0 < ||x - a_n|| < \frac{1}{n}, n \in \mathbb{N} \implies$ there exists an element $a_{n+1} \in A$, such that $0 < ||x - a_{n+1}|| < \frac{1}{n+1}$ such that $a_n \neq a_{n+1}$ etc. which implies that is there is always an element of $A$ that satisfy this property that implies every neighborhood of a point $x$ contains infinitely many points.
+
+*D. Let $A = \{\frac{1}{n} : n \in \mathbb{N} \}$. Show that every point of $A$ is a boundary point in $\mathbb{R}$, but that $0$ is the only clustter point of $A$ in $\mathbb{R}^p$.*  
+
+Take $z >0, z \in \mathbb{R}$. By the completeness of $\mathbb{R}$, and properties of rational numbers, we have a number $\frac{1}{n}$ such that $0 < \frac{1}{n} < z, n \in \mathbb{N}$. Then for each point $x = \frac{1}{n}, n \in \mathbb{N}$, the neighborhood of $x$ consists of only the point $x \in A$, and points in the set $\{y \in \mathbb{R} : \frac{1}{n+1} < y < \frac{1}{n}\} \cup \{y \in \mathbb{R} :  \frac{1}{n} < y < \frac{1}{n-1}\}$, but this implies $y \notin A \implies y \in A^c \implies x$ is a boundary point. 
+
+Since for $n \in \mathbb{N}$, the point $0$, is the only point in $A$ for which the property $0 < ||0 - \frac{1}{n+1}|| < \frac{1}{n} \implies 0 < ||0 - \frac{1}{n+2}|| < \frac{1}{n+1}$ and so on holds, which implies $0$ is the only cluster point in $A$.
+
+*E. Let $A,B$ be subsets of $\mathbb{R}^p$ and let $x$ be a cluster point in $A \cap B \in \mathbb{R}^p$. Prove that $x$ is a cluster point of both $A$ and $B$.* 
+
+Let $x$ be a cluster point in $A \cap B \subseteq B, A \cap B \subseteq A \implies$ there exists and open set in $A \cap B$ that contains $x$ and a point distinct from $x \implies$ there exists and open set in $A$ that contains $x$ and a point distinct from it, and the same holds for $B \implies$ $x$ is a cluster point of $A$ and $B$.
+
+*F.Let $A,B$ be subsets of $\mathbb{R}^p$ and let $x$ be a cluster point in $A \cup B \in \mathbb{R}^p$. Prove that $x$ is a cluster point of either $A$ or $B$.*  
+
+Let $x$ be a cluster point in $A \cup B \subseteq B \implies$ there exists an open set in $A$ or $B$ that contains $x$ and a point distinct from $x \implies$ 
+either $A$ contains $x$ and its neighborhood containing at least another point distinct from $x$, or $B$ contains $x$ and its neighborhood containing at least one point distinct from $x \implies x$ is a cluster point of either $A$ or $B$.
+
+*G. Show that every point in the Cantor set $F$ is a cluster point of both $F$ and the complement of $F$,$F^c$.*  
+
+The Cantor set, $F$ by definition, is constructed by the intersection of sets $F_n, n \in \mathbb{N}$, where each set $F_n$ is constructed by the union of closed intervals, of the form $[\frac{k}{3^n}, \frac{k+1}{3^n}] \implies$ points in $F$ belonging to all intervals $F_n, n \in \mathbb{N} \implies$ these points are all boundary points of $F$, examples including $0, \frac{1}{3}, \frac{2}{3}, 1$. Neighborhoods around these boundary points include a point in $F$ and its complement $F^c \implies$ for $n \in \mathbb{N}$, and then the Cantor set $F$ consists of only boundary points which implies every point of $F$ is a cluster point of both $F$ and $F^c$.  
 
 #### Section 11
 
