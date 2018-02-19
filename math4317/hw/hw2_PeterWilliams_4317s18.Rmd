@@ -86,19 +86,21 @@ If $x \notin U \implies x \in \mathbb{R}^p \setminus U \implies x \in \{y : ||x 
 (iii) $(A \cap B)^0$ is the union of all open sets in $A \cap B \implies (A \cap B)^0 \subseteq A \cap B \implies (A \cap B)^0 \subseteq A$ and $(A \cap B)^0 \subseteq B$. Since $A^0, B^0$ contain all their open sets $\implies (A \cap B)^0 \subseteq A^0$ and that  $(A \cap B)^0 \subseteq B^0 \implies (A \cap B)^0 \subseteq A^0 \cap B^0$.
 In the other direction, $A^0 \subseteq A, B^0 \subseteq B \implies A^0 \cap B^0 \subseteq (A \cap B)$, and since $A^0 \cap B^0$ is the intersection of two open sets, it follows that $A^0 \cap B^0 \subseteq (A \cap B)^0$. This implies $(A \cap B)^0 = A^0 \cap B^0$.  
 (iv) $\mathbb{R}^p$ is an open set, and equals the collection of all open sets in it, which implies $\mathbb{R}^p = (\mathbb{R}^p)^0$.
-(v) Example that $(A \cup B)^0 = A^0 \cup B^0$ may not hold. If we take $A = [0,1], B = [1,2] \implies A^0 = (0,1), B^0 = (1,2) \implies A^0 \cup B^0 = (0,1) \cup (1,2),\ (A \cup B)^0 = (0,2) \implies \{1\} \in (A \cup B)^0,\ \{1\} \notin A^0 \cup B^0$. 
+*Give an example that $(A \cup B)^0 = A^0 \cup B^0$ may not hold.*  
+If we take $A = [0,1], B = [1,2] \implies A^0 = (0,1), B^0 = (1,2) \implies A^0 \cup B^0 = (0,1) \cup (1,2),\ (A \cup B)^0 = (0,2) \implies \{1\} \in (A \cup B)^0,\ \{1\} \notin A^0 \cup B^0$. 
 
 *K.Prove that a point belongs to $A^0$ if and only if it is an interior point of $A$.*  
 Let $x$ be an interior point of $A \implies x$ can be contained in an open set in $A$, and since $A^0$ is the union of all open sets in $A \implies x \in A^0$.
 Let $x$ belong to $A^0 \implies$ belongs to an open set that is contained in $A^0 \implies x$ is an interior point in $A^0 implies$ x in an interior point of $A$.
 
 *L. If $A$ is any subset of $\mathbb{R}^p$, let $A^0$ denote the intersection of all closed sets which are containing $A$; the set $A^{-}$ is called the closure of $A$ Note that $A^{-}$ is an closed set; (i) prove that it is the smallest closed set containing $A$, prove that : (ii) $A \subseteq A^{-}$, (iii) $(A^{-})^{-} = A^{-}$, (iv) $(A \cup B)^{-} = A^{-} \cup B^{-}$, and (v) $\emptyset^{-} = \emptyset$*  
-(i) Since $A^{-}$ is an intersection of all closed sets containing $A$, including the smallest closed set containing $A$, $A^-$ must be the smallest closed set containing $A$. This implies that a closed set $A \subseteq A^-$.  
+
+(i) Since $A^{-}$ is an intersection of all closed sets containing $A$, including the smallest closed set containing $A$, $A^-$ must be the smallest closed set containing $A$. This implies that a closed set $A \subseteq A^-$.    
 (ii) Since $A^-$ is closed the smallest closed set that contains $A^-$ is $A^- \implies A^- \supseteq (A^-)^-$ and $A^- \subseteq (A^-)^- \implies A^- = (A^-)^-$.  
 (iii) Let point $x \in (A \cup B)^- = A^- \cup B^- \implies x$ belongs to the smallest closed set containing A or B $\implies x \in A^-$ or $x \in B^- \implies x \in A^- \cup B^-$.  
-(iv) Since $\emptyset$ is closed and contains no elements, the smallest losed set containing $\emptyset$ is $\emptyset^- \implies \emptyset^- = \emptyset$.
-
-Give an example to show that $(A \cap B)^- = A^- \cap B^-$ may not hold. Take $A = [0,1], B = (1,2]$, thus $(A \cap B) = \emptyset = (A \cap B)^-, A^- = [0,1], B^- = [1,2]$ and $A^- \cap B^- = \{1\} \neq (A \cap B)^-$.
+(iv) Since $\emptyset$ is closed and contains no elements, the smallest losed set containing $\emptyset$ is $\emptyset^- \implies \emptyset^- = \emptyset$.  
+*Give an example to show that $(A \cap B)^- = A^- \cap B^-$ may not hold.*  
+Take $A = [0,1], B = (1,2]$, thus $(A \cap B) = \emptyset = (A \cap B)^-, A^- = [0,1], B^- = [1,2]$ and $A^- \cap B^- = \{1\} \neq (A \cap B)^-$.  
 
 *M. Prove that a point belongs to $A^{-}$ if and only if it is either and interior or boundary point of $A$.*  
 
@@ -129,6 +131,28 @@ either $A$ contains $x$ and its neighborhood containing at least another point d
 
 The Cantor set, $F$ by definition, is constructed by the intersection of sets $F_n, n \in \mathbb{N}$, where each set $F_n$ is constructed by the union of closed intervals, of the form $[\frac{k}{3^n}, \frac{k+1}{3^n}] \implies$ points in $F$ belonging to all intervals $F_n, n \in \mathbb{N} \implies$ these points are all boundary points of $F$, examples including $0, \frac{1}{3}, \frac{2}{3}, 1$. Neighborhoods around these boundary points include a point in $F$ and its complement $F^c \implies$ for $n \in \mathbb{N}$, and then the Cantor set $F$ consists of only boundary points which implies every point of $F$ is a cluster point of both $F$ and $F^c$.  
 
-#### Section 11
+\newpage
+#### Section 11  
+
+*A. Show directly from the definition (i.e. with using the Heine-Borel Theorem) that the open ball given by $\{(x,y): x^2 + y^2 < 1\}$ is not compact in $\mathbb{R}^2$.*  
+Let $H = \{(x,y): x^2 + y^2 < 1\}$ and let $G_n = \{(x,y): x^2 + y^2 < 1 - \frac{1}{n}\}$ so that $G^{'}= \{G_n: n \in \mathbb{N}\}$ be a collection collection of these open sets in $\mathbb{R}^2$ whose union contains $H$. If $\{G_{n_1},...,G_{n_k}\}$ is a finite subcollection of $G^{'}$, and $M = \text{sup}\{n_1,...,n_k\} \implies G_{n_j} \subseteq G_M,\ j = 1,...,k \implies G_M = \cup_{j=1}^{k} G_{n_j}$, but the point $(x,y)$ satisfying $x^2 + y^2 < 1 - \frac{1}{M}$ does not belong to $G_M \implies (x,y) \notin \cup_{j=1}^{k} G_{n_j} \implies$ no finite union of the sets $G^{'}$ contain $H \implies H$ is not compact.
+
+*B. Show directly that the entire space $\mathbb{R}^2$ is not compact.*  
+Let $H = \{(x,y) \in \mathbb{R}^2\}$, $G_n = \{(x,y): x^2 + y^2 < n^2\}$, and $G^{'}= \{G_n: n \in \mathbb{N}\}$ be a collection of these open sets in $\mathbb{R}^2$ whose union contains $H$. If $\{G_{n_1},...,G_{n_k}\}$ is a finite subcollection of $G^{'}$, and $M = \text{sup}\{n_1,...,n_k\} \implies G_{n_j} \subseteq G_M,\ j = 1,...,k \implies G_M = \cup_{j=1}^{k} G_{n_j}$, but the point $(x,y)$ satisfying $x^2 + y^2 < M^2$ does not belong to $G_M \implies (x,y) \notin \cup_{j=1}^{k} G_{n_j} \implies$ no finite union of the sets in $G^{'}$ can contain $\mathbb{R}^2$.  
+
+*C. Prove directly that if $K$ is compact in $\mathbb{R}^p$ and $F \subseteq K$ is a closed set, then $F$ is compact in $\mathbb{R}^p$*  
+If $K$ is compact in $\mathbb{R}^p$ and $F$ is a closed subset of $K \implies$ there exists a finite collection of open sets $G^{'} = \{G_{\alpha}\}$ whose union covers $K$, and further, contains $F$. Since the complement of closed $F$, namely, $F^c$ must be open $\implies$, the union of the open set $F^c$ and collection of open sets $G^{'}$ is a finite collection of sets that form a covering for $K$. Since $K$ is compact, and $F^c \cup G^{'}$ is finite $\implies G^{'}$ is a union of a finite collection of open sets containing $F \implies F$ is compact. 
+
+*D. Prove that if $K$ is a compact subset of $\mathbb{R}$, then $K$ is compact when regarded as a subset of $\mathbb{R}^p$.*  
+If $K$ is compact $\implies$ that is $K$ is covered by a collection of open sets, $G$, then it is contained by a finite number of the sets in $G$. Let $G^{'}$ be an open subset of $\mathbb{R}^2$ such that $G = G^{'} \cap \mathbb{R} \implies G^{'} \subseteq \mathbb{R}^2$ is a union of finite open sets, thus $K$ is compact in regards to being a subset of $\mathbb{R}^2$.
+
+*G. Prove the Canton Intersection Theormem by selecting a point $x_n$ from $F_n$ and then applying the Bolzano-Weierstrass Theorem 10.6 to the set $\{x_n: n \in \mathbb{N}\}$.*   
+
+*H. If $F$ is closed in $\mathbb{R}^p$ and if $d(x,F) = \text{inf}\{||x-z||: z \in F\} = 0$, then $x$ belongs to $F$.*   
+$d(x,F) = \text{inf}\{||x - z||: z \in F\} = 0 \implies x=z,\ z \in F$ or there exists $n \in \mathbb{N}$ such that $0 < ||x - z|| = ||z-x|| < \frac{1}{n} \implies x,z$ are cluster points of $F \in \mathbb{R}^p \implies x \in F$.
+
+*J. If $F$ is a non-empty closed set in $\mathbb{R}^p$ and if $x \notin F$, is there is a unique point of $F$ that is nearest to $x$?*  
+
+Let $F = \{y \in \mathbb{R}^2: ||y-x|| = r\} \implies$ we can define a non-empty set where every element contained in the set is the same distance from $x \implies$ there is not a unique element nearest to $x$. 
 
 #### Section 12
