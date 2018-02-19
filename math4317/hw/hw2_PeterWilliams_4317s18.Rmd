@@ -146,7 +146,8 @@ If $K$ is compact in $\mathbb{R}^p$ and $F$ is a closed subset of $K \implies$ t
 *D. Prove that if $K$ is a compact subset of $\mathbb{R}$, then $K$ is compact when regarded as a subset of $\mathbb{R}^p$.*  
 If $K$ is compact $\implies$ that is $K$ is covered by a collection of open sets, $G$, then it is contained by a finite number of the sets in $G$. Let $G^{'}$ be an open subset of $\mathbb{R}^2$ such that $G = G^{'} \cap \mathbb{R} \implies G^{'} \subseteq \mathbb{R}^2$ is a union of finite open sets, thus $K$ is compact in regards to being a subset of $\mathbb{R}^2$.
 
-*G. Prove the Canton Intersection Theormem by selecting a point $x_n$ from $F_n$ and then applying the Bolzano-Weierstrass Theorem 10.6 to the set $\{x_n: n \in \mathbb{N}\}$.*   
+*G. Prove the Canton Intersection Theorem by selecting a point $x_n$ from $F_n$ and then applying the Bolzano-Weierstrass Theorem 10.6 to the set $\{x_n: n \in \mathbb{N}\}$.*   
+If $x_n \in F_n, n \in \mathbb{N} \implies$ there exists at least one point in the set of possible $x_n$ that is a common point among the sets $F_n$, and by construction that each set $F_n$ is bounded and closed. By Bolzano-Weierstrass, every bounded infinite subset of $\mathbb{R^p}$ has a cluster point. This implies that if there is at least one $x_n$ common among, these sets, and that there is a cluster point $x \in F_n$ which belongs to all sets $F_k, k \in \mathbb{N}$.
 
 *H. If $F$ is closed in $\mathbb{R}^p$ and if $d(x,F) = \text{inf}\{||x-z||: z \in F\} = 0$, then $x$ belongs to $F$.*   
 $d(x,F) = \text{inf}\{||x - z||: z \in F\} = 0 \implies x=z,\ z \in F$ or there exists $n \in \mathbb{N}$ such that $0 < ||x - z|| = ||z-x|| < \frac{1}{n} \implies x,z$ are cluster points of $F \in \mathbb{R}^p \implies x \in F$.
