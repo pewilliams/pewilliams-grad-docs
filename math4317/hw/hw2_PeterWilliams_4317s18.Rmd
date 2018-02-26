@@ -157,3 +157,16 @@ $d(x,F) = \text{inf}\{||x - z||: z \in F\} = 0 \implies x=z,\ z \in F$ or there 
 Let $F = \{y \in \mathbb{R}^2: ||y-x|| = r\} \implies$ we can define a non-empty set where every element contained in the set is the same distance from $x \implies$ there is not a unique element nearest to $x$. 
 
 #### Section 12
+
+*A. If $A$ and $B$ are connected subsets of $\mathbb{R}^p$, give examples to show that $A \cup B, A \cap B, A \setminus B$ can be either connected for disconnected.*  
+
+*B. If $C \subseteq \mathbb{R}^p$ is connected and $x$ is a cluster point of $C$, then $C \cup \{x\}$ is connected.*   
+Assume $C^{'} = C \cup \{x\}$ is disconnected $\implies$ there exists open sets $A,B$ such that $A \cap C^{'}$ and $B \cap C^{'}$ are disjoint, non-empty, and $A \cup B = C^{'}$. Since $x \in C^{'} \implies  x \in A$ or $x \in B$, and since $x$ is a cluster point, and $A, B$ are open $\implies$ there is a neighborhood around $x$ with at least one other distinct point $implies$ if $x \in A \implies B \cap C^{'} = \emptyset$, if $x \in B \implies A \cap C^{'} = \emptyset \implies C^{'}$ must be connected, otherwise we would have a contradiction. 
+
+*C. $C \subseteq \mathbb{R}^p$ is connected, show that its closure $C^{-}$ is also connected.*  
+
+*E. If $K \subseteq \mathbb{R}^p$ is convex, then $K$ is connected.*  
+
+*F. The Cantor set $F$ is wildly disconnected. Show that if $x, y \in F, x \neq y$, than there is a disconnection $A,B$ of $F$ such that $x \in B, y \in B$.*  
+
+*H. Show that the set $A = \{(x,y) \in \mathbb{R}^2: 0 < y \leq x^2, x \neq 0 \} \cup \{(0,0)\}$ is connected in $\mathbb{R}^2$. However there does not exist a polygonal curve lying entirely in $A$ joining $(0,0)$ to other points in the set.*
