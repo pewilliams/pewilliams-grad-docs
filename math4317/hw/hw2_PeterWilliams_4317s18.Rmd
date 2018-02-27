@@ -27,7 +27,7 @@ By property $(ii)$, i.e. $x \cdot x = 0$ if and only if $x = 0$, the definition 
 *F. If $x = (x_1,x_2,...,x_p) \in \mathbb{R}^p$, define $||x||_1$ by $||x||_1 = |x_1| + |x_2| + ... + |x_p|$. Prove that $x \rightarrow ||x||_1$ is a norm on $\mathbb{R}^p$.*
 
 (i) $||x||_1 \geq 0$?. Since $|x_j| \geq 0\ \forall j \implies ||x|| = \sum_{j=1}^{p}|x_j| \geq 0$ by definition of the absolute value. 
-(ii) $||x||_1 = 0$ if and only if $x = 0$?. $||x|| = \sum_{j=1}^{p}|x_j| = 0 \implies x_j = 0\ \forall j \implies x = 0$.
+(ii) $||x||_1 = 0$ if and only if $x = 0$? $||x|| = \sum_{j=1}^{p}|x_j| = 0 \implies x_j = 0\ \forall j \implies x = 0$.
 (iii) $||ax||_1 = |a|||x||\ \forall a \in \mathbb{R},\ x \in V$? When $a \geq 0$, and $x_j \geq 0$ or $a < 0$ and $x_j < 0$, $||ax_j|| = a x_j = |a||x_j|$. For the case $a < 0$ and $x_j \geq 0$ or $a \geq 0$ and $x_j < 0$, we have $||a_x)j||  = |ax_j| = (-1)a x_j$ or $a (-1) x_j = a |x_j| = |a||x_j|$.
 (iv) $||x + y||_1 \leq ||x|| + ||y||$ for $x, y \in \mathbb{R}^p$?. $||x + y|| = |x_1 + y_1| + |x_2 + y_2| + ... + |x_p + y_p|$. By the triangle inequality, $|x_j + y_j| \leq |x_j| + |y_j|$ for all $j$. Therefore $|x_1 + y_1| + |x_2 + y_2| + ... + |x_p + y_p| \leq |x_1| + |x_2| + ... + |x_p| + |y_1| + |y_2| + ... + |y_p| = ||x|| + ||y||$. Thus $||x||_1$ is a norm on $\mathbb{R}^p$. 
 
@@ -158,15 +158,40 @@ Let $F = \{y \in \mathbb{R}^2: ||y-x|| = r\} \implies$ we can define a non-empty
 
 #### Section 12
 
-*A. If $A$ and $B$ are connected subsets of $\mathbb{R}^p$, give examples to show that $A \cup B, A \cap B, A \setminus B$ can be either connected for disconnected.*  
+*A. If $A$ and $B$ are connected subsets of $\mathbb{R}^p$, give examples to show that $A \cup B, A \cap B, A \setminus B$ can be either connected or disconnected.*  
 
-*B. If $C \subseteq \mathbb{R}^p$ is connected and $x$ is a cluster point of $C$, then $C \cup \{x\}$ is connected.*   
+Example 1: Take $A = \{x \in \mathbb{R}^p : ||x|| < 1\}, B = \{x \in \mathbb{R}^p : ||x|| = 1\}$, this yields: $A \cup B = \{x \in \mathbb{R}^p : ||x|| \leq 1\}$ which is a connected subset of $\mathbb{R}^p$. $A \cap B = \emptyset$ which could be considered connected since it can't be written as the union of two non-empty sets by lemma $12.6$. $A \setminus B$ is connected since $A \setminus B = \{x \in \mathbb{R}^p : ||x|| < 1\}$.
+
+Example 2: Take $A = \{x \in \mathbb{R}^p : ||x|| < 1\}, B = \{x \in \mathbb{R}^p : ||x|| > 1\}$, this yields: $A \cup B = \{x \in \mathbb{R}^p : ||x|| < 1\} \cup \{x \in \mathbb{R}^p : ||x|| > 1\}$ which is disconnected since there is not path through $\{x \in \mathbb{R}^p : ||x|| = 1\}$. $A \cap B = \emptyset$ again, which could be considered connected since it can't be written as the union of two non-empty sets by lemma $12.6$. $A \setminus B$ is connected since $A \setminus B = \{x \in \mathbb{R}^p : ||x|| < 1\}$ which is connected.
+
+Example 3: Take $A = \{x \in \mathbb{R}^p :  0 \leq ||x|| \leq 1\}, B = \{x \in \mathbb{R}^p : 0 < ||x|| < 1\}$, this yields: $A \cup B = A$ which is a connected. $A \cap B = B$ which is also connected. $A \setminus B$ is disconnected since $A \setminus B = \{x \in \mathbb{R}^p : ||x|| = 1\} \cup \{x \in \mathbb{R}^p : ||x|| = 0\}$ is disconnected since it can be formed by a union of two open, disjoint, non-empty sets in $\mathbb{R}^p$.
+
+Example 4: Take $A = \{x \in \mathbb{R}^2 :  (x -1)^2 + y^2 =1 \}$, a circle of radius $1$, centered at the point $(1,0)$  and $B = \{x \in \mathbb{R}^2 :  x^2 + y^2 =1\}$, a circle of radius $1$ centered at the origin. $A \cup B$ yields a connected set since the intersection of these two sets is non-empty. $A \cap B$ is disconnected since the intersection of these two circles consists of two distinct separated points. $A \setminus B$ is disconnected since it consists of the connected set $A$ less the two distinct points where the circles intersect, meaning the set is not pathwise connected.
+
+*B. If $C \subseteq \mathbb{R}^p$ is connected and $x$ is a cluster point of $C$, then $C \cup \{x\}$ is connected.*  
+
 Assume $C^{'} = C \cup \{x\}$ is disconnected $\implies$ there exists open sets $A,B$ such that $A \cap C^{'}$ and $B \cap C^{'}$ are disjoint, non-empty, and $A \cup B = C^{'}$. Since $x \in C^{'} \implies  x \in A$ or $x \in B$, and since $x$ is a cluster point, and $A, B$ are open $\implies$ there is a neighborhood around $x$ with at least one other distinct point $implies$ if $x \in A \implies B \cap C^{'} = \emptyset$, if $x \in B \implies A \cap C^{'} = \emptyset \implies C^{'}$ must be connected, otherwise we would have a contradiction. 
 
 *C. $C \subseteq \mathbb{R}^p$ is connected, show that its closure $C^{-}$ is also connected.*  
 
+Suppose $C^{-} \subseteq A \cup B$, where $A,B$ are open disjoint sets. By the property of the closure, $C \subseteq A \cup B$. Since $C$ is connected, this implies $C \subseteq A$ or $C \subseteq B$. 
+If we take $C \subseteq A \implies C \subseteq B^c$, where $B^c$ is the complement of $B$. Since $A$ is open, $B^c$ must be closed, and then $C^{-} \subseteq B^c \implies C^{-} \cap B = \emptyset \implies C^{-} \subseteq A \implies C^{-} \subseteq A^{-} \implies C^{-}$ is connected in $A$.
+
 *E. If $K \subseteq \mathbb{R}^p$ is convex, then $K$ is connected.*  
+
+Since $K$ be convex $\implies$ there exists for $t \in [0,1],\ x, y \in K$, the point $tx + (1 - t)y \in K$. 
+
+If we assume that $K$ is not connected $\implies$ there exists open sets $A,B$ such that $A \cup B = K, A \cap B = \emptyset$. If $x,y \in A \cup B \implies tx + (1 - t)y \in A \cup B$. But if we take $x \in A,\ y \in B, tx + (1-t)y$ cannot belong to $A \cap B$, since $A \cap B = \emptyset$ by construction. This implies that if $x,y \in K$, that $tx + (1 - t)y \in K \implies K$ must be connected.  
 
 *F. The Cantor set $F$ is wildly disconnected. Show that if $x, y \in F, x \neq y$, than there is a disconnection $A,B$ of $F$ such that $x \in B, y \in B$.*  
 
-*H. Show that the set $A = \{(x,y) \in \mathbb{R}^2: 0 < y \leq x^2, x \neq 0 \} \cup \{(0,0)\}$ is connected in $\mathbb{R}^2$. However there does not exist a polygonal curve lying entirely in $A$ joining $(0,0)$ to other points in the set.*
+By construction the Cantor set $F$, with $F_n, n \in \mathbb{N}$ each set consisting of the union of closed intervals $[\frac{k}{3^n}, \frac{k+1}{2^n}]$, which are separate, disjoint. 
+
+If we take $x \neq y$ where $x$ and $y$ belong to different closed intervals in $F_n \implies$ we can take sets $A,B \subseteq [0,1]$ with $x \in A$, $y \in B$ such that $x \in A \cap F_n$, $y \in B \cap F_n$ such that $A \cup B$ consists of the union of two disjoint sets covering all of $F$.
+
+*H. Show that the set $A = \{(x,y) \in \mathbb{R}^2: 0 < y \leq x^2, x \neq 0 \} \cup \{(0,0)\}$ is connected in $\mathbb{R}^2$. However there does not exist a polygonal curve lying entirely in $A$ joining $(0,0)$ to other points in the set.*  
+
+Assume that $A \cup \{(0,0)\}$ is disconnected $\implies$ there exists non-empty, open, disjoint sets $B,C \subseteq \mathbb{R}^2$ such that $B \cup C = A$ and $B \cap C = \emptyset$. If we take any pair of coordinates $x \neq 0, y > 0$ such that $(x,y) \in B \implies (x,y) \notin C, (x,y) \notin C \cap A \implies C$ consists of the point $(0,0)$. However, the set consisting of the single point $(0,0)$ is not open implying a contradiction. Therefore, $A$ must be connected.  
+
+If we assume that $A$ is disconnected $\implies$ there exists open sets $B,C$ such that $B \cup C = A$ and $B \cap C = \emptyset$. If we take the first coordinate of $(x,y) \in A$ where $x \neq 0$, that is $x > 0$ or $x < 0$, and $y > 0 \implies$ for points $(x,y) \in A$ there isn't a path connection along $t = [0,1]$ connecting point $(0,0)$ to any point $(x,y) \in A$.
+
