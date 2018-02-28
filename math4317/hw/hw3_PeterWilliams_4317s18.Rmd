@@ -24,11 +24,13 @@ Take $\varepsilon > 0$, note that for $n \in \mathbb{N}, \frac{1}{n} - \frac{1}{
 
 Let $||x|| = \lim(||x_n||)$, $\varepsilon > 0$, which implies there exists natural number $K(\varepsilon)$ such that for $n \geq K(\varepsilon), ||x_n - x|| < \varepsilon$. If $n \geq K(\varepsilon),\ ||x_n|| = ||x_n - x + x|| \leq ||x_n - x|| + ||x|| < \varepsilon + ||x|| \implies ||x_n|| - ||x|| \leq ||x_n-x|| < \varepsilon \implies \lim ||x_n|| = ||x||$.  
 
-*G. Let $d \in \mathbb{R}$ satisfy $d > 1$. Use Bernoulli's Inequality to show that the sequence $(d_n)$ is not bounded in $\mathbb{R}$. Hence it is not convergent.$*   
+*G. Let $d \in \mathbb{R}$ satisfy $d > 1$. Use Bernoulli's inequality to show that the sequence $(d_n)$ is not bounded in $\mathbb{R}$. Hence it is not convergent.$*   
 
 We have the sequence $D = (d_n)$, where $d_n = d^n$. Let $d = 1 + a$ for some $a > 0 \implies d^n = (1 + a)^n > 1 + na$ by Bernoulli's inequality. For any $a > b > 0$, $(1 + a)^n > (1 + b)^n$ which implies the sequence $d_n$ is increasing. Take $M > 0$, we have $d^n > 1 + na > M > 0$, if $n > \frac{M}{a} \implies 1 + na > M$. Thus $(d_n)$ is not bounded and its limit tends to $\infty$.  
 
-*H. Let $b \in \mathbb{R}$ satisfy $0 < b < 1$; show that $\lim (nb^n) = 0$. (Hint: use the Binomial Theorem as in Example 14.8(e).)*  
+*H. Let $b \in \mathbb{R}$ satisfy $0 < b < 1$; show that $\lim (nb^n) = 0$. (Hint: use the Binomial theorem as in Example 14.8(e).)*  
+
+Let $b = \frac{1}{1+a}, a > 0$, we have $b^n = \frac{1}{(1+a)^n}$. By Binomial theorem, $(1 + a)^n > \frac{n(n-1)}{2} a^2 \implies \frac{1}{(1 + a)^n} < \frac{2}{n(n-1)a^2}$, therefore $nb^n = \frac{n}{(1+a)^n} < \frac{2n}{n(n-1)a^2} = \frac{2}{(n-1)a^2}$. Take $\varepsilon > 0$, natural number $K(\varepsilon)$, if $n \geq K(\varepsilon)$ we have $nb^n = \frac{n}{(1+a)^n} < \frac{2}{(n-1)a^2} < \frac{2}{(K(\varepsilon)-1)a^2} < \varepsilon$. Then $|nb^n - 0| < \varepsilon \implies nb^n < \varepsilon \implies \lim nb^n = 0$.
 
 *I. Let $X = (x_n)$ be a sequence of strictly positive real numbers such that $\lim (\frac{x_{n+1}}{x_n}) < 1$. Show that for some $r$ with $0 < r < 1$ and some $C > 0$, then we have $0 < x_n < Cr^n$ for all sufficiently large $n \in \mathbb{N}$. Use this to show that $lim (x_n) = 0$*   
 
