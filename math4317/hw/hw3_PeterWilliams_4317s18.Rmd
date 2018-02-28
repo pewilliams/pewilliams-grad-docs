@@ -12,15 +12,32 @@ knitr::opts_chunk$set(echo = TRUE)
 ```
 
 #### Section 14
-*A. Let $b \in \mathbb{R}$, show $\lim \frac{b}{n} = 0$.*    
+*A. Let $b \in \mathbb{R}$, show $\lim \frac{b}{n} = 0$.*  
+
+Take $\varepsilon > 0$, if $|\frac{b}{n} - 0| < \varepsilon$, there exists natural number $K(\varepsilon)$ such that $\frac{b}{n} < \frac{n}{K(\varepsilon)} < \varepsilon$. If $n \geq K(\varepsilon)$, and we choose $K(\varepsilon)$ such that $K(\varepsilon) > \frac{b}{\varepsilon} \implies \frac{b}{n} < \varepsilon \implies \lim \frac{b}{n} = 0$.  
+
 *B. Show that $\lim (\frac{1}{n} - \frac{1}{n+1}) = 0$.*  
+
+Take $\varepsilon > 0$, note that for $n \in \mathbb{N}, \frac{1}{n} - \frac{1}{n+1} = \frac{n + 1 -n }{n (n+1)}= \frac{1}{n(n+1)} < \frac{1}{n}$. So we choose natural number $K(\varepsilon)$ such that $\frac{1}{K(\varepsilon)} < \varepsilon$. Therefore if $n \geq K(\varepsilon) \implies \frac{1}{n} < \varepsilon$. Therefore $|\frac{1}{n} - \frac{1}{n+1} - 0| = \frac{1}{n} - \frac{1}{n+1} < \frac{1}{n} < \varepsilon \implies \lim (\frac{1}{n} - \frac{1}{n+1}) = 0$.  
+
 *D. Let $X = (x_n)$ be a sequence in $\mathbb{R}^p$ which is convergent to $x$. Show that $\lim ||x_n|| = ||x||$. (Hint: use the Triangle Inequality.)*  
-*G. Let $d \in \mathbb{R}$ satisfy $d > 1$. Use Bernoulli's Inequality to show that the sequence $(d_n)$ is not bounded in $\mathbb{R}$. Hence it is not convergent.$*    
-*H. Let $b \in \mathbb{R}$ satisfy $0 < b < 1$; show that $\lim (nb^n) = 0$. (Hint: use the Binomial Theorem as in Example 14.8(e).)*    
-*I. Let $X = (x_n)$ be a sequence of strictly positive real numbers such that $\lim (\frac{x_{n+1}}{x_n}) < 1$. Show that for some $r$ with $0 < r < 1$ and some $C > 0$, then we have $0 < x_n < Cr^n$ for all sufficiently large $n \in \mathbb{N}$. Use this to show that $lim (x_n) = 0$*    
+
+Let $||x|| = \lim(||x_n||)$, $\varepsilon > 0$, which implies there exists natural number $K(\varepsilon)$ such that for $n \geq K(\varepsilon), ||x_n - x|| < \varepsilon$. If $n \geq K(\varepsilon),\ ||x_n|| = ||x_n - x + x|| \leq ||x_n - x|| + ||x|| < \varepsilon + ||x|| \implies ||x_n|| - ||x|| \leq ||x_n-x|| < \varepsilon \implies \lim ||x_n|| = ||x||$.  
+
+*G. Let $d \in \mathbb{R}$ satisfy $d > 1$. Use Bernoulli's Inequality to show that the sequence $(d_n)$ is not bounded in $\mathbb{R}$. Hence it is not convergent.$*   
+
+We have the sequence $D = (d_n)$, where $d_n = d^n$. Let $d = 1 + a$ for some $a > 0 \implies d^n = (1 + a)^n > 1 + na$ by Bernoulli's inequality. For any $a > b > 0$, $(1 + a)^n > (1 + b)^n$ which implies the sequence $d_n$ is increasing. Take $M > 0$, we have $d^n > 1 + na > M > 0$, if $n > \frac{M}{a} \implies 1 + na > M$. Thus $(d_n)$ is not bounded and its limit tends to $\infty$.  
+
+*H. Let $b \in \mathbb{R}$ satisfy $0 < b < 1$; show that $\lim (nb^n) = 0$. (Hint: use the Binomial Theorem as in Example 14.8(e).)*  
+
+*I. Let $X = (x_n)$ be a sequence of strictly positive real numbers such that $\lim (\frac{x_{n+1}}{x_n}) < 1$. Show that for some $r$ with $0 < r < 1$ and some $C > 0$, then we have $0 < x_n < Cr^n$ for all sufficiently large $n \in \mathbb{N}$. Use this to show that $lim (x_n) = 0$*   
+
 *J. Let $X = (x_n)$ be a sequence of strictly positive real numbers such that $\lim (\frac{x_{n+1}}{x_n}) > 1$. Show that $X$ is not a bounded sequence and hence is not convergent.*  
-*K. Give and example of a convergent sequence $(x_n)$ of strictly positice real numbers such that $\lim (\frac{x_n+1}{x_n}) = 1$. Give an example of a divergent sequence with this property.*
-*L. Apply the results of Exercises 14.I and 14.J to the following sequences. (Here $0 < a < 1, 1 < b, c > 0$)*
+
+*K. Give and example of a convergent sequence $(x_n)$ of strictly positice real numbers such that $\lim (\frac{x_n+1}{x_n}) = 1$. Give an example of a divergent sequence with this property.*  
+
+*L. Apply the results of Exercises 14.I and 14.J to the following sequences. (Here $0 < a < 1, 1 < b, c > 0$)*  
+
 (a) $(a^n)$  
 (b) $(na^n)$  
 (c) $(b^n)$  
