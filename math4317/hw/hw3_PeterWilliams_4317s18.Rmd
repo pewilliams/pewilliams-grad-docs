@@ -26,7 +26,7 @@ Let $||x|| = \lim(||x_n||)$, $\varepsilon > 0$, which implies there exists natur
 
 *G. Let $d \in \mathbb{R}$ satisfy $d > 1$. Use Bernoulli's inequality to show that the sequence $(d_n)$ is not bounded in $\mathbb{R}$. Hence it is not convergent.$*   
 
-We have the sequence $D = (d_n)$, where $d_n = d^n$. Let $d = 1 + a$ for some $a > 0 \implies d^n = (1 + a)^n > 1 + na$ by Bernoulli's inequality. For any $a > b > 0$, $(1 + a)^n > (1 + b)^n$ which implies the sequence $d_n$ is increasing. Take $M > 0$, we have $d^n > 1 + na > M > 0$, if $n > \frac{M}{a} \implies 1 + na > M$. Thus $(d_n)$ is not bounded and its limit tends to $\infty$.  
+We have the sequence $D = (d_n)$, where $d_n = d^n$. Let $d = 1 + a$ for some $a > 0 \implies d^n = (1 + a)^n > 1 + na$ by Bernoulli's inequality. For any $a > b > 0$, $(1 + a)^n > (1 + b)^n$ which implies the sequence $d_n$ is increasing. Take $M > 0$, we have $d^n > 1 + na > M > 0$, if $n > \frac{M}{a} \implies 1 + na > M$. Thus $(d_n)$ is not bounded.  
 
 *H. Let $b \in \mathbb{R}$ satisfy $0 < b < 1$; show that $\lim (nb^n) = 0$. (Hint: use the Binomial theorem as in Example 14.8(e).)*  
 
@@ -34,18 +34,36 @@ Let $b = \frac{1}{1+a}, a > 0$, we have $b^n = \frac{1}{(1+a)^n}$. By Binomial t
 
 *I. Let $X = (x_n)$ be a sequence of strictly positive real numbers such that $\lim (\frac{x_{n+1}}{x_n}) < 1$. Show that for some $r$ with $0 < r < 1$ and some $C > 0$, then we have $0 < x_n < Cr^n$ for all sufficiently large $n \in \mathbb{N}$. Use this to show that $lim (x_n) = 0$*   
 
+Since $L = \lim (\frac{x_{n+1}}{x_n}) < 1,\ 0 < r < 1 \implies |\frac{x_{n+1}}{x_n} - L| < r$ or $0 < \frac{x_{n+1}}{x_n} < r$ for all $n \geq K(\varepsilon) \in \mathbb{N}$. Since $\frac{x_{n+1}}{x_n} < r < 1 \implies x_{n+1} < rx_n < x_n \implies x_n < \frac{x_n}{r}$. If we set $C = \frac{x_n}{r^{n+1}} > 0$, we have $x_n < Cr^n$. Since $\lim_{n \rightarrow \infty}r^n = 0 \implies lim(x_n) = 0$.
+
 *J. Let $X = (x_n)$ be a sequence of strictly positive real numbers such that $\lim (\frac{x_{n+1}}{x_n}) > 1$. Show that $X$ is not a bounded sequence and hence is not convergent.*  
 
-*K. Give and example of a convergent sequence $(x_n)$ of strictly positice real numbers such that $\lim (\frac{x_n+1}{x_n}) = 1$. Give an example of a divergent sequence with this property.*  
+Take $\varepsilon > 0$, since $L = \lim (\frac{x_{n+1}}{x_n}) > 1 \implies |\frac{x_{n+1}}{x_n} - L|  = |L - \frac{x_{n+1}}{x_n}| < \varepsilon \implies L - \varepsilon < \frac{x_{n+1}}{x_n}$ for all $n \geq K(\varepsilon) \in \mathbb{N}$. Take $L - \varepsilon = r > 1$ when $\varepsilon$ is small. This implies $x_{n+1} > r x_n$. Take $C  = \frac{x_n}{r^{n-1}} > 0 \implies x_{n+1} > Cr^n$. Since $r > 1$, $r^n$ diverges which implies the sequence $x_{n+1}$ is not bounded or convergent. 
+
+*K. Give and example of a convergent sequence $(x_n)$ of strictly positive real numbers such that $\lim (\frac{x_n+1}{x_n}) = 1$. Give an example of a divergent sequence with this property.*  
+Consider convergent sequence $X = (x_n) = (\frac{1}{n})$. $\lim{(\frac{x_n+1}{x_n})} = 1 \implies |\frac{\frac{1}{n+1}}{\frac{1}{n}} - 1| = |\frac{-1}{n+1}| = \frac{1}{n+1} < \varepsilon,\ \varepsilon > 0$. If we choose natural number $K(\varepsilon), n \geq K(\varepsilon)$ we have $\frac{1}{n+1} < \frac{1}{K(\varepsilon)+1} < \varepsilon$, indicating $(\frac{x_n+1}{x_n})$ is a convergent sequence with limit $1$.  
+
+Consider divergent sequence $X = (x_n) = n$. $\lim{(\frac{x_n+1}{x_n})} = 1 \implies |\frac{n+1}{n} - 1| = |\frac{1}{n}| = \frac{1}{n} < \varepsilon,\ \varepsilon > 0$. If we choose natural number $K(\varepsilon), n \geq K(\varepsilon)$ we have $\frac{1}{n} < \frac{1}{K(\varepsilon)} < \varepsilon$, indicating $(\frac{x_n+1}{x_n})$ is a convergent sequence with limit $1$.  
 
 *L. Apply the results of Exercises 14.I and 14.J to the following sequences. (Here $0 < a < 1, 1 < b, c > 0$)*  
 
 (a) $(a^n)$  
+$\lim(\frac{x_{n+1}}{x_n}) < 1$, since $\frac{x_{n+1}}{x_n} = \frac{a^{n+1}}{a^n} = a < 1 \implies a^n$ is convergent, bounded. 
+
 (b) $(na^n)$  
+$\lim(\frac{x_{n+1}}{x_n}) < 1$, since $\frac{x_{n+1}}{x_n} = \frac{(n+1)a^{n+1}}{na^n} = (\frac{n+1}{n})a$ which tends to $1 \cdot a < 1 \implies na^n$ is convergent, bounded.
+
 (c) $(b^n)$  
-(d) $(\frac{b^n}{n})$  
+$\lim(\frac{x_{n+1}}{x_n}) > 1$, since $\frac{x_{n+1}}{x_n} = \frac{b^{n+1}}{b^n} = b > 1 \implies b^n$ is divergent, not bounded. 
+
+(d) $(\frac{b^n}{n})$ 
+In this case $\lim(\frac{x_{n+1}}{x_n}) > 1$, since $\frac{x_{n+1}}{x_n} = \frac{\frac{b^{n+1}}{n+1}}{\frac{b^n}{n}} = (\frac{n}{n+1})b$ which tends to $1 \cdot b > 1 \implies \frac{b^n}{n}$ diverges, not bounded. 
+
 (e) $(\frac{c^n}{n!})$  
+
+
 (f) $(\frac{2^{3n}}{3^{2n}})$  
+converge
 
 #### Section 15
 C(a-e),E,F,L,N
