@@ -47,26 +47,30 @@ Consider divergent sequence $X = (x_n) = n$. $\lim{(\frac{x_n+1}{x_n})} = 1 \imp
 
 *L. Apply the results of Exercises 14.I and 14.J to the following sequences. (Here $0 < a < 1, 1 < b, c > 0$)*  
 
-(a) $(a^n)$  
+(a) $(a^n)$    
 $\lim(\frac{x_{n+1}}{x_n}) < 1$, since $\frac{x_{n+1}}{x_n} = \frac{a^{n+1}}{a^n} = a < 1 \implies a^n$ is convergent, bounded. 
 
-(b) $(na^n)$  
+(b) $(na^n)$    
 $\lim(\frac{x_{n+1}}{x_n}) < 1$, since $\frac{x_{n+1}}{x_n} = \frac{(n+1)a^{n+1}}{na^n} = (\frac{n+1}{n})a$ which tends to $1 \cdot a < 1 \implies na^n$ is convergent, bounded.
 
-(c) $(b^n)$  
+(c) $(b^n)$    
 $\lim(\frac{x_{n+1}}{x_n}) > 1$, since $\frac{x_{n+1}}{x_n} = \frac{b^{n+1}}{b^n} = b > 1 \implies b^n$ is divergent, not bounded. 
 
-(d) $(\frac{b^n}{n})$ 
+(d) $(\frac{b^n}{n})$   
 In this case $\lim(\frac{x_{n+1}}{x_n}) > 1$, since $\frac{x_{n+1}}{x_n} = \frac{\frac{b^{n+1}}{n+1}}{\frac{b^n}{n}} = (\frac{n}{n+1})b$ which tends to $1 \cdot b > 1 \implies \frac{b^n}{n}$ diverges, not bounded. 
 
-(e) $(\frac{c^n}{n!})$  
+(e) $(\frac{c^n}{n!})$      
+$\lim(\frac{x_{n+1}}{x_n}) < 1$, since $\frac{x_{n+1}}{x_n} = \frac{\frac{c^{n+1}}{(n+1)!}}{\frac{c^n}{n!}} = \frac{c}{n+1}$ which tends to $0 < 1$ implying $(\frac{c^n}{n!})$ converges, bounded. 
 
-
-(f) $(\frac{2^{3n}}{3^{2n}})$  
-converge
+(f) $(\frac{2^{3n}}{3^{2n}})$    
+$\lim(\frac{x_{n+1}}{x_n}) < 1$, since $\frac{x_{n+1}}{x_n} = \frac{\frac{2^{3(n+1)}}{3^{2(n+1)}}}{\frac{2^{3n}}{3^{2n}}} = \frac{2^3}{1}\frac{1}{3^2} = \frac{8}{9} < 1$ implying $(\frac{2^{3n}}{3^{2n}})$ converges, bounded. 
 
 #### Section 15
-C(a-e),E,F,L,N
+*C(a-e).*  
+*E.*  
+*F.*  
+*L.*  
+*N.*  
 
 #### Section 16
 A,B,E,G,J,M(a)(c)(d),N
