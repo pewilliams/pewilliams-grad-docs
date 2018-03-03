@@ -14,7 +14,7 @@ knitr::opts_chunk$set(echo = TRUE)
 #### Section 14
 *A. Let $b \in \mathbb{R}$, show $\lim \frac{b}{n} = 0$.*  
 
-Take $\varepsilon > 0$, if $|\frac{b}{n} - 0| < \varepsilon$, there exists natural number $K(\varepsilon)$ such that $\frac{b}{n} < \frac{n}{K(\varepsilon)} < \varepsilon$. If $n \geq K(\varepsilon)$, and we choose $K(\varepsilon)$ such that $K(\varepsilon) > \frac{b}{\varepsilon} \implies \frac{b}{n} < \varepsilon \implies \lim \frac{b}{n} = 0$.  
+Take $\varepsilon > 0$, if $|\frac{b}{n} - 0| < \varepsilon$, there exists natural number $K(\varepsilon)$ such that $\frac{b}{n} < \frac{b}{K(\varepsilon)} < \varepsilon$. If $n \geq K(\varepsilon)$, and we choose $K(\varepsilon)$ such that $K(\varepsilon) > \frac{b}{\varepsilon} \implies \frac{b}{n} < \varepsilon \implies \lim \frac{b}{n} = 0$.  
 
 *B. Show that $\lim (\frac{1}{n} - \frac{1}{n+1}) = 0$.*  
 
@@ -22,7 +22,7 @@ Take $\varepsilon > 0$, note that for $n \in \mathbb{N}, \frac{1}{n} - \frac{1}{
 
 *D. Let $X = (x_n)$ be a sequence in $\mathbb{R}^p$ which is convergent to $x$. Show that $\lim ||x_n|| = ||x||$. (Hint: use the Triangle Inequality.)*  
 
-Let $||x|| = \lim(||x_n||)$, $\varepsilon > 0$, which implies there exists natural number $K(\varepsilon)$ such that for $n \geq K(\varepsilon), ||x_n - x|| < \varepsilon$. If $n \geq K(\varepsilon),\ ||x_n|| = ||x_n - x + x|| \leq ||x_n - x|| + ||x|| < \varepsilon + ||x|| \implies ||x_n|| - ||x|| \leq ||x_n-x|| < \varepsilon \implies \lim ||x_n|| = ||x||$.  
+$(x_n)$ convergent with limit $x \implies$  there exists natural number $K(\varepsilon)$ such that for $n \geq K(\varepsilon),\ ||x_n - x|| < \varepsilon$. If $n \geq K(\varepsilon)$. Since by triangle inequality, $|||x_n|| - ||x||| \leq ||x_n - x||< \varepsilon \implies  \lim ||x_n|| = ||x||$.
 
 *G. Let $d \in \mathbb{R}$ satisfy $d > 1$. Use Bernoulli's inequality to show that the sequence $(d_n)$ is not bounded in $\mathbb{R}$. Hence it is not convergent.$*   
 
@@ -66,11 +66,44 @@ $\lim(\frac{x_{n+1}}{x_n}) < 1$, since $\frac{x_{n+1}}{x_n} = \frac{\frac{c^{n+1
 $\lim(\frac{x_{n+1}}{x_n}) < 1$, since $\frac{x_{n+1}}{x_n} = \frac{\frac{2^{3(n+1)}}{3^{2(n+1)}}}{\frac{2^{3n}}{3^{2n}}} = \frac{2^3}{1}\frac{1}{3^2} = \frac{8}{9} < 1$ implying $(\frac{2^{3n}}{3^{2n}})$ converges, bounded. 
 
 #### Section 15
-*C(a-e).*  
-*E.*  
-*F.*  
-*L.*  
-*N.*  
+*C(a-e). For $x_n$ given by the following formulas, either establish the convergence of the divergence of the sequence $X = (x_n)$:*  
+(a) $x_n = \frac{n}{n+1}$  
+$x_n = \frac{n}{n+1} = \frac{1/n}{1/n}\frac{n}{n+1} = \frac{1}{1 + \frac{1}{n}}$. The limit of the sequence $Y = (y_n) = (1 + \frac{1}{n})$ clearly has limit $1 \implies \lim (x_n) = \lim \frac{1}{1 + \frac{1}{n}} = \frac{\lim 1}{\lim (1 + 1/n)} = 1 \implies$ this sequence converges to 1. 
+
+(b) $x_n = \frac{(-1)^nn}{n+1}$ 
+Let $X = (x_n) = (-1)^n, Y = (y_n) = \frac{n}{n+1}$. Using theorem 15.6.a, if $X$ converges to $x$, and $Y$ converges to $y$. $X \cdot Y$ converges to $x \cdot y$. In our case the series $(x_n) = (-1)^n$ diverges, and $(y_n) = \frac{n}{n+1}$ converges to $1 \implies \lim{X \cdot Y} = \lim X \cdot 1 = \lim X$ which diverges.  
+
+(c) $x_n = \frac{2n}{3n^2 + 1}$ 
+$x_n = \frac{2n}{3n^2 + 1} = \frac{1/n}{1/n}\frac{2n}{3n^2 + 1} = \frac{2}{3n  + \frac{1}{n}}$. We estimate the limit to be $0 \implies$ for $n \geq K(\varepsilon),\ |\frac{2}{3n + 1/n} - 0|  = \frac{2}{3n + 1/n} < \frac{2}{3K(\varepsilon) + 1/K(\varepsilon)} < \varepsilon,\ \varepsilon > 0 \implies (x_n) \rightarrow 0$. Converges. 
+
+(d) $x_n = \frac{2n^2 + 3}{3n^2 + 1}$  
+$x_n = \frac{2n^2 + 3}{3n^2 + 1} = \frac{1/n^2}{1/n^2}\frac{2n^2 + 3}{3n^2 + 1} = \frac{2 + 3/n^2}{3 + 1/n^2} \rightarrow \frac{2}{3}$. Converges.   
+
+(e) $x_n = n^2 - n = n(n-1)$  
+The sequence $(x_n) = n(n-1)$ is clearly divergent, since for all $M > 0,\ n \geq M$, $n(n-1) > M(M-1) > 0$. Diverges. 
+
+*E. If $X$ and $Y$ are sequences in $\mathbb{R}^p$ and if $X \cdot Y$ converges, do $X$ and $Y$ converge and have $\lim(X \cdot Y) = \lim(X) \cdot \lim(Y)$*  
+
+As an example, if we take sequences $X = (x_n) = (-1)^n = (-1,1,-1,...)$ and $Y = (y_n) = (-1)^{n+1} = (1,-1,1,...)$ then their product $X \cdot Y = (-1,-1,-1,...)$ which converges to $-1 \implies$ that if the product $X \cdot Y$ converges, but each sequence $X$ and $Y$ does not have a limit, divergea. 
+
+As another example, in the case of the constant sequences $X = (x_N) = (1,1,...)$, and $Y = (y_n) = (2,2,...)$, $X \cdot Y$ is the constant sequence $(2,2,...)$ which converges to $2$ which equals $\lim X \cdot \lim Y$. Therefore the convergence of $X \cdot Y$ converges does not necessarily mean that each sequence converges.  
+
+*F. If $X = (x_n)$ is a positive sequence which converges to $x$, then $(\sqrt{x_n})$ converges to $\sqrt{x}$. (Hint: $\sqrt{x_n} - \sqrt{x} = \frac{(x_n - x)}{(\sqrt{x_n} + \sqrt{x})}$ when $x \neq 0$).*  
+
+In the case that $\lim (x_n) = x = 0$ we have $|x_n - x|  = |x_n - 0| = x_n < \varepsilon^2,\ \varepsilon^2 > 0,\ n \geq K(\varepsilon)$, for natural number $K(\varepsilon)$. This implies $0 \leq x_n < \varepsilon^2$ for all $n \geq K(\varepsilon) \implies 0 \leq \sqrt{(x_n)} < \varepsilon$,  $\varepsilon > 0 \implies \sqrt{x_n} - 0 < \varepsilon \implies |\sqrt{x_n} - \sqrt{x}| < \varepsilon,\ n \geq K(\varepsilon) \implies \sqrt{x}$ is limit of $sqrt{x_n}$ when $x = 0$.  
+
+For case $x > 0$, $x > 0 \implies \sqrt{x} > 0$. Since $|\sqrt{x_n} - \sqrt{x}| = \sqrt{x_n} - \sqrt{x} = \sqrt{x_n} - \sqrt{x} \cdot \frac{\sqrt{x_n} + \sqrt{x}}{\sqrt{x_n} + \sqrt{x}} = \frac{x_n - x}{\sqrt{x_n} + \sqrt{x}}$. Since $\sqrt{x} > 0$, also implies $\sqrt{x_n} + \sqrt{x} \geq \sqrt{x} > 0 \implies \frac{x_n - x}{\sqrt{x_n} + \sqrt{x}} \leq \frac{x_n - x}{\sqrt{x}} \implies$ $|\sqrt{x_n} - \sqrt{x}| \leq \frac{1}{\sqrt{x}}(x_n - x) = \frac{1}{\sqrt{x}}|x_n - x| < \varepsilon$, $\varepsilon > 0$. So if $x_n \rightarrow x \implies \sqrt{x_n} \rightarrow \sqrt{x}$ for $x > 0$. 
+
+
+*L. If $0 < a \leq b$ and if $x_n = (a^n + b^n)^{\frac{1}{n}}$, then $\lim(x_n) = b$.*  
+
+Since $0 < a \leq b \implies b^n \leq a^n + b^n \leq b^n + b^n = 2b^n \implies (b^n)^{1/n} \leq (a^n + b^n)^{1/n} \leq (2b^n)^{1/n}$, therefore, $b \leq x_n \leq 2^{1/n}b$. Since $2^{1/n} \rightarrow 1$ as $n \rightarrow \infty \implies b \leq x_n \leq b \implies \lim(x_n) = b$.
+
+*N.Let $A \subseteq \mathbb{R}^p$ and $x \in \mathbb{R}^p$. Then $x$ is a boundary point of $A$ if and only if there is a sequence $(a_n)$ of elements in $A$ and a sequence $(b_n)$ of elements in $\mathcal{C}(A)$ such that $\lim(a_n) = x = lim(b_n).$*  
+
+$\rightarrow$ Let $x$ be a boundary point of $A \implies$ there is a neighborhood $V = \{y \in \mathbb{R}^p: ||y - x|| < r\},\ r > 0$, that includes points in $A$ and complement $A^c$. Since $V$ is a neighborhood of $x$, by definition of the limit, there is a natural number $K_v$ such that for all $n \geq K_v,\ a_n \in V$ and $b_n \in V \implies (a_n)$ converges to $x$ and $(b_n)$ converges to $x \implies \lim(a_n) = x = \lim(b_n)$.  
+
+$\leftarrow$ Let $x$ be limit of sequences $(a_n),\ (b_n) \implies$ there is a neigborhood $V = \{y \in \mathbb{R}^p: ||y - x|| < r\},\ r > 0$ for natural number $K_v$, such that $n \geq K_v,\ a_n \in V,\ b_n \in V \implies V$ includes points from $(a_n) \in A$ and $(b_n) \in A^c \implies x$ is a boundary point of $A$.
 
 #### Section 16
 A,B,E,G,J,M(a)(c)(d),N
