@@ -106,10 +106,48 @@ $\rightarrow$ Let $x$ be a boundary point of $A \implies$ there is a neighborhoo
 $\leftarrow$ Let $x$ be limit of sequences $(a_n),\ (b_n) \implies$ there is a neigborhood $V = \{y \in \mathbb{R}^p: ||y - x|| < r\},\ r > 0$ for natural number $K_v$, such that $n \geq K_v,\ a_n \in V,\ b_n \in V \implies V$ includes points from $(a_n) \in A$ and $(b_n) \in A^c \implies x$ is a boundary point of $A$.
 
 #### Section 16
-A,B,E,G,J,M(a)(c)(d),N
+*A. Let $x_1 \in \mathbb{R}$ satisfy $x_1 > 1$ and let $x_{n+1} = 2 - \frac{1}{x_n}$ for $n \in \mathbb{N}$. Show that the sequence $(x_n)$ is monotone and bounded. What is its limit?*  
+
+*B. Let $y_1 = 1$ and $y_{n+1} = (2 + y_n)^{1/2}$ for $n \in \mathbb{N}$. Show that $(y_n)$ is monotone and bounded. What is its limit?*  
+
+*E. Show that every sequence in $\mathbb{R}$ either has a monotone increasing subsequence or a monotone decreasing subseqence.*  
+
+*G. Determine the convergence or divergence of the sequence $(x_n)$ where, $x_n= \frac{1}{n+1} + \frac{1}{n+2} + ... + \frac{1}{2n}$ for $n \in \mathbb{N}$.*  
+
+*J. Show directly tht the following are not Cauchy sequences.*  
+(a)  $((-1)^n$  
+(b)  $(n + \frac{(-1)^n}{n})$  
+(c)  $(n^2)$
+
+*M. Establish the convergence and limits of the following sequences:*  
+(a)  $((1 + \frac{1}{n})^{n+1})$
+(c)  $((1 + \frac{2}{n})^{n})$ 
+(d)  $((1 + \frac{1}{(n+1)})^{3n})$
+
+*N. Let $0 < a_1 < b_1$ and define, for $n \in \mathbb{N}$, $a_{n+1} = (a_n b_n)^{1/2},\ \ b_{n+1} = \frac{1}{2}(a_n + b_n)$. By induction show that $a_n < b_n$, and show that $a_n$ and $b_n$ converge to the same limit.*  
 
 #### Section 17
-A,B,D,E,L,M
+*A. For each $n \in \mathbb{N}$, let $f_n$ be defined for $x> 0$ by $f_n(x) = \frac{1}{nx}$. For what values of $x$ does limit $f_n()x$ exist?*  
+
+*B. For each $n \in \mathbb{N}$, let $g_n$ be defined for $x \geq 0$ by the formula $g_n(x) = nx,\ 0 \leq x \leq \frac{1}{n}, g_n(x) = \frac{1}{nx}, \frac{1}{n} < x$. Show that $\lim(g_n(x)) = 0$ for all $x > 0$.*  
+
+*D. Show that, if we define $f_n$ on $\mathbb{R}$ by $f_n(x) = \frac{nx}{1 + n^2 x^2}$, then $(f_n)$ converges on $\mathbb{R}$.*  
+
+*E. Let $h_n$ be defined on the interval $\mathbb{I} = [0,1]$ by the formula $h_n(x) = 1- nx,\ 0 \leq x \leq \frac{1}{n}, h_n(x) = 0,\ \frac{1}{n} < x \leq 1$.*  
+
+*L. Show that the convergence in Exercise 17.B is not uniform on the domain $x \geq 0$, but that it is uniform on a set $x \geq c$, where $c >0$.*  
+
+*M. Is the convergence in Exercise 17.D uniform on $\mathbb{R}$?*  
 
 #### Section 18
-A(a-c),D,F,I
+*A. Determine the limit superior and the limit inferior of the following bounded sequences in $\mathbb{R}$.*  
+(a)  $((-1)^n)$
+(b)  $((-1)^n/n)$
+(c)  $((-1)^n + 1/n)$  
+
+*D. Give a direct proof of Theorem 18.3(c).*  
+
+*F. If $X = (x_n)$ is a bounded sequence of strictly positive elements in $\mathbb{R}$, show that $\lim \sup (x_n^{1/n}) \leq \lim \sup (x_{n+1}/x_n).$*  
+
+*I. Show that $\lim \sup X = + \infty$ if and only if there is a subsequence $X^{'}$ of $X$ such that $\lim X^{'} = + \infty$.*  
+
