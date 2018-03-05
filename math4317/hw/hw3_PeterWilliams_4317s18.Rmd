@@ -108,13 +108,17 @@ $\leftarrow$ Let $x$ be limit of sequences $(a_n),\ (b_n) \implies$ there is a n
 #### Section 16
 *A. Let $x_1 \in \mathbb{R}$ satisfy $x_1 > 1$ and let $x_{n+1} = 2 - \frac{1}{x_n}$ for $n \in \mathbb{N}$. Show that the sequence $(x_n)$ is monotone and bounded. What is its limit?*  
 
+We have $x_1 > 1$ and $x_2 = 2 - \frac{1}{x_1}$. We then have $x_1 > 2 - \frac{1}{x_1}  = x_2 > 1$ since since $1 > \frac{1}{x_1} > 0$. This implies $x_1 > x_2 > x_3 = 2 - \frac{1}{2 - \frac{1}{x_1}} > 1$. Using induction we have $x_1 > x_2 = 2 - \frac{1}{x_1} > 1$, . We then assume $x_{n-1} > x_n > 1$. For case $n+1$ we have $x_n > x_{n+1} > 1$. Since  $x_n = 2 - \frac{1}{x_{n-1}} > x_{n+1} = 2 - \frac{1}{x_n} > 1$, and since we assume $x_{n-1} > x_n > 1$ this implies  $2 - \frac{1}{x_{n-1}} > 2 - \frac{1}{x_n} > 1,\ n \in \mathbb{N}$. This shows $(x_n)$ is a monotone decreasing sequence bounded below by $1$. Knowing that this sequence has a limit $x$ that must satisfy the relation $x = 2 - \frac{1}{x} = x \implies 2 = x + \frac{1}{x}$ which is satisfied when $x = 1 \implies$ the limit of this sequence is $1$.  
+
 *B. Let $y_1 = 1$ and $y_{n+1} = (2 + y_n)^{1/2}$ for $n \in \mathbb{N}$. Show that $(y_n)$ is monotone and bounded. What is its limit?*  
+
+We have $y_1 = 1,\ y_2 = \sqrt{2 + 1} = \sqrt{3} < 2 \implies y_1 < y_2 < 2$. Using induction we assume $y_{n-1} < y_n < 2$. For case $n + 1$, we have $y_n < y_{n+1} < 2 \leftrightarrow \sqrt{2 + y_{n-1}} < \sqrt{2 + y_n} < 2 \implies 2 + y_{n-1} < 2 + y_{n} < 4 \implies$ directly $y_{n-1} < y_n < 2$. This shows that $(y_n)$ is a monotone increasing sequence bounded above by $2$. If a limit of $\lim(y_n) = y$ exists it must satisfy the relation, $y = \sqrt{2 + y} \implies y^2 = 2 + y$, and we have $y^2 - y - 2 = (y - 2)(y + 1) = 0$, which has roots $2,\ -1$. Since $(y_n)$ is positive increasing, its limit must be $2$. 
 
 *E. Show that every sequence in $\mathbb{R}$ either has a monotone increasing subsequence or a monotone decreasing subseqence.*  
 
 *G. Determine the convergence or divergence of the sequence $(x_n)$ where, $x_n= \frac{1}{n+1} + \frac{1}{n+2} + ... + \frac{1}{2n}$ for $n \in \mathbb{N}$.*  
 
-*J. Show directly tht the following are not Cauchy sequences.*  
+*J. Show directly that the the following are not Cauchy sequences.*  
 (a)  $((-1)^n$  
 (b)  $(n + \frac{(-1)^n}{n})$  
 (c)  $(n^2)$
