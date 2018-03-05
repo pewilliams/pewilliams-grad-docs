@@ -116,6 +116,10 @@ We have $y_1 = 1,\ y_2 = \sqrt{2 + 1} = \sqrt{3} < 2 \implies y_1 < y_2 < 2$. Us
 
 *E. Show that every sequence in $\mathbb{R}$ either has a monotone increasing subsequence or a monotone decreasing subseqence.*  
 
+Take an element of the sequence $X = (x_n)$, $x_k$, such that $x_k \geq x_n,\ n > k$. This implies for each $k_1 < k_2 < ... < k_j < ...$ we have $x_{k_1} > x_{k_2} > ... > x_{k_j}$ which is a decreasing subsequence of $X$. 
+
+Relying the on the decreasing subsequence $x_{k_1} > x_{k_2} > ... > x_{k_j},\ D = (x_{k_j})$, if we take an index $m_1 > k_{j}$, such that $x_{m_1} \notin D$, we can construct $x_{m_1} < x_{m_2} < ... < x_{m_i}$ since there exists $m_2 > m_1$ such that $x_{m_1} < x_{m_2}$ for all $m$, which is an increasing subsequence of $X$. 
+
 *G. Determine the convergence or divergence of the sequence $(x_n)$ where, $x_n= \frac{1}{n+1} + \frac{1}{n+2} + ... + \frac{1}{2n}$ for $n \in \mathbb{N}$.*  
 
 *J. Show directly that the the following are not Cauchy sequences.*  
