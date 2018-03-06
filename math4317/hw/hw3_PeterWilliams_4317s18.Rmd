@@ -84,9 +84,9 @@ The sequence $(x_n) = n(n-1)$ is clearly divergent, since for all $M > 0,\ n \ge
 
 *E. If $X$ and $Y$ are sequences in $\mathbb{R}^p$ and if $X \cdot Y$ converges, do $X$ and $Y$ converge and have $\lim(X \cdot Y) = \lim(X) \cdot \lim(Y)$*  
 
-As an example, if we take sequences $X = (x_n) = (-1)^n = (-1,1,-1,...)$ and $Y = (y_n) = (-1)^{n+1} = (1,-1,1,...)$ then their product $X \cdot Y = (-1,-1,-1,...)$ which converges to $-1 \implies$ that if the product $X \cdot Y$ converges, but each sequence $X$ and $Y$ does not have a limit, divergea. 
+As an example, if we take sequences $X = (x_n) = (-1)^n = (-1,1,-1,...)$ and $Y = (y_n) = (-1)^{n+1} = (1,-1,1,...)$, then their product $X \cdot Y = (-1,-1,-1,...)$ converges to $-1 \implies$ that the product $X \cdot Y$ converges, but each sequence $X$ and $Y$ does not have a limit, diverges. 
 
-As another example, in the case of the constant sequences $X = (x_N) = (1,1,...)$, and $Y = (y_n) = (2,2,...)$, $X \cdot Y$ is the constant sequence $(2,2,...)$ which converges to $2$ which equals $\lim X \cdot \lim Y$. Therefore the convergence of $X \cdot Y$ converges does not necessarily mean that each sequence converges.  
+As another example, in the case of the constant sequences $X = (x_N) = (1,1,...)$, and $Y = (y_n) = (2,2,...)$, $X \cdot Y$ is the constant sequence $(2,2,...)$ which converges to $2$ which equals $\lim X \cdot \lim Y$. Therefore the convergence of $X \cdot Y$ converges does not necessarily mean that each sequence converges, as there are examples of both cases.  
 
 *F. If $X = (x_n)$ is a positive sequence which converges to $x$, then $(\sqrt{x_n})$ converges to $\sqrt{x}$. (Hint: $\sqrt{x_n} - \sqrt{x} = \frac{(x_n - x)}{(\sqrt{x_n} + \sqrt{x})}$ when $x \neq 0$).*  
 
@@ -122,17 +122,26 @@ Relying the on the decreasing subsequence $x_{k_1} > x_{k_2} > ... > x_{k_j},\ D
 
 *G. Determine the convergence or divergence of the sequence $(x_n)$ where, $x_n= \frac{1}{n+1} + \frac{1}{n+2} + ... + \frac{1}{2n}$ for $n \in \mathbb{N}$.*  
 
-*J. Show directly that the the following are not Cauchy sequences.*  
-(a)  $((-1)^n$  
-(b)  $(n + \frac{(-1)^n}{n})$  
-(c)  $(n^2)$
+We have $x_1 = \frac{1}{2},\ x_2 = \frac{1}{3} + \frac{1}{4} = \frac{7}{12} > \frac{1}{2} \implies x_1 < x_2 < 1$. Using induction we assume $x_{n-1} < x_n < 1$. For the case $n + 1$, we have $x_n < x_{n+1} < 1 \leftrightarrow \frac{1}{n+1} \frac{1}{n+2} + ... + \frac{1}{2n} < \frac{1}{n+2} + \frac{1}{n+3} + ... + \frac{1}{2n + 2} < 1$. Adding $\frac{1}{n+1} > 1$ to each element we have $x_n + \frac{1}{n+1} < x_n + \frac{1}{2n + 1} + \frac{1}{2n + 2} < 1 + \frac{1}{n+1}$. Since $\frac{1}{2n + 2} + \frac{1}{2n + 1} > \frac{1}{n+1} \forall n \in \mathbb{N}$, because $\frac{n+1}{2n + 2} + \frac{n+1}{2n + 1} > 1 \implies x_n < x_{n+1} \implies x_n + (\frac{1}{2n+2} + \frac{1}{2n + 1} - \frac{1}{n+1}) < 1 \implies x_n < x_{n+1} < 1\ \ \forall n \in \mathbb{N}$. This implies this sequence converges and is bounded above by $1$. 
 
-*M. Establish the convergence and limits of the following sequences:*  
-(a)  $((1 + \frac{1}{n})^{n+1})$
-(c)  $((1 + \frac{2}{n})^{n})$ 
-(d)  $((1 + \frac{1}{(n+1)})^{3n})$
+*J. Show directly that the following are not Cauchy sequences.*  
+
+(a)  $((-1)^n)$   
+If we take $\varepsilon = 1 > 0$, for $m,n$ greater than natural number $M(\varepsilon)$, we have $|x_m - x_n| = 2 > \varepsilon$ for case $m$ odd, $n$ even, or case $m$ even, $n$ odd. For the cases $m$ odd and $n$ odd, or $m$ even and $n$ even we have $|x_m - x_n| = 0 < \varepsilon \implies$ there exists $m,n > M(\varepsilon)$ such that $|x_m - x_n| \geq \varepsilon > 0 \implies X = (x_n) = ((-1)^n)$ is not Cauchy.  
+
+(b)  $(n + \frac{(-1)^n}{n})$  
+If we consider just the case $m,n > M(\varepsilon) \in \mathbb{N},\ \varepsilon > 0$. For the case $m = n$ we have $|x_m - x_n| = 0$, but for the case $m,n$ even, $m > n$ we have $|x_m = x_n| = |m + \frac{-1^m}{m} - n - \frac{-1^n}{n}| = |m - n + (\frac{1}{m} - \frac{1}{n})| > 1 > 0$. This implies we can find a positive value of $\varepsilon$ such that $|x_m - x_n| \geq \varepsilon \implies X = (x_n) = (n + \frac{(-1)^n}{n})$ is not Cauchy.  
+
+(c)  $(n^2)$  
+For $m,n \in \mathbb{N}$ greater than natural number $M(\varepsilon)$, $\varepsilon > 0$, we have $|x_m - x_n|  = |m^2 - n^2|= 0$ for the case $m = n$. For the cases $m > n > 1$, or $1 < m < n$ have $|x_m - x_n|  = |m^2 - n^2| \geq 5$, since, for example, case $m = 3, n = 2$, |m^2 - n^2| = 3^2 - 2^2 = 5. This implies there exists $m,n > M(\varepsilon)$ such that $|x_m - x_n| \geq \varepsilon > 0 \implies X = (x_n) = n^2$ is not Cauchy.  
+
+*M. Establish the convergence and limits of the following sequences:*    
+(a)  $((1 + \frac{1}{n})^{n+1})$  
+(c)  $((1 + \frac{2}{n})^{n})$   
+(d)  $((1 + \frac{1}{(n+1)})^{3n})$  
 
 *N. Let $0 < a_1 < b_1$ and define, for $n \in \mathbb{N}$, $a_{n+1} = (a_n b_n)^{1/2},\ \ b_{n+1} = \frac{1}{2}(a_n + b_n)$. By induction show that $a_n < b_n$, and show that $a_n$ and $b_n$ converge to the same limit.*  
+
 
 #### Section 17
 *A. For each $n \in \mathbb{N}$, let $f_n$ be defined for $x> 0$ by $f_n(x) = \frac{1}{nx}$. For what values of $x$ does limit $f_n()x$ exist?*  
