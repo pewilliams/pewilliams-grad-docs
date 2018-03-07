@@ -137,14 +137,22 @@ For $m,n \in \mathbb{N}$ greater than natural number $M(\varepsilon)$, $\varepsi
 
 *M. Establish the convergence and limits of the following sequences:*    
 (a)  $((1 + \frac{1}{n})^{n+1})$  
-(c)  $((1 + \frac{2}{n})^{n})$   
+We have bound on $x_n = (1 + \frac{1}{n})^{n+1} \geq (1 + (n+1)\frac{1}{n}) = 1 + 1 + \frac{1}{n} > 2,\ \forall n \in \mathbb{N}$ by Bernoulli's Inequality, implying the sequence is bounded below by 2. For $X = (x_n) = ((1 + \frac{1}{n})^{n+1})$, we also have $\forall n \in \mathbb{N}$, $\frac{x_{n-1}}{x_n} = (\frac{\frac{n}{n-1}}{\frac{n+1}{n}})^n (\frac{1}{1 + \frac{1}{n}}) = (\frac{n}{n-1}\frac{n}{n+1})^n(\frac{n}{n+1}) = (\frac{n^2}{n^2 - 1})^n (\frac{n}{n+1}) > 1 \implies (x_n)$ is decreasing. So the sequence is bounded and decreasing. Applying the algebraic property of limits we then have $\lim_{n \to \infty}(1 + \frac{1}{n})^{n+1} = \lim_{n \to \infty}(1 + \frac{1}{n})^n \cdot \lim_{n \to \infty} (1 + \frac{1}{n}) = e * 1$  
+
+(c)  $((1 + \frac{2}{n})^{n})$     
+We can write $((1 + \frac{2}{n})^{n}) = ((1 + \frac{1}{\frac{n}{2}})^{n}) = ((1 + \frac{1}{\frac{n}{2}})^{\frac{n}{2}})^2$. If we consider the subsequence of even numbers, $n = 2k,\ k \in \mathbb{N}$, we have $((1 + \frac{1}{\frac{n}{2}})^{\frac{n}{2}})^2 = (1 + \frac{1}{k})^k \cdot (1 + \frac{1}{k})^k$, and using the algebraic property of limits, we have $\lim_{k \to \infty} (1 + \frac{1}{k})^k \cdot (1 + \frac{1}{k})^k = e \cdot e = e^2$, since the sequence has a limit, is convergent to $e^2$.
+
 (d)  $((1 + \frac{1}{(n+1)})^{3n})$  
+We can write $((1 + \frac{1}{(n+1)})^{3n}) = ((1 + \frac{1}{(n+1)})^{n})^3 = (1 + \frac{1}{(n+1)})^{n}) \cdot (1 + \frac{1}{(n+1)})^{n}) \cdot (1 + \frac{1}{(n+1)})^{n})$, the product of three convergent sequences, where the limit of each sequence $\lim_{n \to \infty}(1 + \frac{1}{n+1})^n = e \implies \lim_{n \to \infty}((1 + \frac{1}{(n+1)})^{3n}) = e \cdot e \cdot e = e^3$. 
 
 *N. Let $0 < a_1 < b_1$ and define, for $n \in \mathbb{N}$, $a_{n+1} = (a_n b_n)^{1/2},\ \ b_{n+1} = \frac{1}{2}(a_n + b_n)$. By induction show that $a_n < b_n$, and show that $a_n$ and $b_n$ converge to the same limit.*  
 
+Using induction, we are given $0<a_1<b_1$, and we assume $0<a_n<b_n$. For the case $n+1$ we have $0 < (a_nb_n)^{1/2} < \frac{1}{2}(an + bn) \leftrightarrow 0 < 2\sqrt{a_nb_n} < a_n + b_n \implies 0 < b_n + a_n - 2\sqrt{a_nb_n} = (\sqrt{b_n} - \sqrt{a_n})^2$. Since we assumed $b_n > a_n$, $0 < (\sqrt{b_n} - \sqrt{a_n})^2 \leftrightarrow 0 < \sqrt{b_n} - \sqrt{a_n} \implies 0 < \sqrt{a_n} < \sqrt{b_n} \implies 0 < a_n < b_n \implies 0 < a_{n+1} < b_{n+1}$.
+
+We then take $a$ to the be the limit of $(a_n)$, and $b$ of $(b_n) \implies$ $a$ satisfies $a = \sqrt{ab}$, and $b$ satisfies $b = \frac{a+b}{2}$. This implies $b = \frac{\sqrt{ab}+b}{2} \implies b$ satisfies $b = \sqrt{ab} = a \implies (a_n)$ and $(b_n)$ converge to the same limit.   
 
 #### Section 17
-*A. For each $n \in \mathbb{N}$, let $f_n$ be defined for $x> 0$ by $f_n(x) = \frac{1}{nx}$. For what values of $x$ does limit $f_n()x$ exist?*  
+*A. For each $n \in \mathbb{N}$, let $f_n$ be defined for $x> 0$ by $f_n(x) = \frac{1}{nx}$. For what values of $x$ does limit $f_n(x)$ exist?*  
 
 *B. For each $n \in \mathbb{N}$, let $g_n$ be defined for $x \geq 0$ by the formula $g_n(x) = nx,\ 0 \leq x \leq \frac{1}{n}, g_n(x) = \frac{1}{nx}, \frac{1}{n} < x$. Show that $\lim(g_n(x)) = 0$ for all $x > 0$.*  
 
