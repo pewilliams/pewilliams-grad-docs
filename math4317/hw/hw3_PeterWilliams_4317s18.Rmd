@@ -163,8 +163,11 @@ For case $x > \frac{1}{n},\ |g_n(x) - g(x)| = |\frac{1}{nx} - 0| = \frac{1}{nx}$
 For case, $0 \leq x \leq \frac{1}{n}$ if we assume $\lim(g_n(x)) = g(x) = 0$. For $0 \leq x \leq \frac{1}{n},\ |g_n(x) - g(x)| = |nx - 0| = nx \implies$ for $\frac{1}{n} \geq x > 0$ we have for $n \in \mathbb{N}$ the graph of each $g_n(x))$ consisting of a line from from the point $(x,g_n(x)) = (1/n,n/n) \to (0,0)$ over the domain of $1/n \geq x > 0$, since for each $x$ there are infinitely many points between $1/n$ and $0 \implies$ we can find $n \geq K(\varepsilon,x) \in \mathbb{N}$, $nx \leq K(\varepsilon,x) x < \varepsilon,\ \varepsilon > 0$. 
 
 *D. Show that, if we define $f_n$ on $\mathbb{R}$ by $f_n(x) = \frac{nx}{1 + n^2 x^2}$, then $(f_n)$ converges on $\mathbb{R}$.*  
+We have $f_n(x) = x\frac{n}{1 + n^2 x^2}$ which can be separated into two functions $g_n(x) = x,\ h_n(x) = \frac{n}{1 + n^2 x^2}$. Clearly $g_n(x) = x \to x = g(x)$, $h_n(x) = \frac{n}{1 + n^2 x^2} = \frac{1}{\frac{1}{n} + nx^2} < \frac{1}{nx^2}$, since $x^2>0 \implies h(x) = 0$, and we have $|h_n(x) - h(x)| = \frac{1}{\frac{1}{n} + nx^2} \leq \frac{1}{\frac{1}{K} + Kx^2} < \varepsilon,\ \varepsilon > 0,\ n \geq K \in \mathbb{N}$. Using algebraic properties of limits we have, $\lim{f_n(x)} = \lim{g_n(x)} \cdot \lim{h_n(x)} = 0 \cdot x \implies \lim{f_n(x)} = 0,\ \implies$ convergence. 
 
 *E. Let $h_n$ be defined on the interval $\mathbb{I} = [0,1]$ by the formula $h_n(x) = 1- nx,\ 0 \leq x \leq \frac{1}{n}, h_n(x) = 0,\ \frac{1}{n} < x \leq 1$.*  
+Using the uniform norm property, for case $x = 0$, we have $h_n(x) = 1- nx \to_{n \to \infty} 1  = h(x) \implies \sup \{||h_n(x) - h(x)||: x = 0 \} = \sup \{||1 - nx - 1||: x = 0 \} = \sup_{x = 0} nx = 0$. For case $0 < x \leq \frac{1}{n},\ h_n(x) = 1 - nx \to 0 = h(x) \implies \sup \{||h_n(x) - h(x)||: 0 < x \leq \frac{1}{n}\}= \sup_{0 < x \leq \frac{1}{n}} \{||1 - nx||\} = 0$. For case $\frac{1}{n} < x \leq 1,\ h_n(x) = 0 = h(x) \implies \sup \{||h_n(x) - h(x)||: \frac{1}{n} < x \leq 1\} = \sup\{||0 - 0||\} = 0$ which implies  ...
+
 *L. Show that the convergence in Exercise 17.B is not uniform on the domain $x \geq 0$, but that it is uniform on a set $x \geq c$, where $c >0$.*  
 
 We have $$g_n(x) = \Big{\{}\begin{array}{rr}
