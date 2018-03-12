@@ -154,7 +154,7 @@ We then take $a$ to the be the limit of $(a_n)$, and $b$ of $(b_n) \implies$ $a$
 #### Section 17
 *A. For each $n \in \mathbb{N}$, let $f_n$ be defined for $x> 0$ by $f_n(x) = \frac{1}{nx}$. For what values of $x$ does limit $f_n(x)$ exist?*  
 
-Since $x > 0,\ \frac{1}{nx}$ is defined for all $n \in \mathbb{N}$, and for fixed $x$ is decreasing in $n$ indicative of $\lim{(f_n(x))}$ existing for all $x$.  
+Since $x > 0,\ \frac{1}{nx}$ is defined for all $n \in \mathbb{N}$, and for fixed $x$ is decreasing in $n$ is indicative of $\lim{(f_n(x))}$ existing for all $x$
 
 *B. For each $n \in \mathbb{N}$, let $g_n$ be defined for $x \geq 0$ by the formula $g_n(x) = nx,\ 0 \leq x \leq \frac{1}{n}, g_n(x) = \frac{1}{nx}, \frac{1}{n} < x$. Show that $\lim(g_n(x)) = 0$ for all $x > 0$.*    
 
