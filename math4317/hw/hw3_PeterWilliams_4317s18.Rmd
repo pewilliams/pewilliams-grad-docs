@@ -156,17 +156,25 @@ We then take $a$ to the be the limit of $(a_n)$, and $b$ of $(b_n) \implies$ $a$
 
 Since $x > 0,\ \frac{1}{nx}$ is defined for all $n \in \mathbb{N}$, and for fixed $x$ is decreasing in $n$ is indicative of $\lim{(f_n(x))}$ existing for all $x$
 
-*B. For each $n \in \mathbb{N}$, let $g_n$ be defined for $x \geq 0$ by the formula $g_n(x) = nx,\ 0 \leq x \leq \frac{1}{n}, g_n(x) = \frac{1}{nx}, \frac{1}{n} < x$. Show that $\lim(g_n(x)) = 0$ for all $x > 0$.*    
+*B. For each $n \in \mathbb{N}$, let $g_n$ be defined for $x \geq 0$ by the formula $g_n(x) = nx,\ 0 \leq x \leq \frac{1}{n}, g_n(x) = \frac{1}{nx}, \frac{1}{n} < x$. Show that $\lim(g_n(x)) = 0$ for all $x > 0$.*  
 
 For case $x > \frac{1}{n},\ |g_n(x) - g(x)| = |\frac{1}{nx} - 0| = \frac{1}{nx}$. For $n \geq K(\varepsilon, x),\ nx \geq K(\varepsilon, x)x \implies \frac{1}{nx} \leq \frac{1}{K(\varepsilon,x)x} < \varepsilon,\ \varepsilon > 0 \implies g_n(x) \rightarrow 0 = g(x)$.
 
-For case, $0 \leq x \leq \frac{1}{n}$ if we assume $\lim(g_n(x)) = g(x) = 0$. For $0 \leq x \leq \frac{1}{n},\ |g_n(x) - g(x)| = |nx - 0| = nx \implies$ for $\frac{1}{n} \geq x > 0$ we have for $n \in \mathbb{N}$ the graph of each $g_n(x))$ consisting of a line from from the point $(x,g_n(x)) = (1/n,n/n) \to (0,0)$ over the domain of $1/n \geq x > 0$, since for each $x$ there are infinitely many points between $1/n$ and $0 \implies$ we can find $n \geq K(\varepsilon,x) \in \mathbb{N}$, $nx \leq K(\varepsilon,x) x < \varepsilon,\ \varepsilon > 0$. 
+For case, $0 \leq x \leq \frac{1}{n}$ if we assume $\lim(g_n(x)) = g(x) = 0$. 
+
+For case $x = 0$, $g_n(0) = n \cdot 0 = 0$ everywhere implying $\lim(g_n(x)) = 0$ in this case.
+
+For $0 < x \leq \frac{1}{n},\ |g_n(x) - g(x)| = |nx - 0| = nx$. As $n$ grows in this case, the region from $0$ to $\frac{1}{n}$ shrinks as the region of valid $x$ converges to $0 \implies \lim g_n(x) = 0 = h(x)$.  
 
 *D. Show that, if we define $f_n$ on $\mathbb{R}$ by $f_n(x) = \frac{nx}{1 + n^2 x^2}$, then $(f_n)$ converges on $\mathbb{R}$.*  
+
 We have $f_n(x) = x\frac{n}{1 + n^2 x^2}$ which can be separated into two functions $g_n(x) = x,\ h_n(x) = \frac{n}{1 + n^2 x^2}$. Clearly $g_n(x) = x \to x = g(x)$, $h_n(x) = \frac{n}{1 + n^2 x^2} = \frac{1}{\frac{1}{n} + nx^2} < \frac{1}{nx^2}$, since $x^2>0 \implies h(x) = 0$, and we have $|h_n(x) - h(x)| = \frac{1}{\frac{1}{n} + nx^2} \leq \frac{1}{\frac{1}{K} + Kx^2} < \varepsilon,\ \varepsilon > 0,\ n \geq K \in \mathbb{N}$. Using algebraic properties of limits we have, $\lim{f_n(x)} = \lim{g_n(x)} \cdot \lim{h_n(x)} = 0 \cdot x \implies \lim{f_n(x)} = 0,\ \implies$ convergence. 
 
-*E. Let $h_n$ be defined on the interval $\mathbb{I} = [0,1]$ by the formula $h_n(x) = 1- nx,\ 0 \leq x \leq \frac{1}{n}, h_n(x) = 0,\ \frac{1}{n} < x \leq 1$.*  
-Using the uniform norm property, for case $x = 0$, we have $h_n(x) = 1- nx \to_{n \to \infty} 1  = h(x) \implies \sup \{||h_n(x) - h(x)||: x = 0 \} = \sup \{||1 - nx - 1||: x = 0 \} = \sup_{x = 0} nx = 0$. For case $0 < x \leq \frac{1}{n},\ h_n(x) = 1 - nx \to 0 = h(x) \implies \sup \{||h_n(x) - h(x)||: 0 < x \leq \frac{1}{n}\}= \sup_{0 < x \leq \frac{1}{n}} \{||1 - nx||\} = 0$. For case $\frac{1}{n} < x \leq 1,\ h_n(x) = 0 = h(x) \implies \sup \{||h_n(x) - h(x)||: \frac{1}{n} < x \leq 1\} = \sup\{||0 - 0||\} = 0$ which implies  ...
+*E. Let $h_n$ be defined on the interval $\mathbb{I} = [0,1]$ by the formula $h_n(x) = 1- nx,\ 0 \leq x \leq \frac{1}{n}, h_n(x) = 0,\ \frac{1}{n} < x \leq 1$. Show that $\lim h_n(x)$ exists on $[0,1]$.*  
+
+For case $x = 0$, we have $h_n(x) = 1 - nx \to_{n \to \infty} 1  = h(x)$.   
+For case $0 < x \leq \frac{1}{n},\ h_n(x) = 1 - nx \to 0 = h(x)$, because as $n$ grows, the region from $0$ to $\frac{1}{n}$ shrinks $\implies nx \to 1 \implies h_n(x) \to 1 - 1 = 0$.  
+For case $\frac{1}{n} < x \leq 1$ as $n$ grows we have $h_n(x) = \frac{1}{nx} \to 0 = h(x) \implies \lim h_n(x)$ exists on the interval $[0,1]$.
 
 *L. Show that the convergence in Exercise 17.B is not uniform on the domain $x \geq 0$, but that it is uniform on a set $x \geq c$, where $c >0$.*  
 
@@ -183,19 +191,29 @@ We have $\lim_{n \to \infty}\frac{nx}{1 + n^2x^2}$, which for large $n$ is like 
 
 #### Section 18
 *A. Determine the limit superior and the limit inferior of the following bounded sequences in $\mathbb{R}$.*  
-(a)  $((-1)^n)$  
+(a)  $((-1)^n)$   
+
 Considering two subsequences of $X = (x_n)$, we have $(x_{2n}) = (1,1,...,1,..)$, and $(x_{2n-1}) = (-1,-1,...,-1,..) \implies \lim{(x_{2n})} = 1,\ \lim{(x_{2n-1})} = -1 \implies \lim \sup (x_n) = 1, \ \lim \inf (x_n) = -1$.  
 (b)  $((-1)^n/n)$  
-Using the same approach, $(x_n) = ((-1)^n/n) \implies (x_{2n}) = (1/2,1/4,...,1/2n,...),$ and $\lim(x_{2n}) = 0$, $(x_{2n-1}) = (-1/1,-1/3,-1/4,...,-1/(2n-1),...), \implies \lim(x_{2n-1}) = 0 \implies \lim \sup (x_n) = \lim \lim \inf (x_n) = 0$.  
-(c)  $((-1)^n + 1/n)$  
-$((-1)^n + 1/n) = (x_n) \implies (x_{2n}) = (1 + 1/2, 1 + 1/4, 1 + 1/6, ..., 1 + 1/2n,..), \implies \lim (x_{2n}) = 1$. $(x_{2n-1}) = (-1 + 1/1, -1 + 1/3, -1 + 1/5, ...,-1 + 1/(2n-1),..), \implies \lim(x_{2n-1}) = -1 \implies \lim \sup (x_n) = 1, \ \lim \inf (x_n) = -11$.
 
-*D. Give a direct proof of Theorem 18.3(c).*  
+Using the same approach, $(x_n) = ((-1)^n/n) \implies (x_{2n}) = (1/2,1/4,...,1/2n,...),$ and $\lim(x_{2n}) = 0$, $(x_{2n-1}) = (-1/1,-1/3,-1/4,...,-1/(2n-1),...), \implies \lim(x_{2n-1}) = 0 \implies \lim \sup (x_n) = \lim \lim \inf (x_n) = 0$.  
+
+(c)  $((-1)^n + 1/n)$  
+
+$((-1)^n + 1/n) = (x_n) \implies (x_{2n}) = (1 + 1/2, 1 + 1/4, 1 + 1/6, ..., 1 + 1/2n,..), \implies \lim (x_{2n}) = 1$. $(x_{2n-1}) = (-1 + 1/1, -1 + 1/3, -1 + 1/5, ...,-1 + 1/(2n-1),..), \implies \lim(x_{2n-1}) = -1 \implies \lim \sup (x_n) = 1, \ \lim \inf (x_n) = -11$.  
+
+*D. Give a direct proof of Theorem 18.3(c).*   
+
 $\lim \inf(x_n) + \lim \inf (y_n) \leq \lim \inf (x_n + y_n)$. By definition $\lim \inf(x_n)$ is the supremum of set $V$ such that there are at most a finite number of $n \in \mathbb{N}$ such that $x_n < v$, and denote $\lim \inf (y_n)$ as the supremum of set $U$ of $u \in \mathbb{R}$ such that there are at most a finite number of $n \in \mathbb{N}$ such that $y_n < u$. 
 
 Let $v < \lim \inf (x_n),\ u < \lim \inf (y_n) \implies$ there are only finite $n \in \mathbb{N}$ such that $x_n < v$ and $y_n < u \implies$ only finite $n \in \mathbb{N}$ such that $x_n + y_n < v + u \implies \lim \inf (x_n) + \lim \inf (y_n) \leq v + u \implies \lim \inf (x_n) + \lim \inf (y_n) \leq \lim \inf (x_n + y_n)$.
 
-*F. If $X = (x_n)$ is a bounded sequence of strictly positive elements in $\mathbb{R}$, show that $\lim \sup (x_n^{1/n}) \leq \lim \sup (x_{n+1}/x_n).$*  
+*F. If $X = (x_n)$ is a bounded sequence of strictly positive elements in $\mathbb{R}$, show that $\lim \sup (x_n^{1/n}) \leq \lim \sup (x_{n+1}/x_n).$*   
 
-*I. Show that $\lim \sup X = + \infty$ if and only if there is a subsequence $X^{'}$ of $X$ such that $\lim X^{'} = + \infty$.*  
+Because $X = (x_n)$ is bounded, we have $x^* = \lim \sup(\frac{x_{n+1}}{x_n}),\ x^* < \infty \implies$ for $\varepsilon > 0,\ n, K \in \mathbb{N}$, we have $\frac{x_{n+1}}{x_n} \leq x^* + \varepsilon,$ for $n \geq K$, then $\frac{x_n}{x_K} = \frac{x_{K+1}}{x_K} \cdot \frac{x_{K+2}}{x_{K+1}}  \cdot ... \cdot \frac{x_{n-1}}{x_{n-2}} \cdot \frac{x_n}{x_{n-1}} \leq (x^* + \varepsilon)^{n - K} \implies \frac{x_n}{x_K} \leq (x^* + \varepsilon)^{n-K}  = \frac{(x^* + \varepsilon)^n}{(x^* + \varepsilon)^K} \implies x_n \leq \frac{x_K}{(x^* + \varepsilon)^K} \cdot (x^* + \varepsilon)^n \implies x_n^{1/n} \leq (\frac{x_K}{(x^* + \varepsilon)^K})^{1/n} \cdot (x^* + \varepsilon) \to_{n \to \infty} x_n \leq 1 \cdot (x^* + \varepsilon) \implies \lim \sup (x_n^{1/n}) \leq \lim \sup (x_{n+1}/x_n) \leq x^* + \varepsilon$.
 
+*I. Show that $\lim \sup X = + \infty$ if and only if there is a subsequence $X^{'}$ of $X$ such that $\lim X^{'} = + \infty$.*    
+
+$\rightarrow$. Let $\lim \sup X = + \infty \implies \sup \{x_n: n \geq m\} = + \infty,$ for all $m \in \mathbb{N} \implies$ there is a subsequence $X^{'}$ such that $X^{'} = (x_m, x_{m+1},...,x_n)$, has $\lim X^{'} = + \infty \implies$ if $\lim \sup X = + \infty$ there is a subsequence $X^{'}$ of $X$ such that $\lim X^{'} = + \infty$.
+
+$\leftarrow$. Let there be a subsequence of $X, X^{'}$, such that $X^{'}$ has $\lim X^{'} = + \infty \implies + \infty$ is in the set $E$ which consists of the limits of all subsequences of $X$. This implies that $\sup E = + \infty \implies \lim \sup X = + \infty$.
