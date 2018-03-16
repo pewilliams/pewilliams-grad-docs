@@ -28,7 +28,7 @@ Relying on the continuity of $f_1(x) = x$ multiplied by any constant, we can con
 
 *E. Let $f$ be the function on $\mathbb{R} \to \mathbb{R}$ defined by $f(x) = x,\ x$ irrational, $f(x) = 1 - x,\ x$ rational. Show that $f$ is continuous at $x = \frac{1}{2}$ and discontinuous elsewhere.*  
 
-Considering the point $a = \frac{1}{2}$, we have $f(a) = \frac{1}{2}$, and $|f(x) - f(a)| = |1 - x - \frac{1}{2}| = |\frac{1}{2} - x| = |x - a| < \varepsilon < \delta(\varepsilon)$. So if $|f(x) - f(a)| < \varepsilon = \delta(\varepsilon) > 0 \implies |x - a| < \delta(\varepsilon)$, and then we have $f$ continuous at the point $a = \frac{1}{2}$. 
+Considering the point $a = \frac{1}{2}$, we have $f(a) = \frac{1}{2}$, and $|f(x) - f(a)| = |1 - x - \frac{1}{2}| = |\frac{1}{2} - x| = |x - a| < \varepsilon = \delta(\varepsilon)$. So if $|f(x) - f(a)| < \varepsilon = \delta(\varepsilon) > 0 \implies |x - a| < \delta(\varepsilon)$, and then we have $f$ continuous at the point $a = \frac{1}{2}$. 
 For the case $a \neq \frac{1}{2},\ a$ irrational, take a sequence $X = (x_n)$ of rational numbers converging to $a$. Since the sequence $(f(x_n))$ converges to $1 - a$, and we have $f(a) = a$, $f$ is not continuous at irrational points by the Discontinuity Criterion. 
 For the case $a \neq \frac{1}{2},\ a$ rational, take a sequence $Y = (Y_n)$ of irrational numbers converging to $a$, the sequence (f(y_n)) converges to $a$, but $f(a) = 1 - a$, which equation is only satisfied when $a = \frac{1}{2}$, thus $f$ is not continuous for rational numbers at any point other than $\frac{1}{2}$.
 
@@ -38,8 +38,24 @@ Every real point, $x \in \mathbb{R}$ is the limit of a sequence of rational numb
 
 *I. Using the results of the preceding exercise, show that the function $g$, defined on $\mathbb{R} \to \mathbb{R}$ by $g(x) = x sin(\frac{1}{x}),\ x \neq 0$, $g(x) = 0,\ x = 0$ is continuous at every point. Sketch a graph of this function.*  
 
+For the case $a = 0$, we have $|g(x) - g(a)| = |x \sin\frac{1}{x} - 0| = |x||\sin\frac{1}{x}| \leq |x| \cdot 1 < \varepsilon,\ \varepsilon > 0$, since $-1 \leq \sin\frac{1}{x} \leq 1$. So when $|g(x) - g(0)| < \varepsilon = \delta(\varepsilon)$, we then have $|x| = |x - 0 | < \delta(\varepsilon) \implies g$ continuous at $0$.
+
+For the case $a \neq 0$, we have $|g(x) - g(a)| = |x \sin \frac{1}{x} - a \sin \frac{1}{a}| = |x \sin \frac{1}{x} - a \sin \frac{1}{a} - a \sin \frac{1}{x} + a \sin \frac{1}{x}| = |(x - a)(\sin \frac{1}{x}) + a(\sin\frac{1}{x} - \sin \frac{1}{a})| \leq |x - a||\sin\frac{1}{x}| + |a||\sin\frac{1}{x} - \sin\frac{1}{a}|$, by Triangle Inequality. Since both $|\sin\frac{1}{x}| \leq 1$ and $|\sin\frac{1}{x} - \sin\frac{1}{a}| \leq 1$, we have $|x - a||\sin\frac{1}{x}| + |a||\sin\frac{1}{x} - \sin\frac{1}{a}| \leq |x - a| \cdot 1 + |a|\cdot 1  = |x - a| + |a| < \varepsilon$. It then follows that if $\delta(\varepsilon) = \varepsilon - |a|$, i.e. $\varepsilon > \delta(\varepsilon) + |a|$, when $|g(x) - g(a)| < \varepsilon$, then $|x - a| < \delta(\varepsilon) \implies$ g continuous at every point in $\mathbb{R}$.  
+
+Sketch of function below:    
+
+```{r gsin,echo=F, fig.height = 4, fig.width= 6}
+x <- seq(-.45,.45,by=0.002)
+suppressWarnings(y <- ifelse(x == 0, 0, x * sin(1/x)))
+plot(x, y, ylab = 'y = f(x) = x * sin (1/x)', bty = 'n', type = 'l')
+abline(h =0, lty = 5)
+```
+
 *N. Let $g: \mathbb{R} \to \mathbb{R}$ satisfy the relation $g(x + y) = g(x) g(y),\ x,y \in \mathbb{R}$. Show that if $g$ is continuous at $x = 0$, then $g$ is continuous at every point. Also if $g(a) = 0$ for some $a \in \mathbb{R}$, then $g(x) = 0$ for all $x \in \mathbb{R}$.*  
 
+If $g$ is continuous at $x = 0 \implies g(x +y) = g(y) = g(0) \cdot g(y)$. This implies also that $g(0)g(y) = g(y) \implies g(0)g(y) - g(y) = 0 = g(y)(g(0) - 1) = 0 \implies g(0) = 1$, or that $g(0) = 0$.  
+If $g(0) = 0 \implies - g(y) = 0 = g(y)$. In this case then $g(y) = 0,\ \forall y \in \mathbb{R} \implies g(x) = 0,\  \forall x \in \mathbb{R}$.  
+On the other hand if $g(0) = 1, \implies g(0) \cdot g(y) = g(y)$ continuous for every point $y \in \mathbb{R}$.
 
 #### Section 21
 *I. Let $g$ be a linear function from $\mathbb{R}^p \to \mathbb{R}^q$. Show that $g$ is one-one and only if $g(x) = 0$ implies that $x = 0$.*  
@@ -47,6 +63,10 @@ Every real point, $x \in \mathbb{R}$ is the limit of a sequence of rational numb
 *J. If $h$ is a one-one linear function from $\mathbb{R}^p \to \mathbb{R}^p$, show that the inverse function $h^{-1}$ is a linear function from $\mathbb{R}^p \to \mathbb{R}^p$.*  
 
 *K. Show that the sum and the composition of two linear functions are linear functions.*  
+By definition a function is linear if $f(ax + by) = af(x) + bf(y),\ a,b \in \mathbb{R},\ x,y \in \mathbb{R}^p$. 
+
+For the sum of two linear functions we then have $(f+g)(ax + by) = f(ax + by) + g(ax + by) = af(x) + bf(y) + ag(x) + bf(y) = a(f(x) + g(x)) + b(f(y) + g(y)) = a(f+g)(x) + b(f+g)(y) \implies$ linearity. 
+For the composition of two linear functions we have $f \circ g(ax + bx) = f(g(ax + by)) = f(ag(x) + bg(y)) = a f(g(x)) + b f(g(y)) = a(f \circ g)(x) + b(f \circ g)(y) \implies$ composition of two linear functions is linear. 
 
 *L. If $f$ is a linear map on $\mathbb{R}^p \to \mathbb{R}^q$, define $||f||_{pq} = \sup \{||f(x)||: x \in \mathbb{R}^p,\ ||x|| \leq 1 \}$. Show that the mapping $f \to ||f||_{pq}$ defines a norm on the vector space $\mathcal{L}(\mathbb{R}^p,\mathbb{R}^q)$ of all linear functions on $\mathbb{R}^p \to \mathbb{R}^q$. Show that $||f(x)|| \leq ||f||_{pq} ||x||$ for all $x \in \mathbb{R}^p$.*  
 
