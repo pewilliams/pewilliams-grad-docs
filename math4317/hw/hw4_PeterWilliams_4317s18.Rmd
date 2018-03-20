@@ -59,22 +59,59 @@ On the other hand if $g(0) = 1, \implies g(0) \cdot g(y) = g(y)$ continuous for 
 
 #### Section 21
 *I. Let $g$ be a linear function from $\mathbb{R}^p \to \mathbb{R}^q$. Show that $g$ is one-one and only if $g(x) = 0$ implies that $x = 0$.*  
+Since $g$ is linear $\implies$ for $x,y \in \mathbb{R}^p$, $g(x + y) = g(x) + g(y)$. Then if $g(x) = 0 \implies g(x + y) = 0 + g(y) = g(y) \implies g(x + y) = g(y) \implies g(x + y) = g(0 + y) = g(y)$ which implies $x = 0$. 
+If we assume that $g$ is one-one, then for any $g(x) = g(y) \implies x = y$. So in the case $g(x) = 0$, and $g(x + y) = g(x) + g(y) = 0 + g(y)$. Since $g(x) + g(y) = g(y) \implies g(y) - g(x) = g(y) \implies x + y = x - y$, which is satisfied when $x = 0$. 
 
 *J. If $h$ is a one-one linear function from $\mathbb{R}^p \to \mathbb{R}^p$, show that the inverse function $h^{-1}$ is a linear function from $\mathbb{R}^p \to \mathbb{R}^p$.*  
 
+Since $h$ is one-one $\implies$ if $h(x_1) = h(x_2),\ x_1 = x_2,\ x_1, x_2 \in \mathbb{R}^p$. 
+Extending the the linear case, we have if $h(ax + by) = h(ax_1 + by_1) = a h(x) + b h(y) = ah(x_1) + bh(y_1)$ then $ax_1 + by_1 = ax + by$. By definition $h^{-1} = \{ax + by: h(ax + by) \in \mathbb{R}^p\} = \{ax : h(ax) \in \mathbb{R}^p\} + \{by : h(by) \in \mathbb{R}^p\}$. This implies $h^{-1}(ax + by) = h^{-1}(h(ax)) + h^{-1}(h(by)) \implies h^{-1}$ is linear, and $h^-1: \mathbb{R}^p \to \mathbb{R}^p$, since  $h^{-1}(h(ax)) + h^{-1}(h(by)) = ax + by \in \mathbb{R}^p$ by construction.  
+ 
 *K. Show that the sum and the composition of two linear functions are linear functions.*  
+
 By definition a function is linear if $f(ax + by) = af(x) + bf(y),\ a,b \in \mathbb{R},\ x,y \in \mathbb{R}^p$. 
 
 For the sum of two linear functions we then have $(f+g)(ax + by) = f(ax + by) + g(ax + by) = af(x) + bf(y) + ag(x) + bf(y) = a(f(x) + g(x)) + b(f(y) + g(y)) = a(f+g)(x) + b(f+g)(y) \implies$ linearity. 
 For the composition of two linear functions we have $f \circ g(ax + bx) = f(g(ax + by)) = f(ag(x) + bg(y)) = a f(g(x)) + b f(g(y)) = a(f \circ g)(x) + b(f \circ g)(y) \implies$ composition of two linear functions is linear. 
 
+\newpage
+
 *L. If $f$ is a linear map on $\mathbb{R}^p \to \mathbb{R}^q$, define $||f||_{pq} = \sup \{||f(x)||: x \in \mathbb{R}^p,\ ||x|| \leq 1 \}$. Show that the mapping $f \to ||f||_{pq}$ defines a norm on the vector space $\mathcal{L}(\mathbb{R}^p,\mathbb{R}^q)$ of all linear functions on $\mathbb{R}^p \to \mathbb{R}^q$. Show that $||f(x)|| \leq ||f||_{pq} ||x||$ for all $x \in \mathbb{R}^p$.*  
 
+We have $x = (x_1,x_2,...,x_p) \in \mathbb{R}^p,\ f(x) = y = (y_1,y_2,...,y_q) \in \mathbb{R}^q$, and matrix $A_{q \times p} = (c_{ij}),\ 1 \leq i \leq q,\ 1 \leq j \leq p$, with 
+$$y_1 = c_{11}x_1 + x_{12}x_2 + ... + c_{1p}x_p$$  
+...  
+$$y_q = c_{q1}x_1 + x_{q2}x_2 + ... + c_{qp}x_p$$  
+We then have $||f(x)|| = ||(y_1,...,y_q)|| = \sqrt{y_1^2 + ... + y_q^2}$. To show $||f||_{qp} = \sup\{||f(x)||: x \in \mathbb{R}^p,\ ||x|| \leq 1\}$ is a norm in $\mathcal{L}(\mathbb{R}^p,\mathbb{R}^q)$, we have 
+(i) $||f||_{pq} \geq 0,\ x \in \mathbb{R}^p$? Since each element in $||f(x)|| = \sqrt{y_1^2 + ... + y_q^2}$, $y_j^2 \geq 0,\ \forall j = 1,...,q \implies \sup \{||f(x)||\} \geq 0 \forall x \in \mathbb{R}^p$ since by definition, $sup\{||f(x)||\} \geq ||f(x)|| \forall x \in \mathbb{R}^p \implies ||f||_{pq} \geq 0$.  
+(ii) $||f||_{pq} = 0 \iff f(x) = 0$? Since $||f(x)|| = ||y|| = \sqrt{y_1^2 + ... + y_q^2} = 0 \implies$ each $y_j^2 = 0, \forall j =1,...,q$  
+(iii) $\sup ||af(x)|| = |a|\sup ||f(x)|| = |a|||f||_{qp} ,\ a \in \mathbb{R}$? We have $||af(x)|| = ||ay|| = \sqrt{a^2y_1^2 + ... + a^2y_1^2} = \sqrt{a^2}||y|| = |a|||y||$, and $|a| > 0 \implies \sup \{||af(x)||\} = \sup\{|a|||f(x)||\} = |a|sup\{||f(x)||\}$.  
+(iv) $\sup\{||f(x + x^{'})||\} \leq \sup ||f(x)|| + \sup||f(x^{'})||,\ x,x^{'} \in \mathbb{R}^p$? Since $f$ is linear $||f(x + x^{'})|| = ||f(x) + f(x^{'})|| \leq ||f(x)|| + ||f(x^{'})||,\ \forall x,x^{'} \in \mathbb{R}^p$ by Triangle Inequality, then $\sup\{||f(x) + f(x^{'})||\} \leq \sup \{||f(x)||\} + \sup\{||f(x^{'})||\}$. 
+This implies $||f||_{qp}$ is a norm.  
+
+To show $||f(x)|| \leq ||f||_{pq} ||x||$, we use the earlier notation for a linear map, $f(x) = Ax$, where, $A_{q \times p} = (c_{ij})$. Thus $||f(x)|| = ||Ax|| \leq |A|||x||$ as shown in (21.5). This implies $\sup\{||f(x)||: x \in \mathbb{R}^p, ||x|| \leq 1\} = \sup \{||Ax||\} \leq \sup\{|A|||x||\}$ which is achieved when $x$ is the max value in its domain, i.e. $||x|| = 1$. This implies $\sup\{\||Ax||\}||x|| = \sup\{||f(x)||\} ||x|| = \sup\{||f(x)||\} \cdot 1$. This implies $||f(x)|| \leq \sup\{||f(x)||: x \in \mathbb{R}^p, ||x|| \leq 1\}||x|| \forall x \in \mathbb{R}^p$.
 
 #### Section 22
-*B.*  
-*C.*  
-*F.*  
-*H.*  
-*K.*  
-*O.*  
+*B. Let $H: \mathbb{R} \to \mathbb{R}$ be defined by, $h(x) = 1, 0 \leq x \leq 1$. $h(x) = 0, \text{otherwise}$. Exhibit an open set $G$ such that $h^{-1}(G)$ is not open in $\mathbb{R}$, and a closed set $F$, such that $h^{-1}(F)$ is not closed in $\mathbb{R}$.*  
+
+If we take $G = (0,2)$, and open set, $h^{-1}(G) = \{x \in \mathcal{D}(f): h(x) \in G\} = [0,1]$, a closed set. If we take $F = [-2,-1]$, a closed set, the inverse image, $h^{-1}(F) = \{x \in \mathcal{D}(f): h(x) \in F\} = [0,1]$  is the union of two open sets $(-\infty,0) \cup (1,+\infty)$ which is open. 
+
+*C. If $f$ is bounded and continuous on $\mathbb{R}^p \to \mathbb{R}$ and if $f(x_0) > 0$, show that $f$ is strictly positive on some neighborhood of $x_0$. Does the same conclusion hold if $f$ is merely continuous at $x_0$?*  
+
+$f$ is bounded and continuous which implies $0 < f(x_0) < M,$ for some $M > 0$. Since $f$ is continuous, for each point $a \in \mathcal{D}(f)$, there is a neighborhood $V$ of $f(a)$ and a neigborhood $U(a) \cap D$ such that if $f(a) \in V \implies a \in U(a)$. Since $f(a) > 0 \implies$ we can take a neighborhood $V$ of $f(a)$ that is also strictly positive, i.e. $V = \{y \in \mathbb{R}: 0 < y < M\}$. If $f$ is not bounded the same argument can be made with $V = \{y \in \mathbb{R}: y > 0\}$. 
+
+*F. A subset $D \subseteq \mathbb{R}^p$ is disconnected if and only if there exists a continuous function $f: D \to \mathbb{R}$ such that $f(D) = \{0,1\}$.*  
+
+$\rightarrow D$ disconnected implies there exists two open sets $B,C$ such that $B \cap D$ and $\ C \cap D$ are disjoint and $(B \cap D) \cup (\ C \cap D) = D$. We can then construct a function $f$ on $D$, $f(x) = 1,\ x \in (B \cap D)$, $f(x) = 0,\ x \in (C \cap D)$.  
+$\leftarrow$ Let $f: D \to \mathbb{R}$ be such that $f(D) = \{0,1\} \implies$ the inverse image $f^{-1}(\{0,1\}) = \{ x \in D \subseteq: f(x) \in \{0,1\}\}$ could consist of two disjoint open sets such for $f$ on $D$, $f(x) = 1,\ x \in (B \cap D)$, $f(x) = 0,\ x \in (C \cap D)$, where $D = (B \cap D) \cup (C \cap D) \subseteq \mathcal{D}(f) \implies$ there exists a continuous function $f: D \to \mathbb{R}$ such that $f(D) = \{0,1\}$.
+
+*H. Let $f,g_1,g_2$ be related by the formulas in the preceding exercise. Show that from the continuity of $g_1$ and $g_2$ at $t = 0$ one cannot prove the continuity of $f$ at $(0,0)$.*  
+
+
+*K. Give an example of a bounded and continuous function $g$ on $\mathbb{R} \to \mathbb{R}$ which does not take on either of the numbers $\sup\{g(x): x \in \mathbb{R}\}$ or $\inf\{g(x): x \in \mathbb{R}\}$*  
+
+If we take $f: \mathbb{R} \to \mathbb{R}$, $f(x) = x,\ x \in (0,1) \subseteq \mathbb{R}$, the function is bounded above by $1$, below by $0$, and continuous on $(0,1)$, but $f(x) \neq 1 = \sup\{f(x): x \in (0,1)\}$, and $f(x) \neq 0 = \inf \{f(x): x \in (0,1)\}$ for any x in interval $(0,1)$.
+
+*O. Let $f$ be a continuous function on $\mathbb{R} \to \mathbb{R}$ which is strictly increasing (in the sense that if $x^{'} < x^{''}$ then $f(x^{'}) < f(x^{''}))$. Prove that $f$ is injective and that its inverse function is continuous and strictly increasing.*  
+
+For points $x,a,b \in \mathcal{D}(f)$, by $f$ be strictly increasing, we have $a > b \implies f(a) > f(b)$, $a = b \implies f(a) = f(b)$ and $a < b \implies f(a) < f(b)$. If we take point $x$ to be $a < x < b$, we can define two neighborhoods $(a, b) \subseteq \mathcal{D}(f)$, and $(f(a),f(b)) \subseteq \mathcal{R}(f)$, such that $x \in (a, b)$, and $f(x) \in (f(a),f(b))$.  This implies $f^{-1}$ in continuous, and since $f^{-1}(f(a)) = a > f^{-1}(f(b)) = b$ if $f(a) > f(b)$, implies $f^{-1}$ is strictly increasing. Also since, $f(a) = f(b) \implies a = b$, $f$ is injective. 
