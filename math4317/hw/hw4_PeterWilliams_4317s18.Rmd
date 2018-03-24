@@ -107,6 +107,7 @@ $\leftarrow$ Let $f: D \to \mathbb{R}$ be such that $f(D) = \{0,1\} \implies$ th
 
 *H. Let $f,g_1,g_2$ be related by the formulas in the preceding exercise. Show that from the continuity of $g_1$ and $g_2$ at $t = 0$ one cannot prove the continuity of $f$ at $(0,0)$.*  
 
+Considering $g_1,g_2$ which are valid are restrictions of the domain of $f$, given $x = (x_1,x_2) \in \mathbb{R}^2$, we can construct $f(x) = 0,\ x_1 \cdot x_2 = 0,\ f(x) = 1,\ x_1 \cdot x_2 \neq 1$. With this $f$ we have $\lim_{x \to (0,0)} \neq 0,$ and $f((0,0)) = 0 \implies$ discontinuity for $f$ at $(0,0)$. Therefore continuity for $g_1,g_2$ on restrictions of $\mathcal{D}(f)$ does not imply continuity of $f$. 
 
 *K. Give an example of a bounded and continuous function $g$ on $\mathbb{R} \to \mathbb{R}$ which does not take on either of the numbers $\sup\{g(x): x \in \mathbb{R}\}$ or $\inf\{g(x): x \in \mathbb{R}\}$*  
 
