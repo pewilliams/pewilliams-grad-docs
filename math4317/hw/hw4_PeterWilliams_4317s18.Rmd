@@ -94,7 +94,7 @@ To show $||f(x)|| \leq ||f||_{pq} ||x||$, we use the earlier notation for a line
 #### Section 22
 *B. Let $H: \mathbb{R} \to \mathbb{R}$ be defined by, $h(x) = 1, 0 \leq x \leq 1$. $h(x) = 0, \text{otherwise}$. Exhibit an open set $G$ such that $h^{-1}(G)$ is not open in $\mathbb{R}$, and a closed set $F$, such that $h^{-1}(F)$ is not closed in $\mathbb{R}$.*  
 
-If we take $G = (0,2)$, and open set, $h^{-1}(G) = \{x \in \mathcal{D}(f): h(x) \in G\} = [0,1]$, a closed set. If we take $F = [-2,-1]$, a closed set, the inverse image, $h^{-1}(F) = \{x \in \mathcal{D}(f): h(x) \in F\} = [0,1]$  is the union of two open sets $(-\infty,0) \cup (1,+\infty)$ which is open. 
+If we take $G = (0,2)$, and open set, $h^{-1}(G) = \{x \in \mathcal{D}(f): h(x) \in G\} = [0,1]$, a closed set. If we take $F = [-2,0]$, a closed set, the inverse image, $h^{-1}(F) = \{x \in \mathcal{D}(f): h(x) \in F\}$  is the union of two open sets $(-\infty,0) \cup (1,+\infty)$ which is open. 
 
 *C. If $f$ is bounded and continuous on $\mathbb{R}^p \to \mathbb{R}$ and if $f(x_0) > 0$, show that $f$ is strictly positive on some neighborhood of $x_0$. Does the same conclusion hold if $f$ is merely continuous at $x_0$?*  
 
