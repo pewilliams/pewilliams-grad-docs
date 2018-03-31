@@ -1,7 +1,7 @@
 ---
 title: 'Math 4317 (Prof. Swiech, S''18): HW #4'
 author: "Peter Williams"
-date: "3/29/2018"
+date: "4/15/2018"
 output:
   pdf_document: default
   word_document: default
@@ -115,4 +115,32 @@ If we take $f: \mathbb{R} \to \mathbb{R}$, $f(x) = x,\ x \in (0,1) \subseteq \ma
 
 *O. Let $f$ be a continuous function on $\mathbb{R} \to \mathbb{R}$ which is strictly increasing (in the sense that if $x^{'} < x^{''}$ then $f(x^{'}) < f(x^{''}))$. Prove that $f$ is injective and that its inverse function is continuous and strictly increasing.*  
 
-For points $x,a,b \in \mathcal{D}(f)$, by $f$ be strictly increasing, we have $a > b \implies f(a) > f(b)$, $a = b \implies f(a) = f(b)$ and $a < b \implies f(a) < f(b)$. If we take point $x$ to be $a < x < b$, we can define two neighborhoods $(a, b) \subseteq \mathcal{D}(f)$, and $(f(a),f(b)) \subseteq \mathcal{R}(f)$, such that $x \in (a, b)$, and $f(x) \in (f(a),f(b))$.  This implies $f^{-1}$ in continuous, and since $f^{-1}(f(a)) = a > f^{-1}(f(b)) = b$ if $f(a) > f(b)$, implies $f^{-1}$ is strictly increasing. Also since, $f(a) = f(b) \implies a = b$, $f$ is injective. 
+For points $x,a,b \in \mathcal{D}(f)$, by $f$ be strictly increasing, we have $a > b \implies f(a) > f(b)$, $a = b \implies f(a) = f(b)$ and $a < b \implies f(a) < f(b)$. If we take point $x$ to be $a < x < b$, we can define two neighborhoods $(a, b) \subseteq \mathcal{D}(f)$, and $(f(a),f(b)) \subseteq \mathcal{R}(f)$, such that $x \in (a, b)$, and $f(x) \in (f(a),f(b))$.  This implies $f^{-1}$ in continuous, and since $f^{-1}(f(a)) = a > f^{-1}(f(b)) = b$ if $f(a) > f(b)$, implies $f^{-1}$ is strictly increasing. Also since, $f(a) = f(b) \implies a = b$, $f$ is injective.  
+
+#### Section 23  
+*A. Examine each of the functions in Example 20.5 and either show that the function is uniformly continuous on its domain or not.*    
+*C. If $B$ is bounded in $\mathbb{R}^p$ and $f: B \to \mathbb{R}^p$ is uniformly continuous, show that $f$ is bounded on $B$. Show that this conclusion fails if $B$ is not bounded in $\mathbb{R}^p$.*  
+*D. Show that $f(x) = \frac{1}{1 + x^2}$ for $x \in \mathbb{R}$ is uniformly continuous.*    
+*F. Show that $f(x) = \frac{1}{x^2},\ \mathcal{D}(f) = \{x \in \mathbb{R}: x > 0\}$ is on uniformly continuous on its domain.*
+*G. A function $g:\mathbb{R} \to \mathbb{R}^p$ is periodic if there exists a snumber $p>0$ such that $g(x + p) = g(x)$ for all $x \in \mathbb{R}$. Show that a continuous perioddic function is bounded and uniformly continuous on $\mathbb{R}$.*  
+*H. Let $f$ be defined on $D \subseteq \mathbb{R}^p$ to $\mathbb{R}^q$, and suppose that $f$ is uniformly continuous on $D$. If $(x_n)$ is a Cauchy sequence in $D$, show that (f(x_n)) is a Cauchy sequence in $\mathbb{R}^q$.*  
+
+#### Section 24  
+*B. Give an example of a sequence of continuous functions which converges to a continuous function but where the convergence is not uniform.*    
+*D. Let $(f_n)$ be a sequence of continuous functions on $D \subseteq \mathbb{R}^p$ to $\mathbb{R}^q$ such that $(f_n)$ converges uniformly to $f$ on $D$, and let $(x_n)$ be a sequence of elements in $D$ which converges to $x \in D$. Does it follow that $(f_n(x_n))$ converges to $f(x)$?*  
+*E. Consider the sequences $(f_n)$ defined on $D = \{x \in \mathbb{R}: x \geq 0\}$ to $\mathbb{R}$ by the following formulas:*  
+(b) $\frac{x^n}{1 + x^n}$,  
+(c) $\frac{x^n}{n + x^n}$,   
+(d) $\frac{x^{2n}}{1 + x^n}$,  
+(e) $\frac{x^n}{1 + x^{2n}}$  
+*J. Prove the following theorem of G. Polya. If for each $n \in \mathbb{N}$ the function $f_n$ on $I \to \mathbb{R}$ is monotone increasing and if $f(x) = \lim(f_n(x))$ is continuous on $I$, then the convergence is uniform on $I$. (Observe that it is not assumed that $f_n$ is continuous.)*    
+*N. If $f_3(x) = x^3$ for $x \in \mathcal{I}$, calculate the $n^{th}$ Bernstein polynomial for $f_3$. Show directly that this sequence of polynomials converges uniformly to $f_3$ on $\mathcal{I}$.*   
+*S. Show that the Weierstrass Approximation Theorem fails for bounded open intervals.*  
+
+#### Section 26  
+*N. If $K \subseteq \mathbb{R}^p$ is compact and $(f_n)$ is a sequence of continuous functions on $K$ to $\mathbb{R}^q$ which is uniformly convergent on $K$, show that the family $\{f_n\} is uniformly equicontinuous on $K$ in the sense of Definition 26.6.*  
+*O. Let $\mathcal{F}$ be a bounded and uniformly equicontinuous collection of functions on $D \subseteq \mathbb{R}^p$ to $\mathbb{R}$ and let $f^{\*}$ be defined on $D \to \mathbb{R}$ by $f^{\*} = \sup \{f(x): f \in \mathcal{F}\}$. Show that $f^{\*}$ is continuous on $D \to \mathbb{R}$.*  
+*Q. Consider the following sequences of functions which show that the Arzela-Ascoli Theorem 26.7 may fail if the various hypotheses are dropped.*  
+(a) $f_n(x)  = x + n,\ x \in [0,1]$;    
+(b) $f_n(x)  = x^n,\ x \in [0,1]$;    
+(c) $f_n(x) = \frac{1}{1 + (x -n )^2},\ x \in [0,+\infty)$.  
