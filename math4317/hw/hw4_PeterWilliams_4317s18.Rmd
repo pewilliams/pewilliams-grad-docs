@@ -118,12 +118,39 @@ If we take $f: \mathbb{R} \to \mathbb{R}$, $f(x) = x,\ x \in (0,1) \subseteq \ma
 For points $x,a,b \in \mathcal{D}(f)$, by $f$ be strictly increasing, we have $a > b \implies f(a) > f(b)$, $a = b \implies f(a) = f(b)$ and $a < b \implies f(a) < f(b)$. If we take point $x$ to be $a < x < b$, we can define two neighborhoods $(a, b) \subseteq \mathcal{D}(f)$, and $(f(a),f(b)) \subseteq \mathcal{R}(f)$, such that $x \in (a, b)$, and $f(x) \in (f(a),f(b))$.  This implies $f^{-1}$ in continuous, and since $f^{-1}(f(a)) = a > f^{-1}(f(b)) = b$ if $f(a) > f(b)$, implies $f^{-1}$ is strictly increasing. Also since, $f(a) = f(b) \implies a = b$, $f$ is injective.  
 
 #### Section 23  
-*A. Examine each of the functions in Example 20.5 and either show that the function is uniformly continuous on its domain or not.*    
+*A. Examine each of the functions in Example 20.5 and either show that the function is uniformly continuous on its domain or not.*  
+(a) The constant function, $\mathcal{D}(f) \subseteq \mathbb{R}, f(x) = c\ ,\  \forall x \in \mathcal{D}(f)$, where $c$ is a real number.   
+Let $\varepsilon > 0$, we have $|f(x) - f(y)| = |0 - 0| = 0 < \varepsilon,\ \forall x,y \in \mathcal{D}(f)$. Regardless of the choice of $\delta(\varepsilon)$, we have $|f(x) - f(y)| < \varepsilon$ whenever $|x - y| < \delta(\varepsilon) \implies$ uniform continuity.  
+
+(b) The identity function $f(x) = x,\ x \in \mathbb{R}$.  
+For all $x,y \in \mathbb{R}$, we have $|f(x) - f(y)| < \varepsilon,\ \varepsilon > 0.$ Choose $\delta(\varepsilon) = \varepsilon$. Then whenever $|f(x) - |f(y)| = |x-y|< \varepsilon = \delta(\varepsilon)$ we have $|x- y| < \delta(\varepsilon) \implies$ uniform continuity.    
+
+(c) $f(x) = x^2,\ x \in \mathbb{R}$  
+
+(e) $f(x) = \frac{1}{x}, x \in \{x \in \mathbb{R}: x \neq 0\}$  
+
+(f) $f(x) = 0,\ x \geq 0,\ f(x) = 1,\ x > 1$  
+
+(g) $f(x) = 1,\ x\ \text{rational},\ f(x) = 0,\ x\ \text{irrational}$  
+
+(h) $\mathcal{D}(f) = \{x \in \mathbb{R}: x > 0\},\ f(x) = 0,\ x\ \text{irrational},\ x > 0$. For rational numbers of the form $\frac{m}{n}$, with $m,n \in \mathbb{N}$ that have no common factor but $1$, $f(\frac{m}{n}) = \frac{1}{n}$.  
+
+(i) $\mathcal{D}(f) = \mathbb{R}^2,\ f: \mathbb{R}^2 \to \mathbb{R}^2,\ f(x,y) = (2x + y, x - 3y)$.  
+
+(j) $\mathcal{D}(f) = \mathbb{R}^2,\ f: \mathbb{R}^2 \to \mathbb{R}^2,\ f(x,y) = (x^2 + y^2, 2xy)$.  
+
 *C. If $B$ is bounded in $\mathbb{R}^p$ and $f: B \to \mathbb{R}^p$ is uniformly continuous, show that $f$ is bounded on $B$. Show that this conclusion fails if $B$ is not bounded in $\mathbb{R}^p$.*  
-*D. Show that $f(x) = \frac{1}{1 + x^2}$ for $x \in \mathbb{R}$ is uniformly continuous.*    
-*F. Show that $f(x) = \frac{1}{x^2},\ \mathcal{D}(f) = \{x \in \mathbb{R}: x > 0\}$ is on uniformly continuous on its domain.*
-*G. A function $g:\mathbb{R} \to \mathbb{R}^p$ is periodic if there exists a snumber $p>0$ such that $g(x + p) = g(x)$ for all $x \in \mathbb{R}$. Show that a continuous perioddic function is bounded and uniformly continuous on $\mathbb{R}$.*  
+
+*D. Show that $f(x) = \frac{1}{1 + x^2}$ for $x \in \mathbb{R}$ is uniformly continuous.*   
+Take $\varepsilon > 0$, for $x,y \in \mathbb{R}$, we have $|f(x) - f(y)| = |\frac{1}{1 + x^2} - \frac{1}{1 + y^2}| = |\frac{(1 + y^2)}{(1 + x^2)(1 + y^2)} - \frac{(1+ x^2)}{(1 + y^2)(1 + x^2)}| = |\frac{y^2 - x^2}{(1 + y^2)(1 + x^2)}| = |x+y||x-y||\frac{1}{(1+x^2)(1 + y^2)}| \leq (|\frac{x}{(1+x^2)(1+y^2)}| + |\frac{y}{(1+x^2)(1+y^2)}|) |x-y| \leq (|\frac{y}{(1+y^2)}| + |\frac{x}{(1+x^2)}|   )|x - y|$. Since $\forall x \in \mathbb{R}$, we have $|\frac{x}{1 + x^2}| <1$, we have $(|\frac{y}{(1+y^2)}| + |\frac{x}{(1+x^2)}|   )|x - y| < 2|x-y| = 2\delta(\varepsilon) \implies$ if we choose $\delta(\varepsilon) = \frac{\varepsilon}{2}$ whenever $|x - y| < \frac{\varepsilon}{2}$ we have $|f(x) - f(y)| < \varepsilon$, for all $x,y \in \mathbb{R}$
+
+*F. Show that $f(x) = \frac{1}{x^2},\ \mathcal{D}(f) = \{x \in \mathbb{R}: x > 0\}$ is not uniformly continuous on its domain.*  
+If we take $\delta(\varepsilon) = \varepsilon/2,\ \text{and}\ \varepsilon = 1$, and consider points in a subset of $\mathcal{D}(f)$, namely $x,y \in (0,1)$,and then take $y = \frac{x}{2} \in (0,1)$, we have we have $|x - y| = |x/2| < \varepsilon/2 = 1/2 \implies |f(x) - f(y)| = |\frac{1}{x^2} - \frac{4}{x^2}| = \frac{3}{x^2} < 1$. But, for all $x, y \in (0,1),\ \frac{3}{x^2} > 1 \implies f(x)$ is not uniformly continuous on its domain. 
+
+*G. A function $g:\mathbb{R} \to \mathbb{R}^p$ is periodic if there exists a snumber $p>0$ such that $g(x + p) = g(x)$ for all $x \in \mathbb{R}$. Show that a continuous periodic function is bounded and uniformly continuous on $\mathbb{R}$.*   
+
 *H. Let $f$ be defined on $D \subseteq \mathbb{R}^p$ to $\mathbb{R}^q$, and suppose that $f$ is uniformly continuous on $D$. If $(x_n)$ is a Cauchy sequence in $D$, show that (f(x_n)) is a Cauchy sequence in $\mathbb{R}^q$.*  
+
 
 #### Section 24  
 *B. Give an example of a sequence of continuous functions which converges to a continuous function but where the convergence is not uniform.*    
