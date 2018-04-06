@@ -140,6 +140,7 @@ For all $x,y \in \mathbb{R}$, we have $|f(x) - f(y)| < \varepsilon,\ \varepsilon
 (j) $\mathcal{D}(f) = \mathbb{R}^2,\ f: \mathbb{R}^2 \to \mathbb{R}^2,\ f(x,y) = (x^2 + y^2, 2xy)$.  
 
 *C. If $B$ is bounded in $\mathbb{R}^p$ and $f: B \to \mathbb{R}^p$ is uniformly continuous, show that $f$ is bounded on $B$. Show that this conclusion fails if $B$ is not bounded in $\mathbb{R}^p$.*  
+If we take two sequences in $B$, $x_n, y_n,\ n \in \mathbb{N}$ by uniform continuity of $f$, whenever $||x_n - y_n|| \leq \frac{1}{n}$ we have $||f(x_n) - f(y_n)|| < \varepsilon$ for some $\varepsilon > 0$. If we consider the point $x_0 \in B$, for which $f(x_0) = M = \sup \{||f(x)||: x \in B\}$. By Bolzano-Weierstrass, we can find a subsequence of $(x_n)$, $(x_{n1},...,x_{nk})$that converges to $x_0 \implies$ whenever $||x_0 - y_n|| \leq \frac{1}{n}, n \in \mathbb{N}$, we have $||f(x_0) - f(y_n)|| \leq \varepsilon \implies f$ is bounded on $B$.  
 
 *D. Show that $f(x) = \frac{1}{1 + x^2}$ for $x \in \mathbb{R}$ is uniformly continuous.*   
 Take $\varepsilon > 0$, for $x,y \in \mathbb{R}$, we have $|f(x) - f(y)| = |\frac{1}{1 + x^2} - \frac{1}{1 + y^2}| = |\frac{(1 + y^2)}{(1 + x^2)(1 + y^2)} - \frac{(1+ x^2)}{(1 + y^2)(1 + x^2)}| = |\frac{y^2 - x^2}{(1 + y^2)(1 + x^2)}| = |x+y||x-y||\frac{1}{(1+x^2)(1 + y^2)}| \leq (|\frac{x}{(1+x^2)(1+y^2)}| + |\frac{y}{(1+x^2)(1+y^2)}|) |x-y| \leq (|\frac{y}{(1+y^2)}| + |\frac{x}{(1+x^2)}|   )|x - y|$. Since $\forall x \in \mathbb{R}$, we have $|\frac{x}{1 + x^2}| <1$, we have $(|\frac{y}{(1+y^2)}| + |\frac{x}{(1+x^2)}|   )|x - y| < 2|x-y| = 2\delta(\varepsilon) \implies$ if we choose $\delta(\varepsilon) = \frac{\varepsilon}{2}$ whenever $|x - y| < \frac{\varepsilon}{2}$ we have $|f(x) - f(y)| < \varepsilon$, for all $x,y \in \mathbb{R}$
@@ -147,10 +148,10 @@ Take $\varepsilon > 0$, for $x,y \in \mathbb{R}$, we have $|f(x) - f(y)| = |\fra
 *F. Show that $f(x) = \frac{1}{x^2},\ \mathcal{D}(f) = \{x \in \mathbb{R}: x > 0\}$ is not uniformly continuous on its domain.*  
 If we take $\delta(\varepsilon) = \varepsilon/2,\ \text{and}\ \varepsilon = 1$, and consider points in a subset of $\mathcal{D}(f)$, namely $x,y \in (0,1)$,and then take $y = \frac{x}{2} \in (0,1)$, we have we have $|x - y| = |x/2| < \varepsilon/2 = 1/2 \implies |f(x) - f(y)| = |\frac{1}{x^2} - \frac{4}{x^2}| = \frac{3}{x^2} < 1$. But, for all $x, y \in (0,1),\ \frac{3}{x^2} > 1 \implies f(x)$ is not uniformly continuous on its domain. 
 
-*G. A function $g:\mathbb{R} \to \mathbb{R}^p$ is periodic if there exists a snumber $p>0$ such that $g(x + p) = g(x)$ for all $x \in \mathbb{R}$. Show that a continuous periodic function is bounded and uniformly continuous on $\mathbb{R}$.*   
+*G. A function $g:\mathbb{R} \to \mathbb{R}^p$ is periodic if there exists a number $p>0$ such that $g(x + p) = g(x)$ for all $x \in \mathbb{R}$. Show that a continuous periodic function is bounded and uniformly continuous on $\mathbb{R}$.*   
 
 *H. Let $f$ be defined on $D \subseteq \mathbb{R}^p$ to $\mathbb{R}^q$, and suppose that $f$ is uniformly continuous on $D$. If $(x_n)$ is a Cauchy sequence in $D$, show that (f(x_n)) is a Cauchy sequence in $\mathbb{R}^q$.*  
-
+A sequence is Cauchy 
 
 #### Section 24  
 *B. Give an example of a sequence of continuous functions which converges to a continuous function but where the convergence is not uniform.*    
