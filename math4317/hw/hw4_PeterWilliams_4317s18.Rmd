@@ -126,8 +126,10 @@ Let $\varepsilon > 0$, we have $|f(x) - f(y)| = |0 - 0| = 0 < \varepsilon,\ \for
 For all $x,y \in \mathbb{R}$, we have $|f(x) - f(y)| < \varepsilon,\ \varepsilon > 0.$ Choose $\delta(\varepsilon) = \varepsilon$. Then whenever $|f(x) - |f(y)| = |x-y|< \varepsilon = \delta(\varepsilon)$ we have $|x- y| < \delta(\varepsilon) \implies$ uniform continuity.    
 
 (c) $f(x) = x^2,\ x \in \mathbb{R}$  
+If we take $\varepsilon = 1,$, and consider point positive real points $x, y = x + \frac{1}{2}$, then for $|f(x) - f(y)| = |x^2 - y^2| =|x^2 - (x + \frac{1}{2})^2| = |x^2 - x^2 - x - \frac{1}{4}| = |(-1)(x + \frac{1}{4})| = x + \frac{1}{4} < 1 = \varepsilon$, which is a contradiction, for example, for all $x > 1 \implies f(x)$ not uniformly continuous. 
 
 (e) $f(x) = \frac{1}{x}, x \in \{x \in \mathbb{R}: x \neq 0\}$  
+If we take $\varepsilon = 1$, consider points $x,y = \frac{x}{2} \in (0,1) \subseteq \mathbb{R}$ we have $|f(x) - f(y)| = |\frac{1}{x} - \frac{1}{\frac{x}{2}}| = |\frac{-1}{x}| = \frac{1}{x}$. Since both $0< x,y = \frac{x}{2} < 1 \implies \frac{1}{x} > 1$ for all $x,y \in (0,1)$ which implies $f(x) = \frac{1}{x}$ is not uniformly continuous on its domain. 
 
 (f) $f(x) = 0,\ x \geq 0,\ f(x) = 1,\ x > 1$  
 
@@ -149,9 +151,10 @@ Take $\varepsilon > 0$, for $x,y \in \mathbb{R}$, we have $|f(x) - f(y)| = |\fra
 If we take $\delta(\varepsilon) = \varepsilon/2,\ \text{and}\ \varepsilon = 1$, and consider points in a subset of $\mathcal{D}(f)$, namely $x,y \in (0,1)$,and then take $y = \frac{x}{2} \in (0,1)$, we have we have $|x - y| = |x/2| < \varepsilon/2 = 1/2 \implies |f(x) - f(y)| = |\frac{1}{x^2} - \frac{4}{x^2}| = \frac{3}{x^2} < 1$. But, for all $x, y \in (0,1),\ \frac{3}{x^2} > 1 \implies f(x)$ is not uniformly continuous on its domain. 
 
 *G. A function $g:\mathbb{R} \to \mathbb{R}^p$ is periodic if there exists a number $p>0$ such that $g(x + p) = g(x)$ for all $x \in \mathbb{R}$. Show that a continuous periodic function is bounded and uniformly continuous on $\mathbb{R}$.*   
+We assume $g$ is continous, it implies for $x \in \mathbb{R}$, if we consider points $x,y$ over the domain/interval $[x_0,x_0+p]$ whenever $|x - y| \leq |x_0 - x_0 - p| = |-p| = p = \delta > 0$ we have $|g(x) - g(y)| < \varepsilon$. Considering points $x + np, y + np,\ n \in \mathbb{N}$, we have $|(x + np)  - (y + np)| = |x - y| < \delta$ implying that $|g(x + np) - g(y + np)| = |g(x) - g(y)| < \varepsilon \implies g$ is bounded and uniformly continous on $\mathbb{R}$. 
 
 *H. Let $f$ be defined on $D \subseteq \mathbb{R}^p$ to $\mathbb{R}^q$, and suppose that $f$ is uniformly continuous on $D$. If $(x_n)$ is a Cauchy sequence in $D$, show that (f(x_n)) is a Cauchy sequence in $\mathbb{R}^q$.*  
-A sequence is Cauchy 
+A sequence is Cauchy if for some $\delta >0\ \exists M \in \mathbb{N}$ such that for all $m,n \geq M$ then we $||x_m - x_n|| < \delta$. Since $f$ is uniform continuous, for $||f(x_m) - f(x_n)||$, for $x_m, x_n \in D$ for all $m,n \in \mathbb{N}$, whenever $||x_m - x_n|| < \delta$, we have $||f(x_m) - f(x_n)|| \leq \varepsilon$ for some $\varepsilon > 0 \implies$ there exists some $M \in \mathbb{N}$ such that for all $m,n \geq M$, $||f(x_m) - f(x_n)|| \leq \varepsilon \implies (f(x_n))$ is Cauchy.
 
 #### Section 24  
 *B. Give an example of a sequence of continuous functions which converges to a continuous function but where the convergence is not uniform.*    
