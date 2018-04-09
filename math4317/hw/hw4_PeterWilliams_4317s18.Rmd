@@ -132,12 +132,16 @@ If we take $\varepsilon = 1,$, and consider point positive real points $x, y = x
 If we take $\varepsilon = 1$, consider points $x,y = \frac{x}{2} \in (0,1) \subseteq \mathbb{R}$ we have $|f(x) - f(y)| = |\frac{1}{x} - \frac{1}{\frac{x}{2}}| = |\frac{-1}{x}| = \frac{1}{x}$. Since both $0< x,y = \frac{x}{2} < 1 \implies \frac{1}{x} > 1$ for all $x,y \in (0,1)$ which implies $f(x) = \frac{1}{x}$ is not uniformly continuous on its domain. 
 
 (f) $f(x) = 0,\ x \geq 0,\ f(x) = 1,\ x > 1$  
+Since $f$ is not continuous at point $a=0$, and $a$ is in the domain of $f$, $f$ is not uniformly continuous, since we can find sequence $(f(x_n)) = (f(1/n)) = (1)$ which does not converge to $f(0)$.
 
 (g) $f(x) = 1,\ x\ \text{rational},\ f(x) = 0,\ x\ \text{irrational}$  
+$f$ is discontinous at every point in its domain, therefore $f$ cannot be uniformly continuous. 
 
 (h) $\mathcal{D}(f) = \{x \in \mathbb{R}: x > 0\},\ f(x) = 0,\ x\ \text{irrational},\ x > 0$. For rational numbers of the form $\frac{m}{n}$, with $m,n \in \mathbb{N}$ that have no common factor but $1$, $f(\frac{m}{n}) = \frac{1}{n}$.  
+Since $f$ is continuous at precisely irrational points, and not all points in its domain, $f$ is not uniformly continuous.  
 
-(i) $\mathcal{D}(f) = \mathbb{R}^2,\ f: \mathbb{R}^2 \to \mathbb{R}^2,\ f(x,y) = (2x + y, x - 3y)$.  
+(i) $\mathcal{D}(f) = \mathbb{R}^2,\ f: \mathbb{R}^2 \to \mathbb{R}^2,\ f(x,y) = (2x + y, x - 3y)$.  For $(x,y),(a,b) \in \mathcal{D}(f)$ we have $||f(x,y) - f(a,b)|| = ||(2x + y -2a -b,x-3y-a+3b)|| \leq \sqrt{2}\sup \{||2x + y -2a -b  ||,||x - 3y - a + 3b||\} \leq \sqrt{2} \cdot 4 ||(x,y) - (a,b)|| \leq \varepsilon$, since $|x - a| \leq \sqrt{(x - a)^2 + (y-b)^2} = ||(x,y) - (a,b)|| \implies ||2x + y - 2a -b|| = ||2(x -a) + (y-b)|| \leq 3 ||(x,y) - (a,b)||$, and since $||x - 3y - a + 3b|| = ||(x -a) + 3(b-y)|| \leq 4 ||(x,y) - (a,b)||$.
+Putting this together, we have for $\varepsilon >0$, whenever $||f(x,y) - f(a,b)|| < \varepsilon$ we have $||(x,y) - (a,b)|| \leq \frac{\varepsilon}{4 \sqrt{2}}$ which implies uniform continuity. 
 
 (j) $\mathcal{D}(f) = \mathbb{R}^2,\ f: \mathbb{R}^2 \to \mathbb{R}^2,\ f(x,y) = (x^2 + y^2, 2xy)$.  
 
@@ -157,19 +161,34 @@ We assume $g$ is continous, it implies for $x \in \mathbb{R}$, if we consider po
 A sequence is Cauchy if for some $\delta >0\ \exists M \in \mathbb{N}$ such that for all $m,n \geq M$ then we $||x_m - x_n|| < \delta$. Since $f$ is uniform continuous, for $||f(x_m) - f(x_n)||$, for $x_m, x_n \in D$ for all $m,n \in \mathbb{N}$, whenever $||x_m - x_n|| < \delta$, we have $||f(x_m) - f(x_n)|| \leq \varepsilon$ for some $\varepsilon > 0 \implies$ there exists some $M \in \mathbb{N}$ such that for all $m,n \geq M$, $||f(x_m) - f(x_n)|| \leq \varepsilon \implies (f(x_n))$ is Cauchy.
 
 #### Section 24  
-*B. Give an example of a sequence of continuous functions which converges to a continuous function but where the convergence is not uniform.*    
+*B. Give an example of a sequence of everywhere discontinuous functions which converges uniformly to a continuous function.*    
 *D. Let $(f_n)$ be a sequence of continuous functions on $D \subseteq \mathbb{R}^p$ to $\mathbb{R}^q$ such that $(f_n)$ converges uniformly to $f$ on $D$, and let $(x_n)$ be a sequence of elements in $D$ which converges to $x \in D$. Does it follow that $(f_n(x_n))$ converges to $f(x)$?*  
-*E. Consider the sequences $(f_n)$ defined on $D = \{x \in \mathbb{R}: x \geq 0\}$ to $\mathbb{R}$ by the following formulas:*  
+Since each $f_n, n \in N$ is continuous, $f$ is continuous. Then whenever, $||x_n - x|| < \delta$, for some $n \geq K \in \mathbb{N}$ we can take $||f(x_n) - f(x)|| < \frac{\varepsilon}{2}$, for some $\varepsilon > 0$. Considering the sequence $f_n$, we have $||f(x_n) - f(x)|| = ||f(x_n) - f_n(x_n) + f_n(x_n) - f(x)|| \leq ||f(x_n) - f_n(x_n)|| + ||f_n(x_n) - f(x)|| = ||f_n(x_n) - f(x_n)|| + ||f_n(x_n) - f(x)||$. If we take $n \geq M \in \mathbb{N}$, $||f_n(x_n) - f(x_n)|| \leq \frac{\varepsilon}{2}$, by the uniform continuity of $f_n$. This implies that for $n \geq \sup \{K,M\}$ we have $||f_n(x_n) - f(x_n)|| + ||f_n(x_n) - f(x)|| \leq \frac{\varepsilon}{2} + \frac{\varepsilon}{2} = \varepsilon \implies ||f_n(x_n) - f(x)|| \leq \varepsilon \implies f_n(x_n) \to f(x)$.
+*E. Consider the sequences $(f_n)$ defined on $D = \{x \in \mathbb{R}: x \geq 0\}$ to $\mathbb{R}$ by the following formulas. Discuss the convergence and uniform convergence of these sequences and the continuity of the limit functions. In case of non-uniform convergence consider appropriate intervals in $D$.*  
 (b) $\frac{x^n}{1 + x^n}$,  
-(c) $\frac{x^n}{n + x^n}$,   
+For $0 \leq x < 1$, we have $f_n(x) = \frac{x^n}{1 + x^n} \to_{n \to \infty} 0$ since $x^n \to 0$ for $0\leq x<1$. For $x = 1$, $f_n(x) = \frac{x^n}{1 + x^n} = \frac{1}{2},\ \forall n \in \mathbb{N}$. For $x > 1$, $f_n(x) = \frac{x^n}{1 + x^n} \to_{n \to \infty} 1$ which implies $(f_n)$ is pointwise convergent. 
+To examine uniform convergence, we have limit function $f(x) = 0,\ 0 \leq x < 1$, $f(x) = \frac{1}{2},\ x = 1$, and then $f(x) = 1, x > 1 \implies$ uniform converges on closed intervals falling within the interval $x > 1$, or within the interval $0 \leq x < 1$, but not for closed intervals containing the point $1$, since the limit function, for example, for $x$ approaching $1$ from below, $\lim f_n(x) = 0$, but $f_n(1) = 1/2, \forall n \in \mathbb{N}$.  We then do not have uniform convergence over the entire domain, given discontinuous limit functions. 
+
+(c) $\frac{x^n}{n + x^n}$,  
+For $0 \leq x <1$, we have $f_n(x)  = \frac{x^n}{n + x^n} \to \frac{0}{n + 0} \to 0$. For $x = 1$, we have $f_n(1) = \frac{1}{n + 1} \to 0$. And for $x > 1$, we have $f_n(x) = \frac{x^n}{n + x^n} = \frac{\frac{x^n}{n}}{1 + \frac{x^n}{n}} \to 1$, which implies pointwise convergence over $x \geq 0$. To examine uniform convergence we have limit function $f(x) = 0$ for $0 \leq x \leq 1$, and then $f(x) = 1$ for $x > 1$. For $x \in [0,1]$, we have $||f_n - f||_D = \sup \{||x^n/(n + x^n)||: x \in [0,1]\} = \frac{1}{n+1} \to_{n \to \infty} 0 \implies$ uniform continuity on interval $[0,1]$. For $x > 1$, we have $||f_n - f||_D = \sup \{||\frac{x^n}{n + x^n} - 1||: x > 1\}$, and $||\frac{x^n}{n + x^n} - 1|| = ||\frac{x^n}{n + x^n} - \frac{n + x^n}{n + x^n}|| = ||\frac{-n}{n + x^n}|| = \frac{n}{n + x^n} = \frac{1/n}{(1/n) + (x^n/n)} \to 0$, since $x > 1$. This implies uniform convergence on the interval $x \in [a,\infty)$, such that $a > 1$.  
+
 (d) $\frac{x^{2n}}{1 + x^n}$,  
+For $0 \leq x <1$, we have $f_n(x)  = \frac{x^{2n}}{1 + x^n} \to \frac{0}{1 + 0} \to 0 = f(x)$. For $x = 1$, we have $f_n(1) = \frac{1}{1 + 1} \to \frac{1}{2} = f(1)$. And for $x > 1$, we have $f_n(x) = \frac{x^{2n}}{1 + x^n} = \frac{x^{2n}/n}{1/n + x^n/n} \to \frac{x^{2n}/n}{x^n/n} \to x^n \to +\infty$, which implies pointwise convergence over the first two intervals, $0 \leq x < 1$, and $x = 1$.  
+To examine uniform convergence, we have limit function $f(x) = 0,\ 0 \leq x < 1$, $f(x) = \frac{1}{2},\ x = 1$, and then divergence for $x > 1$. This implies uniform converges on closed intervals falling within the interval $0 \leq x < 1$, but including the point $1$, since the limit function, for example, for $x$ approaching $1$ from below, $\lim f_n(x) = 0$, but $f_n(1) = 1/2, \forall n \in \mathbb{N}$. For $x >1$ we have a divergent sequence of functions. We then do not have uniform convergence given discontinuous limit functions. 
+
 (e) $\frac{x^n}{1 + x^{2n}}$  
-*J. Prove the following theorem of G. Polya. If for each $n \in \mathbb{N}$ the function $f_n$ on $I \to \mathbb{R}$ is monotone increasing and if $f(x) = \lim(f_n(x))$ is continuous on $I$, then the convergence is uniform on $I$. (Observe that it is not assumed that $f_n$ is continuous.)*    
-*N. If $f_3(x) = x^3$ for $x \in \mathcal{I}$, calculate the $n^{th}$ Bernstein polynomial for $f_3$. Show directly that this sequence of polynomials converges uniformly to $f_3$ on $\mathcal{I}$.*   
+For $0 \leq x <1$, we have $f_n(x)  = \frac{x^{n}}{1 + x^{2n}} \to \frac{0}{1 + 0} \to 0 = f(x)$. For $x = 1$, we have $f_n(1) = \frac{1}{1 + 1} \to \frac{1}{2} = f(1)$. And for $x > 1$, we have $f_n(x) = \frac{x^n}{1 + x^{2n}} = \frac{x^{n}/n}{1/n + x^{2n}/n} \to \frac{x^n/n}{x^{2n}/n} = \frac{1}{x^n} \to 0$, which implies pointwise convergence over the first two intervals, $0 \leq x < 1$, and $x = 1$.  
+To examine uniform convergence, we have limit function $f(x) = 0,\ 0 \leq x < 1$, $f(x) = \frac{1}{2},\ x = 1$, and then $f(x) = 0$ for $x > 1$. For $0 \leq x < 1$, we have $||f_n - f||_D = \sup \{\frac{x^n}{1 + x^{2n}}: 0 \leq x < 1\} = 0 \implies$ uniform convergence on closed intervals contained in clopen interval $[0,1)$. For $x > 1$, we have $||f_n - f||_D = \sup \{\frac{x^n}{1 + x^{2n}}: x > 1\} = 0 \implies$ uniform convergence on closed intervals contained interval $[a,\infty)$, such that $a > 1$. For $x = 1$ we have $f_n(1) = 1/2$, and $f(1) = 1/2$, and thus have discontinuous limit functions. 
+
+*J. Prove the following theorem of G. Polya. If for each $n \in \mathbb{N}$ the function $f_n$ on $I \to \mathbb{R}$ is monotone increasing and if $f(x) = \lim(f_n(x))$ is continuous on $I$, then the convergence is uniform on $I$. (Observe that it is not assumed that $f_n$ is continuous.)*  
+
+*N. If $f_3(x) = x^3$ for $x \in \mathcal{I}$, calculate the $n^{th}$ Bernstein polynomial for $f_3$. Show directly that this sequence of polynomials converges uniformly to $f_3$ on $\mathcal{I}$.*  
+
 *S. Show that the Weierstrass Approximation Theorem fails for bounded open intervals.*  
 
+
 #### Section 26  
-*N. If $K \subseteq \mathbb{R}^p$ is compact and $(f_n)$ is a sequence of continuous functions on $K$ to $\mathbb{R}^q$ which is uniformly convergent on $K$, show that the family $\{f_n\} is uniformly equicontinuous on $K$ in the sense of Definition 26.6.*  
+*N. If $K \subseteq \mathbb{R}^p$ is compact and $(f_n)$ is a sequence of continuous functions on $K$ to $\mathbb{R}^q$ which is uniformly convergent on $K$, show that the family $\{f_n\}$ is uniformly equicontinuous on $K$ in the sense of Definition 26.6.*  
 *O. Let $\mathcal{F}$ be a bounded and uniformly equicontinuous collection of functions on $D \subseteq \mathbb{R}^p$ to $\mathbb{R}$ and let $f^{\*}$ be defined on $D \to \mathbb{R}$ by $f^{\*} = \sup \{f(x): f \in \mathcal{F}\}$. Show that $f^{\*}$ is continuous on $D \to \mathbb{R}$.*  
 *Q. Consider the following sequences of functions which show that the Arzela-Ascoli Theorem 26.7 may fail if the various hypotheses are dropped.*  
 (a) $f_n(x)  = x + n,\ x \in [0,1]$;    
