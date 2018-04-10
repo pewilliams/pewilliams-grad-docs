@@ -185,7 +185,7 @@ To examine uniform convergence, we have limit function $f(x) = 0,\ 0 \leq x < 1$
 *N. If $f_3(x) = x^3$ for $x \in \mathcal{I}$, calculate the $n^{th}$ Bernstein polynomial for $f_3$. Show directly that this sequence of polynomials converges uniformly to $f_3$ on $\mathcal{I}$.*  
 
 *S. Show that the Weierstrass Approximation Theorem fails for bounded open intervals.*  
-
+Take $(a,b)$ to be an open bounded interval, with $b > a$. The function $f(x) = \frac{1}{(b − x)},\ x \in (a,b)$, we have $||f(x) - P_n(x)||_D = \sup\{||\frac{1}{b-x} - P_n(x)||: x  \in (a,b)\} = \infty$, since $P_n(x)$ must be bounded on $(a,b)$, and $f(x)$ is unbounded as $x \to b$.
 
 #### Section 26  
 *N. If $K \subseteq \mathbb{R}^p$ is compact and $(f_n)$ is a sequence of continuous functions on $K$ to $\mathbb{R}^q$ which is uniformly convergent on $K$, show that the family $\{f_n\}$ is uniformly equicontinuous on $K$ in the sense of Definition 26.6.*  
