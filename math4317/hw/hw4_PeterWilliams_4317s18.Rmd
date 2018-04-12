@@ -161,7 +161,14 @@ We assume $g$ is continous, it implies for $x \in \mathbb{R}$, if we consider po
 A sequence is Cauchy if for some $\delta >0\ \exists M \in \mathbb{N}$ such that for all $m,n \geq M$ then we $||x_m - x_n|| < \delta$. Since $f$ is uniform continuous, for $||f(x_m) - f(x_n)||$, for $x_m, x_n \in D$ for all $m,n \in \mathbb{N}$, whenever $||x_m - x_n|| < \delta$, we have $||f(x_m) - f(x_n)|| \leq \varepsilon$ for some $\varepsilon > 0 \implies$ there exists some $M \in \mathbb{N}$ such that for all $m,n \geq M$, $||f(x_m) - f(x_n)|| \leq \varepsilon \implies (f(x_n))$ is Cauchy.
 
 #### Section 24  
-*B. Give an example of a sequence of everywhere discontinuous functions which converges uniformly to a continuous function.*    
+*B. Give an example of a sequence of everywhere discontinuous functions which converges uniformly to a continuous function.*  
+If we take the example: 
+$$f_n(x) = \begin{cases} 
+      \frac{1}{n} & x\ \text{rational} \\
+      0 & \text{otherwise}
+\end{cases}$$
+We have discontinuity pointwise, but $\sup\{||f_n - f||\} = \frac{1}{n} \to_{n \to \infty} 0 \implies$ uniform continuity. 
+   
 *D. Let $(f_n)$ be a sequence of continuous functions on $D \subseteq \mathbb{R}^p$ to $\mathbb{R}^q$ such that $(f_n)$ converges uniformly to $f$ on $D$, and let $(x_n)$ be a sequence of elements in $D$ which converges to $x \in D$. Does it follow that $(f_n(x_n))$ converges to $f(x)$?*  
 Since each $f_n, n \in N$ is continuous, $f$ is continuous. Then whenever, $||x_n - x|| < \delta$, for some $n \geq K \in \mathbb{N}$ we can take $||f(x_n) - f(x)|| < \frac{\varepsilon}{2}$, for some $\varepsilon > 0$. Considering the sequence $f_n$, we have $||f(x_n) - f(x)|| = ||f(x_n) - f_n(x_n) + f_n(x_n) - f(x)|| \leq ||f(x_n) - f_n(x_n)|| + ||f_n(x_n) - f(x)|| = ||f_n(x_n) - f(x_n)|| + ||f_n(x_n) - f(x)||$. If we take $n \geq M \in \mathbb{N}$, $||f_n(x_n) - f(x_n)|| \leq \frac{\varepsilon}{2}$, by the uniform continuity of $f_n$. This implies that for $n \geq \sup \{K,M\}$ we have $||f_n(x_n) - f(x_n)|| + ||f_n(x_n) - f(x)|| \leq \frac{\varepsilon}{2} + \frac{\varepsilon}{2} = \varepsilon \implies ||f_n(x_n) - f(x)|| \leq \varepsilon \implies f_n(x_n) \to f(x)$.
 *E. Consider the sequences $(f_n)$ defined on $D = \{x \in \mathbb{R}: x \geq 0\}$ to $\mathbb{R}$ by the following formulas. Discuss the convergence and uniform convergence of these sequences and the continuity of the limit functions. In case of non-uniform convergence consider appropriate intervals in $D$.*  
@@ -195,9 +202,13 @@ Take $(a,b)$ to be an open bounded interval, with $b > a$. The function $f(x) = 
 *N. If $K \subseteq \mathbb{R}^p$ is compact and $(f_n)$ is a sequence of continuous functions on $K$ to $\mathbb{R}^q$ which is uniformly convergent on $K$, show that the family $\{f_n\}$ is uniformly equicontinuous on $K$ in the sense of Definition 26.6.*  
 
 *O. Let $\mathcal{F}$ be a bounded and uniformly equicontinuous collection of functions on $D \subseteq \mathbb{R}^p$ to $\mathbb{R}$ and let $f^{\*}$ be defined on $D \to \mathbb{R}$ by $f^{\*} = \sup \{f(x): f \in \mathcal{F}\}$. Show that $f^{\*}$ is continuous on $D \to \mathbb{R}$.*  
+We have for any $\varepsilon > 0$, there exists $\delta(\varepsilon) >0$, such that for $x,y \in D \subseteq \mathbb{R}^p$, whenever we have $||x - y|| < \delta(\varepsilon)$, and $f \in \mathcal{F} \implies ||f(x)-f(y)|| < \varepsilon$. Since functions in $\mathcal{F}$ are bounded and equicontinuous, by Arzela-Ascoli theorem, we have $f^{*} = \sup\{f(x): f \in \mathcal{F}\}$, and for some $n \geq K(\varepsilon)$, we cna find a sequence of functions $(f_n) \to f^{*}$, that is $||f_n(x) - f^{*}(x)|| < \varepsilon \implies f^{*}$ is continuous on $D$.
 
 *Q. Consider the following sequences of functions which show that the Arzela-Ascoli Theorem 26.7 may fail if the various hypotheses are dropped.*  
-(a) $f_n(x)  = x + n,\ x \in [0,1]$;  Domain compact, sequence uniformly equicontinuous but not bounded
-(b) $f_n(x)  = x^n,\ x \in [0,1]$;  Domain compact, sequence bounded by not uniformly equicontinuous.
-(c) $f_n(x) = \frac{1}{1 + (x -n )^2},\ x \in [0,+\infty)$.  Domain not compact, sequence bounded, and uniformly continuous
+(a) $f_n(x)  = x + n,\ x \in [0,1]$;  
+Domain compact, sequence uniformly equicontinuous but not bounded
+(b) $f_n(x)  = x^n,\ x \in [0,1]$;  
+Domain compact, sequence bounded by not uniformly equicontinuous.
+(c) $f_n(x) = \frac{1}{1 + (x -n )^2},\ x \in [0,+\infty)$.  
+Domain not compact, sequence bounded, and uniformly continuous
 
