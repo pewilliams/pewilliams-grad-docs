@@ -19,7 +19,7 @@ alpha = 0.001
 eps = 0.0001
 maxiter = 100
 
-#taweh beysolow II: intro to deep learning pg. 59
+#grad descent - basic regression case
 def gradientDescentLR(maxiter, X, y, alpha, eps):
  beta = np.repeat(0,X.shape[1]) #initialize betas
  cost = sum( (y - np.dot(X, beta))**2 )
@@ -43,10 +43,11 @@ def gradientDescentLR(maxiter, X, y, alpha, eps):
  
  return {'beta': beta, 'mse' : cost, 'iter': niter, 'learnRate': alpha}	
  
-print 'Gradient Descent estimator: '
-print gradientDescentLR(maxiter = 10000, X = X , y = y, alpha = 0.01, eps= 0.0001)
-print 'OLS estimator: '
-print ols
+
+print('Gradient Descent estimator: ')
+print(gradientDescentLR(maxiter = 10000, X = X , y = y, alpha = 0.01, eps= 0.0001))
+print('OLS estimator: ')
+print(ols)
 
 #need to add adaptive component
  

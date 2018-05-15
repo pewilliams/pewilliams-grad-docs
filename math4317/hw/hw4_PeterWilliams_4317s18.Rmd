@@ -30,7 +30,7 @@ Relying on the continuity of $f_1(x) = x$ multiplied by any constant, we can con
 
 Considering the point $a = \frac{1}{2}$, we have $f(a) = \frac{1}{2}$, and $|f(x) - f(a)| = |1 - x - \frac{1}{2}| = |\frac{1}{2} - x| = |x - a| < \varepsilon = \delta(\varepsilon)$. So if $|f(x) - f(a)| < \varepsilon = \delta(\varepsilon) > 0 \implies |x - a| < \delta(\varepsilon)$, and then we have $f$ continuous at the point $a = \frac{1}{2}$. 
 For the case $a \neq \frac{1}{2},\ a$ irrational, take a sequence $X = (x_n)$ of rational numbers converging to $a$. Since the sequence $(f(x_n))$ converges to $1 - a$, and we have $f(a) = a$, $f$ is not continuous at irrational points by the Discontinuity Criterion. 
-For the case $a \neq \frac{1}{2},\ a$ rational, take a sequence $Y = (Y_n)$ of irrational numbers converging to $a$, the sequence (f(y_n)) converges to $a$, but $f(a) = 1 - a$, which equation is only satisfied when $a = \frac{1}{2}$, thus $f$ is not continuous for rational numbers at any point other than $\frac{1}{2}$.
+For the case $a \neq \frac{1}{2},\ a$ rational, take a sequence $Y = (Y_n)$ of irrational numbers converging to $a$, the sequence $(f(y_n))$ converges to $a$, but $f(a) = 1 - a$, which equation is only satisfied when $a = \frac{1}{2}$, thus $f$ is not continuous for rational numbers at any point other than $\frac{1}{2}$.
 
 *F.Let $f$ be continuous on $\mathbb{R} \to \mathbb{R}$. Show that if $f(x) = 0$ for rational $x$, then $f(x) = 0$ for all $x \in \mathbb{R}$.*  
 
