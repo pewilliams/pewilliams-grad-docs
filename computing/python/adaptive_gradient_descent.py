@@ -50,4 +50,41 @@ print('OLS estimator: ')
 print(ols)
 
 #need to add adaptive component
+
+def gradientDescentAdaptive(maxiter,X,y,alpha,eps):
+    beta = np.repeat(0,X.shape[1])
+    cost = sum((y - np.dot(X,beta))**2)
+    converged = False
+    niter = 1
+    while converged == False:
+        gradient = 1./len(y) * np.dot(X.transpose(), np.dot(X,beta) - y)
+        beta_update = beta - alpha * gradient
+        beta = beta_update
+        error = sum((y - np.dot(X,beta))**2)
+        
+        #adaptive
+        if error < cost: 
+            alpha = alpha * 1.05
+        else: 
+            alpha = alpha * 0.5
+        
+        if abs(cost - error) <= eps:
+            converged = True
+            
+        elif niter == maxiter:
+            converged = True
+        
+        else:
+            cost = error
+            niter += 1
+            
+    return {'beta': beta, 'mse' : cost, 'iter': niter, 'learnRate': alpha}
+            
+print('Gradient Descent estimator: ')
+print(gradientDescentLR(maxiter = 10000, X = X , y = y, alpha = 0.01, eps= 0.0001))
+print('Gradient Descent estimator (adaptive): ')
+print(gradientDescentAdaptive(maxiter = 100000, X = X , y = y, alpha = 0.01, eps= 0.000001))
+print('OLS estimator: ')
+print(ols)       
+        
  
