@@ -3,6 +3,7 @@
 
 import pandas as pd
 import numpy as np
+from scipy import optimize
 
 # setup
 n = 1000 #nrecs
@@ -20,16 +21,16 @@ eps = 0.0001
 maxiter = 100
 
 #grad descent - basic regression case
-def gradientDescentLR(maxiter, X, y, alpha, eps):
+def gradientDescentLR(maxiter, X, y, rate, eps):
  beta = np.repeat(0,X.shape[1]) #initialize betas
- cost = sum( (y - np.dot(X, beta))**2 )
+ cost = 1/len(y) * sum( (y - np.dot(X, beta))**2 )
  converged = False
  niter = 1
  while converged == False: 
  	gradient = 1./len(y) * np.dot(X.transpose(), np.dot(X, beta) - y  )
- 	betaUpdate = beta - alpha * gradient
+ 	betaUpdate = beta - rate * gradient
  	beta = betaUpdate
- 	error = sum( (np.dot(X, beta) - y)**2 )
+ 	error = 1/len(y) * sum( (np.dot(X, beta) - y)**2 )
  	
  	if abs(cost - error) <= eps: 
  		converged = True	
@@ -45,28 +46,28 @@ def gradientDescentLR(maxiter, X, y, alpha, eps):
  
 
 print('Gradient Descent estimator: ')
-print(gradientDescentLR(maxiter = 10000, X = X , y = y, alpha = 0.01, eps= 0.0001))
+print(gradientDescentLR(maxiter = 10000, X = X , y = y, rate = 0.01, eps= 0.0001))
 print('OLS estimator: ')
 print(ols)
 
 #need to add adaptive component
 
-def gradientDescentAdaptive(maxiter,X,y,alpha,eps):
+def gradientDescentAdaptive(maxiter,X,y,rate,eps):
     beta = np.repeat(0,X.shape[1])
-    cost = sum((y - np.dot(X,beta))**2)
+    cost = 1./len(y) * sum((y - np.dot(X,beta))**2)
     converged = False
     niter = 1
     while converged == False:
         gradient = 1./len(y) * np.dot(X.transpose(), np.dot(X,beta) - y)
-        beta_update = beta - alpha * gradient
+        beta_update = beta - rate * gradient
         beta = beta_update
-        error = sum((y - np.dot(X,beta))**2)
+        error = 1./len(y) * sum((y - np.dot(X,beta))**2)
         
         #adaptive
         if error < cost: 
-            alpha = alpha * 1.05
+            rate = rate * 1.05
         else: 
-            alpha = alpha * 0.5
+            rate = rate * 0.5
         
         if abs(cost - error) <= eps:
             converged = True
@@ -78,13 +79,74 @@ def gradientDescentAdaptive(maxiter,X,y,alpha,eps):
             cost = error
             niter += 1
             
-    return {'beta': beta, 'mse' : cost, 'iter': niter, 'learnRate': alpha}
+    return {'beta': beta, 'mse' : cost, 'iter': niter, 'learnRate': rate}
+
+print(gradientDescentAdaptive(maxiter = 100000, X = X , y = y, rate = 0.01, eps= 0.0001))
+
+#
+def gradientDescentAdaptiveRidge(maxiter,X,y,alpha,rate,eps):
+    beta = np.repeat(0,X.shape[1])
+    cost = 1./len(y) * sum((y - np.dot(X,beta))**2 + alpha*np.dot(beta,beta))
+    converged = False
+    niter = 1
+    while converged == False:
+        gradient = 1./len(y) * (np.dot(X.transpose(), np.dot(X,beta) - y) + alpha*beta)
+        beta_update = beta - rate * gradient
+        beta = beta_update
+        error = 1./len(y) * sum((y - np.dot(X,beta))**2 + alpha*np.dot(beta,beta))
+        
+        #adaptive
+        if error < cost: 
+            rate = rate * 1.05
+        else: 
+            rate = rate * 0.5
+        
+        if abs(cost - error) <= eps:
+            converged = True
             
-print('Gradient Descent estimator: ')
-print(gradientDescentLR(maxiter = 10000, X = X , y = y, alpha = 0.01, eps= 0.0001))
-print('Gradient Descent estimator (adaptive): ')
-print(gradientDescentAdaptive(maxiter = 100000, X = X , y = y, alpha = 0.01, eps= 0.000001))
-print('OLS estimator: ')
-print(ols)       
+        elif niter == maxiter:
+            converged = True
+        
+        else:
+            cost = error
+            niter += 1
+            
+    return {'beta': beta, 'mse' : cost, 'iter': niter, 'learnRate': rate}
+
+print(gradientDescentAdaptiveRidge(maxiter = 10000, X = X , y = y, alpha = 0.5, rate = 0.01,eps= 0.000001))
+
+#bfgs gen purpose
+
+def costFun(beta):
+    return(1./len(y) * sum((y - np.dot(X,beta))**2))
+    
+def gradFun(beta):
+    return((1./len(y) * np.dot(X.transpose(), np.dot(X, beta) - y )))
+
+beta = np.zeros(X.shape[1])
+optimize.minimize(costFun,beta ,method = 'BFGS', jac = gradFun, options = {'disp':True})
+
+
+alpha = 0
+def costFunRidge(beta):
+    return(1./len(y) * sum((y - np.dot(X,beta))**2 + alpha*np.dot(beta,beta)))
+    
+def gradFunRidge(beta):
+    return((1./len(y) * (np.dot(X.transpose(), np.dot(X,beta) - y) + alpha*beta)))
+
+beta = np.zeros(X.shape[1])
+optimize.minimize(costFunRidge,beta ,method = 'BFGS', jac = gradFunRidge, options = {'disp':True})
+
+    
+
+
+
+
+
+
+
+
+            
+     
         
  
