@@ -66,27 +66,84 @@ reg = regLamba * np.eye(f,f)
 
 
 #alternating least squares
-for k in range(1, iters):
-    for i in range(1, m):
-        idx = nonZero[i,:]
-        a = Y[idx,]
-        b = np.dot(np.transpose(Y[idx,]), ratingsMatrix[i, idx])
-        updateX = np.linalg.solve(np.dot(np.transpose(a), a) + reg, b)
-        X[i,] = updateX
-    
-    for j in range(1, n):
-        idx = nonZero[:,j]
-        a = X[idx,]
-        b = np.dot(np.transpose(X[idx,]), ratingsMatrix[idx, j])
-        updateY = np.linalg.solve(np.dot(np.transpose(a), a) + reg, b)
-        Y[j,] = updateY
+def als(iters):
+    for k in range(1, iters):
+        for i in range(1, m):
+            idx = nonZero[i,:]
+            a = Y[idx,]
+            b = np.dot(np.transpose(Y[idx,]), ratingsMatrix[i, idx])
+            updateX = np.linalg.solve(np.dot(np.transpose(a), a) + reg, b)
+            X[i,] = updateX
         
-    ratingsP = ratingsPred(X, Y)
-    mse = MSE(ratingsP, ratingsMatrix)
-    print("MSE: " + str(mse))
-        
-print("Done")
+        for j in range(1, n):
+            idx = nonZero[:,j]
+            a = X[idx,]
+            b = np.dot(np.transpose(X[idx,]), ratingsMatrix[idx, j])
+            updateY = np.linalg.solve(np.dot(np.transpose(a), a) + reg, b)
+            Y[j,] = updateY
+            
+        ratingsP = ratingsPred(X, Y)
+        mse = MSE(ratingsP, ratingsMatrix)
+        print("MSE: " + str(mse))
+            
+    return print("Done")
 
+#iteration test
+als(iters = 10) 
+
+
+#with multiprocessing
+#alternating least squares
+from multiprocessing import Pool
+
+#goof around
+def sqit(x):
+    return print(x**2)
+
+if __name__== '__main__': 
+    pool = Pool(processes = 3) #ncores
+    pool.map(sqit, range(0,4))
+
+pool.close()
+
+
+#with als ---
+def row_update(i):
+    idx = nonZero[i,:]
+    a = Y[idx,]
+    b = np.dot(np.transpose(Y[idx,]), ratingsMatrix[i, idx])
+    updateX = np.linalg.solve(np.dot(np.transpose(a), a) + reg, b)
+    return updateX
+
+def col_update(j):
+    idx = nonZero[:,j]
+    a = X[idx,]
+    b = np.dot(np.transpose(X[idx,]), ratingsMatrix[idx, j])
+    updateY = np.linalg.solve(np.dot(np.transpose(a), a) + reg, b)
+    Y[j,] = updateY
+    return Y
+
+
+# Initialise Y matrix, n x f
+Y = initialiseMatrix(n, f) # item decomp matrix
+# Initialise X matrix, m x f
+X = initialiseMatrix(m, f) #user decomp matrix
+
+
+
+if __name__== '__main__': 
+    pool = Pool(processes = 2) #ncores
+    X = np.vstack(pool.map(row_update, range(1,m))) #row bind the results
+    pool.close()
+    
+if __name__== '__main__': 
+    pool = Pool(processes = 2) #ncores
+    Y = np.vstack(pool.map(row_update, range(0,n))) #row bind the results
+    pool.close()
+
+ratingsP = ratingsPred(X, Y)
+mse = MSE(ratingsP, ratingsMatrix)
+print("MSE: " + str(mse))
 
 
 
