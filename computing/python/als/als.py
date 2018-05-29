@@ -1,12 +1,15 @@
+#assumption of explicity ratings...
 # utf-8
 import pandas as pd
 import numpy as np
+import os
+os.getcwd()
 
 ratingsNames = ["userId", "movieId", "rating", "timestamp"]
-ratings = pd.read_table("/Users/pewilliams/Desktop/als/movielens/u.data", header=None, sep="\t", names=ratingsNames)
+ratings = pd.read_table("~/Projects/pewilliams-grad-docs/computing/python/als/movielens/u.data", header=None, sep="\t", names=ratingsNames)
 
 usersNames = ["userId", "gender", "age", "occupation", "zipCode"]
-users = pd.read_table("/Users/pewilliams/Desktop/als/movielens/u.user", header=None, sep="|", names=usersNames)
+users = pd.read_table("~/Projects/pewilliams-grad-docs/computing/python/als/movielens/u.user", header=None, sep="|", names=usersNames)
 
 #
 #moviesNames = ["movieId", "title", "genres"]
@@ -58,11 +61,11 @@ print(MSE(ratingsPred(X, Y), ratingsMatrix))
 
 nonZero = ratingsMatrix > 0
 
+#lambda diagonal
 reg = regLamba * np.eye(f,f)
 
 
-
-
+#alternating least squares
 for k in range(1, iters):
     for i in range(1, m):
         idx = nonZero[i,:]
