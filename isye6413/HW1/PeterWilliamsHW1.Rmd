@@ -1,0 +1,146 @@
+---
+output: pdf_document
+---
+Homework 1
+---------------
+Peter Williams
+
+Problem #3
+
+Give examples of hard-to-change factors. How do you reconcile the hard-to-change nature of the factor with the need for randomization?
+
+Some examples of hard-to-change factors could include: 
+
+- The temperature in an oven in an experiment related to baking. If the oven takes time to adjust to a different temp, or an oven can only fit a limited amount of baked goods in it at a time, randomizing the temperature would take a lot of effort and time. 
+- The ordering of TV programs for a schedule at a TV network. Since each program on a TV schedule has separate licensing agreement and flight restrictions, re-ordering TV programs on a schedule requires significant effort. 
+- Setting up a complex assembly machine in a manufacturing plant. If a particular configuration on a piece of complex equipment takes significant time and effort to set-up, there is a trade-off between the benefits randomizing levels of the factor and effort, and time need to perform the experiment. 
+- The plot of land in an experiment to test seed and fertilizer types. Since fertilizer can only be applied to large areas it is hard to randomize the plots of land if there is only limited land, or there are only limited plots available.
+
+Some reconciliation can be made to the hard-to-change nature of factors by systematically randomizing other factors of interest in an experiment. Ensuring that the form of randomization within the hard-to-change experimental factors is structured should help lead to an appropriate analysis. 
+
+Problem #9
+
+(a) Plot the residuals y~i~ - 0.44x~i~ for the data, Do you observe any systematic pattern to question the validity of the formula y = 0.44x?
+
+```{r loadRainfall, echo=T}
+rainfall <- 
+  read.table('http://www2.isye.gatech.edu/~jeffwu/wuhamadabook/data/rainfall.dat', 
+             header=T)
+#residual plot
+with(rainfall,{
+  plot(0.44*x, y - 0.44*x, bty='n', main = 'Residual Plot for model, y=0.44x', 
+       xlab = 'fitted.values', ylab = 'residuals', ylim = c(-0.5,0.5)); 
+  abline(h=0, lty=2, col='grey')
+})
+```
+
+The model y = 0.44x consistently underestimates the amount of rain collected in the rain gauge, as the residual plot shows the majority of points falling above the zero line, especially at lower fitted.values. 
+
+(b) Use regression analysis to analyzed the data in Table 1.10 by assuming a general $\beta_0$ and $\beta_0=0$. How well do the two models fit the data? Is the intercept term significant?
+
+Model fit comparisons:
+
+```{r betaComparisons}
+noIntercept <- lm(y~x-1, data=rainfall)
+withIntercept <- lm(y~x, data=rainfall)
+with(rainfall,{ 
+    plot(x,y, main='Regression Lines', ylab = 'Rain Gauge Measure', xlab = 'Can Measure');
+    abline(noIntercept, col='blue', lty=2, lwd=2);
+    abline(withIntercept, col='red', lty=2, lwd=2);
+})
+```  
+
+Residual plots:
+
+```{r compResiduals}
+    plot(as.numeric(noIntercept$fitted.values), as.numeric(resid(noIntercept)), ylim =c(-0.4,0.4), 
+         main='No Intercept Model', ylab='Residuals', xlab='Fitted Values')
+    abline(h=0, lty=2, col='grey')
+    plot(as.numeric(withIntercept$fitted.values), as.numeric(resid(withIntercept)), ylim =c(-0.4,0.4), 
+         main='With Intercept Model', ylab='Residuals', xlab='Fitted Values')
+    abline(h=0, lty=2, col='grey')
+  summary(withIntercept)
+```
+
+The scatter plot with lines show the fit of the no intercept model in blue, and the with intercept model in red shows the fact that the 'no intercept' model goes right through the origin (0,0). As a result of this, the residual plot for the no intercept model shows a systematic underestimation of the model at lower fitted values. The model with the intercept does not have this bias as seen in its residual plot. The summary of the model with an intercept shows a parameter estimate with a significant estimated effect. 
+
+(c) Because of evaporation during the summer and the can being made of metal, the formula y = 0.44x may not fit the rainfall data collected in the summer. An argument can be made that supports the model with an intercept. Is this supported by your analyses in (a) and (b)?
+
+Yes, there is statistical evidence that the parameter for the intercept is worth including. Visualization of the data, and the model residuals also highlights a better less biased description of the data from a model with an intercept. The added information about the can and evaporation in the summer provides further, domain-specific knowledge to support the model specification. 
+
+Problem #13
+
+Data:
+
+1. Minority: minority percentage
+2. Crime: rate of serious crimes per 100 population
+3. Poverty: percentage poor
+4. Language: percentage having difficultty speaking or wriing English
+5. Highschool: percentage age 25 or older who had not finished high school
+6. Housing: percentage of housing in small multi-unit buildings
+7. City a factor with two levels: "city" (major city), "state" (state remainder).
+8. Conventional: percentage of households counted by conventional personal enumeration
+
+The response is the undercount (in terms of percentage). Use regression to investigate the relationship between undercount and the eight predictors. 
+
+(a) Perform regression analysis using all the predictors except city. Show the regression residuals. Which predictors seems to be important? Draw the residual plot against the fitted value. What can you conclude from this plot
+
+```{r loadEricksen, echo=F}
+ericksenData <- 
+    read.csv('/Users/pewilliams/Desktop/homework 6413/HW1/datasets/ericksen.csv',
+             header=T,stringsAsFactors = F)
+```
+```{r allModelFit}
+allModel <- 
+  lm(Undercount~Minority+Crime+Poverty+Language+Highschool+Housing+Conventional, 
+     data=ericksenData)
+summary(allModel)
+```
+
+Based on the model summary, the predictors of Minority, Crime, Poverty, Language, and Conventional all are estimated to have significant effects based on the t-statistics associated with the estimated betas. Highschool and Housing are estimated to have insignificant effects.
+
+Minority, Crime, and Language, and Conventional all have a (+) estimated effect on undercount, and these variables are associated with higher expected undercount. An increase in Poverty is estimated to have a (-) effect on Undercount, when considering all the other variables in the model. 
+
+```{r ericksenResiduals}
+par(mfrow=c(2,2))
+plot(allModel)
+```
+
+There aren't any strong patterns present in the residual plots, although the standardized residuals may slightly increase for higher fitted values. South Carolina and Philadelphia both stand out as places with higher than expected Undercount given the model. Texas had much lower than expected undercount given the model. More research into those deviations would be worthwhile if conducting further analysis. 
+
+(b) Explain how the variable "City" differs from the others?
+
+"City" is qualitative factor with two unique levels, 'city' or 'state'. The other variables in the model take values over a continuous range, albeit on different scales. 
+
+(c) Use both best subset regression and stepwise regression to select variables from all the predictors (excluding the variable "City"). Compare you final models obtained by the two methods. 
+
+```{r bestSubset}
+library(leaps)
+subModels <- 
+  regsubsets(
+    Undercount~Minority+Crime+Poverty+Language+Highschool+Housing+Conventional, 
+                        data=ericksenData,nbest=5)
+#Mallows CP Summary
+cpSummary <- data.frame(cbind(summary(subModels)$which, summary(subModels)$cp), 
+                        row.names=NULL); 
+colnames(cpSummary)[ncol(cpSummary)] <- 'MallowsCP'
+#part of results
+tail(cpSummary[order(cpSummary$MallowsCP,decreasing=T),2:ncol(cpSummary)],n=5)
+
+#Graphs for other criteria
+par(mfrow=c(1,2))
+plot(subModels,scale='bic', main='Subset by BIC')
+plot(subModels,scale='adjr2', main='Subset by Adj R^2')
+```
+
+Using the subsets approach, the BIC criterion yields a model excluding Poverty, Highschool, and Housing. The minimum Mallows CP criterion value yields an option excluding Highschool and Housing (as seen above), the and Adjusted R^2 criterion yields a model excluding Housing. 
+
+```{r stepWise}
+#stepwise from null model
+nullModel <- lm(Undercount~1, data=ericksenData)
+step(nullModel, scope = list(lower=nullModel, upper=allModel), direction='both')
+```
+
+Both a forward and backwards stepwise fitting routine selection procedures are run. The backward elimination procedure yields the lowest model AIC (54.03), modeling the response (Undercount) by Minority, Crime, Poverty, Language, and Conventional. Similar to the results of the best subset procedure when employing BIC as the criteria for variable selection. 
+
+

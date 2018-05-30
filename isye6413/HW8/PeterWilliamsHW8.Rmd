@@ -1,0 +1,127 @@
+---
+title: "Homework 8 - 6413A"
+author: "Peter Williams"
+output: word_document
+---
+1)*(a) Suppose an engineer needs to design an experiment using an* $OA(N, 2^23^34^1)$ *of strength two. What is the smallest run size N required for this experiment?*  
+Subject to $k_1+k_2+k_3 = 2$, the possibilities include:  
+$k_1 = 2, 2^2 = 4$    
+$k_2 = 2, 3^2 = 9$   
+$k_1 = 1, k_2 = 1, 2*3 = 6$     
+$k_1 = 1, k_3 = 1, 2*4 = 8$   
+$k_2 = 1, k_3 = 1, 3*4 = 12$    
+Which has the least common multiple of $6*12 = 72$. So the smallest run size is 72 for this experiment. 
+
+*(b) The run size you obtain in (a) is deemed to be too large. Find another OA with a much smaller run size, assuming that you are allowed to reduce the number of levels from 4 to 3 or from 3 to 2 for one factor only. What is the run size of the smaller OA? Give the relevant parameters of the OA of your choice but not the actual matrix.*
+Collapsing a 4 level factor to a 3 level factor using an $OA(N, 2^23^4)$ subject to $k_1+k_2 = 2$ results in possibilities of $2^2$, $3^2$, and $2*3$ which has an LCM of 36 for the run size $N, for OA(N, 2^23^4)$. Collapsing a factor level from 3 to 2 would not create run size efficiences in this case. 
+
+11.4)*The cluster of four effects stand out in Figure 11.5 (after D,L, and HL are removed). Use Lenth's method to determine the p values of the effects chosen for model (11.11). Give a justification for including these four effects in the model by using the p values for these effects.*
+```{r layerrobust}
+library(reshape2)
+library(knitr)
+source('/Users/pewilliams/Desktop/homework 6413/HW8/halfNormalFunc.R')
+data <- read.csv('/Users/pewilliams/Desktop/homework 6413/HW8/layerrobust.csv',
+                 header=T,stringsAsFactors = F)
+# column D has a wrong sign. change it
+data[,4] = - data[,4]
+# change some variable names
+names(data)[1:8] = LETTERS[1:8]
+
+# responses for location and dispersion models
+ybar = apply(data[,9:16], 1, mean)
+lns2 = log( apply(data[,9:16], 1, var) )
+
+data <- melt(data, id.vars=c('A','B','C','D','E','F','G','H'))
+
+# The book codes bottom as +1 and top as -1
+data$L = rep(c(1, -1), c(64,64))
+data$M = rep( rep(1:4, c(16,16,16,16)), 2)
+
+data$Ml = rep( rep(c(1,1,-1,-1), c(16,16,16,16)), 2)
+data$Mq = rep( rep(c(1,-1,-1,1), c(16,16,16,16)), 2)
+data$Mc = rep( rep(c(1,-1,1,-1), c(16,16,16,16)), 2)
+
+## There are 128 observations, so we can entertain 127 factorial effects.
+model4 = lm(value ~ (A+B+C+D+E+F+G+H+A:B+A:C+A:D+A:E+A:F+A:G+A:H) * L*(Ml+Mq+Mc), 
+            data=data );
+effects <- abs(2*model4$coef[-1]) #127 
+
+s0 = 1.5*median(effects)
+PSE <- 1.5*median(effects[which(effects < (2.5*s0))])
+TPSE <- effects/PSE
+#alpha = 0.05, critical value is 1.99
+effTPSE <- data.frame(TPSE, critValue = 1.99)
+effTPSE$significant <- effTPSE$TPSE > effTPSE$critValue
+effTPSE <- effTPSE[order(-effTPSE$TPSE),][1:7,];
+effTPSE$pvalue <- '<0.001'
+kable(effTPSE)
+```
+
+With $\alpha = 0.05$, Lenth's method (IER) has a critical value of 1.99, for $I = 127$. The top 7 effects, which are also specified in 11.11, are listed above with their pseudo t-value. All seven effects are significant based on the specified level. So Lenth's method provides justification for the inclusion of these variables based on their effect size relative to other modeled effects.  
+
+11.15)*In a robust parameter design experiment, only one control-by-noise interaction effects turns out to be significant. its corresponding interaction plot is given in 11.10.*  
+*(a) From the values in the plot, compute the interaction effect.*  
+Using the formula   
+$INT(C,N) = \frac{1}{2} ( \bar{z} (N+|C+) - \bar{z}(N-|C+) ) - \frac{1}{2} ( \bar{z} (N+|C-) - \bar{z}(N-|C-) )$,   
+from the plot we estimate,   
+$\bar{z} (N+|C+) = 5, \bar{z} (N-|C+) = 10, \bar{z} (N+|C-) = 0.25, and \bar{z} (N-|C-) = 2$, which puts, 
+$INT(C,N) = 0.5*(5-10) - 0.5*(0.25-2)$, which equals: `r 0.5*(5-10) - 0.5*(0.25-2)`. 
+
+*(b) Suppose C is a control factor (say, regular or tapered tube) and N is a noise factor (say, tube size, which varies with the incoming parts), and y is the pull-off force. Comment on the choice of the control factor setting if the objective is to maximize pull-off force.*    
+The interaction plot clearly shows that setting the control factor C to its positive (+) setting yields greater pull-off force on average, however, there is more variance from (-) to (+) settings of N across a positive (+) setting for C. So there is less visible variation across the noise factor at the (-) setting of C. So while the (-) setting for C is more robust, the response tends to be consistently across the noise factor settings for C (+). As a side, the interaction plot is synergistic across the noise factor.  
+
+*(c) in another scenario, the quality characteristic y is the insert force and the objective is to minimize insert force. Comment on the choice of the setting C.*  
+In this case, the interaction plot clearly shows that setting the control factor C to its negative (-) setting yields less insert force on average, this setting recommendation is consistent with the more robust (less variable) setting for C (-) across the noise factor N. 
+
+11.19)*Consider an experiment that studied the geometric distortion of drive gears in a heat treatment process. The design matrix and response data are given in Table 11.11. The response is dishing of the gear. The five control factors are: carbon potential (A), operation mode (B), last zone temperature (C), quench oil temperature (D), and quench oil agitation (E). The three noise factors are furnace track (F), tooth size (G), and part positioning (H).*
+
+*(a) What fractional factorial design is used for the control array in the Table 11.11? With this control array and the* $2^3$ *design for the noise array, describe the cross array in the Table 11.11 and discuss its estimation capacity by using Theorem 11.1.*  
+A $2^{5-1}$ design for the control factors (resolution V), and a $2^{3}$ design for the noise factors is utilized. 
+According to theorem 11.1, all the control-by-noise interactions are clear, since both designs have a resolution of at least III, and control-by-noise interactions can be estimated under assumption that 3 fi's are negligible. 
+
+*(c) Use response modeling to analyze to the data in Table 11.11 and identify important effects. Based on the control-by-noise interaction plots and the transmitted variance model, determine control factor setting that are effective for variation reduction.*  
+Assuming interactions higher than 2 fi's are negligible a model with 2 fi's and main effects is fit, and a half normal plot is drawn: 
+```{r dishingData}
+#clean up data
+dishData <- read.csv('/Users/pewilliams/Desktop/homework 6413/HW8/dishingData.csv',
+                     header=T,stringsAsFactors=F)
+#choose(8,2) 2 fi's
+dmodel <- lm(value~A+B+C+D+E+F+G+H+
+               A:D+B:D+C:D+A:E+B:E+C:E+D:E+
+               A:F+B:F+C:F+D:F+E:F+A:G+B:G+
+               C:G+D:G+E:G+F:G+A:H+B:H+C:H+D:H+E:H+F:H+G:H, data=dishData)
+summary(dmodel)
+deffects <- 2*coef(dmodel)[-1] #pop off intercept
+#create plot
+m <- length(deffects)
+x <- seq(0.5+0.25/m, 1.0-0.25/m, by=0.5/m)
+x <-  qnorm(x)
+y <-  sort(abs(deffects))
+plot(x, y)
+text(x+0.06, y, labels = names(y), main='Half Normal Plot', 
+     ylab='absolute effects',xlab='half-normal quantiles')
+```
+Based on the summary of the halfnormal plot, and the model summary, the main effects for H, A, B, C, and interactions with the noise factor F are considered. Here are the control-by-noise interaction plots: 
+
+```{r intDish}
+par(mfrow=c(1,2),bty='n')
+with(dishData, interaction.plot(x.factor=F,trace.factor = H,response=value))
+with(dishData, interaction.plot(x.factor=F,trace.factor = A,response=value))
+with(dishData, interaction.plot(x.factor=F,trace.factor = B,response=value))
+with(dishData, interaction.plot(x.factor=F,trace.factor = C,response=value))
+```
+The interaction plots show that at both settings of H, and A, the variance with the noise factor F is somewhat flat, albeit slight lower at A (+). For B, the line is flatter at B(-1), and C(-1). Based on the model summary, and half-normal plot, only interactions between C, B, against the noise factor F will be considered. Since the noise factor has no main effect in the model, only its interactions with the main control settings are considered. If the objective is to minimize geometric distortion, B (+) is better, C (-) results in lower variance, and A(+), and H(+) both have lower distortion with similar variance at both levels. The reduced model is summarised below. 
+
+
+```{r dishModels}
+lmodel <- lm(value~A+B+C+H+C:F+B:F,data=dishData) #just factors from half-normal, reduced
+summary(lmodel)
+```
+
+
+
+
+
+
+
+

@@ -1,0 +1,164 @@
+---
+title: "Homework 3 - 6413A"
+author: "Peter Williams"
+output: pdf_document
+---
+```{r libLoad, echo=F}
+suppressWarnings(library(knitr))
+suppressWarnings(library(ggplot2))
+```
+
+1) *Recall the analysis in Table 3.19 and Table 3.20 in the textbook. Suppose you have incorrectly ignored blocking and arrived at Table 3.21. Redo the multiple comparison for the four different materials. Report all possible results and comment on your findings.* 
+
+Below is a a summary of the ANOVA table replicated from 3.21:
+
+```{r dataInput}
+weightData <- data.frame(
+  material = c(rep('A',4),rep('B',4), rep('C',4), rep('D',4)),
+  weight = c(268, 251, 274, 270, 218, 241, 226, 195, 235, 229, 
+             273, 230, 236, 227, 234, 225)
+  )
+summary(aov(weight~material, data=weightData))
+```
+
+The table illustrates  material having a significant treatment effect. The f-statistic has a p-value less than $\alpha = 0.05$. 
+
+Below is a summary of pairwise comparisons using the Tukey multiple comparison test. Notably, the MSE as reported in the ANOVA, is higher than the MSE reported in table 3.19. Since other sources of variation controlled for by blocking are ignored, there are only sources of variation due to the between material effect, and the residual level of the model: 
+
+```{r multipleComps}
+#function to get t-statistics
+getTstat <- function(m1, m2, df1, df2, MSE){
+  (m2 - m1) / (sqrt(MSE) * sqrt(1/df2 + 1/df1) )
+}
+
+#MSE ignoring blocking
+MSEib <- summary(aov(weight~material, data=weightData))[[1]][['Mean Sq']][2] 
+#mean weight by material
+materialMeans <- tapply(weightData$weight, weightData$material, mean)
+meanA <- materialMeans[['A']]; meanB <- materialMeans[['B']]; 
+meanC <- materialMeans[['C']]; meanD <- materialMeans[['D']];
+
+#tstatistics
+A.vs.B <- getTstat(m1=meanA, m2 = meanB, df1=4, df2=4, MSE = MSEib)
+A.vs.C <- getTstat(m1=meanA, m2 = meanC, df1=4, df2=4, MSE = MSEib)
+A.vs.D <- getTstat(m1=meanA, m2 = meanD, df1=4, df2=4, MSE = MSEib)
+B.vs.C <- getTstat(m1=meanB, m2 = meanC, df1=4, df2=4, MSE = MSEib)
+B.vs.D <- getTstat(m1=meanB, m2 = meanD, df1=4, df2=4, MSE = MSEib)
+C.vs.D <- getTstat(m1=meanC, m2 = meanD, df1=4, df2=4, MSE = MSEib)
+
+resultsSummary <- data.frame(
+  A.vs.B = round(c(-8.27, A.vs.B),digits=2),
+  A.vs.C = round(c(-4.34, A.vs.C),digits=2),
+  A.vs.D = round(c(-6.37, A.vs.D),digits=2),
+  B.vs.C = round(c(3.93, B.vs.C),digits=2),
+  B.vs.D = round(c(1.90, B.vs.D),digits=2),
+  C.vs.D = round(c(-2.03, C.vs.D),digits=2),
+  Tcritical = round(c((1/sqrt(2))*qtukey(p=0.95, nmeans=4, df = 6), 
+                      (1/sqrt(2))*qtukey(p=0.95, nmeans=4, df = 12)),digits=2)
+)
+row.names(resultsSummary) <- c('with Blocking', 'ignoring Blocking')
+kable(resultsSummary, caption = 'Table of T-statistics for Multiple Comparison Tests')
+ 
+```
+
+Under the Tukey multiple comparisons test, with blocking, the following treatments are found different from each other at $\alpha = 0.05$: 'A vs B', 'A vs C', 'A vs D', 'B vs C'. At $\alpha = 0.05$, ignoring blocking only 'A vs B', and 'A vs D' are found to be different from each other. So by ignoring blocking, less treatments are found significantly different from each other. By utilizing blocking, the test/analysis has more power to detect differences between materials, and also highlights sources of variation in material wear due to the application and the position of the material that also add value to the analysis. 
+
+2) *Problem 3.8: A chemical reaction experiment was carried out with the objective of comparing if a new catalyst B would give higher yields than the old catalyst A. The experiment was run on six different batches of raw material which were known to be quite different from one another. Each batch was divided into two portions to which A or B was applied at random. The data collected are given in Table 3.43.* 
+
+(a) Explain the experimental design
+
+The design employed here is an example of a paired comparison design, because each of six batches, or samples of material, are compared against two treatments (catalysts A & B). This could also be viewed a randomized block design with blocks of size 2.  
+
+(b) Carry out the appropriate t test
+
+```{r pairedTest}
+yieldData <- data.frame(
+  Batch = factor(1:6),
+  A = c(9,19,28,22,18,8),
+  B = c(10,22,30,21,23,12)
+)
+#compute differences
+yieldData <- transform(yieldData, d = A - B)
+tPaired <- (sqrt(nrow(yieldData)) * mean(yieldData$d)) / sd(yieldData$d)
+tCritical <- qt(0.975, df = (nrow(yieldData) - 1))
+
+paste0('Paired T Statistic (abs) = ', abs(tPaired)) 
+paste0('Critical T-value = ', tCritical)
+paste0('Paired T Greater than T Critical? : ', abs(tPaired) > tCritical)
+```
+Measurements for Catalyst B were on average 2.333 units higher than those for Catalyst A. Based on the results of the paired t-test, catalysts A & B are declared to be significantly different at $\alpha = 0.05$, since the absolute value of the Paired T-statistic is greater than the critical value. That is, yields for Catalyst B are significantly higher according to the test. 
+
+(c) Construct a 95% confidence interval for the difference between catalysts A and B. 
+
+The confidence interval can be constructed for the mean difference as: $\bar{d} \pm t_{(\frac{\alpha}{2}, 5)}\frac{s_d}{\sqrt{n}}$, which can be computed as: 
+
+```{r pairedConfint}
+dbar <- mean(yieldData$d)
+tvalue = qt(0.975,5)
+
+paste0('Confidence interval for the mean difference is: [',
+       round(dbar + tvalue * (sd(yieldData$d) / sqrt(nrow(yieldData))),digits=6),',',
+       round(dbar - tvalue * (sd(yieldData$d) / sqrt(nrow(yieldData))),digits=6),']')
+```
+
+
+3) *Problem 3.13: For the composite experiment of Section 2.3, the original paper by Mazumdar and Hoa (1995) reported a second factor, tape speed. Table 3.44 shows the three replicates for each level of laser power corresponding to the tape speed of 6.42, 13.0, and 27.0 m/s respectively. The levels of tape speed are roughly evenly spaced on the log scale, so that linear and quadratic can be entertained for the second quantitative factor. Analyze the experiment as a two way layout with a single replicate, including model building, parameter estimation, ANOVA and residual analysis.*
+
+Visualization of the strength data reveals a tendency of strength to increase linearly with increased power, at all levels of tape speed:
+
+```{r power}
+tapeData <- data.frame(
+  power = factor(c(rep('40W',3),rep('50W',3),rep('60W',3))),
+  strength = c(25.66,28.00,20.65,
+               29.15,35.09, 29.79,
+               35.73, 39.56, 35.66),
+  speed = c(rep(c(6.42,13,27),3))
+)
+tapeData$logSpeed <- factor(round(log(tapeData$speed), digits=2))
+ggplot(tapeData, aes(x=power, y=strength, group=logSpeed,color=logSpeed)) + 
+  geom_line(size=2) + ggtitle('Strength vs. Power') + theme_bw()
+```
+When comparing strength vs. speed of the tape (log), there is a parallel pattern of fluctuation of strength at all power levels. Strength reaches its peak at the middle value tape speed value, log(13.00) = 2.56.  And tends to be lower for all power levels at the highest tape speed log(27.00) = 3.3. 
+
+```{r speed}
+ggplot(tapeData, aes(x=logSpeed, y=strength, group=power,color=power)) + 
+  geom_line(size=2) + ggtitle('Strength vs. logSpeed') + theme_bw()
+```
+We will proceed to analyze the data as a two-way layout. Since there is only one replicate for each combination of factor levels, analyzing the data with a model that includes an interaction isn't worthwhile, since there would be a parameter estimate for each replicate or experimental unit. Further the model would have no residuals, since it would fit perfectly. 
+
+```{r modelBuilding}
+#two way loyout - no interactions
+model1 <- aov(strength~power + logSpeed,data=tapeData)
+summary(model1)
+```
+A two-way ANOVA excluding interactions, without linear/quadratic contrasts considered, yields significant effects for both factors, at $\alpha = 0.05$. 
+
+If the factor levels are ordered, the quantitative aspects of both factors can be considered with a model with linear and quadratic effects
+
+```{r linearEffects}
+#add order levels to the factors
+tapeData$power <- as.ordered(tapeData$power)
+tapeData$logSpeed <- as.ordered(tapeData$logSpeed)
+
+model2 <- lm(strength~power+logSpeed, data=tapeData)
+summary(model2)
+```
+With ordering on the tape speed and power variables, at $\alpha = 0.05$, a linear effect of power on strength, and a quadratic effect of log tape speed on strength are found to be significant. 
+
+Residual Analysis for both models: 
+```{r residualAnalysis}
+print('Two-Way ANOVA - no interaction, no ordering of factors')
+par(mfrow=c(2,2))
+plot(model1)
+```
+The residuals from the two-way model without interaction, appear to satify the conditions of   
+1. Having an expected value of 0,   
+2. Showing independence when comparing fitted values against residuals, and   
+3. Appear to have constant variance.   
+  
+Experimental units 1, and 3 both have the highest standardized residuals, and both had a power level of '40W', however given the limited number of experimental units, it doesn't appear to be a modeling concern.
+
+The model with the linear and quadratic effects yields the same residuals, and thus the same conclusions can be derived from the residual plots. 
+
+
+

@@ -1,0 +1,142 @@
+---
+title: "Homework 5 - 6413A"
+author: "Peter Williams"
+output: pdf_document
+---
+```{r libs,echo=F}
+library(reshape2);
+suppressWarnings( library(ggplot2))
+```
+
+4.17) *A metal alloy is used to make components for aircraft engines. Cracking is a potentially serious problem in the final part, as it can lead to a non-recoverable failure. The objective of the experiment was to identify the key factor and possibly their interactions which have effect on cracks. Four factors were considered: pouring temperature (A), titanium content (B), heat treatment method (C), and the amount of grain refiner used (D). A* $2^4$ *experiment was conducted and the reponse of interest was the length of crack (in mm x* $10^{-2}$*). Each trial condition was replicated twice. The data are given in Table 4.18.* 
+
+A quick visualization of the main effects of the data highlight that length tends to be slightly higher with positive settings on A, B, C, and under negative for B. There doesn't appear to be a significant difference in the main effects across the two runs completed for the experiment. 
+
+```{r loadCrackData,echo=F}
+crackData <- read.table('http://www2.isye.gatech.edu/~jeffwu/wuhamadabook/data/metalalloycrack.dat',header=F,skip=1)
+colnames(crackData) <- c('A','B','C','D','1','2')
+crackData$s2 <- apply(crackData[,5:6],1,var)
+crackData$lns2 <- log(crackData$s2)
+crackData <- melt(crackData, measure.var=c('1','2'))
+colnames(crackData)[7:8] <- c('Run','Length')
+head(crackData,n=3)
+print('---')
+tail(crackData, n=3)
+#plot main effects
+pdat <- melt(crackData, measure.vars = c('A','B','C','D'),id.vars = c('Length','Run'))
+ggplot(pdat, aes(x=value,y=Length,color=Run)) + geom_point(size=2) + facet_wrap(~variable) + 
+  geom_smooth(method='lm',se=F,size=0.5) + theme_bw() + xlab('Treatment Level') + 
+  ggtitle('Crack Length - By Effect')
+```
+
+(a) *Which main effects are significant for crack length? Are there any significant interactions?*
+
+As shown below, analyzing the effects with ANOVA, all four main effects are estimated to be significant sources of variation under $\alpha=0.001$. Second order interactions between B & D (titanium content & grain refiner amount), C & D (head treatment & grain refiner), and a third order interaction between B & C & D have effects estimated to be significant contributors to variation under $\alpha=0.001$.
+
+This significance of these effects can also be shown visually by the half normal plot below:
+
+```{r factorialModel}
+#ybar
+effModel <- aov(Length~A*B*C*D,data=crackData)
+summary(effModel)
+
+#lns2
+dispModel <- aov(lns2~A*B*C*D,data=crackData)
+
+
+coefData <- data.frame(coef(effModel)*2);
+coefData$lns2 <- coef(dispModel)*2
+colnames(coefData) <- c('ybar','lns2'); 
+coefData$Effect <- row.names(coefData);
+row.names(coefData) <- NULL;
+coefData <- coefData[2:nrow(coefData),]#take out intercept
+coefData$absYbar <- abs(coefData$ybar)
+coefData <- coefData[order(coefData$absYbar),] #rank order
+coefData$rankOrder <- 1:nrow(coefData)
+coefData$qNorm <- qnorm(0.5+0.5*(coefData$rankOrder-0.5)/nrow(coefData))
+
+
+#half normal plot - effect
+ggplot(coefData, aes(x=qNorm,y=absYbar)) + geom_point() + 
+  geom_text(aes(x=qNorm,y=absYbar-0.1,label=Effect,size=2)) + theme_bw() + 
+  xlab('Half Normal Quantiles') + 
+  ylab('Effect Estimates') + 
+  ggtitle('Half Normal Plot - Crack Length - Location Effects') + 
+  theme(legend.position='none')
+#half normal plot - dispersions
+```
+
+(b) *What factors affect the variability of the crack length?* 
+Below is a half-normal plot of the dispersion effects. It highlights variability sourced from second level interactions largest for AB, and CD.  
+```{r dispersionAnalysis}
+coefData$absLns2 <- abs(coefData$lns2)
+coefData <- coefData[order(coefData$absLns2),] #rank order
+coefData$rankOrder <- 1:nrow(coefData)
+coefData$qNorm <- qnorm(0.5+0.5*(coefData$rankOrder-0.5)/nrow(coefData))
+ggplot(coefData, aes(x=qNorm,y=absLns2)) + geom_point() + 
+  geom_text(aes(x=qNorm,y=absLns2-0.1,label=Effect,size=2)) + theme_bw() + 
+  xlab('Half Normal Quantiles') + 
+  ylab('Effect Estimates') + 
+  ggtitle('Half Normal Plot - Crack Length - Dispersion Effects') +
+  theme(legend.position='none')
+```
+
+(c) *Find the optimum process conditions to minimize mean crack length*
+
+Based on the factorial effect fits, crack length is estimated to be minimized under: 
+
+1. Pouring temperature, negative setting, A(-), 
+2. Titanium content, positive setting, B(+), 
+3. Heat treatment, negative setting C(-), and
+4. Grain refiner, positive setting D(+)
+
+These experimental conditions are demonstrated in the 6th (Run1), and 22nd (Run2) record in the dataset. 
+
+4.18) *A biologist performed a* $2^5$ *factorial design in four blocks of equal size by making use of the blocking variables:* $B_1=1234, B_2=2345$*. If block effects are present the experiment is performed, how will the main effect of variable 5 be affected? How will the interaction 15 be affected?*
+
+This blocking scheme confounds with the following interactions: $1234, 2345, 15$, 
+since $B_1 B_2$ = 1 X 2 X 2 X 3 X 3 X 4 X 4 X 5 = 15. So this blocking scheme will not be confounded with any of the main effects including 5, but if there were a blocking effect it would be confounded with interaction 15. 
+
+4.21) *Difficulties with Nonorthogonal Blocking*
+
+a) *Suppose  that the* $2^3$ *design in the Table 4.12 is arranged in two blocks with runs 1,2,5,7 in block I and runs 3,4,6,8 in block II. Show that the corresponding blocking variable is not identical to any of the first seven columns of the table and, therefore, it is not confounded with any of the factorial effects.*
+
+Here is the design matrix, with A = 1, B=2, C = 3 for table 4.12. 
+
+```{r design4.12}
+dat <- expand.grid(A = c(-1,1), B=c(-1,1), C=c(-1,1))
+dat <- dat[order(dat$A),]
+dat <- dat[c(1,3,2,4,5,7,6,8),]
+dat <- transform(dat, AB = A*B, AC = A*C, BC = B*C, ABC = A*B*C)
+dat$AB <- dat$A*dat$B
+dat$AC <- dat$A*dat$C
+dat$BC <- dat$B*dat$C
+dat$ABC <- dat$A*dat$B*dat$C
+dat$Block <- c(1,1,-1,-1,1,-1,1,-1) # (+, 1,2,5,7, -, 3,4,6,8)
+row.names(dat) <- NULL;
+dat
+```
+
+This blocking scheme can be viewed as a column vector of the form $(++--+-+-)$. Which as demostrated below, is not identical to any of the 7 factorical effects (since there are true and false matches in all columnwise comparisons here): 
+```{r factEffectIdentity}
+print('Block vector vs. factorial effects - comparison of vector elements:')
+lapply(dat[,1:7], function(a) a == dat$Block)
+```
+
+b) *Show that the block effect is not orthogonal to some of the factorial effects. Identify these effects. How does it affect the estimation of these effects? Discuss why it is undesirable to use this blocking scheme.*
+
+Using the alias function in R to find linearly dependent terms highlights that the interaction AC and the Block variable are not orthogonal, and thus cannot be estimated together. That is, 13 (AC) can be expressed as a linear combination of 2 (B), 3 (C), 12 (B) and the Block variable: 
+
+```{r testAliases}
+dat$y <- rnorm(8) #arbitrary response
+alias(y~Block+A*B*C,data = dat)
+#
+dat$Block*-2 + (dat$B + dat$C) * -1 + dat$AB == dat$AC 
+```
+
+Thus the block effect is confounded with the second order interaction 13 (AC). The blocking effect is not clear or strongly clear, and is undesirable since it is confounded with a lower order interaction, whose effect could not be estimated from the model. 
+
+
+
+
+
