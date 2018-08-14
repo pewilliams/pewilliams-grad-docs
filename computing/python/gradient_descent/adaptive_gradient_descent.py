@@ -10,6 +10,7 @@ n = 1000 #nrecs
 X = pd.DataFrame({'x0' : np.repeat(1, n, axis = 0), 'x1' : np.random.normal(0,1,n), 'x2' : np.random.choice(6,n)})
 y = 10 + 0.5*X['x1'] + 0.25*X['x2'] + np.random.normal(0,0.5,n)
 
+
 # syntax sucks
 ols = np.dot(np.linalg.inv(np.dot(X.transpose(),X)), np.dot(X.transpose(),y))
 yhat = np.dot(X, ols)

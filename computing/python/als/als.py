@@ -133,7 +133,7 @@ X = initialiseMatrix(m, f) #user decomp matrix
 
 if __name__== '__main__': 
     pool = Pool(processes = 2) #ncores
-    X = np.vstack(pool.map(row_update, range(1,m))) #row bind the results
+    X = np.vstack(pool.map(row_update, range(0,m))) #row bind the results
     pool.close()
     
 if __name__== '__main__': 
