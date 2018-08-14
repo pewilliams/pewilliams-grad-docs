@@ -19,10 +19,11 @@ y = (y - min(y))/(max(y) - min(y))
 
 #weight matrix and bias initialize
 number_layers = 3
+regularization_term = 0.001
 #weight matrix input layer
-W_1 = np.matrix(abs(np.random.normal(0,0.25,number_layers*X.shape[1])).reshape(number_layers,X.shape[1]))
+W1 = np.matrix(abs(np.random.normal(0,0.25,number_layers*X.shape[1])).reshape(number_layers,X.shape[1]))
 #weight matrix activation layer
-W_2 = np.array(abs(np.random.normal(0,0.25,number_layers)))
+W2 = np.array(abs(np.random.normal(0,0.25,number_layers)))
 #bias terms
 bias = np.array(abs(np.random.normal(0,0.25,number_layers + 1)))
 
@@ -32,41 +33,46 @@ def activation_function(z):
 def predict_nn(x):
     activation_layer = np.zeros(number_layers)
     for i in np.arange(number_layers): 
-       z = np.dot(W_1[i],x) + bias[i]
+       z = np.dot(W1[i],x) + bias[i]
        activation_layer[i] = activation_function(z)
     return( activation_function( np.dot(W_2,activation_layer) + bias[number_layers])  )
     
 #cost function
-def costFun(X,y, W_1, W_2, regularization_term):
-    return(1./len(y) * sum(np.apply_along_axis(predict_nn, 1, X) - y)**2 ) + (regularization_term/2)*( np.square(W_1).sum() + np.square(W_2).sum())
+def costFun(X,y, W1, W2, regularization_term):
+    return(1./len(y) * sum(np.apply_along_axis(predict_nn, 1, X) - y)**2 ) + (regularization_term/2)*( np.square(W1).sum() + np.square(W2).sum())
 
 costFun(X,y, W_1,W_2,0.01)
 
 #need adaptive stochastic gradient descent - first without backpropagation?    
-def gradientDescentAdaptive(maxiter,X,y,regularization_term, rate, eps):
-    #weight matrix input layer
-    W_1 = np.matrix(abs(np.random.normal(0,0.25,number_layers*X.shape[1])).reshape(number_layers,X.shape[1]))
-    #weight matrix activation layer
-    W_2 = np.array(abs(np.random.normal(0,0.25,number_layers)))
-#bias terms
+def gradientDescentAdaptive(maxiter,X,y,regularization_term, rate, eps, number_layers):
+    #weight matrix input layer W_1
+    #weight matrix activation layer W_2, and
+    #bias terms
+    W1 = np.matrix(abs(np.random.normal(0,0.25,number_layers*X.shape[1])).reshape(number_layers,X.shape[1]))
+    W2 = np.array(abs(np.random.normal(0,0.25,number_layers)))
     bias = np.array(abs(np.random.normal(0,0.25,number_layers + 1)))
     
     #initial cost
-    cost = costFun(X,y, W_1, W_2, regularization_term)
+    cost = costFun(X,y, W1, W2, regularization_term)
     converged = False
     niter = 1
     #need to fix this
-    while converged == False:      
-        gradient = 1./len(y) * (np.dot(X.transpose(), np.dot(X,beta) - y) + alpha*beta)
-        bias_update = bias - rate * gradient
-        bias = bias_update
-        error = costFun(X,y,W_1,W_2, regularization_term)
+    while converged == False: 
+        for l in np.arange(0,number_layers):
+            gradient_bias = 1./len(y) * np.apply_along_axis(predict_nn, 1, X) - y)
+            bias_update = bias - rate * gradient_bias
+            bias = bias_update
         
+            gradient_w = 1./len(y) * np.apply_along_axis(predict_nn, 1, X) - y)
+            W1_update = bias - rate * gradient_w
+            bias = bias_update
+        
+        error = costFun(X,y,W_1,W_2, regularization_term)       
         #adaptive
         if error < cost: 
-            rate = rate * 1.1
+            rate = rate * 1.2
         else: 
-            rate = rate * 0.4
+            rate = rate * 0.5
         #stop criteria
         if abs(cost - error) <= eps:
             converged = True
@@ -79,7 +85,7 @@ def gradientDescentAdaptive(maxiter,X,y,regularization_term, rate, eps):
             
     return {'W_1': W_1,'W_2':W_2 ,'cost_res' : cost, 'iter': niter, 'learning_rate': rate,'regularization_term': regularization_term}
 
-print(gradientDescentAdaptive(maxiter = 100, X = X , y = y, alpha = 0.5, rate = 0.01, eps= 0.000001))
+print(gradientDescentAdaptive(maxiter = 100, X = X , y = y, regularization_term = 0.01, rate = 0.01, eps= 0.000001, number_layers))
 
 
 
