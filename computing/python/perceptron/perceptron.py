@@ -58,7 +58,12 @@ def gradientDescentAdaptive(maxiter,X,y,regularization_term, rate, eps, number_l
     niter = 1
     #need to fix this
     while converged == False: 
+        #try with delta rule
+        #grad(w_ij) = rate*(pred_j - actual_j)*activation_function(z_j)(1 - activation_function(z_j))*x_i
         for l in np.arange(0,number_layers):
+            W1_update = W1
+            W1_update[l] = rate*()*activation_function()*(1 - activation_function())
+            
             gradient_bias = 1./len(y) * np.apply_along_axis(predict_nn, 1, X) - y)
             bias_update = bias - rate * gradient_bias
             bias = bias_update
